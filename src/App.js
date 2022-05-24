@@ -1,4 +1,3 @@
-import logo from './logo.svg';
 import './App.css';
 
 import Home from './Home';
@@ -8,7 +7,7 @@ import Projects from './Projects';
 import About from './About';
 */
 
-import NavBar from './NavBar';
+
 import { Routes, Link, Route } from "react-router-dom";
 
 import FechasProyecto from './Componentes/C2FechasProyecto';
@@ -50,10 +49,8 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/informacion-general" element={<InformacionGeneral />} />
-
             <Route path="/fechas-proyecto" element={<FechasProyecto />} />
             <Route path="/director-proyecto" element={<DirectorProyecto />} />
-
             <Route path="/areas-conocimiento" element={<AreasConocimiento />} />
             <Route path="/tipo-proyecto" element={<TipoProyecto />} />
             <Route path="/equipo-proyecto" element={<EquipoProyecto />} />
@@ -62,9 +59,7 @@ function App() {
             <Route path="/cronograma-actividades" element={<CronogramaActividades />} />
             <Route path="/resumen-presupuesto" element={<ResumenPresupuesto />} />
             <Route path="/pruebas" element={<C11Pruebas />} />
-
           </Routes>
-
 
         </div>
         {

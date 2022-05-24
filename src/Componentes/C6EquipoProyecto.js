@@ -1,5 +1,5 @@
 import React from "react";
-import NavBar from "../NavBar";
+// import NavBar from "../NavBar";
 import "../style.css"
 
 export default function EquipoProyecto() {
@@ -22,10 +22,10 @@ export default function EquipoProyecto() {
                             <th class="tg-0lax">ROL</th>
                             <th class="tg-0lax">TIPO</th>
                             <th class="tg-0lax">INVESTIGADORES</th>
-                            <th class="tg-0lax">IDENTIFICACION</th>
+                            <th class="tg-0lax">IDENTIFICACIÓN</th>
                             <th class="tg-0lax">NOMBRES <br />Y APELLIDOS</th>
                             <th class="tg-0lax">HORAS SEMANALES <br />DE PARTICIPACION</th>
-                            <th class="tg-0lax">TOTAL HORAS <br />PARTICIPACION <br />EN EL PROYECTO</th>
+                            <th class="tg-0lax">TOTAL HORAS <br />PARTICIPACIÓN <br />EN EL PROYECTO</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -122,8 +122,8 @@ export default function EquipoProyecto() {
                             <th class="tg-0pky">PERFIL REQUERIDO</th>
                             <th class="tg-0pky">FUNCION</th>
                             <th class="tg-0pky">PRINCIPALES ACTIVIDADES A DESARROLLAR</th>
-                            <th class="tg-0lax">Tiempo de contratacion meses</th>
-                            <th class="tg-0lax">Numero de personas a contratar</th>
+                            <th class="tg-0lax">Tiempo de contratación meses</th>
+                            <th class="tg-0lax">Número de personas a contratar</th>
                         </tr>
                     </thead>
                     <tbody>

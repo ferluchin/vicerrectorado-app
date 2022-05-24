@@ -1,5 +1,5 @@
 import React from "react";
-import NavBar from "../NavBar";
+// import NavBar from "../NavBar";
 import "../style.css"
 
 export default function TipoProyecto() {
@@ -26,9 +26,9 @@ export default function TipoProyecto() {
                             className="select-css"
                         >
                             <option value="">-- Elija un Elemento --</option>
-                            <option value="sdsa"> Investigación. </option>
-                            <option value="sdsa"> Innovación. </option>
-                            <option value="sdsa"> Consultoría. </option>
+                            <option value="Investigación"> Investigación. </option>
+                            <option value="Innovación"> Innovación. </option>
+                            <option value="Consultoría"> Consultoría. </option>
                         </select>
                     </div>
 
@@ -44,9 +44,9 @@ export default function TipoProyecto() {
                             className="select-css"
                         >
                             <option value="">-- Elija un Elemento --</option>
-                            <option value="sdsa"> Investigación Básica. </option>
-                            <option value="sdsa"> Investigación Aplicada. </option>
-                            <option value="sdsa"> Desarrollo Experimental. </option>
+                            <option value="Investigación Básica."> Investigación Básica. </option>
+                            <option value="Investigación Aplicada."> Investigación Aplicada. </option>
+                            <option value="Desarrollo Experimental."> Desarrollo Experimental. </option>
                         </select>
                     </div>
 
@@ -62,25 +62,27 @@ export default function TipoProyecto() {
                             className="select-css"
                         >
                             <option value="">-- Elija un Elemento --</option>
-                            <option value="sdsa">ASIGNACIÓN REGULAR IES.  </option>
-                            <option value="sdsa">FONDOS CONCURSABLES INTERNO IES. </option>
-                            <option value="sdsa">FONDOS CONCURSABLES NACIONALES. </option>
-                            <option value="sdsa">FONDOS CONSURSABLES INTERNACIONALES. </option>
+                            <option value="ASIGNACIÓN REGULAR IES.">ASIGNACIÓN REGULAR IES.  </option>
+                            <option value="FONDOS CONCURSABLES INTERNO IES.">FONDOS CONCURSABLES INTERNO IES. </option>
+                            <option value="FONDOS CONCURSABLES NACIONALES.">FONDOS CONCURSABLES NACIONALES. </option>
+                            <option value="FONDOS CONSURSABLES INTERNACIONALES">FONDOS CONSURSABLES INTERNACIONALES. </option>
 
-                            <option value="sdsa">ASIGNACIÓN REGULAR IES/FONDOS CONCURSABLES INTERNO IES. </option>
-                            <option value="sdsa">ASIGNACIÓN REGULAR IES/FONDOS CONCURSABLES NACIONALES. </option>
-                            <option value="sdsa">ASIGNACIÓN REGULAR IES/FONDOS CONCURSABLES INTERNACIONALES. </option>
+                            <option value="ASIGNACIÓN REGULAR IES/FONDOS CONCURSABLES INTERNO IES.">ASIGNACIÓN REGULAR IES/FONDOS CONCURSABLES INTERNO IES. </option>
+                            <option value="ASIGNACIÓN REGULAR IES/FONDOS CONCURSABLES NACIONALES.">ASIGNACIÓN REGULAR IES/FONDOS CONCURSABLES NACIONALES. </option>
+                            <option value="ASIGNACIÓN REGULAR IES/FONDOS CONCURSABLES INTERNACIONALES.">ASIGNACIÓN REGULAR IES/FONDOS CONCURSABLES INTERNACIONALES. </option>
 
-                            
-                            <option value="sdsa">FONDOS CONCURSABLES INTERNO IES/ FONDOS CONCURSABLE SINTERNACIONALES. </option>
-                            <option value="sdsa">FONDOS CONCURSABLES INTERNO IES/ FONDOS CONCURSABLE SINTERNACIONALES. </option>
-                            <option value="sdsa">FONDOS CONCURSABLE INTERNO NACIONALES/FONDOS CONCURSABLES INTERNACIONALES </option>
-                            <option value="sdsa">ASIGNACION REGULAR IES/FONDOS CONCURSABLES INTERNO IES/ FONDO CONCURSABLES INTERNO NACIONALES/FONDOS CONCURSABLES INTERNACIONALES </option>
+
+                            <option value="FONDOS CONCURSABLES INTERNO IES/ FONDOS CONCURSABLE NACIONALES.">FONDOS CONCURSABLES INTERNO IES/ FONDOS CONCURSABLE NACIONALES. </option>
+                            <option value="FONDOS CONCURSABLES INTERNO IES/ FONDOS CONCURSABLE SINTERNACIONALES.">FONDOS CONCURSABLES INTERNO IES/ FONDOS CONCURSABLE SINTERNACIONALES. </option>
+                            <option value="FONDOS CONCURSABLE INTERNO NACIONALES/FONDOS CONCURSABLES INTERNACIONALES">FONDOS CONCURSABLE INTERNO NACIONALES/FONDOS CONCURSABLES INTERNACIONALES </option>
+                            <option value="ASIGNACION REGULAR IES/FONDOS CONCURSABLES INTERNO IES/ FONDO CONCURSABLES INTERNO NACIONALES/FONDOS CONCURSABLES INTERNACIONALES ">ASIGNACION REGULAR IES/FONDOS CONCURSABLES INTERNO IES/ FONDO CONCURSABLES INTERNO NACIONALES/FONDOS CONCURSABLES INTERNACIONALES </option>
 
                         </select>
                     </div>
                 </div>
+                {<br />}
 
+                {<br />}
                 <label>
                     Organismo (s)/ Entidad (ES) Financiador (ES)
                 </label>
@@ -100,8 +102,9 @@ export default function TipoProyecto() {
                             Presupuesto Total
                         </label>
                         <input
-                            type="text"
-                            placeholder="INGRESAR VALOR"
+                            type="number"
+                            min={0}
+                            placeholder="Ingresar Valor"
                             className="form--input"
                             name="programaInvestigacion"
                         //onChange={handleChange}
@@ -114,8 +117,9 @@ export default function TipoProyecto() {
                             Aporte UTPL
                         </label>
                         <input
-                            type="text"
-                            placeholder="INGRESAR VALOR"
+                            type="number"
+                            min={0}
+                            placeholder="Ingresar Valor"
                             className="form--input"
                             name="programaInvestigacion"
                         //onChange={handleChange}
@@ -128,8 +132,9 @@ export default function TipoProyecto() {
                             Aporte Contraparte
                         </label>
                         <input
-                            type="text"
-                            placeholder="iNGRESAR VALOR"
+                            type="number"
+                            min={0}
+                            placeholder="Ingresar Valor"
                             className="form--input"
                             name="programaInvestigacion"
                         //onChange={handleChange}

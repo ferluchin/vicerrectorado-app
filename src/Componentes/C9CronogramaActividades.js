@@ -1,5 +1,5 @@
 import React from "react";
-import NavBar from "../NavBar";
+// import NavBar from "../NavBar";
 import "../style.css"
 
 export default function CronogramaActividades() {
@@ -103,14 +103,14 @@ export default function CronogramaActividades() {
                     </tbody>
                 </table>
 
-                <h4> OBJETIVO ESPECIFICO 2 </h4>
+                <h4> OBJETIVO ESPECÍFICO 2 </h4>
                 <textarea
                     //value={formData.comments}
                     placeholder="Escribir texto"
                     //onChange={handleChange}
                     name="comments"
                 />
-                <h4> RESULTADO OBJETIVO ESPECIFICO 2</h4>
+                <h4> RESULTADO OBJETIVO ESPECÍFICO 2</h4>
                 <textarea
                     //value={formData.comments}
                     placeholder="Escribir texto"

@@ -1,9 +1,25 @@
-import React from "react";
+import React, { useState } from "react";
 import "../style.css"
+import image from "../assets/utpl.png"
+import DatePicker from "react-datepicker"
 
+import "react-datepicker/dist/react-datepicker.css"
 
 export default function C11Pruebas() {
 
+    // const Example = () => {
+    //     const [startDate, setStartDate] = useState(new Date());
+    //     return (
+    //         <DatePicker selected={startDate} onChange={(date: Date) => setStartDate(date)} />
+    //     );
+    // };
+
+    // this.state = {
+    //     fecha: new Date("2022", "06", "22")
+    // }
+    // this.onChange = fecha => {
+    //     this.setState({ fecha: fecha });
+    // }
     const LimitedTAResumen = ({ rows, cols, value, limit }) => {
         const [{ content, wordCount }, setContent] = React.useState({
             content: value,
@@ -27,12 +43,14 @@ export default function C11Pruebas() {
 
         React.useEffect(() => {
             setFormattedContent(content);
-        }, []);
+        }, [content, setFormattedContent]);
 
         return (
             <form className="form">
 
                 <div>
+                    <img className="utpl-logo" src={image} />
+
                     <textarea
                         rows={rows}
                         cols={cols}
@@ -71,7 +89,7 @@ export default function C11Pruebas() {
 
         React.useEffect(() => {
             setFormattedContent(content);
-        }, []);
+        }, [content, setFormattedContent]);
 
         return (
             <form className="form">
@@ -116,7 +134,7 @@ export default function C11Pruebas() {
 
         React.useEffect(() => {
             setFormattedContent(content);
-        }, []);
+        }, [content, setFormattedContent]);
 
         return (
             <form className="form">
@@ -144,6 +162,13 @@ export default function C11Pruebas() {
                 <LimitedTAResumen limit={150} value="" />,
                 <LimitedTAAntecedentes limit={500} value="" />,
                 <LimitedTAJustificacion limit={500} value="" />,
+                {/* <DatePicker
+                    selected={this.state.fecha}
+                    // selected={date}
+                    // onSelect={handleDateSelect} //when day is clicked
+                    // onChange={handleDateChange} //only when value has changed
+                    
+                /> */}
 
             </section>
 

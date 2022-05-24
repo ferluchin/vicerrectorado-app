@@ -1,5 +1,5 @@
 import React from "react";
-import NavBar from "../NavBar";
+// import NavBar from "../NavBar";
 
 import "../style.css"
 
@@ -19,28 +19,35 @@ export default function FechasProyecto() {
             }
             <div class="row">
                 <div class="column">
-                    <label>
+                    <label htmlFor="fechaInicio">
                         Fecha de Inicio.
                     </label>
                     <input
-                        type="text"
+                        id="fechaInicio"
+                        type="date"
                         placeholder="INGRESAR UNA FECHA"
                         className="form--input"
                         name="programaInvestigacion"
+                        min={"2022-01-01"}
+                        value={"2022-06-01"}
                     //onChange={handleChange}
                     //value={formData.programaInvestigacion}
                     />
                 </div>
 
                 <div class="column">
-                    <label>
+                    <label htmlFor="fechaFin">
                         Fecha de Fin.
                     </label>
                     <input
-                        type="text"
+                        id="fechaFin"
+
+                        type="date"
                         placeholder="INGRESAR UNA FECHA"
                         className="form--input"
                         name="programaInvestigacion"
+                        min={"2022-01-01"}
+                        value={"2022-06-01"}
                     //onChange={handleChange}
                     //value={formData.programaInvestigacion}
                     />
@@ -79,12 +86,12 @@ export default function FechasProyecto() {
                 className="select-css"
             >
                 <option value="">-- Elija un Elemento --</option>
-                <option value="sdsa">Nacional.</option>
-                <option value="sdsa">Provincial.</option>
-                <option value="sdsa">Cantonal.</option>
-                <option value="sdsa">Parroquial.</option>
-                <option value="sdsa">Institucional.</option>
-                <option value="sdsa">Internacional.</option>
+                <option value="Nacional.">Nacional.</option>
+                <option value="Provincial.">Provincial.</option>
+                <option value="Cantonal.">Cantonal.</option>
+                <option value="Parroquial.">Parroquial.</option>
+                <option value="Institucional.">Institucional.</option>
+                <option value="Internacional.">Internacional.</option>
 
 
             </select>

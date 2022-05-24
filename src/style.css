@@ -5,7 +5,8 @@
 body {
     margin: 0;
     /* background-color: #639; */
-    background-color: #000080;
+    /* background-color: #000080; */
+    background-color: #004170;
     height: 150vh;
     font-family: 'Inter', sans-serif;
 }
@@ -40,9 +41,7 @@ section {
     flex-direction: column;
     align-items: flex-start;
     box-shadow: 5px 5px 15px -1px rgba(0, 0, 0, 0.75);
-
     width: 800px;
-
     justify-content: center;
     margin-left: 20%;
     margin-top: 50px;
@@ -238,10 +237,29 @@ button {
     border-radius: 12px;
     padding: 10px;
     font-size: 20px;
-    background-color: #000080;
+    /* background-color: #000080; //#004170 */
+    background-color: #004170; 
+
     color: white;
     position: relative;
     top: 50%;
     left: 35%;
 
 }
+
+a:link {
+    text-decoration: none;
+}
+
+.utpl-logo {
+    width: 25%;
+    border-radius: 12px;
+    
+}
+
+/* 
+.etiqueta {
+    width: 100%;
+    text-align: left;
+} 
+*/

@@ -1,5 +1,5 @@
 import React from "react";
-import NavBar from "../NavBar";
+// import NavBar from "../NavBar";
 import "../style.css"
 
 export default function ResumenPresupuesto() {
@@ -18,10 +18,11 @@ export default function ResumenPresupuesto() {
                 </label>
 
                 <input
-                    type="text"
-                    placeholder="ingresar Valor"
+                    type="number"
+                    min={0}
+                    placeholder="$ "
                     className="form--input"
-                    name="titulo"
+                    name="viaticosSubsistenciasMovilizacion"
                 //onChange={handleChange}
                 //value={formData.titulo}
                 />
@@ -31,10 +32,11 @@ export default function ResumenPresupuesto() {
                 </label>
 
                 <input
-                    type="text"
-                    placeholder="Ingresar Valor"
+                    type="number"
+                    min={0}
+                    placeholder="$ "
                     className="form--input"
-                    name="titulo"
+                    name="honorarios"
                 //onChange={handleChange}
                 //value={formData.titulo}
                 />
@@ -44,23 +46,25 @@ export default function ResumenPresupuesto() {
                 </label>
 
                 <input
-                    type="text"
-                    placeholder="Ingresar Valor"
+                    type="number"
+                    min={0}
+                    placeholder="$ "
                     className="form--input"
-                    name="titulo"
+                    name="materialesSuministrosReactivos"
                 //onChange={handleChange}
                 //value={formData.titulo}
                 />
 
                 <label>
-                    EQUIPOS
+                    Equipos
                 </label>
 
                 <input
-                    type="text"
-                    placeholder="Ingresar Valor"
+                    type="number"
+                    min={0}
+                    placeholder="$ "
                     className="form--input"
-                    name="titulo"
+                    name="equipos"
                 //onChange={handleChange}
                 //value={formData.titulo}
                 />
@@ -70,10 +74,11 @@ export default function ResumenPresupuesto() {
                 </label>
 
                 <input
-                    type="text"
+                    type="number"
+                    min={0}
                     placeholder="Ingresar Valor"
                     className="form--input"
-                    name="titulo"
+                    name="capacitacion"
                 //onChange={handleChange}
                 //value={formData.titulo}
                 />
@@ -83,10 +88,11 @@ export default function ResumenPresupuesto() {
                 </label>
 
                 <input
-                    type="text"
+                    type="number"
+                    min={0}
                     placeholder="$"
                     className="form--input"
-                    name="titulo"
+                    name="totalGastosDirectos"
                 //onChange={handleChange}
                 //value={formData.titulo}
                 />
