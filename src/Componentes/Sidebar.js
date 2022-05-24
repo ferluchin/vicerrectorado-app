@@ -8,7 +8,7 @@ export default function Sidebar(props) {
             <div className="sidebar--header" >
                 <h3 style={{textAlign: "center"}}>Panel de Navegación</h3>
             </div>
-            <ul class="w3-ul w3-hoverable">
+            <ul className="w3-ul w3-hoverable">
                 <li><Link to="/">Home</Link></li>
                 <li><Link to="/tipo-proyecto">Tipo de Proyecto</Link></li>
                 <li><Link to="/equipo-proyecto">Equipo del Proyecto</Link></li>

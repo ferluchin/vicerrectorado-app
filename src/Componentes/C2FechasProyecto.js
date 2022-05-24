@@ -17,8 +17,8 @@ export default function FechasProyecto() {
             {
                 //FECHAS
             }
-            <div class="row">
-                <div class="column">
+            <div className="row">
+                <div className="column">
                     <label htmlFor="fechaInicio">
                         Fecha de Inicio.
                     </label>
@@ -35,7 +35,7 @@ export default function FechasProyecto() {
                     />
                 </div>
 
-                <div class="column">
+                <div className="column">
                     <label htmlFor="fechaFin">
                         Fecha de Fin.
                     </label>
@@ -53,7 +53,7 @@ export default function FechasProyecto() {
                     />
                 </div>
 
-                <div class="column">
+                <div className="column">
                     <label>
                         Duración del proyecto semanas.
                     </label>

@@ -1,8 +1,107 @@
-import React from "react";
+import React, { useState } from "react";
+import 'bootstrap/dist/css/bootstrap.min.css';
+
+import { Modal, ModalBody, ModalHeader, ModalFooter } from 'reactstrap';
+
+
+import PersonalExternoCooperante from './PersonalExternoCooperante';
+import PersonalExternoContratar from './PersonalExternoContratar';
+
+
 // import NavBar from "../NavBar";
 import "../style.css"
 
 export default function EquipoProyecto() {
+
+    const dataPersonal = [
+        {
+            id: 1,
+            rol: "Dirección",
+            tipo: "Docente a tiempo completo",
+            senescyt: "SI",
+            identificacion: 1102365993,
+            nombres: "Luis Granda",
+            horasSemanales: "00",
+            horasTotales: "00"
+        },
+
+
+        { id: 2, rol: "Co-Dirección", tipo: "Docente a tiempo completo", senescyt: "SI", identificacion: 1499332590, nombres: "Charlie Cárdemas", horasSemanales: "00", horasTotales: "00" },
+        { id: 3, rol: "Participación", tipo: "Técnico Docente", senescyt: "SI", identificacion: 1121354698, nombres: "Maximo Décimo", horasSemanales: "00", horasTotales: "00" },
+        { id: 4, rol: "Participación", tipo: "Estudiante", senescyt: "NO", identificacion: 1101258746, nombres: "Marie Curie", horasSemanales: "00", horasTotales: "00" },
+
+    ];
+
+    const [data, setData] = useState(dataPersonal);
+    const [modalEditar, setModalEditar] = useState(false);
+    const [modalEliminar, setModalEliminar] = useState(false);
+    const [modalInsertar, setModalInsertar] = useState(false);
+
+
+
+    const [personalSeleccionado, setPersonalSeleccionado] = useState({
+        id: '',
+        rol: '',
+        tipo: '',
+        senescyt: '',
+        identificacion: '',
+        nombres: '',
+        horasSemanales: '',
+        horasTotales: ''
+    });
+
+    const seleccionarPersonal = (elemento, caso) => {
+        setPersonalSeleccionado(elemento);
+        (caso === 'Editar') ? setModalEditar(true) : setModalEliminar(true)
+    }
+
+    const handleChange = e => {
+        const { name, value } = e.target;
+        setPersonalSeleccionado((prevState) => ({
+            ...prevState,
+            [name]: value
+        }));
+        console.log(personalSeleccionado);
+    }
+
+    const editar = () => {
+        var dataNueva = data;
+        dataNueva.map(personal => {
+            if (personal.id === personalSeleccionado.id) {
+                personal.rol = personalSeleccionado.rol;
+                personal.tipo = personalSeleccionado.tipo;
+                personal.senescyt = personalSeleccionado.senescyt;
+                personal.identificacion = personalSeleccionado.identificacion;
+                personal.nombres = personalSeleccionado.nombres;
+                personal.horasSemanales = personalSeleccionado.horasSemanales;
+                personal.horasTotales = personalSeleccionado.horasTotales;
+
+            }
+        })
+        setData(dataNueva);
+        setModalEditar(false);
+    }
+
+    const eliminar = () => {
+        setData(data.filter(personal => personal.id !== personalSeleccionado.id));
+        setModalEliminar(false);
+    }
+
+    const abrirModalInsertar = () => {
+        setPersonalSeleccionado(null);
+        setModalInsertar(true);
+
+    }
+
+    const insertar = () => {
+        var valorInsertar = personalSeleccionado;
+        valorInsertar.id = data[data.length - 1].id + 1;
+        var dataNueva = data;
+        dataNueva.push(valorInsertar);
+        setData(dataNueva);
+        setModalInsertar(false);
+    }
+
     return (
         <section>
             <form
@@ -11,148 +110,424 @@ export default function EquipoProyecto() {
             >
                 {/* <NavBar /> */}
 
+                <div className="App">
+                    <h2>
+                        Personal Interno
+                    </h2>
+                    <br />
+                    <button
+                        className='btn btn-success'
+                        onClick={() => abrirModalInsertar()}
+                        type="button"
+                    >
+                        Insertar
+                    </button>
+                    <br />
+                    <br />
+                    <table className='table table-bordered'>
+                        <thead>
+                            <tr>
+                                <th>Nro.</th>
+                                <th>ROL</th>
+                                <th>TIPO</th>
+                                <th>Investigadores Acreditados <br /> SENESCYT</th>
+                                <th>Identificación</th>
+                                <th>Nombres y Apellidos</th>
+                                <th>Horas Semanales <br />de Participación</th>
+                                <th>Total Horas <br /> Participación  <br />en el Proyecto</th>
+                                <th>Acciones</th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {data.map(elemento => (
+                                <tr>
+                                    <td>{elemento.id}</td>
+                                    <td>{elemento.rol}</td>
+                                    <td>{elemento.tipo}</td>
+                                    <td>{elemento.senescyt}</td>
+                                    <td>{elemento.identificacion}</td>
+                                    <td>{elemento.nombres}</td>
+                                    <td>{elemento.horasSemanales}</td>
+                                    <td>{elemento.horasTotales}</td>
+
+                                    <td>
+                                        <button
+                                            className='btn btn-primary'
+                                            onClick={() => seleccionarPersonal(elemento, 'Editar')}
+                                            type="button"
+                                        >
+                                            Editar
+                                        </button>
+
+                                        <button
+                                            className='btn btn-danger'
+                                            onClick={() => seleccionarPersonal(elemento, 'Eliminar')}
+                                            type="button"
+                                        >
+                                            Eliminar
+                                        </button>
+
+                                    </td>
+
+                                </tr>
+                            ))}
+                        </tbody>
+                    </table>
+
+                    <Modal isOpen={modalEditar}>
+                        <ModalHeader>
+                            <div>
+                                <h3>
+                                    Editar Personal
+                                </h3>
+                            </div>
+                        </ModalHeader>
+                        <ModalBody>
+                            <div className='form-group'>
+                                <label>ID</label>
+                                <input
+                                    className='form-control'
+                                    readOnly
+                                    type="text"
+                                    name='id'
+                                    value={personalSeleccionado && personalSeleccionado.id}
+                                />
+                                <br />
+
+
+                                <label htmlFor='rol'>
+                                    ROL
+                                </label>
+
+                                <select
+                                    id="rol"
+                                    value={personalSeleccionado ? personalSeleccionado.rol : ''}
+                                    onChange={handleChange}
+                                    name="rol"
+                                    className="form-control"
+                                >
+                                    <option value="Dirección">Dirección</option>
+                                    <option value="Co-Dirección">Co-Dirección</option>
+                                    <option value="Participación">Participación</option>
+                                </select>
+                                < br />
+
+                                <label htmlFor='tipo'>
+                                    TIPO
+                                </label>
+
+                                <select
+                                    id="tipo"
+                                    value={personalSeleccionado ? personalSeleccionado.tipo : ''}
+                                    onChange={handleChange}
+                                    name="tipo"
+                                    className="form-control"
+                                >
+                                    <option value="Docente a tiempo Completo">Docente a tiempo Completo</option>
+                                    <option value="Técnico Docente">Técnico Docente</option>
+                                    <option value="Estudiante">Estudiante</option>
+                                </select>
+                                <br />
+
+                                <label htmlFor='senescyt'>
+                                    Investigadores Acreditados <br />
+                                    SENESCYT
+                                </label>
+
+                                <select
+                                    id="senescyt"
+                                    value={personalSeleccionado ? personalSeleccionado.senescyt : ''}
+                                    onChange={handleChange}
+                                    name="senescyt"
+                                    className="form-control"
+                                >
+                                    <option value="SI">SI</option>
+                                    <option value="NO">NO</option>
+                                </select>
+
+                                <br />
+
+                                <label>
+                                    Identificación
+                                </label>
+
+                                <input
+                                    className='form-control'
+                                    type="number"
+                                    min={0}
+                                    name="identificacion"
+                                    value={personalSeleccionado && personalSeleccionado.identificacion}
+                                    onChange={handleChange}
+                                />
+                                <br />
+
+                                <label>
+                                    Nombres y Apellidos
+                                </label>
+
+                                <input
+                                    className='form-control'
+                                    type="text"
+                                    name="nombres"
+                                    value={personalSeleccionado && personalSeleccionado.nombres}
+                                    onChange={handleChange}
+                                />
+                                <br />
+
+                                <label>
+                                    Horas Semanales <br />
+                                    de Participación
+                                </label>
+
+                                <input
+                                    className='form-control'
+                                    type="number"
+                                    min={0}
+                                    name="horasSemanales"
+                                    value={personalSeleccionado && personalSeleccionado.horasSemanales}
+                                    onChange={handleChange}
+                                />
+                                <br />
+
+                                <label>
+                                    Total Horas <br />
+                                    Participación <br />
+                                    en el Proyecto.
+                                </label>
+
+                                <input
+                                    className='form-control'
+                                    type="number"
+                                    min={0}
+                                    name="horasTotales"
+                                    value={personalSeleccionado && personalSeleccionado.horasTotales}
+                                    onChange={handleChange}
+                                />
+                                <br />
+                            </div>
+                        </ModalBody>
+                        <ModalFooter>
+                            <button
+                                className='btn btn-primary'
+                                onClick={() => editar()}
+                                type="button"
+                            >
+                                Actualizar
+                            </button>
+                            <button
+                                className='btn btn-danger'
+                                onClick={() => setModalEditar(false)}
+                                type="button"
+                            >
+                                Cancelar
+                            </button>
+                        </ModalFooter>
+                    </Modal>
+
+                    <Modal isOpen={modalEliminar}>
+                        <ModalBody >
+                            ¿Estás seguro que deseas eliminar el registro seleccionado?
+                            {personalSeleccionado && personalSeleccionado.rol}
+                        </ModalBody>
+                        <ModalFooter>
+                            <button
+                                className='btn btn-danger'
+                                onClick={() => eliminar()}
+                                type="button"
+                            >
+                                Sí
+                            </button>
+                            <button
+                                className='btn btn-secondary'
+                                onClick={() => setModalEliminar(false)}
+                                type="button"
+                            >
+                                No
+                            </button>
+                        </ModalFooter>
+                    </Modal>
+
+                    <Modal isOpen={modalInsertar}>
+                        <ModalHeader>
+                            <div>
+                                <h3>
+                                    Insertar nuevo registro <br /> Personal Interno
+                                </h3>
+                            </div>
+                        </ModalHeader>
+                        <ModalBody>
+                            <div className='form-group'>
+                                <label>
+                                    ID
+                                </label>
+                                <input
+                                    className='form-control'
+                                    readOnly
+                                    type="text"
+                                    name="id"
+                                    value={data[data.length - 1].id + 1}
+                                />
+
+                                <br />
+                                <label htmlFor='rol'>
+                                    ROL
+                                </label>
+
+                                <select
+                                    id="rol"
+                                    value={personalSeleccionado ? personalSeleccionado.rol : ''}
+                                    onChange={handleChange}
+                                    name="rol"
+                                    className="form-control"
+                                >
+                                    <option value="Dirección">Dirección</option>
+                                    <option value="Co-Dirección">Co-Dirección</option>
+                                    <option value="Participación">Participación</option>
+                                </select>
+                                <br />
+
+                                <label htmlFor='tipo'>
+                                    TIPO
+                                </label>
+
+                                <select
+                                    id="tipo"
+                                    value={personalSeleccionado ? personalSeleccionado.tipo : ''}
+                                    onChange={handleChange}
+                                    name="tipo"
+                                    className="form-control"
+                                >
+                                    <option value="Docente a tiempo Completo">Docente a tiempo Completo</option>
+                                    <option value="Técnico Docente">Técnico Docente</option>
+                                    <option value="Estudiante">Estudiante</option>
+                                </select>
+
+                                <br />
+
+                                <label htmlFor='senescyt'>
+                                    Investigadores Acreditados <br />
+                                    SENESCYT
+                                </label>
+
+                                <select
+                                    id="senescyt"
+                                    value={personalSeleccionado ? personalSeleccionado.senescyt : ''}
+                                    onChange={handleChange}
+                                    name="senescyt"
+                                    className="form-control"
+                                >
+                                    <option value="SI">SI</option>
+                                    <option value="NO">NO</option>
+                                </select>
+
+
+                                <br />
+                                <label>Identificación</label>
+                                <input
+                                    className='form-control'
+                                    type="number"
+                                    min={0}
+                                    name="identificacion"
+                                    value={personalSeleccionado ? personalSeleccionado.identificacion : ''}
+                                    onChange={handleChange}
+
+                                />
+                                <br />
+
+                                <label>Nombres y Apellidos</label>
+                                <input
+                                    className='form-control'
+                                    type="text"
+                                    name="nombres"
+                                    value={personalSeleccionado ? personalSeleccionado.nombres : ''}
+                                    onChange={handleChange}
+
+                                />
+                                <br />
+
+                                <label>
+                                    Horas Semanales <br />
+                                    de Participación
+                                </label>
+                                <input
+                                    className='form-control'
+                                    type="number"
+                                    min={0}
+                                    name="horasSemanales"
+                                    value={personalSeleccionado ? personalSeleccionado.horasSemanales : ''}
+                                    onChange={handleChange}
+
+                                />
+                                <br />
+
+                                <label>
+                                    Total Horas <br />
+                                    Participación <br />
+                                    en el Proyecto.
+                                </label>
+                                <input
+                                    className='form-control'
+                                    type="number"
+                                    min={0}
+                                    name="horasTotales"
+                                    value={personalSeleccionado ? personalSeleccionado.horasTotales : ''}
+                                    onChange={handleChange}
+
+                                />
+                                <br />
+
+                                <button
+                                    className='btn btn-primary'
+                                    onClick={() => insertar()}
+                                    type="button"
+                                >
+                                    Insertar
+                                </button>
+                                <button
+                                    className='btn btn-danger'
+                                    onClick={() => setModalInsertar(false)}
+                                    type="button"
+                                >
+                                    Cancelar
+                                </button>
+                            </div>
+                        </ModalBody>
+                        <ModalFooter
+                            className="modal-footer"
+                        >
+                            <div className="form-group">
+
+                                <button
+                                    className='btn btn-primary'
+                                    onClick={() => insertar()}
+                                    type="button"
+                                >
+                                    Insertar
+                                </button>
+                                <button
+                                    className='btn btn-danger'
+                                    onClick={() => setModalInsertar(false)}
+                                    type="button"
+                                >
+                                    Cancelar
+                                </button>
+                            </div>
+                        </ModalFooter>
+                    </Modal>
+                    <br />
+
+
+                </div>
                 <h3> Equipo del Proyecto</h3>
                 <h4>Personal Interno</h4>
 
+                <PersonalExternoCooperante
 
-                <table class="tg">
-                    <thead>
-                        <tr>
-                            <th class="tg-0lax">Nro.</th>
-                            <th class="tg-0lax">ROL</th>
-                            <th class="tg-0lax">TIPO</th>
-                            <th class="tg-0lax">INVESTIGADORES</th>
-                            <th class="tg-0lax">IDENTIFICACIÓN</th>
-                            <th class="tg-0lax">NOMBRES <br />Y APELLIDOS</th>
-                            <th class="tg-0lax">HORAS SEMANALES <br />DE PARTICIPACION</th>
-                            <th class="tg-0lax">TOTAL HORAS <br />PARTICIPACIÓN <br />EN EL PROYECTO</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td class="tg-0lax">01</td>
-                            <td class="tg-0lax">Seleccione</td>
-                            <td class="tg-0lax">Seleccione</td>
-                            <td class="tg-0lax">Seleccione</td>
-                            <td class="tg-0lax">0000000000</td>
-                            <td class="tg-0lax">Texto</td>
-                            <td class="tg-0lax">00</td>
-                            <td class="tg-0lax">00</td>
-                        </tr>
-                        <tr>
-                            <td class="tg-0lax"></td>
-                            <td class="tg-0lax"></td>
-                            <td class="tg-0lax"></td>
-                            <td class="tg-0lax"></td>
-                            <td class="tg-0lax"></td>
-                            <td class="tg-0lax"></td>
-                            <td class="tg-0lax"></td>
-                            <td class="tg-0lax"></td>
-                        </tr>
-                        <tr>
-                            <td class="tg-0lax"></td>
-                            <td class="tg-0lax"></td>
-                            <td class="tg-0lax"></td>
-                            <td class="tg-0lax"></td>
-                            <td class="tg-0lax"></td>
-                            <td class="tg-0lax"></td>
-                            <td class="tg-0lax"></td>
-                            <td class="tg-0lax"></td>
-                        </tr>
-                        <tr>
-                            <td class="tg-0lax"></td>
-                            <td class="tg-0lax"></td>
-                            <td class="tg-0lax"></td>
-                            <td class="tg-0lax"></td>
-                            <td class="tg-0lax"></td>
-                            <td class="tg-0lax"></td>
-                            <td class="tg-0lax"></td>
-                            <td class="tg-0lax"></td>
-                        </tr>
-                        <tr>
-                            <td class="tg-0lax"></td>
-                            <td class="tg-0lax"></td>
-                            <td class="tg-0lax"></td>
-                            <td class="tg-0lax"></td>
-                            <td class="tg-0lax"></td>
-                            <td class="tg-0lax"></td>
-                            <td class="tg-0lax"></td>
-                            <td class="tg-0lax"></td>
-                        </tr>
-                    </tbody>
-                </table>
-                <h4>Personal Externo Cooperante</h4>
+                />
 
-                <table class="tg">
-                    <thead>
-                        <tr>
-                            <th>Nro.</th>
-                            <th>ROL</th>
-                            <th>NOMBRES COMPLETOS</th>
-                            <th>ENTIDAD</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td class="tg-0lax">01</td>
-                            <td class="tg-0lax">Elija un elemento</td>
-                            <td class="tg-0lax">Escribir Texto</td>
-                            <td class="tg-0lax">Escribir Texto</td>
-                        </tr>
-                        <tr>
-                            <td class="tg-0lax">02</td>
-                            <td class="tg-0lax"></td>
-                            <td class="tg-0lax"></td>
-                            <td class="tg-0lax"></td>
-                        </tr>
-                        <tr>
-                            <td class="tg-0lax">03</td>
-                            <td class="tg-0lax"></td>
-                            <td class="tg-0lax"></td>
-                            <td class="tg-0lax"></td>
-                        </tr>
-                    </tbody>
-                </table>
+                <PersonalExternoContratar />
 
-                <h4>Personal Externo a contratar</h4>
-                <table class="tg">
-                    <thead>
-                        <tr>
-                            <th class="tg-0pky">Nro.</th>
-                            <th class="tg-0pky">PERFIL REQUERIDO</th>
-                            <th class="tg-0pky">FUNCION</th>
-                            <th class="tg-0pky">PRINCIPALES ACTIVIDADES A DESARROLLAR</th>
-                            <th class="tg-0lax">Tiempo de contratación meses</th>
-                            <th class="tg-0lax">Número de personas a contratar</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td class="tg-0pky">01</td>
-                            <td class="tg-0pky">Escribir Texto</td>
-                            <td class="tg-0pky">Elija un Elemento</td>
-                            <td class="tg-0pky">Escribir Texto</td>
-                            <td class="tg-0lax">00</td>
-                            <td class="tg-0lax">00</td>
-                        </tr>
-                        <tr>
-                            <td class="tg-0pky">02</td>
-                            <td class="tg-0pky"></td>
-                            <td class="tg-0pky"></td>
-                            <td class="tg-0pky"></td>
-                            <td class="tg-0lax">00</td>
-                            <td class="tg-0lax">00</td>
-                        </tr>
-                        <tr>
-                            <td class="tg-0pky">03</td>
-                            <td class="tg-0pky"></td>
-                            <td class="tg-0pky"></td>
-                            <td class="tg-0pky"></td>
-                            <td class="tg-0lax">00</td>
-                            <td class="tg-0lax">00</td>
-                        </tr>
-                    </tbody>
-                </table>
             </form>
 
         </section>

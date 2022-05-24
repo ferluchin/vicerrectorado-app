@@ -7,6 +7,10 @@ import FechasProyecto from "./Componentes/C2FechasProyecto";
 import DirectorProyecto from "./Componentes/C3DirectorProyecto";
 import AreasConocimiento from "./Componentes/C4AreasConocimiento";
 
+import 'bootstrap/dist/css/bootstrap.min.css';
+import { Modal, ModalBody, ModalHeader, ModalFooter } from 'reactstrap'
+import "./style.css"
+
 
 export default function Home() {
 

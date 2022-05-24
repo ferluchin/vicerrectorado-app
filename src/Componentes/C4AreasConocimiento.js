@@ -23,8 +23,8 @@ export default function AreasConocimiento() {
             {<br />}
             {<br />}
 
-            <div class="row">
-                <div class="column">
+            <div className="row">
+                <div className="column">
 
 
                     <label htmlFor="departamento">
@@ -65,8 +65,8 @@ export default function AreasConocimiento() {
                         /> */}
                 </div>
 
-                <div class="column">
-                    <label htmlFor="departamento">
+                <div className="column">
+                    <label htmlFor="objetivoSocioeconomico">
                         Objetivo Socioeconómico.
                     </label>
 
@@ -74,10 +74,10 @@ export default function AreasConocimiento() {
 
                     {<br />}
                     <select
-                        id="favColor"
+                        id="objetivoSocioeconomico"
                         //value={formData.favColor}
                         //onChange={handleChange}
-                        name="al"
+                        name="objetivoSocioeconomico"
                         className="select-css"
                     >
                         <option value="">-- Elija un Elemento --</option>
@@ -100,8 +100,8 @@ export default function AreasConocimiento() {
                     </select>
                 </div>
 
-                <div class="column">
-                    <label htmlFor="departamento">
+                <div className="column">
+                    <label htmlFor="areaTematicaID">
                         Área tematica de I+D.
                     </label>
 
@@ -109,10 +109,10 @@ export default function AreasConocimiento() {
 
                     {<br />}
                     <select
-                        id="favColor"
+                        id="areaTematicaID"
                         //value={formData.favColor}
                         //onChange={handleChange}
-                        name="al"
+                        name="areaTematicaID"
                         className="select-css"
                     >
                         <option value="">-- Elija un Elemento --</option>
@@ -133,7 +133,7 @@ export default function AreasConocimiento() {
             </div>
 
 
-            <label htmlFor="departamento">
+            <label htmlFor="planCreacionOportunidades">
                 Objetivos del plan de Creación de Oportunidades.
             </label>
 
@@ -141,10 +141,10 @@ export default function AreasConocimiento() {
 
             {<br />}
             <select
-                id="favColor"
+                id="planCreacionOportunidades"
                 //value={formData.favColor}
                 //onChange={handleChange}
-                name="al"
+                name="planCreacionOportunidades"
                 className="select-css"
             >
                 <option value="">-- Elija un Elemento --</option>
@@ -177,18 +177,18 @@ export default function AreasConocimiento() {
             {<br />}
             {<br />}
 
-            <div class="row">
-                <div class="column">
+            <div className="row">
+                <div className="column">
                     <label>
                         Campo amplio
                     </label>
 
                     {<br />}
                     <select
-                        id="favColor"
+                        id="campoAmplio"
                         //value={formData.favColor}
                         //onChange={handleChange}
-                        name="al"
+                        name="campoAmplio"
                         className="select-css"
                     >
                         <option value="">-- Elija un Elemento --</option>
@@ -208,15 +208,15 @@ export default function AreasConocimiento() {
 
                 </div>
 
-                <div class="column">
+                <div className="column">
                     <label>
                         Campo específico
                     </label>
                     <select
-                        id="favColor"
+                        id="campoEspecifico"
                         //value={formData.favColor}
                         //onChange={handleChange}
-                        name="al"
+                        name="campoEspecifico"
                         className="select-css"
                     >
                         <option value="">-- Elija un Elemento --</option>
@@ -252,15 +252,15 @@ export default function AreasConocimiento() {
                     
                 </div>
 
-                <div class="column">
+                <div className="column">
                     <label>
                         Campo detallado
                     </label>
                     <select
-                        id="favColor"
+                        id="campoDetallado"
                         //value={formData.favColor}
                         //onChange={handleChange}
-                        name="facultad"
+                        name="campoDetallado"
                         className="select-css"
                     >
                         <option value="">-- Elija un Elemento --</option>
@@ -367,10 +367,10 @@ export default function AreasConocimiento() {
             </label>
 
             <select
-                id="favColor"
+                id="objetivosDesarrolloSostenible"
                 //value={formData.favColor}
                 //onChange={handleChange}
-                name="facultad"
+                name="objetivosDesarrolloSostenible"
                 className="select-css"
             >
                 <option value="">-- Elija un Elemento --</option>

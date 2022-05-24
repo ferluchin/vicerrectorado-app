@@ -2,7 +2,7 @@
     box-sizing: border-box;
 }
 
-body {
+#main-body {
     margin: 0;
     /* background-color: #639; */
     /* background-color: #000080; */
@@ -41,9 +41,9 @@ section {
     flex-direction: column;
     align-items: flex-start;
     box-shadow: 5px 5px 15px -1px rgba(0, 0, 0, 0.75);
-    width: 800px;
+    width: 1000px;
     justify-content: center;
-    margin-left: 20%;
+    margin-left: 10%;
     margin-top: 50px;
 }
 
@@ -238,7 +238,7 @@ button {
     padding: 10px;
     font-size: 20px;
     /* background-color: #000080; //#004170 */
-    background-color: #004170; 
+    background-color: #004170;
 
     color: white;
     position: relative;
@@ -254,7 +254,7 @@ a:link {
 .utpl-logo {
     width: 25%;
     border-radius: 12px;
-    
+
 }
 
 /* 
@@ -263,3 +263,10 @@ a:link {
     text-align: left;
 } 
 */
+.modal-footer {
+    position: relative ;
+    background-color: green;
+    height: 500;
+    align-items: 'center';
+    justify-content: 'center';
+}
