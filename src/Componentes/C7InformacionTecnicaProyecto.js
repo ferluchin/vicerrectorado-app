@@ -25,16 +25,55 @@ export default function InformacionTecnicaProyecto() {
 
                 <h3> 2.2 PALABRAS CLAVE</h3>
 
+                <div className="container">
+                    <div className="row">
+                        <div className="col-3">
 
+                            <input
+                                type="text"
+                                placeholder="Máximo cuatro"
+                                className="form--input"
+                                name="titulo"
+                            //onChange={handleChange}
+                            //value={formData.titulo}
+                            />
+                        </div>
+                        <div className="col-3">
 
-                <input
-                    type="text"
-                    placeholder="Máximo cuatro"
-                    className="form--input"
-                    name="titulo"
-                //onChange={handleChange}
-                //value={formData.titulo}
-                />
+                            <input
+                                type="text"
+                                placeholder="Máximo cuatro"
+                                className="form--input"
+                                name="titulo"
+                            //onChange={handleChange}
+                            //value={formData.titulo}
+                            />
+                        </div>
+                        <div className="col-3">
+
+                            <input
+                                type="text"
+                                placeholder="Máximo cuatro"
+                                className="form--input"
+                                name="titulo"
+                            //onChange={handleChange}
+                            //value={formData.titulo}
+                            />
+                        </div>
+                        <div className="col-3">
+
+                            <input
+                                type="text"
+                                placeholder="Máximo cuatro"
+                                className="form--input"
+                                name="titulo"
+                            //onChange={handleChange}
+                            //value={formData.titulo}
+                            />
+                        </div>
+                    </div>
+                </div>
+
 
 
                 <h3> 2.3 Introducción </h3>

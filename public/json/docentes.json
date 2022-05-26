@@ -1,0 +1,37 @@
+[
+    {
+        "id": "1",
+        "nombre": "Luis Fernando Granda Morales",
+        "identificacion": "1104435092",
+        "telefono": "0961769500",
+        "correo": "lfgranda3@utpl.edu.ec"
+    },
+    {
+        "id": "2",
+        "nombre": "Monica Elizabeth Abendaño Ramirez",
+        "identificacion": "11025879365",
+        "telefono": "2418",
+        "correo": "mabendano@utpl.edu.ec"
+    },
+    {
+        "id": "3",
+        "nombre": "Boris Antonio Galarza Aguirre",
+        "identificacion": "1104435092",
+        "telefono": "073701444",
+        "correo": "bagalarza1@utpl.edu.ec"
+    },
+    {
+        "id": "4",
+        "nombre": "Rocio del Cisne Uchuari Uchuari",
+        "identificacion": "1104435092",
+        "telefono": "2346",
+        "correo": "ruchuari@utpl.edu.ec"
+    },
+    {
+        "id": "5",
+        "nombre": "Gloria del Carmen Palacio Valdivieso",
+        "identificacion": "1104435092",
+        "telefono": "07370144",
+        "correo": "gpalacio@utpl.edu.ec"
+    }
+]

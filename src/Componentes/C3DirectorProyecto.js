@@ -1,6 +1,7 @@
 import React from "react";
 // import NavBar from "../NavBar";
-
+import AutocompleteDocente from "./AutocompleteDocente";
+    
 import "../style.css"
 
 
@@ -19,8 +20,8 @@ export default function DirectorProyecto() {
                     Datos del Director del Proyecto.
                 </label>
 
-
-                <input
+                <AutocompleteDocente />
+                {/* <input
                     type="text"
                     placeholder="NOMBRES Y APELLIDOS DEL DIRECTOR"
                     className="form--input"
@@ -54,7 +55,7 @@ export default function DirectorProyecto() {
                     name="programaInvestigacion"
                 //onChange={handleChange}
                 //value={formData.programaInvestigacion}
-                />
+                /> */}
 
             {/* </form> */}
         </section>

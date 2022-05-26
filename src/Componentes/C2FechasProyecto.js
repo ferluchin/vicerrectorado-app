@@ -17,54 +17,58 @@ export default function FechasProyecto() {
             {
                 //FECHAS
             }
-            <div className="row">
-                <div className="column">
-                    <label htmlFor="fechaInicio">
-                        Fecha de Inicio.
-                    </label>
-                    <input
-                        id="fechaInicio"
-                        type="date"
-                        placeholder="INGRESAR UNA FECHA"
-                        className="form--input"
-                        name="programaInvestigacion"
-                        min={"2022-01-01"}
-                        value={"2022-06-01"}
-                    //onChange={handleChange}
-                    //value={formData.programaInvestigacion}
-                    />
-                </div>
+            <div className="container">
 
-                <div className="column">
-                    <label htmlFor="fechaFin">
-                        Fecha de Fin.
-                    </label>
-                    <input
-                        id="fechaFin"
+                <div className="row">
+                    <div className="col-4">
 
-                        type="date"
-                        placeholder="INGRESAR UNA FECHA"
-                        className="form--input"
-                        name="programaInvestigacion"
-                        min={"2022-01-01"}
-                        value={"2022-06-01"}
-                    //onChange={handleChange}
-                    //value={formData.programaInvestigacion}
-                    />
-                </div>
+                        <label htmlFor="fechaInicio">
+                            Fecha de Inicio.
+                        </label>
+                        <input
+                            id="fechaInicio"
+                            type="date"
+                            placeholder="INGRESAR UNA FECHA"
+                            className="form--input"
+                            name="programaInvestigacion"
+                            min={"2022-01-01"}
+                            value={"2022-06-01"}
+                        //onChange={handleChange}
+                        //value={formData.programaInvestigacion}
+                        />
+                    </div>
 
-                <div className="column">
-                    <label>
-                        Duración del proyecto semanas.
-                    </label>
-                    <input
-                        type="text"
-                        placeholder="Escribir Texto"
-                        className="form--input"
-                        name="programaInvestigacion"
-                    //onChange={handleChange}
-                    //value={formData.programaInvestigacion}
-                    />
+                    <div className="col-4">
+                        <label htmlFor="fechaFin">
+                            Fecha de Fin.
+                        </label>
+                        <input
+                            id="fechaFin"
+
+                            type="date"
+                            placeholder="INGRESAR UNA FECHA"
+                            className="form--input"
+                            name="programaInvestigacion"
+                            min={"2022-01-01"}
+                            value={"2022-06-01"}
+                        //onChange={handleChange}
+                        //value={formData.programaInvestigacion}
+                        />
+                    </div>
+
+                    <div className="col-4">
+                        <label>
+                            Duración del proyecto semanas.
+                        </label>
+                        <input
+                            type="number"
+                            placeholder="ingresar valor"
+                            className="form--input"
+                            name="programaInvestigacion"
+                        //onChange={handleChange}
+                        //value={formData.programaInvestigacion}
+                        />
+                    </div>
                 </div>
             </div>
 

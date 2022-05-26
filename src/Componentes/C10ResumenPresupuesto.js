@@ -13,89 +13,139 @@ export default function ResumenPresupuesto() {
                 <h3> 2.12 Resumen Presupuestos </h3>
 
                 <h4> Items</h4>
-                <label>
-                    Viáticos, subsistencias y movilización. 
-                </label>
 
-                <input
-                    type="number"
-                    min={0}
-                    placeholder="$ "
-                    className="form--input"
-                    name="viaticosSubsistenciasMovilizacion"
-                //onChange={handleChange}
-                //value={formData.titulo}
-                />
+                <br />
+                <div className="container">
+                    <div className="row">
+                        <div className="col-6">
 
-                <label>
-                    Honorarios.
-                </label>
+                            <label>
+                                Viáticos, subsistencias y movilización.
+                            </label>
+                        </div>
+                        <div className="col-6">
 
-                <input
-                    type="number"
-                    min={0}
-                    placeholder="$ "
-                    className="form--input"
-                    name="honorarios"
-                //onChange={handleChange}
-                //value={formData.titulo}
-                />
+                            <input
+                                type="number"
+                                min={0}
+                                placeholder="$ "
+                                className="form--input"
+                                name="viaticosSubsistenciasMovilizacion"
+                            //onChange={handleChange}
+                            //value={formData.titulo}
+                            />
+                        </div>
+                    </div>
 
-                <label>
-                    Materiales, suministros y reactivos.
-                </label>
+                    <div className="row">
+                        <div className="col-6">
 
-                <input
-                    type="number"
-                    min={0}
-                    placeholder="$ "
-                    className="form--input"
-                    name="materialesSuministrosReactivos"
-                //onChange={handleChange}
-                //value={formData.titulo}
-                />
+                            <label>
+                                Honorarios.
+                            </label>
 
-                <label>
-                    Equipos
-                </label>
+                        </div>
 
-                <input
-                    type="number"
-                    min={0}
-                    placeholder="$ "
-                    className="form--input"
-                    name="equipos"
-                //onChange={handleChange}
-                //value={formData.titulo}
-                />
+                        <div className="col-6">
 
-                <label>
-                    Capacitación.
-                </label>
+                            <input
+                                type="number"
+                                min={0}
+                                placeholder="$ "
+                                className="form--input"
+                                name="honorarios"
+                            //onChange={handleChange}
+                            //value={formData.titulo}
+                            />
+                        </div>
 
-                <input
-                    type="number"
-                    min={0}
-                    placeholder="Ingresar Valor"
-                    className="form--input"
-                    name="capacitacion"
-                //onChange={handleChange}
-                //value={formData.titulo}
-                />
+                    </div>
 
-                <label>
-                    Total de gastos directos.
-                </label>
+                    <div className="row">
+                        <div className="col-6">
 
-                <input
-                    type="number"
-                    min={0}
-                    placeholder="$"
-                    className="form--input"
-                    name="totalGastosDirectos"
-                //onChange={handleChange}
-                //value={formData.titulo}
-                />
+                            <label>
+                                Materiales, suministros y reactivos.
+                            </label>
+                        </div>
+                        <div className="col-6">
+
+                            <input
+                                type="number"
+                                min={0}
+                                placeholder="$ "
+                                className="form--input"
+                                name="materialesSuministrosReactivos"
+                            //onChange={handleChange}
+                            //value={formData.titulo}
+                            />
+                        </div>
+                    </div>
+                    <div className="row">
+                        <div className="col-6">
+
+                            <label>
+                                Equipos
+                            </label>
+                        </div>
+
+                        <div className="col-6">
+
+                            <input
+                                type="number"
+                                min={0}
+                                placeholder="$ "
+                                className="form--input"
+                                name="equipos"
+                            //onChange={handleChange}
+                            //value={formData.titulo}
+                            />
+                        </div>
+
+                    </div>
+                    <div className="row">
+                        <div className="col-6">
+                            <label>
+                                Capacitación.
+                            </label>
+                        </div>
+                        <div className="col-6">
+
+                            <input
+                                type="number"
+                                min={0}
+                                placeholder="$"
+                                className="form--input"
+                                name="capacitacion"
+                            //onChange={handleChange}
+                            //value={formData.titulo}
+                            />
+                        </div>
+
+                    </div>
+                    <div className="row">
+                        <div className="col-6">
+
+                            <label>
+                                Total de gastos directos.
+                            </label>
+                        </div>
+                        <div className="col-6">
+
+                            <input
+                                type="number"
+                                min={0}
+                                placeholder="$"
+                                className="form--input"
+                                name="totalGastosDirectos"
+                            //onChange={handleChange}
+                            //value={formData.titulo}
+                            />
+                        </div>
+
+                    </div>
+
+                </div>
 
                 <h3> 2.13 Bibliografía.</h3>
                 <textarea

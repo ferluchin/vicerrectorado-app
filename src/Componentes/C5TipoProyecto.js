@@ -10,76 +10,91 @@ export default function TipoProyecto() {
             //onSubmit={handleSubmit}
             >
                 {/* <NavBar /> */}
+                <div className="container">
 
-                <div class="row">
-                    <div class="column">
-                        <label>
-                            Tipo de Proyecto:
-                        </label>
+                    <div className="row">
+                        <div
+                            // className="column"
+                            className="col-4"
 
-                        {<br />}
-                        <select
-                            id="favColor"
-                            //value={formData.favColor}
-                            //onChange={handleChange}
-                            name="al"
-                            className="select-css"
                         >
-                            <option value="">-- Elija un Elemento --</option>
-                            <option value="Investigación"> Investigación. </option>
-                            <option value="Innovación"> Innovación. </option>
-                            <option value="Consultoría"> Consultoría. </option>
-                        </select>
-                    </div>
+                            <label>
+                                Tipo de Proyecto:
+                            </label>
 
-                    <div class="column">
-                        <label>
-                            Tipo de Investigación:
-                        </label>
-                        <select
-                            id="favColor"
-                            //value={formData.favColor}
-                            //onChange={handleChange}
-                            name="al"
-                            className="select-css"
+                            {<br />}
+                            <select
+                                id="favColor"
+                                //value={formData.favColor}
+                                //onChange={handleChange}
+                                name="al"
+                                className="select-css"
+                            >
+                                <option value="">-- Elija un Elemento --</option>
+                                <option value="Investigación"> Investigación. </option>
+                                <option value="Innovación"> Innovación. </option>
+                                <option value="Consultoría"> Consultoría. </option>
+                            </select>
+                        </div>
+
+                        <div
+                            //className="column"
+                            className="col-4"
+
                         >
-                            <option value="">-- Elija un Elemento --</option>
-                            <option value="Investigación Básica."> Investigación Básica. </option>
-                            <option value="Investigación Aplicada."> Investigación Aplicada. </option>
-                            <option value="Desarrollo Experimental."> Desarrollo Experimental. </option>
-                        </select>
-                    </div>
+                            <label>
+                                Tipo de Investigación:
+                            </label>
+                            <select
+                                id="favColor"
+                                //value={formData.favColor}
+                                //onChange={handleChange}
+                                name="al"
+                                className="select-css"
+                            >
+                                <option value="">-- Elija un Elemento --</option>
+                                <option value="Investigación Básica."> Investigación Básica. </option>
+                                <option value="Investigación Aplicada."> Investigación Aplicada. </option>
+                                <option value="Desarrollo Experimental."> Desarrollo Experimental. </option>
+                            </select>
+                        </div>
 
-                    <div class="column">
-                        <label>
-                            Tipo de Financiamiento:
-                        </label>
-                        <select
-                            id="favColor"
-                            //value={formData.favColor}
-                            //onChange={handleChange}
-                            name="al"
-                            className="select-css"
+                        <div
+                            //className="column"
+                            className="col-4"
+
                         >
-                            <option value="">-- Elija un Elemento --</option>
-                            <option value="ASIGNACIÓN REGULAR IES.">ASIGNACIÓN REGULAR IES.  </option>
-                            <option value="FONDOS CONCURSABLES INTERNO IES.">FONDOS CONCURSABLES INTERNO IES. </option>
-                            <option value="FONDOS CONCURSABLES NACIONALES.">FONDOS CONCURSABLES NACIONALES. </option>
-                            <option value="FONDOS CONSURSABLES INTERNACIONALES">FONDOS CONSURSABLES INTERNACIONALES. </option>
+                            <label>
+                                Tipo de Financiamiento:
+                            </label>
+                            <select
+                                id="favColor"
+                                //value={formData.favColor}
+                                //onChange={handleChange}
+                                name="al"
+                                className="select-css"
+                            >
+                                <option value="">-- Elija un Elemento --</option>
+                                <option value="ASIGNACIÓN REGULAR IES.">ASIGNACIÓN REGULAR IES.  </option>
+                                <option value="FONDOS CONCURSABLES INTERNO IES.">FONDOS CONCURSABLES INTERNO IES. </option>
+                                <option value="FONDOS CONCURSABLES NACIONALES.">FONDOS CONCURSABLES NACIONALES. </option>
+                                <option value="FONDOS CONSURSABLES INTERNACIONALES">FONDOS CONSURSABLES INTERNACIONALES. </option>
 
-                            <option value="ASIGNACIÓN REGULAR IES/FONDOS CONCURSABLES INTERNO IES.">ASIGNACIÓN REGULAR IES/FONDOS CONCURSABLES INTERNO IES. </option>
-                            <option value="ASIGNACIÓN REGULAR IES/FONDOS CONCURSABLES NACIONALES.">ASIGNACIÓN REGULAR IES/FONDOS CONCURSABLES NACIONALES. </option>
-                            <option value="ASIGNACIÓN REGULAR IES/FONDOS CONCURSABLES INTERNACIONALES.">ASIGNACIÓN REGULAR IES/FONDOS CONCURSABLES INTERNACIONALES. </option>
+                                <option value="ASIGNACIÓN REGULAR IES/FONDOS CONCURSABLES INTERNO IES.">ASIGNACIÓN REGULAR IES/FONDOS CONCURSABLES INTERNO IES. </option>
+                                <option value="ASIGNACIÓN REGULAR IES/FONDOS CONCURSABLES NACIONALES.">ASIGNACIÓN REGULAR IES/FONDOS CONCURSABLES NACIONALES. </option>
+                                <option value="ASIGNACIÓN REGULAR IES/FONDOS CONCURSABLES INTERNACIONALES.">ASIGNACIÓN REGULAR IES/FONDOS CONCURSABLES INTERNACIONALES. </option>
 
 
-                            <option value="FONDOS CONCURSABLES INTERNO IES/ FONDOS CONCURSABLE NACIONALES.">FONDOS CONCURSABLES INTERNO IES/ FONDOS CONCURSABLE NACIONALES. </option>
-                            <option value="FONDOS CONCURSABLES INTERNO IES/ FONDOS CONCURSABLE SINTERNACIONALES.">FONDOS CONCURSABLES INTERNO IES/ FONDOS CONCURSABLE SINTERNACIONALES. </option>
-                            <option value="FONDOS CONCURSABLE INTERNO NACIONALES/FONDOS CONCURSABLES INTERNACIONALES">FONDOS CONCURSABLE INTERNO NACIONALES/FONDOS CONCURSABLES INTERNACIONALES </option>
-                            <option value="ASIGNACION REGULAR IES/FONDOS CONCURSABLES INTERNO IES/ FONDO CONCURSABLES INTERNO NACIONALES/FONDOS CONCURSABLES INTERNACIONALES ">ASIGNACION REGULAR IES/FONDOS CONCURSABLES INTERNO IES/ FONDO CONCURSABLES INTERNO NACIONALES/FONDOS CONCURSABLES INTERNACIONALES </option>
+                                <option value="FONDOS CONCURSABLES INTERNO IES/ FONDOS CONCURSABLE NACIONALES.">FONDOS CONCURSABLES INTERNO IES/ FONDOS CONCURSABLE NACIONALES. </option>
+                                <option value="FONDOS CONCURSABLES INTERNO IES/ FONDOS CONCURSABLE SINTERNACIONALES.">FONDOS CONCURSABLES INTERNO IES/ FONDOS CONCURSABLE SINTERNACIONALES. </option>
+                                <option value="FONDOS CONCURSABLE INTERNO NACIONALES/FONDOS CONCURSABLES INTERNACIONALES">FONDOS CONCURSABLE INTERNO NACIONALES/FONDOS CONCURSABLES INTERNACIONALES </option>
+                                <option value="ASIGNACION REGULAR IES/FONDOS CONCURSABLES INTERNO IES/ FONDO CONCURSABLES INTERNO NACIONALES/FONDOS CONCURSABLES INTERNACIONALES ">ASIGNACION REGULAR IES/FONDOS CONCURSABLES INTERNO IES/ FONDO CONCURSABLES INTERNO NACIONALES/FONDOS CONCURSABLES INTERNACIONALES </option>
 
-                        </select>
+                            </select>
+                        </div>
                     </div>
                 </div>
+
                 {<br />}
 
                 {<br />}
@@ -90,14 +105,20 @@ export default function TipoProyecto() {
                 <input
                     type="text"
                     placeholder="Escribir texto"
-                    className="form--input"
+                    //className="form--input"
+                    className="col-12"
+
                     name="programaInvestigacion"
                 //onChange={handleChange}
                 //value={formData.programaInvestigacion}
                 />
 
-                <div class="row">
-                    <div class="column">
+                <div className="row">
+                    <div
+                        //className="column"
+                        className="col-4"
+
+                    >
                         <label>
                             Presupuesto Total
                         </label>
@@ -112,7 +133,11 @@ export default function TipoProyecto() {
                         />
                     </div>
 
-                    <div class="column">
+                    <div
+                        //className="column"
+                        className="col-4"
+
+                    >
                         <label>
                             Aporte UTPL
                         </label>
@@ -127,7 +152,11 @@ export default function TipoProyecto() {
                         />
                     </div>
 
-                    <div class="column">
+                    <div
+                        //className="column"
+                        className="col-4"
+
+                    >
                         <label>
                             Aporte Contraparte
                         </label>

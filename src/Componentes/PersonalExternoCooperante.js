@@ -85,11 +85,12 @@ export default function PersonalExternoCooperante() {
     }
 
     return (
-        <div>
+        <div className="col-12">
             <h4>
                 Personal Externo Cooperante
             </h4>
             <br />
+
             <button
                 className='btn btn-success'
                 onClick={() => abrirModalInsertar()}
@@ -97,48 +98,57 @@ export default function PersonalExternoCooperante() {
             >
                 Insertar
             </button>
-            <br />
-            <br />
-            <table className='table table-bordered'>
-                <thead>
-                    <tr>
-                        <th>Nro.</th>
-                        <th>ROL</th>
-                        <th>Nombres Completos</th>
-                        <th>Entidad</th>
-                        <th>Acciones</th>
+            <div
+                //className="table-responsive"
+                className="table-responsive"
 
-                    </tr>
-                </thead>
-                <tbody>
-                    {data.map(elemento => (
+            >
+
+                <table
+                    // className='table table-bordered'
+                    className='table table-hover'
+
+                >
+                    <thead>
                         <tr>
-                            <td className="tg-0lax">{elemento.id}</td>
-                            <td className="tg-0lax">{elemento.rol}</td>
-                            <td className="tg-0lax">{elemento.nombres}</td>
-                            <td className="tg-0lax">{elemento.entidad}</td>
-                            <td className="tg-0lax">
-                                <button
-                                    className='btn btn-primary'
-                                    onClick={() => seleccionarPersonal(elemento, 'Editar')}
-                                    type="button"
-                                >
-                                    Editar
-                                </button>
-                                <button
-                                    className='btn btn-danger'
-                                    onClick={() => seleccionarPersonal(elemento, 'Eliminar')}
-                                    type="button"
-                                >
-                                    Eliminar
-                                </button>
-
-                            </td>
+                            <th>Nro.</th>
+                            <th>ROL</th>
+                            <th>Nombres Completos</th>
+                            <th>Entidad</th>
+                            <th>Acciones</th>
 
                         </tr>
-                    ))}
-                </tbody>
-            </table>
+                    </thead>
+                    <tbody>
+                        {data.map(elemento => (
+                            <tr>
+                                <td className="tg-0lax">{elemento.id}</td>
+                                <td className="tg-0lax">{elemento.rol}</td>
+                                <td className="tg-0lax">{elemento.nombres}</td>
+                                <td className="tg-0lax">{elemento.entidad}</td>
+                                <td className="tg-0lax" style={{ width: "fit-content" }}>
+                                    <button
+                                        className='btn btn-primary'
+                                        onClick={() => seleccionarPersonal(elemento, 'Editar')}
+                                        type="button"
+                                    >
+                                        Editar
+                                    </button>
+                                    <button
+                                        className='btn btn-danger'
+                                        onClick={() => seleccionarPersonal(elemento, 'Eliminar')}
+                                        type="button"
+                                    >
+                                        Eliminar
+                                    </button>
+
+                                </td>
+
+                            </tr>
+                        ))}
+                    </tbody>
+                </table>
+            </div>
 
             <Modal isOpen={modalEditar}>
                 <ModalHeader>
@@ -220,7 +230,9 @@ export default function PersonalExternoCooperante() {
 
                     </div>
                 </ModalBody>
-                <ModalFooter>
+                <ModalFooter
+                    className="modal-footer-pg"
+                >
                     <button
                         className='btn btn-primary'
                         onClick={() => editar()}
@@ -243,7 +255,9 @@ export default function PersonalExternoCooperante() {
                     ¿Estás seguro que deseas eliminar el registro seleccionado?
                     {personalExternoCooperanteSeleccionado && personalExternoCooperanteSeleccionado.rol}
                 </ModalBody>
-                <ModalFooter>
+                <ModalFooter
+                    className="modal-footer-pg"
+                >
                     <button
                         className='btn btn-danger'
                         onClick={() => eliminar()}
@@ -326,7 +340,9 @@ export default function PersonalExternoCooperante() {
 
                     </div>
                 </ModalBody>
-                <ModalFooter>
+                <ModalFooter
+                    className="modal-footer-pg"
+                >
                     <button
                         className='btn btn-primary'
                         onClick={() => insertar()}

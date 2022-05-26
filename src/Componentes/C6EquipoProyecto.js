@@ -110,7 +110,11 @@ export default function EquipoProyecto() {
             >
                 {/* <NavBar /> */}
 
-                <div className="App">
+                <div
+                    //className="App"
+                    className="col-12"
+
+                >
                     <h2>
                         Personal Interno
                     </h2>
@@ -124,56 +128,66 @@ export default function EquipoProyecto() {
                     </button>
                     <br />
                     <br />
-                    <table className='table table-bordered'>
-                        <thead>
-                            <tr>
-                                <th>Nro.</th>
-                                <th>ROL</th>
-                                <th>TIPO</th>
-                                <th>Investigadores Acreditados <br /> SENESCYT</th>
-                                <th>Identificación</th>
-                                <th>Nombres y Apellidos</th>
-                                <th>Horas Semanales <br />de Participación</th>
-                                <th>Total Horas <br /> Participación  <br />en el Proyecto</th>
-                                <th>Acciones</th>
+                    <div
+                        className="table-responsive"
+                    >
 
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {data.map(elemento => (
+                        <table
+                            //className='table table-bordered'
+                            className="table table-hover"
+                        >
+                            <thead
+                                className="thead-dark"
+                            >
                                 <tr>
-                                    <td>{elemento.id}</td>
-                                    <td>{elemento.rol}</td>
-                                    <td>{elemento.tipo}</td>
-                                    <td>{elemento.senescyt}</td>
-                                    <td>{elemento.identificacion}</td>
-                                    <td>{elemento.nombres}</td>
-                                    <td>{elemento.horasSemanales}</td>
-                                    <td>{elemento.horasTotales}</td>
-
-                                    <td>
-                                        <button
-                                            className='btn btn-primary'
-                                            onClick={() => seleccionarPersonal(elemento, 'Editar')}
-                                            type="button"
-                                        >
-                                            Editar
-                                        </button>
-
-                                        <button
-                                            className='btn btn-danger'
-                                            onClick={() => seleccionarPersonal(elemento, 'Eliminar')}
-                                            type="button"
-                                        >
-                                            Eliminar
-                                        </button>
-
-                                    </td>
+                                    <th>Nro.</th>
+                                    <th>ROL</th>
+                                    <th>TIPO</th>
+                                    <th>Investigadores Acreditados <br /> SENESCYT</th>
+                                    <th>Identificación</th>
+                                    <th>Nombres y Apellidos</th>
+                                    <th>Horas Semanales <br />de Participación</th>
+                                    <th>Total Horas <br /> Participación  <br />en el Proyecto</th>
+                                    <th>Acciones Eliminar / Editar</th>
 
                                 </tr>
-                            ))}
-                        </tbody>
-                    </table>
+                            </thead>
+                            <tbody>
+                                {data.map(elemento => (
+                                    <tr>
+                                        <td style={{ whiteSpace: "nowrap" }}>{elemento.id}</td>
+                                        <td>{elemento.rol}</td>
+                                        <td>{elemento.tipo}</td>
+                                        <td>{elemento.senescyt}</td>
+                                        <td>{elemento.identificacion}</td>
+                                        <td>{elemento.nombres}</td>
+                                        <td>{elemento.horasSemanales}</td>
+                                        <td>{elemento.horasTotales}</td>
+
+                                        <td style={{ width: "100%" }}>
+                                            <button
+                                                className='btn btn-primary'
+                                                onClick={() => seleccionarPersonal(elemento, 'Editar')}
+                                                type="button"
+                                            >
+                                                Editar
+                                            </button>
+
+                                            <button
+                                                className='btn btn-danger'
+                                                onClick={() => seleccionarPersonal(elemento, 'Eliminar')}
+                                                type="button"
+                                            >
+                                                Eliminar
+                                            </button>
+
+                                        </td>
+
+                                    </tr>
+                                ))}
+                            </tbody>
+                        </table>
+                    </div>
 
                     <Modal isOpen={modalEditar}>
                         <ModalHeader>
@@ -307,7 +321,9 @@ export default function EquipoProyecto() {
                                 <br />
                             </div>
                         </ModalBody>
-                        <ModalFooter>
+                        <ModalFooter
+                            className="modal-footer-pg"
+                        >
                             <button
                                 className='btn btn-primary'
                                 onClick={() => editar()}
@@ -330,7 +346,9 @@ export default function EquipoProyecto() {
                             ¿Estás seguro que deseas eliminar el registro seleccionado?
                             {personalSeleccionado && personalSeleccionado.rol}
                         </ModalBody>
-                        <ModalFooter>
+                        <ModalFooter
+                            className="modal-footer-pg"
+                        >
                             <button
                                 className='btn btn-danger'
                                 onClick={() => eliminar()}
@@ -477,42 +495,28 @@ export default function EquipoProyecto() {
                                 />
                                 <br />
 
-                                <button
-                                    className='btn btn-primary'
-                                    onClick={() => insertar()}
-                                    type="button"
-                                >
-                                    Insertar
-                                </button>
-                                <button
-                                    className='btn btn-danger'
-                                    onClick={() => setModalInsertar(false)}
-                                    type="button"
-                                >
-                                    Cancelar
-                                </button>
                             </div>
                         </ModalBody>
                         <ModalFooter
-                            className="modal-footer"
+                            className="modal-footer-pg"
                         >
-                            <div className="form-group">
+                            {/* <div > */}
 
-                                <button
-                                    className='btn btn-primary'
-                                    onClick={() => insertar()}
-                                    type="button"
-                                >
-                                    Insertar
-                                </button>
-                                <button
-                                    className='btn btn-danger'
-                                    onClick={() => setModalInsertar(false)}
-                                    type="button"
-                                >
-                                    Cancelar
-                                </button>
-                            </div>
+                            <button
+                                className='btn btn-primary'
+                                onClick={() => insertar()}
+                                type="button"
+                            >
+                                Insertar
+                            </button>
+                            <button
+                                className='btn btn-danger'
+                                onClick={() => setModalInsertar(false)}
+                                type="button"
+                            >
+                                Cancelar
+                            </button>
+                            {/* </div> */}
                         </ModalFooter>
                     </Modal>
                     <br />

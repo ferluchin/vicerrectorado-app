@@ -117,7 +117,14 @@ export default function PersonalExternoContratar() {
       </button>
       <br />
       <br />
-      <table className='table table-bordered'>
+
+      <div
+        className="table-responsive"
+      >
+
+        <table
+          className='table table-hover'
+        >
         <thead>
           <tr>
             <th>Nro.</th>
@@ -164,6 +171,7 @@ export default function PersonalExternoContratar() {
           ))}
         </tbody>
       </table>
+      </div>
 
       <Modal isOpen={modalEditar}>
         <ModalHeader>
@@ -275,7 +283,8 @@ export default function PersonalExternoContratar() {
 
           </div>
         </ModalBody>
-        <ModalFooter className="modal-footer">
+        <ModalFooter
+          className="modal-footer-pg">
           <button
             className='btn btn-primary'
             onClick={() => editar()}
@@ -298,7 +307,9 @@ export default function PersonalExternoContratar() {
           ¿Estás seguro que deseas eliminar el registro seleccionado?
           {personalExternoContratarSeleccionado && personalExternoContratarSeleccionado.perfilRequerido}
         </ModalBody>
-        <ModalFooter>
+        <ModalFooter
+          className="modal-footer-pg"
+        >
           <button
             className='btn btn-danger'
             onClick={() => eliminar()}
@@ -428,7 +439,9 @@ export default function PersonalExternoContratar() {
 
           </div>
         </ModalBody>
-        <ModalFooter>
+        <ModalFooter
+          className="modal-footer-pg"
+        >
           <button
             className='btn btn-primary'
             onClick={() => insertar()}
