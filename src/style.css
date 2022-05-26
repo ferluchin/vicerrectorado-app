@@ -60,7 +60,7 @@ section {
 }
 
 .form--input {
-    width: 80%;
+    width: 100%;
     margin-bottom: 20px;
     height: 40px;
     border-radius: 5px;
@@ -244,7 +244,7 @@ a:link {
 }
 
 .utpl-logo {
-    width: 25%;
+    width: 50%;
     border-radius: 12px;
 
 }

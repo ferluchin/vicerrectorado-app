@@ -72,11 +72,25 @@ export default function Home() {
             onSubmit={handleSubmit}
         >
 
-            <h3>
-                <img className="utpl-logo" src={image} style={{ margin: "10px" }} alt="" />
-                Vicerrectorado de Investigación
-            </h3>
+            <div className="container">
+                <div className="row">
+                    <div className="col-6">
 
+                        <img className="utpl-logo" src={image} style={{ margin: "10px" }} alt="" />
+                    </div>
+                    <div className="col-6">
+                        <br />
+                        <br />
+
+                        <h3 style={{textAlign:"left"}}>
+                            Vicerrectorado de Investigación
+                        </h3>
+                    </div>
+                </div>
+            </div>
+
+
+            <br />
 
             <section>
 
