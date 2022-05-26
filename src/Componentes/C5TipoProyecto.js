@@ -12,6 +12,8 @@ export default function TipoProyecto() {
             >
                 <TitleBar />
                 {/* <NavBar /> */}
+                <h3>Tipo de Proyecto.</h3> {<br />}
+
                 <div className="container">
 
                     <div className="row">
@@ -100,21 +102,32 @@ export default function TipoProyecto() {
                 {<br />}
 
                 {<br />}
-                <label>
-                    Organismo (s)/ Entidad (ES) Financiador (ES)
-                </label>
 
-                <input
-                    type="text"
-                    placeholder="Escribir texto"
-                    //className="form--input"
-                    className="col-12"
+                <div className="container">
+                    <div className="row">
+                        <div className="col-4">
+                            <label>
+                                Organismo (s)/ Entidad (ES) Financiador (ES)
+                            </label>
 
-                    name="programaInvestigacion"
-                //onChange={handleChange}
-                //value={formData.programaInvestigacion}
-                />
+                        </div>
+                        <div className="col-8">
+                            <input
+                                type="text"
+                                placeholder="Escribir texto"
+                                //className="form--input"
+                                className="form-control"
 
+                                name="programaInvestigacion"
+                            //onChange={handleChange}
+                            //value={formData.programaInvestigacion}
+                            />
+                        </div>
+                    </div>
+                </div>
+
+
+                <br />
                 <div className="row">
                     <div
                         //className="column"

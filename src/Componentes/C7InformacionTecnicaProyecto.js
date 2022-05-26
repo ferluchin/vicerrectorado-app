@@ -99,7 +99,7 @@ export default function InformacionTecnicaProyecto() {
                 />
                 < br />
 
-                <h3> 2.5 OBJETIVOS DEL PROYECTO</h3>
+                <h3> 2.5 Objetivos del Proyecto.</h3>
                 <h4> Objetivo General: </h4>
                 <textarea
                     //value={formData.comments}

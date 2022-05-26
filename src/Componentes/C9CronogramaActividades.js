@@ -15,14 +15,26 @@ export default function CronogramaActividades() {
                 {/* <NavBar /> */}
 
                 <h3> 2.11 CRONOGRAMA DE ACTIVIDADES</h3>
-                <h4> Objetivo General </h4>
+                <br />
+                <div className="container">
+                    <div className="row">
+                        <div className="col-4">
+                            <h4> Objetivo General </h4>
 
-                <textarea
-                    //value={formData.comments}
-                    placeholder="Escribir texto"
-                    //onChange={handleChange}
-                    name="comments"
-                />
+                        </div>
+                        <div className="col-8">
+                            <textarea
+                                //value={formData.comments}
+                                placeholder="Escribir texto"
+                                //onChange={handleChange}
+                                name="comments"
+                            />
+
+                        </div>
+
+                    </div>
+                </div>
+
 
                 <h4> Objetivo Específico 1 </h4>
                 <textarea
@@ -189,7 +201,7 @@ export default function CronogramaActividades() {
                     </tbody>
                 </table>
                 <br />
-                
+
                 <button
                     className="btn btn-primary"
                 //onClick={() => console.log(docenteSeleccionado)}

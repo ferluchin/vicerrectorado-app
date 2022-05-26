@@ -133,45 +133,55 @@ export default function AreasConocimiento() {
                     </div>
                 </div>
             </div>
+            {<br />}
+
+            <div className="container">
+                <div className="row">
+                    <div className="col-4">
+                        <label htmlFor="planCreacionOportunidades">
+                            Objetivos del plan de Creación de Oportunidades.
+                        </label>
+
+                    </div>
+                    <div className="col-8">
+                        <select
+                            id="planCreacionOportunidades"
+                            //value={formData.favColor}
+                            //onChange={handleChange}
+                            name="planCreacionOportunidades"
+                            className="form-select"
+                        >
+                            <option value="">-- Elija un Elemento --</option>
+
+                            <option value="Objetivo 1: Incrementar y fomentar, de manera inclusiva, las oportunidades de empleo y las condiciones laborales.">Objetivo 1: Incrementar y fomentar, de manera inclusiva, las oportunidades de empleo y las condiciones laborales.</option>
+                            <option value="Objetivo 2: Impulsar un sistema económico con reglas claras que fomenten el comercio exterior, turismo, atracción de inversiones y modernización del sistema financiero nacional.">Objetivo 2: Impulsar un sistema económico con reglas claras que fomenten el comercio exterior, turismo, atracción de inversiones y modernización del sistema financiero nacional.  </option>
+                            <option value="Objetivo 3: Fomentar la productividad y competitividad en los sectores agrícola, industrial, acuícula y pesquero, bajo el enfoque de economía circular. ">Objetivo 3: Fomentar la productividad y competitividad en los sectores agrícola, industrial, acuícula y pesquero, bajo el enfoque de economía circular. </option>
+                            <option value="Objetivo 4: Garantiza la gestión de las finanzas públicas de manera sostenible y transparente.">Objetivo 4: Garantiza la gestión de las finanzas públicas de manera sostenible y transparente.</option>
+                            <option value="Objetivo 5: Proteger a las familias, garantizar sus derechos y servicios, erradicar la pobreza y promover la inclusión social.">Objetivo 5: Proteger a las familias, garantizar sus derechos y servicios, erradicar la pobreza y promover la inclusión social.</option>
+                            <option value="Objetivo 6: Garantizar el derecho a la salud integral, gratuita y de calidad.">Objetivo 6: Garantizar el derecho a la salud integral, gratuita y de calidad.</option>
+                            <option value="Objetivo 7: Potenciar las capacidades de la ciudadanía y promover una educación innovadora, inclusiva y de calidad en todos los niveles.">Objetivo 7: Potenciar las capacidades de la ciudadanía y promover una educación innovadora, inclusiva y de calidad en todos los niveles.</option>
+                            <option value="Objetivo 8: Generar nuevas oportunidades y bienestar para las zonas rurales, con énfasis en pueblos y nacionalidades.">Objetivo 8: Generar nuevas oportunidades y bienestar para las zonas rurales, con énfasis en pueblos y nacionalidades.</option>
+                            <option value="Objetivo 9: Garantizar la seguridad ciudadana, orden público y gestión de riesgos.">Objetivo 9: Garantizar la seguridad ciudadana, orden público y gestión de riesgos.</option>
+                            <option value="Objetivo 10: Garantizar la soberanía nacional, integridad territorial y seguridad del Estado.">Objetivo 10: Garantizar la soberanía nacional, integridad territorial y seguridad del Estado.</option>
+                            <option value="Objetivo 11: Conservar, restaurar, proteger y hacer un uso sostenible de los recursos naturales.">Objetivo 11: Conservar, restaurar, proteger y hacer un uso sostenible de los recursos naturales.</option>
+                            <option value="Objetivo 12: Fomentar modelos de desarrollo sostenible aplicando medidas de apatación y mitigación al Cambio Climático.">Objetivo 12: Fomentar modelos de desarrollo sostenible aplicando medidas de apatación y mitigación al Cambio Climático.</option>
+                            <option value="Objetivo 13: Promover la gestión integral de los recursos hídricos.">Objetivo 13: Promover la gestión integral de los recursos hídricos.</option>
+                            <option value="Objetivo 14: Fortalecer las capacidades del Estado con énfasis en la administración de justicia y eficiencia en los procesos de regulación y control, con independencia y autonomía.">Objetivo 14: Fortalecer las capacidades del Estado con énfasis en la administración de justicia y eficiencia en los procesos de regulación y control, con independencia y autonomía.</option>
+                            <option value="Objetivo 15: Fomentar la ética pública, la transparencia y la lucha contra la corrupción.">Objetivo 15: Fomentar la ética pública, la transparencia y la lucha contra la corrupción.</option>
+                            <option value="Objetivo 16: Promover la integración regional, la inserción estratégica del país en el mundo y garantizar los derechos de las personas en situación de movilidad humana.">Objetivo 16: Promover la integración regional, la inserción estratégica del país en el mundo y garantizar los derechos de las personas en situación de movilidad humana.</option>
 
 
-            <label htmlFor="planCreacionOportunidades">
-                Objetivos del plan de Creación de Oportunidades.
-            </label>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
 
 
 
             {<br />}
-            <select
-                id="planCreacionOportunidades"
-                //value={formData.favColor}
-                //onChange={handleChange}
-                name="planCreacionOportunidades"
-                className="form-select"
-            >
-                <option value="">-- Elija un Elemento --</option>
-
-                <option value="Objetivo 1: Incrementar y fomentar, de manera inclusiva, las oportunidades de empleo y las condiciones laborales.">Objetivo 1: Incrementar y fomentar, de manera inclusiva, las oportunidades de empleo y las condiciones laborales.</option>
-                <option value="Objetivo 2: Impulsar un sistema económico con reglas claras que fomenten el comercio exterior, turismo, atracción de inversiones y modernización del sistema financiero nacional.">Objetivo 2: Impulsar un sistema económico con reglas claras que fomenten el comercio exterior, turismo, atracción de inversiones y modernización del sistema financiero nacional.  </option>
-                <option value="Objetivo 3: Fomentar la productividad y competitividad en los sectores agrícola, industrial, acuícula y pesquero, bajo el enfoque de economía circular. ">Objetivo 3: Fomentar la productividad y competitividad en los sectores agrícola, industrial, acuícula y pesquero, bajo el enfoque de economía circular. </option>
-                <option value="Objetivo 4: Garantiza la gestión de las finanzas públicas de manera sostenible y transparente.">Objetivo 4: Garantiza la gestión de las finanzas públicas de manera sostenible y transparente.</option>
-                <option value="Objetivo 5: Proteger a las familias, garantizar sus derechos y servicios, erradicar la pobreza y promover la inclusión social.">Objetivo 5: Proteger a las familias, garantizar sus derechos y servicios, erradicar la pobreza y promover la inclusión social.</option>
-                <option value="Objetivo 6: Garantizar el derecho a la salud integral, gratuita y de calidad.">Objetivo 6: Garantizar el derecho a la salud integral, gratuita y de calidad.</option>
-                <option value="Objetivo 7: Potenciar las capacidades de la ciudadanía y promover una educación innovadora, inclusiva y de calidad en todos los niveles.">Objetivo 7: Potenciar las capacidades de la ciudadanía y promover una educación innovadora, inclusiva y de calidad en todos los niveles.</option>
-                <option value="Objetivo 8: Generar nuevas oportunidades y bienestar para las zonas rurales, con énfasis en pueblos y nacionalidades.">Objetivo 8: Generar nuevas oportunidades y bienestar para las zonas rurales, con énfasis en pueblos y nacionalidades.</option>
-                <option value="Objetivo 9: Garantizar la seguridad ciudadana, orden público y gestión de riesgos.">Objetivo 9: Garantizar la seguridad ciudadana, orden público y gestión de riesgos.</option>
-                <option value="Objetivo 10: Garantizar la soberanía nacional, integridad territorial y seguridad del Estado.">Objetivo 10: Garantizar la soberanía nacional, integridad territorial y seguridad del Estado.</option>
-                <option value="Objetivo 11: Conservar, restaurar, proteger y hacer un uso sostenible de los recursos naturales.">Objetivo 11: Conservar, restaurar, proteger y hacer un uso sostenible de los recursos naturales.</option>
-                <option value="Objetivo 12: Fomentar modelos de desarrollo sostenible aplicando medidas de apatación y mitigación al Cambio Climático.">Objetivo 12: Fomentar modelos de desarrollo sostenible aplicando medidas de apatación y mitigación al Cambio Climático.</option>
-                <option value="Objetivo 13: Promover la gestión integral de los recursos hídricos.">Objetivo 13: Promover la gestión integral de los recursos hídricos.</option>
-                <option value="Objetivo 14: Fortalecer las capacidades del Estado con énfasis en la administración de justicia y eficiencia en los procesos de regulación y control, con independencia y autonomía.">Objetivo 14: Fortalecer las capacidades del Estado con énfasis en la administración de justicia y eficiencia en los procesos de regulación y control, con independencia y autonomía.</option>
-                <option value="Objetivo 15: Fomentar la ética pública, la transparencia y la lucha contra la corrupción.">Objetivo 15: Fomentar la ética pública, la transparencia y la lucha contra la corrupción.</option>
-                <option value="Objetivo 16: Promover la integración regional, la inserción estratégica del país en el mundo y garantizar los derechos de las personas en situación de movilidad humana.">Objetivo 16: Promover la integración regional, la inserción estratégica del país en el mundo y garantizar los derechos de las personas en situación de movilidad humana.</option>
 
 
-            </select>
-
-            {<br />}
 
             <label>
                 Clasificación Internacional Normalizada de la Educación
@@ -365,38 +375,48 @@ export default function AreasConocimiento() {
                     </div>
                 </div>
             </div>
+            <br />
+            <div className="container">
+                <div className="row">
+                    <div className="col-4">
+                        <label>
+                            Objetivos del desarrollo Sostenible
+                        </label>
+                    </div>
+                    <div className="col-8">
+                        <select
+                            id="objetivosDesarrolloSostenible"
+                            //value={formData.favColor}
+                            //onChange={handleChange}
+                            name="objetivosDesarrolloSostenible"
+                            className="form-select"
+                        >
+                            <option value="">-- Elija un Elemento --</option>
+                            <option value="Objetivo 1: Poner fin a la pobreza en todas sus formas en todo el mundo ">Objetivo 1: Poner fin a la pobreza en todas sus formas en todo el mundo </option>
+                            <option value="Objetivo 2: Poner fin al hambre ">Objetivo 2: Poner fin al hambre </option>
+                            <option value="Objetivo 3: Garantizar una vida sana y promover el bienestar para todos en todas las edades ">Objetivo 3: Garantizar una vida sana y promover el bienestar para todos en todas las edades </option>
+                            <option value="Objetivo 4: Garantizar una educación inclusiva, equitativa y de calidad y promover oportunidades de aprendizaje durante toda la vida para todos ">Objetivo 4: Garantizar una educación inclusiva, equitativa y de calidad y promover oportunidades de aprendizaje durante toda la vida para todos </option>
+                            <option value="Objetivo 5: Lograr la igualdad entre los géneros y empoderar a todas las mujeres y las niñas ">Objetivo 5: Lograr la igualdad entre los géneros y empoderar a todas las mujeres y las niñas </option>
+                            <option value="Objetivo 6: Garantizar la disponibilidad de agua y su gestión sostenible y el saneamiento para todos ">Objetivo 6: Garantizar la disponibilidad de agua y su gestión sostenible y el saneamiento para todos </option>
+                            <option value="Objetivo 7: Garantizar el acceso a una energía asequible, segura, sostenible y moderna ">Objetivo 7: Garantizar el acceso a una energía asequible, segura, sostenible y moderna </option>
+                            <option value="Objetivo 8: Promover el crecimiento económico inclusivo y sostenible, el empleo y el trabajo decente para todos ">Objetivo 8: Promover el crecimiento económico inclusivo y sostenible, el empleo y el trabajo decente para todos </option>
+                            <option value="Objetivo 9: Construir infraestructuras resilientes, promover la industrialización sostenible y fomentar la innovación ">Objetivo 9: Construir infraestructuras resilientes, promover la industrialización sostenible y fomentar la innovación </option>
+                            <option value="Objetivo 10: Reducir la desigualdad en y entre los países ">Objetivo 10: Reducir la desigualdad en y entre los países </option>
+                            <option value="Objetivo 11: Lograr que las ciudades sean más inclusivas, seguras, resilientes y sostenibles ">Objetivo 11: Lograr que las ciudades sean más inclusivas, seguras, resilientes y sostenibles </option>
+                            <option value="Objetivo 12: Garantizar modalidades de consumo y producción sostenibles ">Objetivo 12: Garantizar modalidades de consumo y producción sostenibles </option>
+                            <option value="Objetivo 13: Adoptar medidas urgentes para combatir el cambio climático y sus efectos ">Objetivo 13: Adoptar medidas urgentes para combatir el cambio climático y sus efectos </option>
+                            <option value="Objetivo 14: Conservar y utilizar sosteniblemente los océanos, los mares y los recursos marinos ">Objetivo 14: Conservar y utilizar sosteniblemente los océanos, los mares y los recursos marinos </option>
+                            <option value="Objetivo 15: Gestionar sosteniblemente los bosques, luchar contra la desertificación, detener e invertir la degradación de las tierras, detener la pérdida de biodiversidad ">Objetivo 15: Gestionar sosteniblemente los bosques, luchar contra la desertificación, detener e invertir la degradación de las tierras, detener la pérdida de biodiversidad </option>
+                            <option value="Objetivo 16: Promover sociedades justas, pacíficas e inclusivas ">Objetivo 16: Promover sociedades justas, pacíficas e inclusivas </option>
+                            <option value="Objetivo 17: Revitalizar la Alianza Mundial para el Desarrollo Sostenible ">Objetivo 17: Revitalizar la Alianza Mundial para el Desarrollo Sostenible </option>
 
-            <label>
-                Objetivos del desarrollo Sostenible
-            </label>
+                        </select>
+                    </div>
+                </div>
+            </div>
 
-            <select
-                id="objetivosDesarrolloSostenible"
-                //value={formData.favColor}
-                //onChange={handleChange}
-                name="objetivosDesarrolloSostenible"
-                className="form-select"
-            >
-                <option value="">-- Elija un Elemento --</option>
-                <option value="Objetivo 1: Poner fin a la pobreza en todas sus formas en todo el mundo ">Objetivo 1: Poner fin a la pobreza en todas sus formas en todo el mundo </option>
-                <option value="Objetivo 2: Poner fin al hambre ">Objetivo 2: Poner fin al hambre </option>
-                <option value="Objetivo 3: Garantizar una vida sana y promover el bienestar para todos en todas las edades ">Objetivo 3: Garantizar una vida sana y promover el bienestar para todos en todas las edades </option>
-                <option value="Objetivo 4: Garantizar una educación inclusiva, equitativa y de calidad y promover oportunidades de aprendizaje durante toda la vida para todos ">Objetivo 4: Garantizar una educación inclusiva, equitativa y de calidad y promover oportunidades de aprendizaje durante toda la vida para todos </option>
-                <option value="Objetivo 5: Lograr la igualdad entre los géneros y empoderar a todas las mujeres y las niñas ">Objetivo 5: Lograr la igualdad entre los géneros y empoderar a todas las mujeres y las niñas </option>
-                <option value="Objetivo 6: Garantizar la disponibilidad de agua y su gestión sostenible y el saneamiento para todos ">Objetivo 6: Garantizar la disponibilidad de agua y su gestión sostenible y el saneamiento para todos </option>
-                <option value="Objetivo 7: Garantizar el acceso a una energía asequible, segura, sostenible y moderna ">Objetivo 7: Garantizar el acceso a una energía asequible, segura, sostenible y moderna </option>
-                <option value="Objetivo 8: Promover el crecimiento económico inclusivo y sostenible, el empleo y el trabajo decente para todos ">Objetivo 8: Promover el crecimiento económico inclusivo y sostenible, el empleo y el trabajo decente para todos </option>
-                <option value="Objetivo 9: Construir infraestructuras resilientes, promover la industrialización sostenible y fomentar la innovación ">Objetivo 9: Construir infraestructuras resilientes, promover la industrialización sostenible y fomentar la innovación </option>
-                <option value="Objetivo 10: Reducir la desigualdad en y entre los países ">Objetivo 10: Reducir la desigualdad en y entre los países </option>
-                <option value="Objetivo 11: Lograr que las ciudades sean más inclusivas, seguras, resilientes y sostenibles ">Objetivo 11: Lograr que las ciudades sean más inclusivas, seguras, resilientes y sostenibles </option>
-                <option value="Objetivo 12: Garantizar modalidades de consumo y producción sostenibles ">Objetivo 12: Garantizar modalidades de consumo y producción sostenibles </option>
-                <option value="Objetivo 13: Adoptar medidas urgentes para combatir el cambio climático y sus efectos ">Objetivo 13: Adoptar medidas urgentes para combatir el cambio climático y sus efectos </option>
-                <option value="Objetivo 14: Conservar y utilizar sosteniblemente los océanos, los mares y los recursos marinos ">Objetivo 14: Conservar y utilizar sosteniblemente los océanos, los mares y los recursos marinos </option>
-                <option value="Objetivo 15: Gestionar sosteniblemente los bosques, luchar contra la desertificación, detener e invertir la degradación de las tierras, detener la pérdida de biodiversidad ">Objetivo 15: Gestionar sosteniblemente los bosques, luchar contra la desertificación, detener e invertir la degradación de las tierras, detener la pérdida de biodiversidad </option>
-                <option value="Objetivo 16: Promover sociedades justas, pacíficas e inclusivas ">Objetivo 16: Promover sociedades justas, pacíficas e inclusivas </option>
-                <option value="Objetivo 17: Revitalizar la Alianza Mundial para el Desarrollo Sostenible ">Objetivo 17: Revitalizar la Alianza Mundial para el Desarrollo Sostenible </option>
 
-            </select>
+
 
             {/* </form> */}
         </section>
