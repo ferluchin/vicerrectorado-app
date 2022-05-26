@@ -1,4 +1,5 @@
 import React from "react";
+import TitleBar from "./TitleBar";
 // import NavBar from "../NavBar";
 import "../style.css"
 
@@ -11,19 +12,21 @@ export default function InformacionTecnicaProyecto() {
                 className="form"
             //onSubmit={handleSubmit}
             >
+                <TitleBar />
                 {/* <NavBar /> */}
 
                 <h2> 2.  Información Técnica del Proyecto</h2>
+                < br />
                 <h3> 2.1 Resúmen del Proyecto</h3>
 
                 <textarea
                     //value={formData.comments}
-                    placeholder="Realizar una síntesis clara y concisa del proyecto (maximo 150 palabras)"
+                    placeholder="Realizar una síntesis clara y concisa del proyecto (máximo 150 palabras)"
                     //onChange={handleChange}
                     name="comments"
                 />
-
-                <h3> 2.2 PALABRAS CLAVE</h3>
+                < br />
+                <h3> 2.2 Palabras Clave</h3>
 
                 <div className="container">
                     <div className="row">
@@ -31,7 +34,7 @@ export default function InformacionTecnicaProyecto() {
 
                             <input
                                 type="text"
-                                placeholder="Máximo cuatro"
+                                placeholder="Keywords"
                                 className="form--input"
                                 name="titulo"
                             //onChange={handleChange}
@@ -42,7 +45,7 @@ export default function InformacionTecnicaProyecto() {
 
                             <input
                                 type="text"
-                                placeholder="Máximo cuatro"
+                                placeholder="Keywords"
                                 className="form--input"
                                 name="titulo"
                             //onChange={handleChange}
@@ -53,7 +56,7 @@ export default function InformacionTecnicaProyecto() {
 
                             <input
                                 type="text"
-                                placeholder="Máximo cuatro"
+                                placeholder="Keywords"
                                 className="form--input"
                                 name="titulo"
                             //onChange={handleChange}
@@ -64,7 +67,7 @@ export default function InformacionTecnicaProyecto() {
 
                             <input
                                 type="text"
-                                placeholder="Máximo cuatro"
+                                placeholder="Keywords"
                                 className="form--input"
                                 name="titulo"
                             //onChange={handleChange}
@@ -94,6 +97,8 @@ export default function InformacionTecnicaProyecto() {
                     //onChange={handleChange}
                     name="comments"
                 />
+                < br />
+
                 <h3> 2.5 OBJETIVOS DEL PROYECTO</h3>
                 <h4> Objetivo General: </h4>
                 <textarea
@@ -110,7 +115,14 @@ export default function InformacionTecnicaProyecto() {
                     //onChange={handleChange}
                     name="comments"
                 />
-
+                <br/>
+                <button
+                    className="btn btn-primary"
+                //onClick={() => console.log(docenteSeleccionado)}
+                //type="button"
+                >
+                    Enviar Información
+                </button>
             </form>
 
         </section>

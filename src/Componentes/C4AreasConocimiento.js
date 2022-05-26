@@ -40,7 +40,7 @@ export default function AreasConocimiento() {
                             //value={formData.favColor}
                             //onChange={handleChange}
                             name="al"
-                            className="select-css"
+                            className="form-select"
                         >
                             <option value="">-- Elija un Elemento --</option>
                             <option value="Ciencias exactas y naturales.">Ciencias exactas y naturales.</option>
@@ -79,7 +79,7 @@ export default function AreasConocimiento() {
                             //value={formData.favColor}
                             //onChange={handleChange}
                             name="objetivoSocioeconomico"
-                            className="select-css"
+                            className="form-select"
                         >
                             <option value="">-- Elija un Elemento --</option>
                             <option value="Exporación y Explotacion de la tierra.">Exporación y Explotacion de la tierra.</option>
@@ -114,7 +114,7 @@ export default function AreasConocimiento() {
                             //value={formData.favColor}
                             //onChange={handleChange}
                             name="areaTematicaID"
-                            className="select-css"
+                            className="form-select"
                         >
                             <option value="">-- Elija un Elemento --</option>
                             <option value="Soberanía alimentaria y transformación agroproductiva">Soberanía alimentaria y transformación agroproductiva</option>
@@ -147,7 +147,7 @@ export default function AreasConocimiento() {
                 //value={formData.favColor}
                 //onChange={handleChange}
                 name="planCreacionOportunidades"
-                className="select-css"
+                className="form-select"
             >
                 <option value="">-- Elija un Elemento --</option>
 
@@ -192,7 +192,7 @@ export default function AreasConocimiento() {
                             //value={formData.favColor}
                             //onChange={handleChange}
                             name="campoAmplio"
-                            className="select-css"
+                            className="form-select"
                         >
                             <option value="">-- Elija un Elemento --</option>
 
@@ -220,7 +220,7 @@ export default function AreasConocimiento() {
                             //value={formData.favColor}
                             //onChange={handleChange}
                             name="campoEspecifico"
-                            className="select-css"
+                            className="form-select"
                         >
                             <option value="">-- Elija un Elemento --</option>
 
@@ -264,7 +264,7 @@ export default function AreasConocimiento() {
                             //value={formData.favColor}
                             //onChange={handleChange}
                             name="campoDetallado"
-                            className="select-css"
+                            className="form-select"
                         >
                             <option value="">-- Elija un Elemento --</option>
                             <option value="1-11A Educación">1-11A Educación</option>
@@ -375,7 +375,7 @@ export default function AreasConocimiento() {
                 //value={formData.favColor}
                 //onChange={handleChange}
                 name="objetivosDesarrolloSostenible"
-                className="select-css"
+                className="form-select"
             >
                 <option value="">-- Elija un Elemento --</option>
                 <option value="Objetivo 1: Poner fin a la pobreza en todas sus formas en todo el mundo ">Objetivo 1: Poner fin a la pobreza en todas sus formas en todo el mundo </option>

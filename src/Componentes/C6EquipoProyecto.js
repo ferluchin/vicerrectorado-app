@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 import { Modal, ModalBody, ModalHeader, ModalFooter } from 'reactstrap';
-
+import TitleBar from "./TitleBar";
 
 import PersonalExternoCooperante from './PersonalExternoCooperante';
 import PersonalExternoContratar from './PersonalExternoContratar';
@@ -108,6 +108,7 @@ export default function EquipoProyecto() {
                 className="form"
             //onSubmit={handleSubmit}
             >
+                <TitleBar />
                 {/* <NavBar /> */}
 
                 <div
@@ -531,7 +532,13 @@ export default function EquipoProyecto() {
                 />
 
                 <PersonalExternoContratar />
-
+                <button
+                    className="btn btn-primary"
+                //onClick={() => console.log(docenteSeleccionado)}
+                //type="button"
+                >
+                    Enviar Información
+                </button>
             </form>
 
         </section>

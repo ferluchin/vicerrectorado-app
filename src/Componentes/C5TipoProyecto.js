@@ -1,6 +1,7 @@
 import React from "react";
 // import NavBar from "../NavBar";
 import "../style.css"
+import TitleBar from "./TitleBar";
 
 export default function TipoProyecto() {
     return (
@@ -9,6 +10,7 @@ export default function TipoProyecto() {
                 className="form"
             //onSubmit={handleSubmit}
             >
+                <TitleBar />
                 {/* <NavBar /> */}
                 <div className="container">
 
@@ -28,7 +30,7 @@ export default function TipoProyecto() {
                                 //value={formData.favColor}
                                 //onChange={handleChange}
                                 name="al"
-                                className="select-css"
+                                className="form-select"
                             >
                                 <option value="">-- Elija un Elemento --</option>
                                 <option value="Investigación"> Investigación. </option>
@@ -50,7 +52,7 @@ export default function TipoProyecto() {
                                 //value={formData.favColor}
                                 //onChange={handleChange}
                                 name="al"
-                                className="select-css"
+                                className="form-select"
                             >
                                 <option value="">-- Elija un Elemento --</option>
                                 <option value="Investigación Básica."> Investigación Básica. </option>
@@ -72,7 +74,7 @@ export default function TipoProyecto() {
                                 //value={formData.favColor}
                                 //onChange={handleChange}
                                 name="al"
-                                className="select-css"
+                                className="form-select"
                             >
                                 <option value="">-- Elija un Elemento --</option>
                                 <option value="ASIGNACIÓN REGULAR IES.">ASIGNACIÓN REGULAR IES.  </option>
@@ -170,7 +172,15 @@ export default function TipoProyecto() {
                         //value={formData.programaInvestigacion}
                         />
                     </div>
+
                 </div>
+                <button
+                    className="btn btn-primary"
+                //onClick={() => console.log(docenteSeleccionado)}
+                //type="button"
+                >
+                    Enviar Información
+                </button>
             </form>
 
         </section>

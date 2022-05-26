@@ -1,5 +1,7 @@
 import React from "react";
 // import NavBar from "../NavBar";
+import TitleBar from "./TitleBar";
+
 import "../style.css"
 
 export default function CronogramaActividades() {
@@ -9,6 +11,7 @@ export default function CronogramaActividades() {
                 className="form"
             //onSubmit={handleSubmit}
             >
+                <TitleBar />
                 {/* <NavBar /> */}
 
                 <h3> 2.11 CRONOGRAMA DE ACTIVIDADES</h3>
@@ -185,7 +188,15 @@ export default function CronogramaActividades() {
                         </tr>
                     </tbody>
                 </table>
-
+                <br />
+                
+                <button
+                    className="btn btn-primary"
+                //onClick={() => console.log(docenteSeleccionado)}
+                //type="button"
+                >
+                    Enviar Información
+                </button>
             </form>
 
         </section>

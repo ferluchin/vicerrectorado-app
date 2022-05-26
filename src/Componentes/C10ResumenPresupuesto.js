@@ -1,5 +1,6 @@
 import React from "react";
-// import NavBar from "../NavBar";
+// import NavBar from "../NavBar";'
+import TitleBar from "./TitleBar";
 import "../style.css"
 
 export default function ResumenPresupuesto() {
@@ -9,6 +10,7 @@ export default function ResumenPresupuesto() {
                 className="form"
             //onSubmit={handleSubmit}
             >
+                <TitleBar />
                 {/* <NavBar /> */}
                 <h3> 2.12 Resumen Presupuestos </h3>
 
@@ -162,7 +164,14 @@ export default function ResumenPresupuesto() {
                     //onChange={handleChange}
                     name="comments"
                 />
-
+                <br />
+                <button
+                    className="btn btn-primary"
+                //onClick={() => console.log(docenteSeleccionado)}
+                //type="button"
+                >
+                    Enviar Información
+                </button>
             </form>
 
         </section>

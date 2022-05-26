@@ -66,7 +66,7 @@ export default function AutocompleteDocente() {
     
         // const docentes = useDocentes()
     */
-    const [docentes, setDocentes ] = useState(data);
+    const [docentes, setDocentes] = useState(data);
     const [value, setValue] = useState("");
     const [docenteSeleccionado, setDocenteSeleccionado] = useState({});
 
@@ -131,7 +131,7 @@ export default function AutocompleteDocente() {
         value,
         //className: "form--input",
         onChange
-        
+
     };
 
     /*
@@ -155,25 +155,33 @@ export default function AutocompleteDocente() {
     }
 
     return (
-        <div className="App">
-            <Autosuggest
-                suggestions={docentes}
-                onSuggestionsFetchRequested={onSuggestionsFetchRequested}
-                onSuggestionsClearRequested={onSuggestionsClearRequested}
-                getSuggestionValue={getSuggestionValue}
-                renderSuggestion={renderSuggestion}
-                inputProps={inputProps}
-                onSuggestionSelected={eventEnter}
+        <div className="container">
 
-            />
-            <br />
-            <button
-                className='btn btn-primary'
-                onClick={() => console.log(docenteSeleccionado)}
-                type="button"
-            >
-                Seleccionar Docente
-            </button>
+            <div className="col-12">
+
+                <Autosuggest
+                    suggestions={docentes}
+                    onSuggestionsFetchRequested={onSuggestionsFetchRequested}
+                    onSuggestionsClearRequested={onSuggestionsClearRequested}
+                    getSuggestionValue={getSuggestionValue}
+                    renderSuggestion={renderSuggestion}
+                    inputProps={inputProps}
+                    onSuggestionSelected={eventEnter}
+
+                />
+                <br />
+                <div className="col-7">
+                    <button
+                        className='btn btn-primary'
+                        onClick={() => console.log(docenteSeleccionado)}
+                        type="button"
+                    >
+                        Seleccionar Docente
+                    </button>
+                </div>
+
+            </div>
         </div>
+
     )
 }

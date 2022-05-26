@@ -87,7 +87,7 @@ export default function FechasProyecto() {
                 //value={formData.favColor}
                 //onChange={handleChange}
                 name="al"
-                className="select-css"
+                className="form-select"
             >
                 <option value="">-- Elija un Elemento --</option>
                 <option value="Nacional.">Nacional.</option>

@@ -180,7 +180,7 @@ export default function PersonalExternoCooperante() {
                             value={personalExternoCooperanteSeleccionado && personalExternoCooperanteSeleccionado.rol}
                             onChange={handleChange}
                             name="rol"
-                            // className="select-css"
+                            // className="form-select"
                             className='form-control'
 
                         >
@@ -304,7 +304,7 @@ export default function PersonalExternoCooperante() {
                             value={personalExternoCooperanteSeleccionado && personalExternoCooperanteSeleccionado.rol}
                             onChange={handleChange}
                             name="rol"
-                            // className="select-css"
+                            // className="form-select"
                             className='form-control'
 
                         >
@@ -373,7 +373,7 @@ export default function PersonalExternoCooperante() {
               value={personalExternoContratarSeleccionado && personalExternoContratarSeleccionado.funcion}
               onChange={handleChange}
               name="funcion"
-              // className="select-css"
+              // className="form-select"
               className='form-control'
 
             >

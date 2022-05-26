@@ -54,6 +54,25 @@ export default function InformacionGeneral() {
 
             {/* <NavBar /> */}
             <h3>1.  Información General.</h3> {<br />}
+
+            <div class="mb-3 row">
+                <label
+                    class="col-sm-2 col-form-label"
+                >
+                    Título.
+                </label>
+                <div class="col-sm-10">
+                    <input
+                        type="text"
+                        placeholder="Ingresar Texto"
+                        className="form-control-plaintext"
+                        name="titulo"
+                        onChange={handleChange}
+                        value={formData.titulo}
+                    />
+                </div>
+            </div>
+
             <label>
                 Título.
             </label>
@@ -87,7 +106,7 @@ export default function InformacionGeneral() {
                 value={formData.favColor}
                 onChange={handleChange}
                 name="facultad"
-                className="select-css"
+                className="form-select"
             >
                 <option value="">-- Elija un Elemento --</option>
                 <option value="Ciencias Económicas y Empresariales">Ciencias Económicas y Empresariales</option>
@@ -106,7 +125,7 @@ export default function InformacionGeneral() {
                 value={formData.favColor}
                 onChange={handleChange}
                 name="facultad"
-                className="select-css"
+                className="form-select"
             >
                 <option value="">-- Elija un Elemento --</option>
                 <option value="Química">Química</option>
@@ -137,7 +156,7 @@ export default function InformacionGeneral() {
                 value={formData.favColor}
                 onChange={handleChange}
                 name="facultad"
-                className="select-css"
+                className="form-select"
             >
                 <option value=""> -- Elija un Elemento -- </option>
                 <option value="Biodiversidad de Ecosistemas Tropicales.">Biodiversidad de Ecosistemas Tropicales.</option>
@@ -202,7 +221,7 @@ export default function InformacionGeneral() {
                 value={formData.favColor}
                 onChange={handleChange}
                 name="facultad"
-                className="select-css"
+                className="form-select"
             >
                 <option value="">-- Elija un Elemento --</option>
                 <option value="Biomedicina.">Biomedicina.</option>
@@ -233,7 +252,7 @@ export default function InformacionGeneral() {
                 value={formData.lineaInvestigacion}
                 onChange={handleChange}
                 name="lineaInvestigacion"
-                className="select-css"
+                className="form-select"
             >
                 <option value="">-- Elija un Elemento --</option>
                 <option value="Análisis genético y molecular de enfermedades.">Análisis genético y molecular de enfermedades.</option>
@@ -304,7 +323,7 @@ export default function InformacionGeneral() {
                 value={formData.programaInvestigacion}
                 onChange={handleChange}
                 name="programaInvestigacion"
-                className="select-css"
+                className="form-select"
             >
                 <option value="">-- Elija un Elemento --</option>
                 <option value="Desarrollo y Planificación Territorial.">Desarrollo y Planificación Territorial.</option>

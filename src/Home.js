@@ -1,7 +1,6 @@
 import React from "react";
 // import NavBar from "./NavBar";
-import image from "./assets/utpl.png"
-
+import TitleBar from "./Componentes/TitleBar";
 // import InformacionGeneral from "./Componentes/C1InformacionGeneral";
 import FechasProyecto from "./Componentes/C2FechasProyecto";
 import DirectorProyecto from "./Componentes/C3DirectorProyecto";
@@ -72,23 +71,8 @@ export default function Home() {
             onSubmit={handleSubmit}
         >
 
-            <div className="container">
-                <div className="row">
-                    <div className="col-6">
 
-                        <img className="utpl-logo" src={image} style={{ margin: "10px" }} alt="" />
-                    </div>
-                    <div className="col-6">
-                        <br />
-                        <br />
-
-                        <h3 style={{textAlign:"left"}}>
-                            Vicerrectorado de Investigación
-                        </h3>
-                    </div>
-                </div>
-            </div>
-
+            <TitleBar />
 
             <br />
 
@@ -102,21 +86,23 @@ export default function Home() {
 
                 {/* <NavBar /> */}
                 <h3>1.  Información General.</h3> {<br />}
-                <label className="etiqueta">
-                    Título.
-                </label>
-                {<br />}
-
-                <input
-                    type="text"
-                    placeholder="Ingresar Texto"
-                    className="form--input"
-                    name="titulo"
-                    onChange={handleChange}
-                    value={formData.titulo}
-                />
-
-                {<br />}
+                <div class="mb-3 row">
+                    <label
+                        class="col-sm-2 col-form-label"
+                    >
+                        Título.
+                    </label>
+                    <div class="col-sm-10">
+                        <input
+                            type="text"
+                            placeholder="Ingresar Texto"
+                            className="form-control"
+                            name="titulo"
+                            onChange={handleChange}
+                            value={formData.titulo}
+                        />
+                    </div>
+                </div>
                 <div
                     className="container"
                 >
@@ -130,7 +116,7 @@ export default function Home() {
                                 value={formData.facultad}
                                 onChange={handleChange}
                                 name="facultad"
-                                className="select-css"
+                                className="form-select"
                             >
                                 {/* <option value="">-- Elija un Elemento --</option> */}
                                 <option value="Ciencias Económicas y Empresariales">Ciencias Económicas y Empresariales</option>
@@ -154,7 +140,7 @@ export default function Home() {
                                 value={formData.departamento}
                                 onChange={handleChange}
                                 name="departamento"
-                                className="select-css"
+                                className="form-select" //select-css
                             >
                                 <option value="">-- Elija un Elemento --</option>
                                 <option value="Química">Química</option>
@@ -190,7 +176,7 @@ export default function Home() {
                                 value={formData.grupoInvestigacion}
                                 onChange={handleChange}
                                 name="grupoInvestigacion"
-                                className="select-css"
+                                className="form-select"
                             >
                                 <option value=""> -- Elija un Elemento -- </option>
                                 <option value="Biodiversidad de Ecosistemas Tropicales.">Biodiversidad de Ecosistemas Tropicales.</option>
@@ -240,7 +226,7 @@ export default function Home() {
                                 <option value=""> -- Elija un Elemento -- </option>
                             </select>
 
-                            <br />
+
                         </div>
                     </div>
 
@@ -260,7 +246,7 @@ export default function Home() {
                                 value={formData.dominioAcademico}
                                 onChange={handleChange}
                                 name="dominioAcademico"
-                                className="select-css"
+                                className="form-select"
                             >
                                 <option value="">-- Elija un Elemento --</option>
                                 <option value="Biomedicina.">Biomedicina.</option>
@@ -293,7 +279,7 @@ export default function Home() {
                                 value={formData.lineaInvestigacion}
                                 onChange={handleChange}
                                 name="lineaInvestigacion"
-                                className="select-css"
+                                className="form-select"
                             >
                                 <option value="">-- Elija un Elemento --</option>
                                 <option value="Análisis genético y molecular de enfermedades.">Análisis genético y molecular de enfermedades.</option>
@@ -367,7 +353,7 @@ export default function Home() {
                                 value={formData.programaInvestigacion}
                                 onChange={handleChange}
                                 name="programaInvestigacion"
-                                className="select-css"
+                                className="form-select"
                             >
                                 <option value="">-- Elija un Elemento --</option>
                                 <option value="Desarrollo y Planificación Territorial.">Desarrollo y Planificación Territorial.</option>
@@ -403,7 +389,7 @@ export default function Home() {
             <button
                 className="btn btn-primary"
                 //onClick={() => console.log(docenteSeleccionado)}
-                type="button"
+                //type="button"
             >
                 Enviar Información
             </button>
