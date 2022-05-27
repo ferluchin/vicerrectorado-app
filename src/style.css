@@ -7,7 +7,7 @@
     /* background-color: #639; */
     /* background-color: #000080; */
     background-color: #004170;
-    height: 150vh;
+    height: 300vh;
     font-family: 'Inter', sans-serif;
 }
 
@@ -129,6 +129,10 @@ section {
     vertical-align: top
 }
 
+label {
+    text-align: left;
+}
+
 textarea {
     width: 100%;
     height: 150px;
@@ -144,10 +148,12 @@ textarea {
 h2,
 h3 {
     width: 100%;
+    text-align: center;
 }
 
 h4 {
     width: 100%;
+    text-align: left;
 }
 
 .sidebar {

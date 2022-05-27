@@ -1,7 +1,7 @@
 import React from "react";
 // import NavBar from "../NavBar";
 import TitleBar from "./TitleBar";
-
+import TablaCronograma from "./TablaCronograma";
 import "../style.css"
 
 export default function CronogramaActividades() {
@@ -74,72 +74,8 @@ export default function CronogramaActividades() {
                 </div>
 
                 {<br />}
-                <table class="tg">
-                    <thead>
-                        <tr>
-                            <th class="tg-0lax">Nro.</th>
-                            <th class="tg-0lax">ACTIVIDADES</th>
-                            <th class="tg-0lax">Fecha Inicio</th>
-                            <th class="tg-0lax">Fecha Fin</th>
-                            <th class="tg-0lax">Nombre Evidencia<br />Medio verificación<br /></th>
-                            <th class="tg-0lax">Valor <br />Presupuesto<br /></th>
-                            <th class="tg-0lax">Item de <br />Presupuesto<br /></th>
-                            <th class="tg-0lax">Nombre responsable <br />de Actividad<br /></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td class="tg-0lax">1</td>
-                            <td class="tg-0lax">Escribir Texto</td>
-                            <td class="tg-0lax">DD/MM/AAAA</td>
-                            <td class="tg-0lax">DD/MM/AAAA</td>
-                            <td class="tg-0lax">Escribir Texto<br /></td>
-                            <td class="tg-0lax">Valor</td>
-                            <td class="tg-0lax">Elije Elemento</td>
-                            <td class="tg-0lax">Escribe Texto</td>
-                        </tr>
-                        <tr>
-                            <td class="tg-0lax"></td>
-                            <td class="tg-0lax"></td>
-                            <td class="tg-0lax"></td>
-                            <td class="tg-0lax"></td>
-                            <td class="tg-0lax"></td>
-                            <td class="tg-0lax"></td>
-                            <td class="tg-0lax"></td>
-                            <td class="tg-0lax"></td>
-                        </tr>
-                        <tr>
-                            <td class="tg-0lax"></td>
-                            <td class="tg-0lax"></td>
-                            <td class="tg-0lax"></td>
-                            <td class="tg-0lax"></td>
-                            <td class="tg-0lax"></td>
-                            <td class="tg-0lax"></td>
-                            <td class="tg-0lax"></td>
-                            <td class="tg-0lax"></td>
-                        </tr>
-                        <tr>
-                            <td class="tg-0lax"></td>
-                            <td class="tg-0lax"></td>
-                            <td class="tg-0lax"></td>
-                            <td class="tg-0lax"></td>
-                            <td class="tg-0lax"></td>
-                            <td class="tg-0lax"></td>
-                            <td class="tg-0lax"></td>
-                            <td class="tg-0lax"></td>
-                        </tr>
-                        <tr>
-                            <td class="tg-0lax"></td>
-                            <td class="tg-0lax"></td>
-                            <td class="tg-0lax"></td>
-                            <td class="tg-0lax"></td>
-                            <td class="tg-0lax"></td>
-                            <td class="tg-0lax"></td>
-                            <td class="tg-0lax"></td>
-                            <td class="tg-0lax"></td>
-                        </tr>
-                    </tbody>
-                </table>
+
+                <TablaCronograma />
                 <br />
 
                 <div className="container">
@@ -181,6 +117,7 @@ export default function CronogramaActividades() {
                 {<br />}
 
                 <br />
+                <TablaCronograma />
 
                 <button
                     className="btn btn-primary"
@@ -194,3 +131,4 @@ export default function CronogramaActividades() {
         </section>
     )
 }
+

@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 export default function Sidebar(props) {
     return (
         <section className="pane sidebar">
+            <br />
             <div className="sidebar--header" >
                 <h3 style={{textAlign: "center"}}>Panel de Navegación</h3>
             </div>
