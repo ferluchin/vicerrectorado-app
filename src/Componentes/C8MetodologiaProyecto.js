@@ -13,23 +13,37 @@ export default function MetodologiaProyecto() {
             >
                 <TitleBar />
                 {/* <NavBar /> */}
-                <h3> 2.6 Metodología</h3>
-                <textarea
-                    //value={formData.comments}
-                    placeholder="Describir de manera sintética los métodos 
-                    y técnicas necesarias para alcanzar sus objetivos"
-                    //onChange={handleChange}
-                    name="comments"
-                />
-
-                <br />
-                <h3> 2.7 Transferecia de conocimiento</h3>
-
                 <div className="container">
+
+                    <div className="row">
+                        <div className="col-4">
+                            <h4 style={{ textAlign: 'left' }}> 2.6 Metodología</h4>
+
+                        </div>
+                        <div className="col-8">
+                            <textarea
+                                //value={formData.comments}
+                                placeholder="Describir de manera sintética los métodos 
+                    y técnicas necesarias para alcanzar sus objetivos"
+                                //onChange={handleChange}
+                                name="comments"
+                            />
+                        </div>
+                    </div>
+
+
+                    <br />
+                    <div className="row">
+                        <div className="col-6">
+                            <h4 style={{ textAlign: 'left' }}> 2.7 Transferecia de conocimiento</h4>
+
+                        </div>
+                    </div>
+
                     <br />
                     <div className="row">
                         <div className="col-4">
-                            <label>
+                            <label style={{ textAlign: 'left' }}>
                                 Artículo Científico
                             </label>
                         </div>
@@ -109,10 +123,14 @@ export default function MetodologiaProyecto() {
                             />
                         </div>
                     </div>
-                </div>
-                <br />
-                <h3> 2.8 Impactos del Proyecto</h3>
-                <div className="container">
+
+                    <br />
+                    <div className="row">
+                        <div className="col-6">
+                            <h4 style={{ textAlign: 'left' }}> 2.8 Impactos del Proyecto</h4>
+                        </div>
+                    </div>
+
                     <div className="row">
                         <div className="col-4">
 
@@ -198,7 +216,7 @@ export default function MetodologiaProyecto() {
                     </div>
                     <div className="row">
                         <div className="col-4">
-                            <label>
+                            <label style={{ textAlign: 'left' }} >
                                 Otro Impacto
                             </label>
                         </div>
@@ -216,26 +234,41 @@ export default function MetodologiaProyecto() {
 
                     </div>
 
+                    <div className="row">
+                        <div className="col-4">
+                            <h4 style={{ textAlign: 'left' }}> 2.9 Descripción de Actividad I+D</h4>
 
+                        </div>
+                        <div className="col-8">
+                            <textarea
+                                //value={formData.comments}
+                                placeholder="Descripción de la actividad"
+                                //onChange={handleChange}
+                                name="comments"
+                            />
+                        </div>
+                    </div>
+
+<br />
+                    <div className="row">
+                        <div className="col-4">
+                            <h4 style={{ textAlign: 'left' }}> 2.10 Aspectos Bioéticos</h4>
+
+                        </div>
+                        <div className="col-8">
+                            <textarea
+                                //value={formData.comments}
+                                placeholder="Su proyecto requiere aprobación de un comité de bioética"
+                                //onChange={handleChange}
+                                name="comments"
+                            />
+                        </div>
+                    </div>
+
+
+                    <br />
                 </div>
-                <h3> 2.9 Descripción de Actividad I+D</h3>
 
-                <textarea
-                    //value={formData.comments}
-                    placeholder="Descripción de la actividad"
-                    //onChange={handleChange}
-                    name="comments"
-                />
-
-                <h3> 2.10 Aspectos Bioéticos</h3>
-
-                <textarea
-                    //value={formData.comments}
-                    placeholder="Su proyecto requiere aprobación de un comité de bioética"
-                    //onChange={handleChange}
-                    name="comments"
-                />
-<br/>
                 <button
                     className="btn btn-primary"
                 //onClick={() => console.log(docenteSeleccionado)}
