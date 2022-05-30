@@ -121,7 +121,7 @@ export default function PersonalExternoCooperante() {
                     </thead>
                     <tbody>
                         {data.map(elemento => (
-                            <tr>
+                            <tr key={elemento.id}>
                                 <td className="tg-0lax">{elemento.id}</td>
                                 <td className="tg-0lax">{elemento.rol}</td>
                                 <td className="tg-0lax">{elemento.nombres}</td>

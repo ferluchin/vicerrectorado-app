@@ -5,6 +5,56 @@ import "../style.css"
 
 
 export default function FechasProyecto() {
+    const [formData, setFormData] = React.useState(
+        {
+            titulo: "",
+            facultad: "",
+            departamento: "",
+            grupoInvestigacion: "",
+            dominioAcademico: "",
+            lineaInvestigacion: "",
+            programaInvestigacion: "",
+
+            fechaInicio: "",
+            fechaFin: "",
+            duracionProyectoSemanas: "",
+
+            alcanceTerritorial: "",
+            // Datos del Director del Proyecto 
+            nombreDirectorProyecto: "",
+            identificacionDirectorProyecto: "",
+            telefonoDirectorProyecto: "",
+            correoInstitucional: "",
+
+            //Areas del conocimiento de acuerdo a organismos internacionales 
+            actividadCientifica: "",
+            objetivoSocioEconomico: "",
+            areaTematicaID: "",
+            objetivosPlanCreacionOportunidades: "",
+
+            //Clasificacion internacional Normalizada de la educación
+            campoAmplio: "",
+            campoEspecifico: "",
+            campoDetallado: "",
+            objetivosDesarrolloSostenible: "",
+        }
+    )
+
+    function handleChange(event) {
+        const { name, value, type, checked } = event.target
+        setFormData(prevFormData => {
+            return {
+                ...prevFormData,
+                [name]: type === "checkbox" ? checked : value
+            }
+        })
+    }
+
+    function handleSubmit(event) {
+        event.preventDefault()
+        // submitToApi(formData)
+        console.log(formData)
+    }
 
     return (
         <section>
@@ -33,7 +83,7 @@ export default function FechasProyecto() {
                             name="programaInvestigacion"
                             min={"2022-01-01"}
                             value={"2022-06-01"}
-                        //onChange={handleChange}
+                            onChange={handleChange}
                         //value={formData.programaInvestigacion}
                         />
                     </div>
@@ -51,7 +101,7 @@ export default function FechasProyecto() {
                             name="programaInvestigacion"
                             min={"2022-01-01"}
                             value={"2022-06-01"}
-                        //onChange={handleChange}
+                            onChange={handleChange}
                         //value={formData.programaInvestigacion}
                         />
                     </div>
@@ -65,7 +115,7 @@ export default function FechasProyecto() {
                             placeholder="ingresar valor"
                             className="form--input"
                             name="programaInvestigacion"
-                        //onChange={handleChange}
+                            onChange={handleChange}
                         //value={formData.programaInvestigacion}
                         />
                     </div>

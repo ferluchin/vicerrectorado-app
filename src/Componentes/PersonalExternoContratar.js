@@ -139,7 +139,7 @@ export default function PersonalExternoContratar() {
         </thead>
         <tbody>
           {data.map(elemento => (
-            <tr>
+            <tr key={elemento.id}>
               <td key={elemento.id}>{elemento.id}</td>
               <td >{elemento.perfilRequerido}</td>
               <td >{elemento.funcion}</td>

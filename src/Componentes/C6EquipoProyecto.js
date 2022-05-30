@@ -155,7 +155,7 @@ export default function EquipoProyecto() {
                             </thead>
                             <tbody>
                                 {data.map(elemento => (
-                                    <tr>
+                                    <tr key={elemento.id}>
                                         <td style={{ whiteSpace: "nowrap" }}>{elemento.id}</td>
                                         <td>{elemento.rol}</td>
                                         <td>{elemento.tipo}</td>

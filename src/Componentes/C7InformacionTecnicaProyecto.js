@@ -140,15 +140,22 @@ export default function InformacionTecnicaProyecto() {
                         </div>
                     </div>
                     <br />
+                    <div className="row">
+                        <div className="col-12">
+                            <h4>Objetivos Específicos</h4>
+                        </div>
+
+                    </div>
+                    <br />
 
                     <div className="row">
                         <div className="col-3">
-                            <h4> Objetivos Específicos: </h4>
+                            <h4> Objetivo Específico 1: </h4>
                         </div>
                         <div className="col-9">
                             <textarea
                                 //value={formData.comments}
-                                placeholder="Se recomienda máximo 3"
+                                placeholder="Detallar"
                                 //onChange={handleChange}
                                 name="comments"
                             />
@@ -156,6 +163,64 @@ export default function InformacionTecnicaProyecto() {
                     </div>
 
                     <br />
+                    <div className="row">
+                        <div className="col-3">
+                            <h4> Objetivo Específico 2: </h4>
+                        </div>
+                        <div className="col-9">
+                            <textarea
+                                //value={formData.comments}
+                                placeholder="Detallar"
+                                //onChange={handleChange}
+                                name="comments"
+                            />
+                        </div>
+                    </div>
+                    <br />
+
+                    <div className="row">
+                        <div className="col-3">
+                            <h4> Objetivo Específico 3: </h4>
+                        </div>
+                        <div className="col-9">
+                            <textarea
+                                //value={formData.comments}
+                                placeholder="Detallar"
+                                //onChange={handleChange}
+                                name="comments"
+                            />
+                        </div>
+                    </div>
+                    <br />
+
+                    <div className="row">
+                        <div className="col-3">
+                            <h4> Objetivo Específico 4: </h4>
+                        </div>
+                        <div className="col-9">
+                            <textarea
+                                //value={formData.comments}
+                                placeholder="Detallar"
+                                //onChange={handleChange}
+                                name="comments"
+                            />
+                        </div>
+                    </div>
+
+                    <br />
+                    <div className="row">
+                        <div className="col-3">
+                            <h4> Objetivo Específico 5: </h4>
+                        </div>
+                        <div className="col-9">
+                            <textarea
+                                //value={formData.comments}
+                                placeholder="Detallar"
+                                //onChange={handleChange}
+                                name="comments"
+                            />
+                        </div>
+                    </div>
                 </div>
 
                 <button

@@ -249,7 +249,7 @@ export default function MetodologiaProyecto() {
                         </div>
                     </div>
 
-<br />
+                    <br />
                     <div className="row">
                         <div className="col-4">
                             <h4 style={{ textAlign: 'left' }}> 2.10 Aspectos Bioéticos</h4>

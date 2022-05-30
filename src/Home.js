@@ -86,13 +86,13 @@ export default function Home() {
 
                 {/* <NavBar /> */}
                 <h3>1.  Información General.</h3> {<br />}
-                <div class="mb-3 row">
+                <div className="mb-3 row">
                     <label
-                        class="col-sm-2 col-form-label"
+                        className="col-sm-2 col-form-label"
                     >
                         Título.
                     </label>
-                    <div class="col-sm-10">
+                    <div className="col-sm-10">
                         <input
                             type="text"
                             placeholder="Ingresar Texto"
@@ -128,7 +128,7 @@ export default function Home() {
                             </select>
                         </div>
 
-                        {<br />}
+                        <br />
                         <div className="col-4">
 
                             <label htmlFor="departamento">
@@ -160,14 +160,13 @@ export default function Home() {
                                 <option value="Ciencias Jurídicas">Ciencias Jurídicas.</option>
                             </select>
 
-                            <br />
                         </div>
+                        <br />
 
                         <div className="col-4">
 
                             <label htmlFor="grupoInvestigacion">
                                 Grupo de Investigación
-                                {/* Grupo de Investigación <br/> al que pertenece el Proyecto. */}
                             </label>
 
                             <br />
@@ -388,8 +387,8 @@ export default function Home() {
             <br />
             <button
                 className="btn btn-primary"
-                //onClick={() => console.log(docenteSeleccionado)}
-                //type="button"
+            //onClick={() => console.log(docenteSeleccionado)}
+            //type="button"
             >
                 Enviar Información
             </button>
