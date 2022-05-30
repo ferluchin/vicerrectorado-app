@@ -4,11 +4,43 @@ import TitleBar from "./TitleBar";
 import "../style.css"
 
 export default function ResumenPresupuesto() {
+
+    const [formData, setFormData] = React.useState(
+        {
+            //resumen Presupuestos
+            viaticosSubsistenciasMovilizacion: "",
+            honorarios: "",
+            materialesSuministrosReactivos: "",
+            equipos: "",
+            capacitacion: "",
+            totalGastosDirectos: "",
+            //adicional
+            bibliografia: "",
+            observaciones: "",
+        }
+    )
+
+    function handleChange(event) {
+        const { name, value, type, checked } = event.target
+        setFormData(prevFormData => {
+            return {
+                ...prevFormData,
+                [name]: type === "checkbox" ? checked : value
+            }
+        })
+    }
+
+    function handleSubmit(event) {
+        event.preventDefault()
+        // submitToApi(formData)
+        console.log(formData)
+    }
+
     return (
         <section>
             <form
                 className="form"
-            //onSubmit={handleSubmit}
+                onSubmit={handleSubmit}
             >
                 <TitleBar />
                 {/* <NavBar /> */}
@@ -33,8 +65,8 @@ export default function ResumenPresupuesto() {
                                 placeholder="$ "
                                 className="form--input"
                                 name="viaticosSubsistenciasMovilizacion"
-                            //onChange={handleChange}
-                            //value={formData.titulo}
+                                onChange={handleChange}
+                                value={formData.viaticosSubsistenciasMovilizacion}
                             />
                         </div>
                     </div>
@@ -49,15 +81,14 @@ export default function ResumenPresupuesto() {
                         </div>
 
                         <div className="col-8">
-
                             <input
                                 type="number"
                                 min={0}
                                 placeholder="$ "
                                 className="form--input"
                                 name="honorarios"
-                            //onChange={handleChange}
-                            //value={formData.titulo}
+                                onChange={handleChange}
+                                value={formData.honorarios}
                             />
                         </div>
 
@@ -78,8 +109,8 @@ export default function ResumenPresupuesto() {
                                 placeholder="$ "
                                 className="form--input"
                                 name="materialesSuministrosReactivos"
-                            //onChange={handleChange}
-                            //value={formData.titulo}
+                                onChange={handleChange}
+                                value={formData.materialesSuministrosReactivos}
                             />
                         </div>
                     </div>
@@ -99,8 +130,8 @@ export default function ResumenPresupuesto() {
                                 placeholder="$ "
                                 className="form--input"
                                 name="equipos"
-                            //onChange={handleChange}
-                            //value={formData.titulo}
+                                onChange={handleChange}
+                                value={formData.equipos}
                             />
                         </div>
 
@@ -119,8 +150,8 @@ export default function ResumenPresupuesto() {
                                 placeholder="$"
                                 className="form--input"
                                 name="capacitacion"
-                            //onChange={handleChange}
-                            //value={formData.titulo}
+                                onChange={handleChange}
+                                value={formData.capacitacion}
                             />
                         </div>
 
@@ -140,8 +171,8 @@ export default function ResumenPresupuesto() {
                                 placeholder="$"
                                 className="form--input"
                                 name="totalGastosDirectos"
-                            //onChange={handleChange}
-                            //value={formData.titulo}
+                                onChange={handleChange}
+                                value={formData.totalGastosDirectos}
                             />
                         </div>
 
@@ -157,10 +188,10 @@ export default function ResumenPresupuesto() {
                         </div>
                         <div className="col-8">
                             <textarea
-                                //value={formData.comments}
+                                value={formData.bibliografia}
                                 placeholder="Escribir Texto "
-                                //onChange={handleChange}
-                                name="comments"
+                                onChange={handleChange}
+                                name="bibliografia"
                             />
                         </div>
                     </div>
@@ -175,10 +206,10 @@ export default function ResumenPresupuesto() {
                         </div>
                         <div className="col-8">
                             <textarea
-                                //value={formData.comments}
+                                value={formData.observaciones}
                                 placeholder="Escribir Texto "
-                                //onChange={handleChange}
-                                name="comments"
+                                onChange={handleChange}
+                                name="observaciones"
                             />
                         </div>
                     </div>

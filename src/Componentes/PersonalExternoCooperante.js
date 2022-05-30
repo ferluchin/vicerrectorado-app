@@ -14,7 +14,6 @@ export default function PersonalExternoCooperante() {
             entidad: "Ediloja",
         },
 
-
         {
             id: 2,
             rol: "Participación",
@@ -27,8 +26,6 @@ export default function PersonalExternoCooperante() {
     const [modalEditar, setModalEditar] = useState(false);
     const [modalEliminar, setModalEliminar] = useState(false);
     const [modalInsertar, setModalInsertar] = useState(false);
-
-
 
     const [personalExternoCooperanteSeleccionado, setPersonalExternoCooperanteSeleccionado] = useState({
         id: '',
@@ -107,7 +104,6 @@ export default function PersonalExternoCooperante() {
                 <table
                     // className='table table-bordered'
                     className='table table-hover'
-
                 >
                     <thead>
                         <tr>
@@ -141,9 +137,7 @@ export default function PersonalExternoCooperante() {
                                     >
                                         Eliminar
                                     </button>
-
                                 </td>
-
                             </tr>
                         ))}
                     </tbody>
@@ -167,7 +161,8 @@ export default function PersonalExternoCooperante() {
                             readOnly
                             type="text"
                             name='id'
-                            value={personalExternoCooperanteSeleccionado && personalExternoCooperanteSeleccionado.id}
+                            value={personalExternoCooperanteSeleccionado &&
+                                personalExternoCooperanteSeleccionado.id}
                         />
                         <br />
 
@@ -177,7 +172,8 @@ export default function PersonalExternoCooperante() {
                         <br />
                         <select
                             id="rol"
-                            value={personalExternoCooperanteSeleccionado && personalExternoCooperanteSeleccionado.rol}
+                            value={personalExternoCooperanteSeleccionado &&
+                                personalExternoCooperanteSeleccionado.rol}
                             onChange={handleChange}
                             name="rol"
                             // className="form-select"
@@ -209,7 +205,8 @@ export default function PersonalExternoCooperante() {
                             className='form-control'
                             type="text"
                             name="nombres"
-                            value={personalExternoCooperanteSeleccionado && personalExternoCooperanteSeleccionado.nombres}
+                            value={personalExternoCooperanteSeleccionado &&
+                                personalExternoCooperanteSeleccionado.nombres}
                             onChange={handleChange}
                         />
                         <br />
@@ -222,7 +219,8 @@ export default function PersonalExternoCooperante() {
                             className='form-control'
                             type="text"
                             name="entidad"
-                            value={personalExternoCooperanteSeleccionado && personalExternoCooperanteSeleccionado.entidad}
+                            value={personalExternoCooperanteSeleccionado &&
+                                personalExternoCooperanteSeleccionado.entidad}
                             onChange={handleChange}
                         />
                         <br />
@@ -253,7 +251,8 @@ export default function PersonalExternoCooperante() {
             <Modal isOpen={modalEliminar}>
                 <ModalBody >
                     ¿Estás seguro que deseas eliminar el registro seleccionado?
-                    {personalExternoCooperanteSeleccionado && personalExternoCooperanteSeleccionado.rol}
+                    {personalExternoCooperanteSeleccionado &&
+                        personalExternoCooperanteSeleccionado.rol}
                 </ModalBody>
                 <ModalFooter
                     className="modal-footer-pg"
@@ -301,16 +300,15 @@ export default function PersonalExternoCooperante() {
                         <br />
                         <select
                             id="rol"
-                            value={personalExternoCooperanteSeleccionado && personalExternoCooperanteSeleccionado.rol}
+                            value={personalExternoCooperanteSeleccionado &&
+                                personalExternoCooperanteSeleccionado.rol}
                             onChange={handleChange}
                             name="rol"
                             // className="form-select"
                             className='form-control'
-
                         >
                             <option value="Tutor/ Asesor">Tutor/ Asesor</option>
                             <option value="Participación">Participación</option>
-
                         </select>
 
 
@@ -319,9 +317,9 @@ export default function PersonalExternoCooperante() {
                             className='form-control'
                             type="text"
                             name="nombres"
-                            value={personalExternoCooperanteSeleccionado ? personalExternoCooperanteSeleccionado.nombres : ''}
+                            value={personalExternoCooperanteSeleccionado ?
+                                personalExternoCooperanteSeleccionado.nombres : ''}
                             onChange={handleChange}
-
                         />
                         <br />
 
@@ -332,7 +330,8 @@ export default function PersonalExternoCooperante() {
                             className='form-control'
                             type="text"
                             name="entidad"
-                            value={personalExternoCooperanteSeleccionado ? personalExternoCooperanteSeleccionado.entidad : ''}
+                            value={personalExternoCooperanteSeleccionado ?
+                                personalExternoCooperanteSeleccionado.entidad : ''}
                             onChange={handleChange}
 
                         />
@@ -362,25 +361,3 @@ export default function PersonalExternoCooperante() {
         </div>
     )
 }
-
-/*
-            < br />
-
-            <label htmlFor="funcion">Función</label>
-            <br />
-            <select
-              id="funcion"
-              value={personalExternoContratarSeleccionado && personalExternoContratarSeleccionado.funcion}
-              onChange={handleChange}
-              name="funcion"
-              // className="form-select"
-              className='form-control'
-
-            >
-              <option value="ASISTENTE">ASISTENTE</option>
-              <option value="TÉCNICO">TÉCNICO</option>
-              <option value="ANALISTA">ANALISTA</option>
-              <option value="CONSULTOR-ESPECIALISTA">CONSULTOR-ESPECIALISTA</option>
-
-            </select>
-            */

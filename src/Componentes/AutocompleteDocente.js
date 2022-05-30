@@ -134,12 +134,6 @@ export default function AutocompleteDocente() {
 
     };
 
-    /*
-                            type="text"
-                        placeholder="Escribir Texto"
-                        className="form--input"
-                        name="programaInvestigacion"
-    */
     const eventEnter = (e) => {
         if (e.key == "Enter") {
             var split = e.target.value.split('-');

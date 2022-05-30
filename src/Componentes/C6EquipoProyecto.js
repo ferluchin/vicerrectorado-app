@@ -144,11 +144,14 @@ export default function EquipoProyecto() {
                                     <th>Nro.</th>
                                     <th>ROL</th>
                                     <th>TIPO</th>
-                                    <th>Investigadores Acreditados <br /> SENESCYT</th>
+                                    <th>Investigadores Acreditados <br />
+                                        SENESCYT</th>
                                     <th>Identificación</th>
                                     <th>Nombres y Apellidos</th>
                                     <th>Horas Semanales <br />de Participación</th>
-                                    <th>Total Horas <br /> Participación  <br />en el Proyecto</th>
+                                    <th>Total Horas <br />
+                                        Participación  <br />
+                                        en el Proyecto</th>
                                     <th>Acciones Eliminar / Editar</th>
 
                                 </tr>
@@ -206,10 +209,10 @@ export default function EquipoProyecto() {
                                     readOnly
                                     type="text"
                                     name='id'
-                                    value={personalSeleccionado && personalSeleccionado.id}
+                                    value={personalSeleccionado &&
+                                        personalSeleccionado.id}
                                 />
                                 <br />
-
 
                                 <label htmlFor='rol'>
                                     ROL
@@ -217,7 +220,8 @@ export default function EquipoProyecto() {
 
                                 <select
                                     id="rol"
-                                    value={personalSeleccionado ? personalSeleccionado.rol : ''}
+                                    value={personalSeleccionado ?
+                                        personalSeleccionado.rol : ''}
                                     onChange={handleChange}
                                     name="rol"
                                     className="form-control"
@@ -234,7 +238,8 @@ export default function EquipoProyecto() {
 
                                 <select
                                     id="tipo"
-                                    value={personalSeleccionado ? personalSeleccionado.tipo : ''}
+                                    value={personalSeleccionado ?
+                                        personalSeleccionado.tipo : ''}
                                     onChange={handleChange}
                                     name="tipo"
                                     className="form-control"
@@ -252,7 +257,8 @@ export default function EquipoProyecto() {
 
                                 <select
                                     id="senescyt"
-                                    value={personalSeleccionado ? personalSeleccionado.senescyt : ''}
+                                    value={personalSeleccionado ?
+                                        personalSeleccionado.senescyt : ''}
                                     onChange={handleChange}
                                     name="senescyt"
                                     className="form-control"
@@ -272,7 +278,8 @@ export default function EquipoProyecto() {
                                     type="number"
                                     min={0}
                                     name="identificacion"
-                                    value={personalSeleccionado && personalSeleccionado.identificacion}
+                                    value={personalSeleccionado &&
+                                        personalSeleccionado.identificacion}
                                     onChange={handleChange}
                                 />
                                 <br />
@@ -285,7 +292,8 @@ export default function EquipoProyecto() {
                                     className='form-control'
                                     type="text"
                                     name="nombres"
-                                    value={personalSeleccionado && personalSeleccionado.nombres}
+                                    value={personalSeleccionado &&
+                                        personalSeleccionado.nombres}
                                     onChange={handleChange}
                                 />
                                 <br />
@@ -300,7 +308,8 @@ export default function EquipoProyecto() {
                                     type="number"
                                     min={0}
                                     name="horasSemanales"
-                                    value={personalSeleccionado && personalSeleccionado.horasSemanales}
+                                    value={personalSeleccionado &&
+                                        personalSeleccionado.horasSemanales}
                                     onChange={handleChange}
                                 />
                                 <br />
@@ -316,7 +325,8 @@ export default function EquipoProyecto() {
                                     type="number"
                                     min={0}
                                     name="horasTotales"
-                                    value={personalSeleccionado && personalSeleccionado.horasTotales}
+                                    value={personalSeleccionado &&
+                                        personalSeleccionado.horasTotales}
                                     onChange={handleChange}
                                 />
                                 <br />
@@ -345,7 +355,8 @@ export default function EquipoProyecto() {
                     <Modal isOpen={modalEliminar}>
                         <ModalBody >
                             ¿Estás seguro que deseas eliminar el registro seleccionado?
-                            {personalSeleccionado && personalSeleccionado.rol}
+                            {personalSeleccionado &&
+                                personalSeleccionado.rol}
                         </ModalBody>
                         <ModalFooter
                             className="modal-footer-pg"
@@ -371,7 +382,8 @@ export default function EquipoProyecto() {
                         <ModalHeader>
                             <div>
                                 <h3>
-                                    Insertar nuevo registro <br /> Personal Interno
+                                    Insertar nuevo registro <br />
+                                    Personal Interno
                                 </h3>
                             </div>
                         </ModalHeader>
@@ -395,7 +407,8 @@ export default function EquipoProyecto() {
 
                                 <select
                                     id="rol"
-                                    value={personalSeleccionado ? personalSeleccionado.rol : ''}
+                                    value={personalSeleccionado ?
+                                        personalSeleccionado.rol : ''}
                                     onChange={handleChange}
                                     name="rol"
                                     className="form-control"
@@ -412,7 +425,8 @@ export default function EquipoProyecto() {
 
                                 <select
                                     id="tipo"
-                                    value={personalSeleccionado ? personalSeleccionado.tipo : ''}
+                                    value={personalSeleccionado ?
+                                        personalSeleccionado.tipo : ''}
                                     onChange={handleChange}
                                     name="tipo"
                                     className="form-control"
@@ -431,7 +445,8 @@ export default function EquipoProyecto() {
 
                                 <select
                                     id="senescyt"
-                                    value={personalSeleccionado ? personalSeleccionado.senescyt : ''}
+                                    value={personalSeleccionado ?
+                                        personalSeleccionado.senescyt : ''}
                                     onChange={handleChange}
                                     name="senescyt"
                                     className="form-control"
@@ -448,7 +463,8 @@ export default function EquipoProyecto() {
                                     type="number"
                                     min={0}
                                     name="identificacion"
-                                    value={personalSeleccionado ? personalSeleccionado.identificacion : ''}
+                                    value={personalSeleccionado ?
+                                        personalSeleccionado.identificacion : ''}
                                     onChange={handleChange}
 
                                 />
@@ -459,7 +475,8 @@ export default function EquipoProyecto() {
                                     className='form-control'
                                     type="text"
                                     name="nombres"
-                                    value={personalSeleccionado ? personalSeleccionado.nombres : ''}
+                                    value={personalSeleccionado ?
+                                        personalSeleccionado.nombres : ''}
                                     onChange={handleChange}
 
                                 />
@@ -474,7 +491,8 @@ export default function EquipoProyecto() {
                                     type="number"
                                     min={0}
                                     name="horasSemanales"
-                                    value={personalSeleccionado ? personalSeleccionado.horasSemanales : ''}
+                                    value={personalSeleccionado ?
+                                        personalSeleccionado.horasSemanales : ''}
                                     onChange={handleChange}
 
                                 />
@@ -490,7 +508,8 @@ export default function EquipoProyecto() {
                                     type="number"
                                     min={0}
                                     name="horasTotales"
-                                    value={personalSeleccionado ? personalSeleccionado.horasTotales : ''}
+                                    value={personalSeleccionado ?
+                                        personalSeleccionado.horasTotales : ''}
                                     onChange={handleChange}
 
                                 />

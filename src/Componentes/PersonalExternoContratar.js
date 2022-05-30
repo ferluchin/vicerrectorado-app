@@ -2,8 +2,6 @@
 import React, { useState } from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Modal, ModalBody, ModalHeader, ModalFooter } from 'reactstrap';
-
-
 //import "../style.css"
 
 export default function PersonalExternoContratar() {
@@ -43,8 +41,6 @@ export default function PersonalExternoContratar() {
   const [modalEliminar, setModalEliminar] = useState(false);
   const [modalInsertar, setModalInsertar] = useState(false);
 
-
-
   const [personalExternoContratarSeleccionado, setPersonalExternoCooperanteSeleccionado] = useState({
     id: '',
     perfilRequerido: '',
@@ -75,7 +71,6 @@ export default function PersonalExternoContratar() {
         personal.principalesActividades = personalExternoContratarSeleccionado.principalesActividades;
         personal.tiempoContratacionMeses = personalExternoContratarSeleccionado.tiempoContratacionMeses;
         personal.numeroPersonas = personalExternoContratarSeleccionado.numeroPersonas;
-
       }
     })
     setData(dataNueva);
@@ -90,7 +85,6 @@ export default function PersonalExternoContratar() {
   const abrirModalInsertar = () => {
     setPersonalExternoCooperanteSeleccionado(null);
     setModalInsertar(true);
-
   }
 
   const insertar = () => {
@@ -125,52 +119,52 @@ export default function PersonalExternoContratar() {
         <table
           className='table table-hover'
         >
-        <thead>
-          <tr>
-            <th>Nro.</th>
-            <th>Perfil Requerido</th>
-            <th>Función</th>
-            <th>Principales Actividades <br />a Desarrollar</th>
-            <th>Tiempo Contratación <br /> Meses</th>
-            <th>Número de personas <br /> a contratar</th>
-            <th>Acciones</th>
-
-          </tr>
-        </thead>
-        <tbody>
-          {data.map(elemento => (
-            <tr key={elemento.id}>
-              <td key={elemento.id}>{elemento.id}</td>
-              <td >{elemento.perfilRequerido}</td>
-              <td >{elemento.funcion}</td>
-              <td >{elemento.principalesActividades}</td>
-              <td >{elemento.tiempoContratacionMeses}</td>
-              <td >{elemento.numeroPersonas}</td>
-
-              <td>
-                <button 
-                  className='btn btn-primary'
-                  onClick={() => seleccionarPersonal(elemento, 'Editar')}
-                  type="button"
-                  
-                >
-                  Editar
-                </button>
-                
-                <button
-                  className='btn btn-danger'
-                  onClick={() => seleccionarPersonal(elemento, 'Eliminar')}
-                  type="button"
-                >
-                  Eliminar
-                </button>
-
-              </td>
+          <thead>
+            <tr>
+              <th>Nro.</th>
+              <th>Perfil Requerido</th>
+              <th>Función</th>
+              <th>Principales Actividades <br />a Desarrollar</th>
+              <th>Tiempo Contratación <br /> Meses</th>
+              <th>Número de personas <br /> a contratar</th>
+              <th>Acciones</th>
 
             </tr>
-          ))}
-        </tbody>
-      </table>
+          </thead>
+          <tbody>
+            {data.map(elemento => (
+              <tr key={elemento.id}>
+                <td key={elemento.id}>{elemento.id}</td>
+                <td >{elemento.perfilRequerido}</td>
+                <td >{elemento.funcion}</td>
+                <td >{elemento.principalesActividades}</td>
+                <td >{elemento.tiempoContratacionMeses}</td>
+                <td >{elemento.numeroPersonas}</td>
+
+                <td>
+                  <button
+                    className='btn btn-primary'
+                    onClick={() => seleccionarPersonal(elemento, 'Editar')}
+                    type="button"
+
+                  >
+                    Editar
+                  </button>
+
+                  <button
+                    className='btn btn-danger'
+                    onClick={() => seleccionarPersonal(elemento, 'Eliminar')}
+                    type="button"
+                  >
+                    Eliminar
+                  </button>
+
+                </td>
+
+              </tr>
+            ))}
+          </tbody>
+        </table>
       </div>
 
       <Modal isOpen={modalEditar}>
@@ -190,7 +184,8 @@ export default function PersonalExternoContratar() {
               readOnly
               type="text"
               name='id'
-              value={personalExternoContratarSeleccionado && personalExternoContratarSeleccionado.id}
+              value={personalExternoContratarSeleccionado &&
+                personalExternoContratarSeleccionado.id}
             />
             <br />
 
@@ -202,7 +197,8 @@ export default function PersonalExternoContratar() {
               className='form-control'
               type="text"
               name="perfilRequerido"
-              value={personalExternoContratarSeleccionado && personalExternoContratarSeleccionado.perfilRequerido}
+              value={personalExternoContratarSeleccionado &&
+                personalExternoContratarSeleccionado.perfilRequerido}
               onChange={handleChange}
             />
             < br />
@@ -211,31 +207,18 @@ export default function PersonalExternoContratar() {
             <br />
             <select
               id="funcion"
-              value={personalExternoContratarSeleccionado && personalExternoContratarSeleccionado.funcion}
+              value={personalExternoContratarSeleccionado &&
+                personalExternoContratarSeleccionado.funcion}
               onChange={handleChange}
               name="funcion"
               // className="select-css"
               className='form-control'
-
             >
               <option value="ASISTENTE">ASISTENTE</option>
               <option value="TÉCNICO">TÉCNICO</option>
               <option value="ANALISTA">ANALISTA</option>
               <option value="CONSULTOR-ESPECIALISTA">CONSULTOR-ESPECIALISTA</option>
-
             </select>
-
-            {/* <label>
-              Función
-            </label>
-
-            <input
-              className='form-control'
-              type="text"
-              name="funcion"
-              value={personalExternoContratarSeleccionado && personalExternoContratarSeleccionado.funcion}
-              onChange={handleChange}
-            /> */}
             <br />
 
             <label >
@@ -246,7 +229,8 @@ export default function PersonalExternoContratar() {
               className='form-control'
               type="text"
               name="principalesActividades"
-              value={personalExternoContratarSeleccionado && personalExternoContratarSeleccionado.principalesActividades}
+              value={personalExternoContratarSeleccionado &&
+                personalExternoContratarSeleccionado.principalesActividades}
               onChange={handleChange}
             />
             <br />
@@ -305,7 +289,8 @@ export default function PersonalExternoContratar() {
       <Modal isOpen={modalEliminar}>
         <ModalBody >
           ¿Estás seguro que deseas eliminar el registro seleccionado?
-          {personalExternoContratarSeleccionado && personalExternoContratarSeleccionado.perfilRequerido}
+          {personalExternoContratarSeleccionado &&
+            personalExternoContratarSeleccionado.perfilRequerido}
         </ModalBody>
         <ModalFooter
           className="modal-footer-pg"
@@ -331,7 +316,8 @@ export default function PersonalExternoContratar() {
         <ModalHeader>
           <div>
             <h3>
-              Insertar nuevo registro <br /> Personal Externo a Contratar
+              Insertar nuevo registro <br />
+              Personal Externo a Contratar
             </h3>
           </div>
         </ModalHeader>
@@ -367,31 +353,18 @@ export default function PersonalExternoContratar() {
             <br />
             <select
               id="funcion"
-              value={personalExternoContratarSeleccionado && personalExternoContratarSeleccionado.funcion}
+              value={personalExternoContratarSeleccionado ?
+                personalExternoContratarSeleccionado.funcion : ''}
               onChange={handleChange}
               name="funcion"
               // className="select-css"
               className='form-control'
-
             >
               <option value="ASISTENTE">ASISTENTE</option>
               <option value="TÉCNICO">TÉCNICO</option>
               <option value="ANALISTA">ANALISTA</option>
               <option value="CONSULTOR-ESPECIALISTA">CONSULTOR-ESPECIALISTA</option>
-
             </select>
-            {/* <br />
-
-            <label>Función</label>
-            <input
-              className='form-control'
-              type="text"
-              name="funcion"
-              value={personalExternoContratarSeleccionado ?
-                personalExternoContratarSeleccionado.funcion : ''}
-              onChange={handleChange}
-
-            /> */}
             <br />
 
             <label>
@@ -461,23 +434,3 @@ export default function PersonalExternoContratar() {
     </div>
   )
 }
-
-/*
-                <label htmlFor="facultad">Facultad</label>
-                <br />
-                <select
-                    id="facultad"
-                    value={formData.facultad}
-                    onChange={handleChange}
-                    name="facultad"
-                    className="select-css"
-                >
-                    <option value="Ciencias Económicas y Empresariales">Ciencias Económicas y Empresariales</option>
-                    <option value="Ciencias de la Salud">Ciencias de la Salud</option>
-                    <option value="Ciencias Exactas y Naturales">Ciencias Exactas y Naturales</option>
-                    <option value="Ingenierías y Arquitectura">Ingenierías y Arquitectura</option>
-                    <option value="Ciencias Sociales, Educación y Humanidades">Ciencias Sociales, Educación y Humanidades</option>
-
-                </select>
-                <br /> 
-                 */

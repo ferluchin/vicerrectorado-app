@@ -5,12 +5,49 @@ import "../style.css"
 
 export default function InformacionTecnicaProyecto() {
 
+    const [formData, setFormData] = React.useState(
+        {
+            resumenProyecto: "",
+
+            palabraClave1: "",
+            palabraClave2: "",
+            palabraClave3: "",
+            palabraClave4: "",
+
+            introduccionAntecedentes: "",
+            introduccionJustificacion: "",
+
+
+            objetivoGeneral: "",
+            objetivoEspecifico1: "",
+            objetivoEspecifico2: "",
+            objetivoEspecifico3: "",
+            objetivoEspecifico4: "",
+            objetivoEspecifico5: ""
+        }
+    )
+
+    function handleChange(event) {
+        const { name, value, type, checked } = event.target
+        setFormData(prevFormData => {
+            return {
+                ...prevFormData,
+                [name]: type === "checkbox" ? checked : value
+            }
+        })
+    }
+
+    function handleSubmit(event) {
+        event.preventDefault()
+        // submitToApi(formData)
+        console.log(formData)
+    }
 
     return (
         <section>
             <form
                 className="form"
-            //onSubmit={handleSubmit}
+                onSubmit={handleSubmit}
             >
                 <TitleBar />
                 {/* <NavBar /> */}
@@ -25,30 +62,26 @@ export default function InformacionTecnicaProyecto() {
 
                         <div className="col-9">
                             <textarea
-                                //value={formData.comments}
+                                name="resumenProyecto"
+                                value={formData.resumenProyecto}
                                 placeholder="Realizar una síntesis clara y concisa del proyecto (máximo 150 palabras)"
-                                //onChange={handleChange}
-                                name="comments"
+                                onChange={handleChange}
                             />
                             < br />
                         </div>
                     </div>
-
                     < br />
 
-
                     <h3> 2.2 Palabras Clave</h3>
-
                     <div className="row">
                         <div className="col-3">
-
                             <input
                                 type="text"
                                 placeholder="Keywords"
                                 className="form--input"
-                                name="titulo"
-                            //onChange={handleChange}
-                            //value={formData.titulo}
+                                name="palabraClave1"
+                                onChange={handleChange}
+                                value={formData.palabraClave1}
                             />
                         </div>
                         <div className="col-3">
@@ -57,9 +90,9 @@ export default function InformacionTecnicaProyecto() {
                                 type="text"
                                 placeholder="Keywords"
                                 className="form--input"
-                                name="titulo"
-                            //onChange={handleChange}
-                            //value={formData.titulo}
+                                name="palabraClave2"
+                                onChange={handleChange}
+                                value={formData.palabraClave2}
                             />
                         </div>
                         <div className="col-3">
@@ -68,9 +101,9 @@ export default function InformacionTecnicaProyecto() {
                                 type="text"
                                 placeholder="Keywords"
                                 className="form--input"
-                                name="titulo"
-                            //onChange={handleChange}
-                            //value={formData.titulo}
+                                name="palabraClave3"
+                                onChange={handleChange}
+                                value={formData.palabraClave3}
                             />
                         </div>
                         <div className="col-3">
@@ -79,9 +112,9 @@ export default function InformacionTecnicaProyecto() {
                                 type="text"
                                 placeholder="Keywords"
                                 className="form--input"
-                                name="titulo"
-                            //onChange={handleChange}
-                            //value={formData.titulo}
+                                name="palabraClave4"
+                                onChange={handleChange}
+                                value={formData.palabraClave4}
                             />
                         </div>
                     </div>
@@ -98,10 +131,10 @@ export default function InformacionTecnicaProyecto() {
 
                         <div className="col-9">
                             <textarea
-                                //value={formData.comments}
+                                name="introduccionAntecedentes"
+                                value={formData.introduccionAntecedentes}
                                 placeholder="Máximo 500 palabras"
-                                //onChange={handleChange}
-                                name="comments"
+                                onChange={handleChange}
                             />
                         </div>
                     </div>
@@ -113,10 +146,10 @@ export default function InformacionTecnicaProyecto() {
                         </div>
                         <div className="col-9">
                             <textarea
-                                //value={formData.comments}
+                                name="introduccionJustificacion"
+                                value={formData.introduccionJustificacion}
                                 placeholder="Máximo 500 palabras"
-                                //onChange={handleChange}
-                                name="comments"
+                                onChange={handleChange}
                             />
                         </div>
                     </div>
@@ -132,10 +165,10 @@ export default function InformacionTecnicaProyecto() {
                         </div>
                         <div className="col-9">
                             <textarea
-                                //value={formData.comments}
+                                name="objetivoGeneral"
+                                value={formData.objetivoGeneral}
                                 placeholder="Detallar"
-                                //onChange={handleChange}
-                                name="comments"
+                                onChange={handleChange}
                             />
                         </div>
                     </div>
@@ -154,10 +187,10 @@ export default function InformacionTecnicaProyecto() {
                         </div>
                         <div className="col-9">
                             <textarea
-                                //value={formData.comments}
+                                name="objetivoEspecifico1"
+                                value={formData.objetivoEspecifico1}
                                 placeholder="Detallar"
-                                //onChange={handleChange}
-                                name="comments"
+                                onChange={handleChange}
                             />
                         </div>
                     </div>
@@ -169,10 +202,10 @@ export default function InformacionTecnicaProyecto() {
                         </div>
                         <div className="col-9">
                             <textarea
-                                //value={formData.comments}
+                                name="objetivoEspecifico2"
+                                value={formData.objetivoEspecifico2}
                                 placeholder="Detallar"
-                                //onChange={handleChange}
-                                name="comments"
+                                onChange={handleChange}
                             />
                         </div>
                     </div>
@@ -184,10 +217,10 @@ export default function InformacionTecnicaProyecto() {
                         </div>
                         <div className="col-9">
                             <textarea
-                                //value={formData.comments}
+                                name="objetivoEspecifico3"
+                                value={formData.objetivoEspecifico3}
                                 placeholder="Detallar"
-                                //onChange={handleChange}
-                                name="comments"
+                                onChange={handleChange}
                             />
                         </div>
                     </div>
@@ -199,10 +232,10 @@ export default function InformacionTecnicaProyecto() {
                         </div>
                         <div className="col-9">
                             <textarea
-                                //value={formData.comments}
+                                value={formData.objetivoEspecifico4}
                                 placeholder="Detallar"
-                                //onChange={handleChange}
-                                name="comments"
+                                onChange={handleChange}
+                                name="objetivoEspecifico4"
                             />
                         </div>
                     </div>
@@ -214,10 +247,10 @@ export default function InformacionTecnicaProyecto() {
                         </div>
                         <div className="col-9">
                             <textarea
-                                //value={formData.comments}
+                                name="objetivoEspecifico5"
+                                value={formData.objetivoEspecifico5}
                                 placeholder="Detallar"
-                                //onChange={handleChange}
-                                name="comments"
+                                onChange={handleChange}
                             />
                         </div>
                     </div>

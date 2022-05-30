@@ -5,15 +5,47 @@ import TablaCronograma from "./TablaCronograma";
 import "../style.css"
 
 export default function CronogramaActividades() {
+
+    const [formData, setFormData] = React.useState(
+        {
+            //Cronograma de Actividades
+            objetivoGeneral: "",
+            objetivoEspecifico1: "",
+            resultadoObjetivoEspecifico1: "",
+
+            //Personal Externo a Contratar
+
+            //objetivos y resultados
+            objectivoEspecifico2: "",
+            resultadoObjetivoEspecifico2: "",
+        }
+    )
+
+    function handleChange(event) {
+        const { name, value, type, checked } = event.target
+        setFormData(prevFormData => {
+            return {
+                ...prevFormData,
+                [name]: type === "checkbox" ? checked : value
+            }
+        })
+    }
+
+    function handleSubmit(event) {
+        event.preventDefault()
+        // submitToApi(formData)
+        console.log(formData)
+    }
+
+
     return (
         <section>
             <form
                 className="form"
-            //onSubmit={handleSubmit}
+                onSubmit={handleSubmit}
             >
                 <TitleBar />
                 {/* <NavBar /> */}
-
                 <h3>
                     2.11 Cronograma de Actividades
                 </h3>
@@ -26,14 +58,12 @@ export default function CronogramaActividades() {
                         </div>
                         <div className="col-9">
                             <textarea
-                                //value={formData.comments}
+                                value={formData.objetivoGeneral}
                                 placeholder="Escribir texto"
-                                //onChange={handleChange}
-                                name="comments"
+                                onChange={handleChange}
+                                name="objetivoGeneral"
                             />
-
                         </div>
-
                     </div>
                 </div>
                 <br />
@@ -46,10 +76,10 @@ export default function CronogramaActividades() {
                         </div>
                         <div className="col-9">
                             <textarea
-                                //value={formData.comments}
+                                value={formData.objetivoEspecifico1}
                                 placeholder="Escribir texto"
-                                //onChange={handleChange}
-                                name="comments"
+                                onChange={handleChange}
+                                name="objetivoEspecifico1"
                             />
                         </div>
                     </div>
@@ -64,10 +94,10 @@ export default function CronogramaActividades() {
                         </div>
                         <div className="col-9">
                             <textarea
-                                //value={formData.comments}
+                                value={formData.resultadoObjetivoEspecifico1}
                                 placeholder="Escribir texto"
-                                //onChange={handleChange}
-                                name="comments"
+                                onChange={handleChange}
+                                name="resultadoObjetivoEspecifico1"
                             />
                         </div>
                     </div>
@@ -86,10 +116,10 @@ export default function CronogramaActividades() {
                         </div>
                         <div className="col-9">
                             <textarea
-                                //value={formData.comments}
+                                value={formData.objectivoEspecifico2}
                                 placeholder="Escribir texto"
-                                //onChange={handleChange}
-                                name="comments"
+                                onChange={handleChange}
+                                name="objectivoEspecifico2"
                             />
                         </div>
                     </div>
@@ -101,21 +131,16 @@ export default function CronogramaActividades() {
                         </div>
                         <div className="col-9">
                             <textarea
-                                //value={formData.comments}
+                                value={formData.resultadoObjetivoEspecifico2}
                                 placeholder="Escribir texto"
-                                //onChange={handleChange}
-                                name="comments"
+                                onChange={handleChange}
+                                name="resultadoObjetivoEspecifico2"
                             />
                         </div>
                     </div>
                 </div>
 
                 <br />
-
-
-
-                {<br />}
-
                 <br />
                 <TablaCronograma />
 

@@ -5,11 +5,49 @@ import "../style.css"
 
 
 export default function MetodologiaProyecto() {
+
+    const [formData, setFormData] = React.useState(
+        {
+            metodologia: "",
+
+            //Tranferencia de conocimiento 
+            articuloCientifico: "",
+            prototipo: "",
+            registroPropiedadIndustrial: "",
+            otrosTransferenciaConocimiento: "",
+            //Impactos del Proyecto
+            impactoSocial: "",
+            impactoCientifico: "",
+            impactoEconomico: "",
+            impactoPolitico: "",
+            otroImpacto: "",
+
+            descripcionActividadID: "",
+            aspectosBioeticos: "",
+        }
+    )
+
+    function handleChange(event) {
+        const { name, value, type, checked } = event.target
+        setFormData(prevFormData => {
+            return {
+                ...prevFormData,
+                [name]: type === "checkbox" ? checked : value
+            }
+        })
+    }
+
+    function handleSubmit(event) {
+        event.preventDefault()
+        // submitToApi(formData)
+        console.log(formData)
+    }
+
     return (
         <section>
             <form
                 className="form"
-            //onSubmit={handleSubmit}
+                onSubmit={handleSubmit}
             >
                 <TitleBar />
                 {/* <NavBar /> */}
@@ -22,11 +60,10 @@ export default function MetodologiaProyecto() {
                         </div>
                         <div className="col-8">
                             <textarea
-                                //value={formData.comments}
-                                placeholder="Describir de manera sintética los métodos 
-                    y técnicas necesarias para alcanzar sus objetivos"
-                                //onChange={handleChange}
-                                name="comments"
+                                value={formData.metodologia}
+                                placeholder="Describir de manera sintética los métodos y técnicas necesarias para alcanzar sus objetivos"
+                                onChange={handleChange}
+                                name="metodologia"
                             />
                         </div>
                     </div>
@@ -35,7 +72,9 @@ export default function MetodologiaProyecto() {
                     <br />
                     <div className="row">
                         <div className="col-6">
-                            <h4 style={{ textAlign: 'left' }}> 2.7 Transferecia de conocimiento</h4>
+                            <h4 style={{ textAlign: 'left' }}>
+                                2.7 Transferecia de conocimiento
+                            </h4>
 
                         </div>
                     </div>
@@ -49,10 +88,10 @@ export default function MetodologiaProyecto() {
                         </div>
                         <div className="col-8">
                             <select
-                                id="favColor"
-                                //value={formData.favColor}
-                                //onChange={handleChange}
-                                name="al"
+                                id="articuloCientifico"
+                                value={formData.articuloCientifico}
+                                onChange={handleChange}
+                                name="articuloCientifico"
                                 className="form-select"
                             >
                                 <option value="">-- Elija un Elemento --</option>
@@ -70,10 +109,10 @@ export default function MetodologiaProyecto() {
                         </div>
                         <div className="col-8">
                             <select
-                                id="favColor"
-                                //value={formData.favColor}
-                                //onChange={handleChange}
-                                name="al"
+                                id="prototipo"
+                                value={formData.prototipo}
+                                onChange={handleChange}
+                                name="prototipo"
                                 className="form-select"
                             >
                                 <option value="">-- Elija un Elemento --</option>
@@ -92,10 +131,10 @@ export default function MetodologiaProyecto() {
                         </div>
                         <div className="col-8">
                             <select
-                                id="favColor"
-                                //value={formData.favColor}
-                                //onChange={handleChange}
-                                name="al"
+                                id="registroPropiedadIndustrial"
+                                value={formData.registroPropiedadIndustrial}
+                                onChange={handleChange}
+                                name="registroPropiedadIndustrial"
                                 className="form-select"
                             >
                                 <option value="">-- Elija un Elemento --</option>
@@ -118,8 +157,8 @@ export default function MetodologiaProyecto() {
                                 placeholder="Detallar si aplica. "
                                 className="form--input"
                                 name="otrosTransferenciaConocimiento"
-                            //onChange={handleChange}
-                            //value={formData.titulo}
+                                onChange={handleChange}
+                                value={formData.otrosTransferenciaConocimiento}
                             />
                         </div>
                     </div>
@@ -145,8 +184,8 @@ export default function MetodologiaProyecto() {
                                 placeholder="Su proyecto tendrá el siguiente impacto "
                                 className="form--input"
                                 name="impactoSocial"
-                            //onChange={handleChange}
-                            //value={formData.titulo}
+                                onChange={handleChange}
+                                value={formData.impactoSocial}
                             />
                         </div>
                     </div>
@@ -167,8 +206,8 @@ export default function MetodologiaProyecto() {
                                 placeholder="Su proyecto tendrá el siguiente impacto "
                                 className="form--input"
                                 name="impactoCientifico"
-                            //onChange={handleChange}
-                            //value={formData.titulo}
+                                onChange={handleChange}
+                                value={formData.impactoCientifico}
                             />
                         </div>
 
@@ -188,8 +227,8 @@ export default function MetodologiaProyecto() {
                                 placeholder="Su proyecto tendrá el siguiente impacto"
                                 className="form--input"
                                 name="impactoEconomico"
-                            //onChange={handleChange}
-                            //value={formData.titulo}
+                                onChange={handleChange}
+                                value={formData.impactoEconomico}
                             />
                         </div>
                     </div>
@@ -208,8 +247,8 @@ export default function MetodologiaProyecto() {
                                 placeholder="Su proyecto tendrá el siguiente impacto "
                                 className="form--input"
                                 name="impactoPolitico"
-                            //onChange={handleChange}
-                            //value={formData.titulo}
+                                onChange={handleChange}
+                                value={formData.impactoPolitico}
                             />
                         </div>
 
@@ -227,8 +266,8 @@ export default function MetodologiaProyecto() {
                                 placeholder="Su proyecto tendrá el siguiente impacto"
                                 className="form--input"
                                 name="otroImpacto"
-                            //onChange={handleChange}
-                            //value={formData.titulo}
+                                onChange={handleChange}
+                                value={formData.otroImpacto}
                             />
                         </div>
 
@@ -241,10 +280,10 @@ export default function MetodologiaProyecto() {
                         </div>
                         <div className="col-8">
                             <textarea
-                                //value={formData.comments}
+                                name="descripcionActividadID"
+                                value={formData.descripcionActividadID}
                                 placeholder="Descripción de la actividad"
-                                //onChange={handleChange}
-                                name="comments"
+                                onChange={handleChange}
                             />
                         </div>
                     </div>
@@ -257,10 +296,10 @@ export default function MetodologiaProyecto() {
                         </div>
                         <div className="col-8">
                             <textarea
-                                //value={formData.comments}
+                                name="aspectosBioeticos"
+                                value={formData.aspectosBioeticos}
                                 placeholder="Su proyecto requiere aprobación de un comité de bioética"
-                                //onChange={handleChange}
-                                name="comments"
+                                onChange={handleChange}
                             />
                         </div>
                     </div>

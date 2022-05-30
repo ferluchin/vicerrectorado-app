@@ -19,6 +19,7 @@ export default function Home() {
             facultad: "",
             departamento: "",
             grupoInvestigacion: "",
+            
             dominioAcademico: "",
             lineaInvestigacion: "",
             programaInvestigacion: "",

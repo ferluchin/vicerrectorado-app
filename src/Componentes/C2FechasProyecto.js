@@ -7,13 +7,13 @@ import "../style.css"
 export default function FechasProyecto() {
     const [formData, setFormData] = React.useState(
         {
-            titulo: "",
-            facultad: "",
-            departamento: "",
-            grupoInvestigacion: "",
-            dominioAcademico: "",
-            lineaInvestigacion: "",
-            programaInvestigacion: "",
+            // titulo: "",
+            // facultad: "",
+            // departamento: "",
+            // grupoInvestigacion: "",
+            // dominioAcademico: "",
+            // lineaInvestigacion: "",
+            // programaInvestigacion: "",
 
             fechaInicio: "",
             fechaFin: "",
@@ -58,20 +58,10 @@ export default function FechasProyecto() {
 
     return (
         <section>
-            {/* 
-            <form
-                className="form"
-            //onSubmit={handleSubmit}
-            > */}
-            {/* <NavBar /> */}
-            {
-                //FECHAS
-            }
             <div className="container">
 
                 <div className="row">
                     <div className="col-4">
-
                         <label htmlFor="fechaInicio">
                             Fecha de Inicio.
                         </label>
@@ -82,9 +72,8 @@ export default function FechasProyecto() {
                             className="form--input"
                             name="programaInvestigacion"
                             min={"2022-01-01"}
-                            value={"2022-06-01"}
                             onChange={handleChange}
-                        //value={formData.programaInvestigacion}
+                            value={formData.fechaInicio}
                         />
                     </div>
 
@@ -100,9 +89,8 @@ export default function FechasProyecto() {
                             className="form--input"
                             name="programaInvestigacion"
                             min={"2022-01-01"}
-                            value={"2022-06-01"}
                             onChange={handleChange}
-                        //value={formData.programaInvestigacion}
+                            value={formData.fechaFin}
                         />
                     </div>
 
@@ -114,9 +102,9 @@ export default function FechasProyecto() {
                             type="number"
                             placeholder="ingresar valor"
                             className="form--input"
-                            name="programaInvestigacion"
+                            name="duracionProyectoSemanas"
                             onChange={handleChange}
-                        //value={formData.programaInvestigacion}
+                            value={formData.duracionProyectoSemanas}
                         />
                     </div>
                 </div>
@@ -125,7 +113,7 @@ export default function FechasProyecto() {
 
             {<br />}
 
-            <label htmlFor="departamento">
+            <label htmlFor="alcanceTerritorial">
                 Alcance Territorial. (Cobertura del Proyecto)
             </label>
 
@@ -133,10 +121,10 @@ export default function FechasProyecto() {
 
             {<br />}
             <select
-                id="favColor"
-                //value={formData.favColor}
-                //onChange={handleChange}
-                name="al"
+                id="alcanceTerritorial"
+                value={formData.alcanceTerritorial}
+                onChange={handleChange}
+                name="alcanceTerritorial"
                 className="form-select"
             >
                 <option value="">-- Elija un Elemento --</option>

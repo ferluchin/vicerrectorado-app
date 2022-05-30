@@ -4,11 +4,43 @@ import "../style.css"
 import TitleBar from "./TitleBar";
 
 export default function TipoProyecto() {
+
+    const [formData, setFormData] = React.useState(
+        {
+            tipoProyecto: "",
+            tipoInvestigacion: "",
+            tipoFinanciamiento: "",
+
+            organismoEntidadFinanciador: "",
+
+            presupuestoTotal: "",
+            aporteUTPL: "",
+            aporteContraparte: "",
+
+        }
+    )
+
+    function handleChange(event) {
+        const { name, value, type, checked } = event.target
+        setFormData(prevFormData => {
+            return {
+                ...prevFormData,
+                [name]: type === "checkbox" ? checked : value
+            }
+        })
+    }
+
+    function handleSubmit(event) {
+        event.preventDefault()
+        // submitToApi(formData)
+        console.log(formData)
+    }
+
     return (
         <section>
             <form
                 className="form"
-            //onSubmit={handleSubmit}
+                onSubmit={handleSubmit}
             >
                 <TitleBar />
                 {/* <NavBar /> */}
@@ -22,16 +54,16 @@ export default function TipoProyecto() {
                             className="col-4"
 
                         >
-                            <label>
+                            <label htmlFor="tipoProyecto">
                                 Tipo de Proyecto:
                             </label>
 
                             {<br />}
                             <select
-                                id="favColor"
-                                //value={formData.favColor}
-                                //onChange={handleChange}
-                                name="al"
+                                id="tipoProyecto"
+                                value={formData.tipoProyecto}
+                                onChange={handleChange}
+                                name="tipoProyecto"
                                 className="form-select"
                             >
                                 <option value="">-- Elija un Elemento --</option>
@@ -46,14 +78,14 @@ export default function TipoProyecto() {
                             className="col-4"
 
                         >
-                            <label>
+                            <label htmlFor="tipoInvestigacion">
                                 Tipo de Investigación:
                             </label>
                             <select
-                                id="favColor"
-                                //value={formData.favColor}
-                                //onChange={handleChange}
-                                name="al"
+                                id="tipoInvestigacion"
+                                value={formData.tipoInvestigacion}
+                                onChange={handleChange}
+                                name="tipoInvestigacion"
                                 className="form-select"
                             >
                                 <option value="">-- Elija un Elemento --</option>
@@ -66,16 +98,15 @@ export default function TipoProyecto() {
                         <div
                             //className="column"
                             className="col-4"
-
                         >
-                            <label>
+                            <label htmlFor="tipoFinanciamiento">
                                 Tipo de Financiamiento:
                             </label>
                             <select
-                                id="favColor"
-                                //value={formData.favColor}
-                                //onChange={handleChange}
-                                name="al"
+                                id="tipoFinanciamiento"
+                                value={formData.tipoFinanciamiento}
+                                onChange={handleChange}
+                                name="tipoFinanciamiento"
                                 className="form-select"
                             >
                                 <option value="">-- Elija un Elemento --</option>
@@ -87,7 +118,6 @@ export default function TipoProyecto() {
                                 <option value="ASIGNACIÓN REGULAR IES/FONDOS CONCURSABLES INTERNO IES.">ASIGNACIÓN REGULAR IES/FONDOS CONCURSABLES INTERNO IES. </option>
                                 <option value="ASIGNACIÓN REGULAR IES/FONDOS CONCURSABLES NACIONALES.">ASIGNACIÓN REGULAR IES/FONDOS CONCURSABLES NACIONALES. </option>
                                 <option value="ASIGNACIÓN REGULAR IES/FONDOS CONCURSABLES INTERNACIONALES.">ASIGNACIÓN REGULAR IES/FONDOS CONCURSABLES INTERNACIONALES. </option>
-
 
                                 <option value="FONDOS CONCURSABLES INTERNO IES/ FONDOS CONCURSABLE NACIONALES.">FONDOS CONCURSABLES INTERNO IES/ FONDOS CONCURSABLE NACIONALES. </option>
                                 <option value="FONDOS CONCURSABLES INTERNO IES/ FONDOS CONCURSABLE SINTERNACIONALES.">FONDOS CONCURSABLES INTERNO IES/ FONDOS CONCURSABLE SINTERNACIONALES. </option>
@@ -118,9 +148,9 @@ export default function TipoProyecto() {
                                 //className="form--input"
                                 className="form-control"
 
-                                name="programaInvestigacion"
-                            //onChange={handleChange}
-                            //value={formData.programaInvestigacion}
+                                name="organismoEntidadFinanciador"
+                                onChange={handleChange}
+                                value={formData.organismoEntidadFinanciador}
                             />
                         </div>
                     </div>
@@ -142,9 +172,9 @@ export default function TipoProyecto() {
                             min={0}
                             placeholder="Ingresar Valor"
                             className="form--input"
-                            name="programaInvestigacion"
-                        //onChange={handleChange}
-                        //value={formData.programaInvestigacion}
+                            name="presupuestoTotal"
+                            onChange={handleChange}
+                            value={formData.presupuestoTotal}
                         />
                     </div>
 
@@ -161,9 +191,9 @@ export default function TipoProyecto() {
                             min={0}
                             placeholder="Ingresar Valor"
                             className="form--input"
-                            name="programaInvestigacion"
-                        //onChange={handleChange}
-                        //value={formData.programaInvestigacion}
+                            name="aporteUTPL"
+                            onChange={handleChange}
+                            value={formData.aporteUTPL}
                         />
                     </div>
 
@@ -180,9 +210,9 @@ export default function TipoProyecto() {
                             min={0}
                             placeholder="Ingresar Valor"
                             className="form--input"
-                            name="programaInvestigacion"
-                        //onChange={handleChange}
-                        //value={formData.programaInvestigacion}
+                            name="aporteContraparte"
+                            onChange={handleChange}
+                            value={formData.aporteContraparte}
                         />
                     </div>
 
