@@ -5,14 +5,6 @@ export default function NavBar() {
     return (
         <ul>
             <li><Link to="/">Home</Link></li>
-            
-{/*             
-            <li><Link to="/informacion-general">Información General</Link></li>
-            <li><Link to="/fechas-proyecto">Fechas del Proyecto</Link></li>
-            <li><Link to="/director-proyecto">Director del Proyecto</Link></li>
-            <li><Link to="/areas-conocimiento">Áreas del Conocimiento</Link></li>
-
-             */}
             <li><Link to="/tipo-proyecto">Tipo de Proyecto</Link></li>
 
             <li><Link to="/equipo-proyecto">Equipo del Proyecto</Link></li>
@@ -23,12 +15,3 @@ export default function NavBar() {
         </ul>
     )
 }
-
-/*
-}           
-            <li><Link to="/projects">Projects</Link></li>
-            <li><Link to="/contact">Contact</Link></li>
-<li><Link to="/about">About</Link></li>
-            <li><Link to="/projects">Projects</Link></li>
-            <li><Link to="/contact">Contact</Link></li>
-*/

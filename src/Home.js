@@ -1,15 +1,31 @@
 import React from "react";
-// import NavBar from "./NavBar";
 import TitleBar from "./Componentes/TitleBar";
-// import InformacionGeneral from "./Componentes/C1InformacionGeneral";
 import FechasProyecto from "./Componentes/C2FechasProyecto";
 import DirectorProyecto from "./Componentes/C3DirectorProyecto";
 import AreasConocimiento from "./Componentes/C4AreasConocimiento";
 
 import 'bootstrap/dist/css/bootstrap.min.css';
-// import { Modal, ModalBody, ModalHeader, ModalFooter } from 'reactstrap'
 import "./style.css"
+import { app, auth } from "./firebase"
 
+
+import {
+    getFirestore,
+    collection,
+    addDoc,
+    getDocs,
+    doc,
+    deleteDoc,
+    getDoc,
+    updateDoc,
+    setDoc,
+} from "firebase/firestore";
+
+// import NavBar from "./NavBar";
+// import { Modal, ModalBody, ModalHeader, ModalFooter } from 'reactstrap'
+// import InformacionGeneral from "./Componentes/C1InformacionGeneral";
+
+const db = getFirestore();
 
 export default function Home() {
 
@@ -19,7 +35,7 @@ export default function Home() {
             facultad: "",
             departamento: "",
             grupoInvestigacion: "",
-            
+
             dominioAcademico: "",
             lineaInvestigacion: "",
             programaInvestigacion: "",
@@ -58,13 +74,23 @@ export default function Home() {
             }
         })
     }
-
-    function handleSubmit(event) {
+    /*
+        function handleSubmit(event) {
+            event.preventDefault()
+            // submitToApi(formData)
+            console.log(formData)
+        }
+    */
+    const handleSubmit = async(event) => {
         event.preventDefault()
         // submitToApi(formData)
-        console.log(formData)
+        try {
+            await addDoc(collection(db, ))
+        } catch (error) {
+            console.log(error)
+        }
+        //console.log(formData)
     }
-
     return (
 
         <form
@@ -162,7 +188,6 @@ export default function Home() {
                             </select>
 
                         </div>
-                        <br />
 
                         <div className="col-4">
 
@@ -170,7 +195,6 @@ export default function Home() {
                                 Grupo de Investigación
                             </label>
 
-                            <br />
                             <select
                                 id="grupoInvestigacion"
                                 value={formData.grupoInvestigacion}
@@ -231,7 +255,7 @@ export default function Home() {
                     </div>
 
                 </div>
-
+                <br />
                 <div className="container">
                     <div className="row">
                         <div className="col-4">
@@ -387,7 +411,7 @@ export default function Home() {
             <AreasConocimiento />
             <br />
             <button
-                className="btn btn-primary"
+                className="btn btn-primary btn-block"
             //onClick={() => console.log(docenteSeleccionado)}
             //type="button"
             >

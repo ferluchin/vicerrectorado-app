@@ -1,17 +1,10 @@
 import './App.css';
 
 import Home from './Home';
-/*
-import Contact from './Contact';
-import Projects from './Projects';
-import About from './About';
-*/
-
 
 import { Routes, Link, Route } from "react-router-dom";
 
 import FechasProyecto from './Componentes/C2FechasProyecto';
-//import InformacionGeneral from './Componentes/C1InformacionGeneral';
 import DirectorProyecto from './Componentes/C3DirectorProyecto';
 import AreasConocimiento from './Componentes/C4AreasConocimiento';
 import TipoProyecto from './Componentes/C5TipoProyecto';
@@ -61,16 +54,7 @@ function App() {
           </Routes>
 
         </div>
-        {
-          /*
-          currentNoteId &&
-          notes.length > 0 &&
-          <Editor
-            currentNote={findCurrentNote()}
-            updateNote={updateNote}
-        />
-        */
-        }
+
       </Split>
 
     </main>
