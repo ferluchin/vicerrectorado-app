@@ -63,7 +63,7 @@ export default function Home() {
         objetivosDesarrolloSostenible: "",
     }
 
-    const [formData, setFormData] = React.useState({...formInicial})
+    const [formData, setFormData] = React.useState({ ...formInicial })
 
     // const [formData, setFormData] = React.useState(
     //)
@@ -96,9 +96,9 @@ export default function Home() {
             console.log(error)
         }
         console.log(formData)
-        setFormData({...formInicial})
+        setFormData({ ...formInicial })
     }
-    
+
     return (
 
         <form
@@ -122,11 +122,15 @@ export default function Home() {
                 {/* <NavBar /> */}
                 <h3>1.  Información General.</h3> {<br />}
                 <div className="mb-3 row">
-                    <label
+
+                    <h5 className="col-sm-2">
+                        Titulo
+                    </h5>
+                    {/* <label
                         className="col-sm-2 col-form-label"
                     >
                         Título.
-                    </label>
+                    </label> */}
                     <div className="col-sm-10">
                         <input
                             type="text"
@@ -144,8 +148,14 @@ export default function Home() {
                     <div className="row">
                         <div className="col-4">
 
-                            <label htmlFor="facultad">Facultad</label>
-                            <br />
+                            {/* <label
+                                htmlFor="facultad"
+                            >
+                                Facultad
+                            </label> */}
+                            <h5>
+                                Facultad
+                            </h5>
                             <select
                                 id="facultad"
                                 value={formData.facultad}
@@ -166,10 +176,14 @@ export default function Home() {
                         <br />
                         <div className="col-4">
 
+                            <h5>
+                                Departamento
+                            </h5>
+                            {/*
                             <label htmlFor="departamento">
                                 Departamento
                             </label>
-                            <br />
+                            */}
                             <select
                                 id="departamento"
                                 value={formData.departamento}
@@ -199,9 +213,14 @@ export default function Home() {
 
                         <div className="col-4">
 
+                            <h5>
+                                Grupo de Investigación
+
+                            </h5>
+                            {/*                             
                             <label htmlFor="grupoInvestigacion">
                                 Grupo de Investigación
-                            </label>
+                            </label> */}
 
                             <select
                                 id="grupoInvestigacion"
@@ -268,11 +287,16 @@ export default function Home() {
                     <div className="row">
                         <div className="col-4">
 
-                            <label htmlFor="dominioAcademico">
+                            <h5>
                                 Dominio Académico.
-                            </label>
+
+                            </h5>
+                            {/* <label htmlFor="dominioAcademico">
+                                Dominio Académico.
+                            </label> 
 
                             <br />
+                            */}
                             <select
                                 id="dominioAcademico"
                                 value={formData.dominioAcademico}
@@ -301,11 +325,15 @@ export default function Home() {
 
                         <div className="col-4">
 
-                            <label htmlFor="lineaInvestigacion">
+                            <h5>
+                                Línea de Investigación
+                            </h5>
+                            {/* <label htmlFor="lineaInvestigacion">
                                 Línea de Investigación
                             </label>
 
-                            {<br />}
+                            <br /> */}
+
                             <select
                                 id="lineaInvestigacion"
                                 value={formData.lineaInvestigacion}
@@ -375,11 +403,14 @@ export default function Home() {
 
                         <div className="col-4">
 
-                            <label htmlFor="programaInvestigacion">
+                            <h5>
+                                Programa de Investigación
+                            </h5>
+                            {/* <label htmlFor="programaInvestigacion">
                                 Programa de Investigación
                             </label>
 
-                            {<br />}
+                            <br /> */}
                             <select
                                 id="programaInvestigacion"
                                 value={formData.programaInvestigacion}
@@ -410,7 +441,6 @@ export default function Home() {
                             </select>
                         </div>
                     </div>
-
                 </div>
             </section>
             {/* <InformacionGeneral /> */}
@@ -421,9 +451,12 @@ export default function Home() {
 
                     <div className="row">
                         <div className="col-4">
-                            <label htmlFor="fechaInicio">
+                            <h6>
+                                Fecha de inicio
+                            </h6>
+                            {/* <label htmlFor="fechaInicio">
                                 Fecha de Inicio.
-                            </label>
+                            </label> */}
                             <input
                                 id="fechaInicio"
                                 type="date"
@@ -437,9 +470,12 @@ export default function Home() {
                         </div>
 
                         <div className="col-4">
-                            <label htmlFor="fechaFin">
+                            <h6>
+                                Fecha de Finalización
+                            </h6>
+                            {/* <label htmlFor="fechaFin">
                                 Fecha de Fin.
-                            </label>
+                            </label> */}
                             <input
                                 id="fechaFin"
 
@@ -454,9 +490,12 @@ export default function Home() {
                         </div>
 
                         <div className="col-4">
-                            <label>
+                            <h6>
+                                Duración del proyecto
+                            </h6>
+                            {/* <label>
                                 Duración del proyecto semanas.
-                            </label>
+                            </label> */}
                             <input
                                 type="number"
                                 placeholder="ingresar valor"
@@ -471,31 +510,37 @@ export default function Home() {
 
 
                 {<br />}
+                <div className="container">
+                    <div className="row">
+                        <div className="col-4">
+                            <label htmlFor="alcanceTerritorial">
+                                Alcance Territorial. (Cobertura del Proyecto)
+                            </label>
+                        </div>
+                        <div className="col-8">
+                            <select
+                                id="alcanceTerritorial"
+                                value={formData.alcanceTerritorial}
+                                onChange={handleChange}
+                                name="alcanceTerritorial"
+                                className="form-select"
+                            >
+                                <option value="">-- Elija un Elemento --</option>
+                                <option value="Nacional.">Nacional.</option>
+                                <option value="Provincial.">Provincial.</option>
+                                <option value="Cantonal.">Cantonal.</option>
+                                <option value="Parroquial.">Parroquial.</option>
+                                <option value="Institucional.">Institucional.</option>
+                                <option value="Internacional.">Internacional.</option>
 
-                <label htmlFor="alcanceTerritorial">
-                    Alcance Territorial. (Cobertura del Proyecto)
-                </label>
 
+                            </select>
+                        </div>
+                    </div>
 
-
+                </div>
                 {<br />}
-                <select
-                    id="alcanceTerritorial"
-                    value={formData.alcanceTerritorial}
-                    onChange={handleChange}
-                    name="alcanceTerritorial"
-                    className="form-select"
-                >
-                    <option value="">-- Elija un Elemento --</option>
-                    <option value="Nacional.">Nacional.</option>
-                    <option value="Provincial.">Provincial.</option>
-                    <option value="Cantonal.">Cantonal.</option>
-                    <option value="Parroquial.">Parroquial.</option>
-                    <option value="Institucional.">Institucional.</option>
-                    <option value="Internacional.">Internacional.</option>
 
-
-                </select>
 
                 {/* </form> */}
             </section>

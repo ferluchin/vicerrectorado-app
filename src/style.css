@@ -151,7 +151,7 @@ h3 {
     text-align: center;
 }
 
-h4 {
+h4, h5 {
     width: 100%;
     text-align: left;
 }
