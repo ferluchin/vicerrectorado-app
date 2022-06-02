@@ -4,9 +4,9 @@ import Home from './Home';
 
 import { Routes, Link, Route } from "react-router-dom";
 
-import FechasProyecto from './Componentes/C2FechasProyecto';
+// import FechasProyecto from './Componentes/C2FechasProyecto';
 import DirectorProyecto from './Componentes/C3DirectorProyecto';
-import AreasConocimiento from './Componentes/C4AreasConocimiento';
+// import AreasConocimiento from './Componentes/C4AreasConocimiento';
 import TipoProyecto from './Componentes/C5TipoProyecto';
 import EquipoProyecto from './Componentes/C6EquipoProyecto';
 import InformacionTecnicaProyecto from './Componentes/C7InformacionTecnicaProyecto';
@@ -41,9 +41,9 @@ function App() {
 
           <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="/fechas-proyecto" element={<FechasProyecto />} />
+            {/* <Route path="/fechas-proyecto" element={<FechasProyecto />} /> */}
             <Route path="/director-proyecto" element={<DirectorProyecto />} />
-            <Route path="/areas-conocimiento" element={<AreasConocimiento />} />
+            {/* <Route path="/areas-conocimiento" element={<AreasConocimiento />} /> */}
             <Route path="/tipo-proyecto" element={<TipoProyecto />} />
             <Route path="/equipo-proyecto" element={<EquipoProyecto />} />
             <Route path="/informacion-tecnica-proyecto" element={<InformacionTecnicaProyecto />} />
