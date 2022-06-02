@@ -3,8 +3,23 @@ import React from "react";
 import "../style.css"
 import TitleBar from "./TitleBar";
 
-export default function TipoProyecto() {
+import { app, auth } from "../firebase"
+import {
+    getFirestore,
+    collection,
+    addDoc,
+    getDocs,
+    doc,
+    deleteDoc,
+    getDoc,
+    updateDoc,
+    setDoc,
+} from "firebase/firestore";
 
+const db = getFirestore();
+
+export default function TipoProyecto() {
+    /*
     const [formData, setFormData] = React.useState(
         {
             tipoProyecto: "",
@@ -19,6 +34,23 @@ export default function TipoProyecto() {
 
         }
     )
+    */
+
+    const formInicial = {
+        tipoProyecto: "",
+        tipoInvestigacion: "",
+        tipoFinanciamiento: "",
+
+        organismoEntidadFinanciador: "",
+
+        presupuestoTotal: "",
+        aporteUTPL: "",
+        aporteContraparte: "",
+    }
+
+    const [formData, setFormData] = React.useState(
+        { ...formInicial }); 
+
 
     function handleChange(event) {
         const { name, value, type, checked } = event.target
@@ -29,11 +61,25 @@ export default function TipoProyecto() {
             }
         })
     }
-
-    function handleSubmit(event) {
+    /*
+        function handleSubmit(event) {
+            event.preventDefault()
+            // submitToApi(formData)
+            console.log(formData)
+        }
+    */
+    const handleSubmit = async (event) => {
         event.preventDefault()
         // submitToApi(formData)
+        try {
+            await addDoc(collection(db, 'proyectos-investigacion'), {
+                ...formData
+            })
+        } catch (error) {
+            console.log(error)
+        }
         console.log(formData)
+        setFormData({ ...formInicial })
     }
 
     return (

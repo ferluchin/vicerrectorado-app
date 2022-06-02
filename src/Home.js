@@ -98,6 +98,7 @@ export default function Home() {
         console.log(formData)
         setFormData({...formInicial})
     }
+    
     return (
 
         <form

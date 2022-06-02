@@ -3,8 +3,41 @@ import React from "react";
 import TitleBar from "./TitleBar";
 import "../style.css"
 
+import { app, auth } from "../firebase"
+
+
+import {
+    getFirestore,
+    collection,
+    addDoc,
+    getDocs,
+    doc,
+    deleteDoc,
+    getDoc,
+    updateDoc,
+    setDoc,
+} from "firebase/firestore";
+
+const db = getFirestore();
+
 export default function ResumenPresupuesto() {
 
+    const formInicial = {
+        //resumen Presupuestos
+        viaticosSubsistenciasMovilizacion: "",
+        honorarios: "",
+        materialesSuministrosReactivos: "",
+        equipos: "",
+        capacitacion: "",
+        totalGastosDirectos: "",
+        //adicional
+        bibliografia: "",
+        observaciones: "",
+    }
+
+    const [formData, setFormData] = React.useState(
+        { ...formInicial })
+    /*
     const [formData, setFormData] = React.useState(
         {
             //resumen Presupuestos
@@ -19,7 +52,8 @@ export default function ResumenPresupuesto() {
             observaciones: "",
         }
     )
-
+    */
+    
     function handleChange(event) {
         const { name, value, type, checked } = event.target
         setFormData(prevFormData => {
@@ -29,11 +63,25 @@ export default function ResumenPresupuesto() {
             }
         })
     }
-
+    /*
     function handleSubmit(event) {
         event.preventDefault()
         // submitToApi(formData)
         console.log(formData)
+    }
+    */
+    const handleSubmit = async (event) => {
+        event.preventDefault()
+        // submitToApi(formData)
+        try {
+            await addDoc(collection(db, 'proyectos-investigacion'), {
+                ...formData
+            })
+        } catch (error) {
+            console.log(error)
+        }
+        console.log(formData)
+        setFormData({ ...formInicial })
     }
 
     return (

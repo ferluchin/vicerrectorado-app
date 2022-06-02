@@ -2,9 +2,49 @@ import React from "react";
 import TitleBar from "./TitleBar";
 // import NavBar from "../NavBar";
 import "../style.css"
+import { app, auth } from "../firebase"
+
+
+import {
+    getFirestore,
+    collection,
+    addDoc,
+    getDocs,
+    doc,
+    deleteDoc,
+    getDoc,
+    updateDoc,
+    setDoc,
+} from "firebase/firestore";
+
+const db = getFirestore()
 
 export default function InformacionTecnicaProyecto() {
 
+    const formInicial = {
+        resumenProyecto: "",
+
+        palabraClave1: "",
+        palabraClave2: "",
+        palabraClave3: "",
+        palabraClave4: "",
+
+        introduccionAntecedentes: "",
+        introduccionJustificacion: "",
+
+
+        objetivoGeneral: "",
+        objetivoEspecifico1: "",
+        objetivoEspecifico2: "",
+        objetivoEspecifico3: "",
+        objetivoEspecifico4: "",
+        objetivoEspecifico5: ""
+    }
+
+    const [formData, setFormData] = React.useState(
+        { ...formInicial });
+
+    /*
     const [formData, setFormData] = React.useState(
         {
             resumenProyecto: "",
@@ -26,6 +66,7 @@ export default function InformacionTecnicaProyecto() {
             objetivoEspecifico5: ""
         }
     )
+*/
 
     function handleChange(event) {
         const { name, value, type, checked } = event.target
@@ -36,13 +77,27 @@ export default function InformacionTecnicaProyecto() {
             }
         })
     }
-
-    function handleSubmit(event) {
+    /*
+        function handleSubmit(event) {
+            event.preventDefault()
+            // submitToApi(formData)
+            console.log(formData)
+        }
+    */
+    const handleSubmit = async (event) => {
         event.preventDefault()
         // submitToApi(formData)
+        try {
+            await addDoc(collection(db, 'proyectos-investigacion'), {
+                ...formData
+            })
+        } catch (error) {
+            console.log(error)
+        }
         console.log(formData)
+        setFormData({ ...formInicial })
     }
-
+    
     return (
         <section>
             <form
