@@ -1,13 +1,14 @@
 import React from "react";
 import TitleBar from "./Componentes/TitleBar";
-// import FechasProyecto from "./Componentes/C2FechasProyecto";
 import DirectorProyecto from "./Componentes/C3DirectorProyecto";
-// import AreasConocimiento from "./Componentes/C4AreasConocimiento";
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import "./style.css"
-import { app, auth } from "./firebase"
 
+import DatePicker from "react-datepicker";
+import 'react-datepicker/dist/react-datepicker.css';
+
+import { app, auth } from "./firebase"
 
 import {
     getFirestore,
@@ -111,7 +112,9 @@ export default function Home() {
 
             <br />
 
-            <section>
+
+
+            <div className="container">
 
                 {/* <form
                 className="form"
@@ -120,7 +123,7 @@ export default function Home() {
                 {/* <div> */}
 
                 {/* <NavBar /> */}
-                <h3>1.  Información General.</h3> {<br />}
+                <h4>1.  Información General.</h4> {<br />}
                 <div className="mb-3 row">
 
                     <h5 className="col-sm-2">
@@ -142,9 +145,29 @@ export default function Home() {
                         />
                     </div>
                 </div>
-                <div
-                    className="container"
-                >
+
+
+
+                <div className="container">
+                    <div className="row">
+                        <div className="col-4">
+                            <h5>
+                                Facultad
+                            </h5>
+                        </div>
+                        <div className="col-4">
+                            <h5>
+                                Departamento
+                            </h5>
+                        </div>
+                        <div className="col-4">
+                            <h5>
+                                Grupo de Investigación
+                            </h5>
+                        </div>
+                    </div>
+
+
                     <div className="row">
                         <div className="col-4">
 
@@ -153,9 +176,7 @@ export default function Home() {
                             >
                                 Facultad
                             </label> */}
-                            <h5>
-                                Facultad
-                            </h5>
+
                             <select
                                 id="facultad"
                                 value={formData.facultad}
@@ -173,12 +194,9 @@ export default function Home() {
                             </select>
                         </div>
 
-                        <br />
                         <div className="col-4">
 
-                            <h5>
-                                Departamento
-                            </h5>
+
                             {/*
                             <label htmlFor="departamento">
                                 Departamento
@@ -213,10 +231,7 @@ export default function Home() {
 
                         <div className="col-4">
 
-                            <h5>
-                                Grupo de Investigación
 
-                            </h5>
                             {/*                             
                             <label htmlFor="grupoInvestigacion">
                                 Grupo de Investigación
@@ -276,8 +291,6 @@ export default function Home() {
                                 <option value=""> -- Elija un Elemento -- </option>
                                 <option value=""> -- Elija un Elemento -- </option>
                             </select>
-
-
                         </div>
                     </div>
 
@@ -442,22 +455,27 @@ export default function Home() {
                         </div>
                     </div>
                 </div>
-            </section>
+            </div>
+
+
             {/* <InformacionGeneral /> */}
             {/* <FechasProyecto /> */}
 
-            <section>
-                <div className="container">
+            <div className="container">
 
-                    <div className="row">
-                        <div className="col-4">
-                            <h6>
-                                Fecha de inicio
-                            </h6>
-                            {/* <label htmlFor="fechaInicio">
+                <div className="row">
+                    <div className="col-4">
+                        <h5>
+                            Fecha de inicio
+                        </h5>
+                        {/* <label htmlFor="fechaInicio">
                                 Fecha de Inicio.
                             </label> */}
-                            <input
+
+
+
+                        {/* 
+                                <input
                                 id="fechaInicio"
                                 type="date"
                                 placeholder="INGRESAR UNA FECHA"
@@ -466,17 +484,21 @@ export default function Home() {
                                 min={"2022-01-01"}
                                 onChange={handleChange}
                                 value={formData.fechaInicio}
-                            />
-                        </div>
+                            /> */}
 
-                        <div className="col-4">
-                            <h6>
-                                Fecha de Finalización
-                            </h6>
-                            {/* <label htmlFor="fechaFin">
+
+                    </div>
+
+                    <div className="col-4">
+                        <h5>
+                            Fecha de Finalización
+                        </h5>
+                        {/* <label htmlFor="fechaFin">
                                 Fecha de Fin.
                             </label> */}
-                            <input
+
+
+                        {/* <input
                                 id="fechaFin"
 
                                 type="date"
@@ -486,64 +508,98 @@ export default function Home() {
                                 min={"2022-01-01"}
                                 onChange={handleChange}
                                 value={formData.fechaFin}
-                            />
-                        </div>
+                            /> */}
+                    </div>
 
-                        <div className="col-4">
-                            <h6>
-                                Duración del proyecto
-                            </h6>
-                            {/* <label>
+                    <div className="col-4">
+                        <h5>
+                            Duración del proyecto
+                        </h5>
+                        {/* <label>
                                 Duración del proyecto semanas.
                             </label> */}
-                            <input
-                                type="number"
-                                placeholder="ingresar valor"
-                                className="form--input"
-                                name="duracionProyectoSemanas"
-                                onChange={handleChange}
-                                value={formData.duracionProyectoSemanas}
-                            />
-                        </div>
+
                     </div>
                 </div>
 
 
-                {<br />}
-                <div className="container">
-                    <div className="row">
-                        <div className="col-4">
-                            <label htmlFor="alcanceTerritorial">
-                                Alcance Territorial. (Cobertura del Proyecto)
-                            </label>
-                        </div>
-                        <div className="col-8">
-                            <select
-                                id="alcanceTerritorial"
-                                value={formData.alcanceTerritorial}
-                                onChange={handleChange}
-                                name="alcanceTerritorial"
-                                className="form-select"
-                            >
-                                <option value="">-- Elija un Elemento --</option>
-                                <option value="Nacional.">Nacional.</option>
-                                <option value="Provincial.">Provincial.</option>
-                                <option value="Cantonal.">Cantonal.</option>
-                                <option value="Parroquial.">Parroquial.</option>
-                                <option value="Institucional.">Institucional.</option>
-                                <option value="Internacional.">Internacional.</option>
-
-
-                            </select>
-                        </div>
+                <div className="row">
+                    <div className="col-4">
+                        <DatePicker
+                            selected={formData.fechaInicio}
+                            dateFormat="yyyy/MM/dd"
+                            onChange={date => setFormData(
+                                {
+                                    ...formData,
+                                    fechaInicio: date
+                                })}
+                            className="form-control"
+                            minDate={new Date()}
+                        //isClearable
+                        />
                     </div>
-
+                    <div className="col-4">
+                        <DatePicker
+                            selected={formData.fechaFin}
+                            dateFormat="yyyy/MM/dd"
+                            onChange={date => setFormData(
+                                {
+                                    ...formData,
+                                    fechaFin: date
+                                })}
+                            className="form-control"
+                            minDate={new Date()}
+                        //isClearable
+                        />
+                    </div>
+                    <div className="col-4">
+                        <input
+                            type="number"
+                            placeholder="ingresar valor"
+                            className="form--input"
+                            name="duracionProyectoSemanas"
+                            onChange={handleChange}
+                            value={formData.duracionProyectoSemanas}
+                        />
+                    </div>
                 </div>
                 {<br />}
 
+                <div className="row">
+                    <div className="col-4">
+                        <h5>
 
-                {/* </form> */}
-            </section>
+                            Alcance Territorial. (Cobertura del Proyecto)
+                        </h5>
+                        {/* <label htmlFor="alcanceTerritorial">
+                            Alcance Territorial. (Cobertura del Proyecto)
+                        </label> */}
+                    </div>
+                    <div className="col-8">
+                        <select
+                            id="alcanceTerritorial"
+                            value={formData.alcanceTerritorial}
+                            onChange={handleChange}
+                            name="alcanceTerritorial"
+                            className="form-select"
+                        >
+                            <option value="">-- Elija un Elemento --</option>
+                            <option value="Nacional.">Nacional.</option>
+                            <option value="Provincial.">Provincial.</option>
+                            <option value="Cantonal.">Cantonal.</option>
+                            <option value="Parroquial.">Parroquial.</option>
+                            <option value="Institucional.">Institucional.</option>
+                            <option value="Internacional.">Internacional.</option>
+
+
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <br />
+            {/* </form> */}
+
             {/* Termina Fechas Proyecto */}
 
             <DirectorProyecto />
@@ -556,25 +612,30 @@ export default function Home() {
 
                 {<br />}
 
-                <label>
+                <h4>
                     Áreas del conocimiento de acuerdo a organismos internacionales.
 
-                </label>
-                {<br />}
+                </h4>
+
                 {<br />}
                 <div className="container">
 
                     <div className="row">
                         <div className="col-4">
 
+                            <h5>
+                                Actividad Científica
+                            </h5>
 
+
+                            {/*                             
                             <label htmlFor="actividadCientifica">
                                 Actividad Científica.
                             </label>
+                             */}
 
 
 
-                            {<br />}
                             <select
                                 id="actividadCientifica"
                                 value={formData.actividadCientifica}
@@ -607,13 +668,17 @@ export default function Home() {
                         </div>
 
                         <div className="col-4">
-                            <label htmlFor="objetivoSocioEconomico">
+
+                            <h5>
+                                Objetivo Socioeconómico
+                            </h5>
+
+                            {/* <label htmlFor="objetivoSocioEconomico">
                                 Objetivo Socioeconómico.
-                            </label>
+                            </label> */}
 
 
 
-                            {<br />}
                             <select
                                 id="objetivoSocioEconomico"
                                 value={formData.objetivoSocioEconomico}
@@ -642,13 +707,18 @@ export default function Home() {
                         </div>
 
                         <div className="col-4">
-                            <label htmlFor="areaTematicaID">
+
+                            <h5>
                                 Área tematica de I+D.
-                            </label>
+                            </h5>
+
+                            {/* <label htmlFor="areaTematicaID">
+                                Área tematica de I+D.
+                            </label> */}
 
 
 
-                            {<br />}
+
                             <select
                                 id="areaTematicaID"
                                 value={formData.areaTematicaID}
@@ -678,9 +748,13 @@ export default function Home() {
                 <div className="container">
                     <div className="row">
                         <div className="col-4">
-                            <label htmlFor="planCreacionOportunidades">
+                            <h5>
                                 Objetivos del plan de Creación de Oportunidades.
-                            </label>
+
+                            </h5>
+                            {/* <label htmlFor="planCreacionOportunidades">
+                                Objetivos del plan de Creación de Oportunidades.
+                            </label> */}
 
                         </div>
                         <div className="col-8">
@@ -714,20 +788,24 @@ export default function Home() {
                     </div>
                 </div>
                 {<br />}
-                <label>
+                <h4>
                     Clasificación Internacional Normalizada de la Educación
-                </label>
+                </h4>
                 {<br />}
                 {<br />}
                 <div className="container">
 
                     <div className="row">
                         <div className="col-4">
-                            <label>
+                            <h5>
                                 Campo amplio
-                            </label>
 
-                            {<br />}
+                            </h5>
+
+                            {/* <label>
+                                Campo amplio
+                            </label> */}
+
                             <select
                                 id="campoAmplio"
                                 value={formData.campoAmplio}
@@ -753,9 +831,14 @@ export default function Home() {
                         </div>
 
                         <div className="col-4">
-                            <label>
+                            <h5>
                                 Campo específico
-                            </label>
+
+                            </h5>
+
+                            {/* <label>
+                                Campo específico
+                            </label> */}
                             <select
                                 id="campoEspecifico"
                                 value={formData.campoEspecifico}
@@ -797,9 +880,14 @@ export default function Home() {
                         </div>
 
                         <div className="col-4">
-                            <label>
+
+                            <h5>
                                 Campo detallado
-                            </label>
+                            </h5>
+
+                            {/* <label>
+                                Campo detallado
+                            </label> */}
                             <select
                                 id="campoDetallado"
                                 value={formData.campoDetallado}
@@ -910,9 +998,13 @@ export default function Home() {
                 <div className="container">
                     <div className="row">
                         <div className="col-4">
-                            <label>
+                            <h5>
                                 Objetivos del desarrollo Sostenible
-                            </label>
+                            </h5>
+
+                            {/* <label>
+                                Objetivos del desarrollo Sostenible
+                            </label> */}
                         </div>
                         <div className="col-8">
                             <select
@@ -947,7 +1039,7 @@ export default function Home() {
                 </div>
             </section>
 
-            {/* <AreasConocimiento /> */}
+
 
             <br />
             <button

@@ -17,7 +17,7 @@ section {
 
 }
 
-.modal-footer-pg  {
+.modal-footer-pg {
     justify-content: 'center';
     width: auto;
     /* position: relative ; */
@@ -98,7 +98,7 @@ section {
     border-collapse: collapse;
     border-spacing: 0;
     width: 100%;
-    
+
 }
 
 .tg td {
@@ -151,7 +151,7 @@ h3 {
     text-align: center;
 }
 
-h4, h5 {
+h5 {
     width: 100%;
     text-align: left;
 }
@@ -207,6 +207,7 @@ a:link {
     border-radius: 12px;
 
 }
+
 /* 
 .table-bordered {
     width: fit-content ;
@@ -217,4 +218,3 @@ a:link {
     text-align: left;
 } 
 */
-
