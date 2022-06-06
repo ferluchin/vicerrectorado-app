@@ -693,7 +693,7 @@ export default function Home() {
                                 <option value="Protección y mejora de la salud humana.">Protección y mejora de la salud humana.</option>
                                 <option value="Prod. Dist. y utilización racional de la energía.">Prod. Dist. y utilización racional de la energía.</option>
                                 <option value="Producción y tecnología agrícola.">Producción y tecnología agrícola.</option>
-                                <option value="Prodcción y tecnología industrial">Prodcción y tecnología industrial </option>
+                                <option value="Producción y tecnología industrial">Producción y tecnología industrial </option>
                                 <option value="Estructuras y relaciones sociales.">Estructuras y relaciones sociales.</option>
                                 <option value="Exploración y explotación del espacio.">Exploración y explotación del espacio.</option>
                                 <option value="Investigaciones financiadas con los fondos generales de las universidades.">Investigaciones financiadas con los fondos generales de las universidades.</option>

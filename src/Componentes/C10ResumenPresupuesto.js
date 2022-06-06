@@ -92,18 +92,22 @@ export default function ResumenPresupuesto() {
             >
                 <TitleBar />
                 {/* <NavBar /> */}
-                <h4> 2.12 Resumen Presupuestos </h4>
+                <h3>
+                    2.12 Resumen Presupuestos
+                </h3>
 
-                <h4> Items</h4>
+                <h3>
+                    Items
+                </h3>
 
                 <br />
                 <div className="container">
                     <div className="row">
                         <div className="col-4">
 
-                            <label>
+                            <h5>
                                 Viáticos, subsistencias y movilización.
-                            </label>
+                            </h5>
                         </div>
                         <div className="col-8">
 
@@ -122,9 +126,9 @@ export default function ResumenPresupuesto() {
                     <div className="row">
                         <div className="col-4">
 
-                            <label>
+                            <h5>
                                 Honorarios.
-                            </label>
+                            </h5>
 
                         </div>
 
@@ -145,9 +149,9 @@ export default function ResumenPresupuesto() {
                     <div className="row">
                         <div className="col-4">
 
-                            <label>
+                            <h5>
                                 Materiales, suministros y reactivos.
-                            </label>
+                            </h5>
                         </div>
                         <div className="col-8">
 
@@ -165,9 +169,9 @@ export default function ResumenPresupuesto() {
                     <div className="row">
                         <div className="col-4">
 
-                            <label>
+                            <h5>
                                 Equipos
-                            </label>
+                            </h5>
                         </div>
 
                         <div className="col-8">
@@ -186,9 +190,9 @@ export default function ResumenPresupuesto() {
                     </div>
                     <div className="row">
                         <div className="col-4">
-                            <label>
+                            <h5>
                                 Capacitación.
-                            </label>
+                            </h5>
                         </div>
                         <div className="col-8">
 
@@ -207,9 +211,9 @@ export default function ResumenPresupuesto() {
                     <div className="row">
                         <div className="col-4">
 
-                            <label>
+                            <h5>
                                 Total de gastos directos.
-                            </label>
+                            </h5>
                         </div>
                         <div className="col-8">
 
@@ -231,7 +235,9 @@ export default function ResumenPresupuesto() {
                 <div className="container">
                     <div className="row">
                         <div className="col-4">
-                            <h4> Bibliografía.</h4>
+                            <h5>
+                                Bibliografía.
+                            </h5>
 
                         </div>
                         <div className="col-8">
@@ -249,7 +255,9 @@ export default function ResumenPresupuesto() {
                 <div className="container">
                     <div className="row">
                         <div className="col-4">
-                            <h4>Observaciones.</h4>
+                            <h5>
+                                Observaciones.
+                            </h5>
 
                         </div>
                         <div className="col-8">

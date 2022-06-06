@@ -138,9 +138,9 @@ export default function MetodologiaProyecto() {
                     <br />
                     <div className="row">
                         <div className="col-4">
-                            <label style={{ textAlign: 'left' }}>
+                            <h5>
                                 Artículo Científico
-                            </label>
+                            </h5>
                         </div>
                         <div className="col-8">
                             <select
@@ -159,9 +159,9 @@ export default function MetodologiaProyecto() {
                     <br />
                     <div className="row">
                         <div className="col-4">
-                            <label>
+                            <h5>
                                 Prototipo
-                            </label>
+                            </h5>
                         </div>
                         <div className="col-8">
                             <select
@@ -181,9 +181,9 @@ export default function MetodologiaProyecto() {
                     <div className="row">
 
                         <div className="col-4">
-                            <label>
+                            <h5>
                                 Registro de Propiedad Industrial
-                            </label>
+                            </h5>
                         </div>
                         <div className="col-8">
                             <select
@@ -203,9 +203,9 @@ export default function MetodologiaProyecto() {
                     <div className="row">
 
                         <div className="col-4">
-                            <label>
+                            <h5>
                                 Otros
-                            </label>
+                            </h5>
                         </div>
                         <div className="col-8">
                             <input
@@ -221,17 +221,17 @@ export default function MetodologiaProyecto() {
 
                     <br />
                     <div className="row">
-                        <div className="col-6">
+                        <div className="col-12">
                             <h4 style={{ textAlign: 'left' }}> 2.8 Impactos del Proyecto</h4>
                         </div>
                     </div>
-
+                    <br />
                     <div className="row">
                         <div className="col-4">
 
-                            <label>
+                            <h5>
                                 Impacto Social.
-                            </label>
+                            </h5>
                         </div>
                         <div className="col-8">
 
@@ -249,9 +249,9 @@ export default function MetodologiaProyecto() {
                     <div className="row">
                         <div className="col-4">
 
-                            <label>
+                            <h5>
                                 Impacto Científico
-                            </label>
+                            </h5>
 
                         </div>
 
@@ -272,9 +272,9 @@ export default function MetodologiaProyecto() {
                     <div className="row">
                         <div className="col-4">
 
-                            <label>
+                            <h5>
                                 Impacto Económico
-                            </label>
+                            </h5>
                         </div>
                         <div className="col-8">
 
@@ -291,9 +291,9 @@ export default function MetodologiaProyecto() {
                     <div className="row">
                         <div className="col-4">
 
-                            <label>
+                            <h5>
                                 Impacto Político
-                            </label>
+                            </h5>
                         </div>
 
                         <div className="col-8">
@@ -311,9 +311,9 @@ export default function MetodologiaProyecto() {
                     </div>
                     <div className="row">
                         <div className="col-4">
-                            <label style={{ textAlign: 'left' }} >
+                            <h5>
                                 Otro Impacto
-                            </label>
+                            </h5>
                         </div>
                         <div className="col-8">
 

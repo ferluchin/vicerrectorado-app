@@ -53,7 +53,9 @@ export default function CronogramaActividades() {
                 <div className="container">
                     <div className="row">
                         <div className="col-3">
-                            <h4> Objetivo General </h4>
+                            <h4>
+                                Objetivo General
+                            </h4>
 
                         </div>
                         <div className="col-9">

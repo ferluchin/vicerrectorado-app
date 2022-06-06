@@ -49,7 +49,7 @@ export default function TipoProyecto() {
     }
 
     const [formData, setFormData] = React.useState(
-        { ...formInicial }); 
+        { ...formInicial });
 
 
     function handleChange(event) {
@@ -90,7 +90,10 @@ export default function TipoProyecto() {
             >
                 <TitleBar />
                 {/* <NavBar /> */}
-                <h3>Tipo de Proyecto.</h3> {<br />}
+                <h3>
+                    Tipo de Proyecto.
+                </h3>
+                {<br />}
 
                 <div className="container">
 
@@ -100,11 +103,10 @@ export default function TipoProyecto() {
                             className="col-4"
 
                         >
-                            <label htmlFor="tipoProyecto">
+                            <h5>
                                 Tipo de Proyecto:
-                            </label>
+                            </h5>
 
-                            {<br />}
                             <select
                                 id="tipoProyecto"
                                 value={formData.tipoProyecto}
@@ -124,9 +126,9 @@ export default function TipoProyecto() {
                             className="col-4"
 
                         >
-                            <label htmlFor="tipoInvestigacion">
+                            <h5>
                                 Tipo de Investigación:
-                            </label>
+                            </h5>
                             <select
                                 id="tipoInvestigacion"
                                 value={formData.tipoInvestigacion}
@@ -142,12 +144,11 @@ export default function TipoProyecto() {
                         </div>
 
                         <div
-                            //className="column"
                             className="col-4"
                         >
-                            <label htmlFor="tipoFinanciamiento">
+                            <h5>
                                 Tipo de Financiamiento:
-                            </label>
+                            </h5>
                             <select
                                 id="tipoFinanciamiento"
                                 value={formData.tipoFinanciamiento}
@@ -175,16 +176,17 @@ export default function TipoProyecto() {
                     </div>
                 </div>
 
-                {<br />}
+                <br />
 
-                {<br />}
+                <br />
 
+                <br />
                 <div className="container">
                     <div className="row">
                         <div className="col-4">
-                            <label>
+                            <h5>
                                 Organismo (s)/ Entidad (ES) Financiador (ES)
-                            </label>
+                            </h5>
 
                         </div>
                         <div className="col-8">
@@ -193,7 +195,6 @@ export default function TipoProyecto() {
                                 placeholder="Escribir texto"
                                 //className="form--input"
                                 className="form-control"
-
                                 name="organismoEntidadFinanciador"
                                 onChange={handleChange}
                                 value={formData.organismoEntidadFinanciador}
@@ -204,67 +205,84 @@ export default function TipoProyecto() {
 
 
                 <br />
-                <div className="row">
-                    <div
-                        //className="column"
-                        className="col-4"
+                <div className="container">
 
-                    >
-                        <label>
-                            Presupuesto Total
-                        </label>
-                        <input
-                            type="number"
-                            min={0}
-                            placeholder="Ingresar Valor"
-                            className="form--input"
-                            name="presupuestoTotal"
-                            onChange={handleChange}
-                            value={formData.presupuestoTotal}
-                        />
+                    <div className="row">
+                        <div className="col-4">
+                            <h5>
+                                Presupuesto Total
+                            </h5>
+                        </div>
+                        <div className="col-4">
+                            <h5>
+                                Aporte UTPL
+                            </h5>
+                        </div>
+                        <div className="col-4">
+                            <h5>
+                                Aporte Contraparte
+                            </h5>
+                        </div>
                     </div>
-
-                    <div
-                        //className="column"
-                        className="col-4"
-
-                    >
-                        <label>
-                            Aporte UTPL
-                        </label>
-                        <input
-                            type="number"
-                            min={0}
-                            placeholder="Ingresar Valor"
-                            className="form--input"
-                            name="aporteUTPL"
-                            onChange={handleChange}
-                            value={formData.aporteUTPL}
-                        />
-                    </div>
-
-                    <div
-                        //className="column"
-                        className="col-4"
-
-                    >
-                        <label>
-                            Aporte Contraparte
-                        </label>
-                        <input
-                            type="number"
-                            min={0}
-                            placeholder="Ingresar Valor"
-                            className="form--input"
-                            name="aporteContraparte"
-                            onChange={handleChange}
-                            value={formData.aporteContraparte}
-                        />
-                    </div>
-
                 </div>
+                <div className="container">
+
+                    <div className="row">
+                        <div
+                            //className="column"
+                            className="col-4"
+
+                        >
+                            <input
+                                type="number"
+                                min={0}
+                                placeholder="Ingresar Valor"
+                                className="form--input"
+                                name="presupuestoTotal"
+                                onChange={handleChange}
+                                value={formData.presupuestoTotal}
+                            />
+                        </div>
+
+                        <div
+                            //className="column"
+                            className="col-4"
+
+                        >
+
+                            <input
+                                type="number"
+                                min={0}
+                                placeholder="Ingresar Valor"
+                                className="form--input"
+                                name="aporteUTPL"
+                                onChange={handleChange}
+                                value={formData.aporteUTPL}
+                            />
+                        </div>
+
+                        <div
+                            //className="column"
+                            className="col-4"
+
+                        >
+
+                            <input
+                                type="number"
+                                min={0}
+                                placeholder="Ingresar Valor"
+                                className="form--input"
+                                name="aporteContraparte"
+                                onChange={handleChange}
+                                value={formData.aporteContraparte}
+                            />
+                        </div>
+
+                    </div>
+                </div>
+
                 <button
-                    className="btn btn-primary"
+                    className="btn btn-danger"
                 //onClick={() => console.log(docenteSeleccionado)}
                 //type="button"
                 >
