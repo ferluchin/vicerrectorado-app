@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import TitleBar from "./Componentes/TitleBar";
 import DirectorProyecto from "./Componentes/C3DirectorProyecto";
 
@@ -22,18 +22,13 @@ import {
     setDoc,
 } from "firebase/firestore";
 
-
 // import NavBar from "./NavBar";
 // import { Modal, ModalBody, ModalHeader, ModalFooter } from 'reactstrap'
 // import InformacionGeneral from "./Componentes/C1InformacionGeneral";
 
-
-const firestore = getFirestore(app);
-//const auth = getAuth(firebaseApp);
-
 const db = getFirestore();
 
-export default function Home({ correoUsuario }) {
+export default function Home() {
 
     const formInicial = {
         titulo: "",
@@ -104,39 +99,6 @@ export default function Home({ correoUsuario }) {
         console.log(formData)
         setFormData({ ...formInicial })
     }
-
-
-    async function buscarProyectoOrCrearProyecto(idDocumento) {
-        //crear referencia al documento
-        const docuRef = doc(firestore, `proyectos-investigacion/${idDocumento}`);
-
-        //Buscar documento
-        const consulta = await getDoc(docuRef);
-
-        //revisar si existe
-        if (consulta.exists()) {
-            // si sí existe 
-            const infoDocu = consulta.data();
-            return infoDocu.proyectos;
-        } else {
-            // si no existe
-            await setDoc(docuRef, { proyectos: [...formInicial] })
-            const consulta = await getDoc(docuRef);
-            const infoDocu = consulta.data();
-            return infoDocu.proyectos;
-
-        }
-    }
-
-    useEffect(() => {
-        async function obtenerProyectos() {
-            const proyectosFetchadas = await buscarProyectoOrCrearProyecto(
-                correoUsuario
-            );
-            setFormData(proyectosFetchadas);
-        }
-        obtenerProyectos();
-    }, [])
 
     return (
 
