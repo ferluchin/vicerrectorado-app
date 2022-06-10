@@ -174,15 +174,15 @@ export default function EquipoProyecto() {
                                                 onClick={() => seleccionarPersonal(elemento, 'Editar')}
                                                 type="button"
                                             >
-                                                Editar
+                                                ✍️
                                             </button>
 
                                             <button
-                                                className='btn btn-danger'
+                                                className='btn btn-warning'
                                                 onClick={() => seleccionarPersonal(elemento, 'Eliminar')}
                                                 type="button"
                                             >
-                                                Eliminar
+                                                ❌
                                             </button>
 
                                         </td>

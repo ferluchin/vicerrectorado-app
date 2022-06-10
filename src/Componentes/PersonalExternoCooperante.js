@@ -128,14 +128,14 @@ export default function PersonalExternoCooperante() {
                                         onClick={() => seleccionarPersonal(elemento, 'Editar')}
                                         type="button"
                                     >
-                                        Editar
+                                        ✍️
                                     </button>
                                     <button
-                                        className='btn btn-danger'
+                                        className='btn btn-warning'
                                         onClick={() => seleccionarPersonal(elemento, 'Eliminar')}
                                         type="button"
                                     >
-                                        Eliminar
+                                        ❌
                                     </button>
                                 </td>
                             </tr>
@@ -333,7 +333,6 @@ export default function PersonalExternoCooperante() {
                             value={personalExternoCooperanteSeleccionado ?
                                 personalExternoCooperanteSeleccionado.entidad : ''}
                             onChange={handleChange}
-
                         />
                         <br />
 

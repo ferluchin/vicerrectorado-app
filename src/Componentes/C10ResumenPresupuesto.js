@@ -1,5 +1,5 @@
 import React from "react";
-// import NavBar from "../NavBar";'
+
 import TitleBar from "./TitleBar";
 import "../style.css"
 
@@ -18,10 +18,19 @@ import {
     setDoc,
 } from "firebase/firestore";
 
-const db = getFirestore();
+import {
+    getStorage,
+    ref,
+    uploadBytes,
+    getDownloadURL
+} from "firebase/storage"
+
+const firestore = getFirestore(app);
+const storage = getStorage(app);
 
 export default function ResumenPresupuesto() {
 
+    const correoUsuario = "lgrandab@gmail.com"
     const formInicial = {
         //resumen Presupuestos
         viaticosSubsistenciasMovilizacion: "",
@@ -37,23 +46,8 @@ export default function ResumenPresupuesto() {
 
     const [formData, setFormData] = React.useState(
         { ...formInicial })
-    /*
-    const [formData, setFormData] = React.useState(
-        {
-            //resumen Presupuestos
-            viaticosSubsistenciasMovilizacion: "",
-            honorarios: "",
-            materialesSuministrosReactivos: "",
-            equipos: "",
-            capacitacion: "",
-            totalGastosDirectos: "",
-            //adicional
-            bibliografia: "",
-            observaciones: "",
-        }
-    )
-    */
-    
+
+
     function handleChange(event) {
         const { name, value, type, checked } = event.target
         setFormData(prevFormData => {
@@ -63,24 +57,45 @@ export default function ResumenPresupuesto() {
             }
         })
     }
-    /*
-    function handleSubmit(event) {
-        event.preventDefault()
-        // submitToApi(formData)
-        console.log(formData)
-    }
-    */
+
     const handleSubmit = async (event) => {
-        event.preventDefault()
+        event.preventDefault();
         // submitToApi(formData)
+
         try {
-            await addDoc(collection(db, 'proyectos-investigacion'), {
+            // addDooc or updateDoc?
+
+            //actualizar base de datos
+            //previous
+            /*
+            await addDoc(collection(firestore, 'proyectos-investigacion'), {
                 ...formData
             })
+            */
+            /*
+            await addDoc(collection(firestore, `proyectos-investigacion/link`), {
+                ...formData
+            })
+            */
+
+            /*await addDoc(collection(firestore, `proyectos-investigacion/link`), {
+                ...formData
+            })
+            */
+            
+            const docuRef = doc(firestore, `proyectos-investigacion/${correoUsuario}`)
+            updateDoc(docuRef, { proyectos: {...formData}})
+
+            /*
+                        const docuRef =  doc(firestore, 'proyectos-investigacion');
+                        await updateDoc(docuRef, { proyectos: [...formData] });
+            */
+
         } catch (error) {
             console.log(error)
         }
-        console.log(formData)
+        //console.log(formData)
+        console.log({ ...formData })
         setFormData({ ...formInicial })
     }
 
