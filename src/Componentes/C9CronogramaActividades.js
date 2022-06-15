@@ -3,8 +3,19 @@ import React from "react";
 import TitleBar from "./TitleBar";
 import TablaCronograma from "./TablaCronograma";
 import "../style.css"
+import { useNavigate } from "react-router-dom";
 
 export default function CronogramaActividades() {
+
+
+    let navigate = useNavigate();
+
+    const routeChange = () => {
+        window.scrollTo(0, 0)
+        let path = `/resumen-presupuesto`;
+        navigate(path);
+    }
+
 
     const [formData, setFormData] = React.useState(
         {
@@ -35,6 +46,7 @@ export default function CronogramaActividades() {
         event.preventDefault()
         // submitToApi(formData)
         console.log(formData)
+        routeChange()
     }
 
 

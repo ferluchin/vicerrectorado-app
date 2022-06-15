@@ -2,6 +2,12 @@ import React from "react";
 import TitleBar from "./Componentes/TitleBar";
 import DirectorProyecto from "./Componentes/C3DirectorProyecto";
 
+import Moment from 'react-moment';
+//import 'moment-timezone';
+
+
+import { useNavigate } from "react-router-dom";
+
 import 'bootstrap/dist/css/bootstrap.min.css';
 import "./style.css"
 
@@ -29,6 +35,16 @@ import {
 const db = getFirestore();
 
 export default function Home() {
+
+    let navigate = useNavigate();
+
+    const routeChange = () => {
+        window.scrollTo(0, 0)
+        let path = `/tipo-proyecto`;
+        navigate(path);
+    }
+
+
 
     const formInicial = {
         titulo: "",
@@ -70,6 +86,32 @@ export default function Home() {
     //)
 
 
+    //function calculateDaysLeft() {
+
+    const calculateDaysLeft = () => {
+
+        //let { startDate, endDate } = this.state;
+        //let fechaInicio = (formData.fechaInicio).toDate();
+        let fechaInicio = Moment(formData.fechaInicio)
+        let fechaFin = Moment(formData.fechaFin)
+        console.log(fechaInicio);
+        console.log(fechaFin);
+        //let amount = endDate.diff(startDate, 'days');
+        let amount = fechaFin.diff(fechaInicio, 'days');
+
+        setFormData(prevFormData => {
+            return {
+                ...prevFormData,
+                duracionProyectoSemanas: (amount / 7)
+            }
+
+
+        })
+        console.log("🚀 ~ file: Home.js ~ line 55 ~ calculateDaysLeft ~ duracionProyectoSemanas", formData.duracionProyectoSemanas)
+
+    }
+
+
     function handleChange(event) {
         const { name, value, type, checked } = event.target
         setFormData(prevFormData => {
@@ -98,6 +140,7 @@ export default function Home() {
         }
         console.log(formData)
         setFormData({ ...formInicial })
+        routeChange()
     }
 
     return (
@@ -545,13 +588,17 @@ export default function Home() {
                             onChange={date => setFormData(
                                 {
                                     ...formData,
-                                    fechaFin: date
-                                })}
+                                    fechaFin: date,
+                                }
+                            )
+
+                            }
                             className="form-control"
                             minDate={new Date()}
                         //isClearable
                         />
                     </div>
+
                     <div className="col-4">
                         <input
                             type="number"
@@ -562,6 +609,15 @@ export default function Home() {
                             value={formData.duracionProyectoSemanas}
                         />
                     </div>
+                    {/* <button
+                        onClick={() => console.log( calculateDaysLeft(formData.fechaInicio, formData.fechaFin) )}
+                        //className="btn btn-primary btn-block"
+                        //onClick={routeChange }
+                        //onClick={() => console.log(docenteSeleccionado)}
+                        type="button"
+                    >
+                        Calcular
+                    </button> */}
                 </div>
                 {<br />}
 
@@ -1044,6 +1100,8 @@ export default function Home() {
             <br />
             <button
                 className="btn btn-primary btn-block"
+            //onClick={routeChange }
+
             //onClick={() => console.log(docenteSeleccionado)}
             //type="button"
             >

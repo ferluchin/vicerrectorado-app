@@ -7,19 +7,7 @@ import "react-datepicker/dist/react-datepicker.css"
 
 export default function C11Pruebas() {
 
-    // const Example = () => {
-    //     const [startDate, setStartDate] = useState(new Date());
-    //     return (
-    //         <DatePicker selected={startDate} onChange={(date: Date) => setStartDate(date)} />
-    //     );
-    // };
 
-    // this.state = {
-    //     fecha: new Date("2022", "06", "22")
-    // }
-    // this.onChange = fecha => {
-    //     this.setState({ fecha: fecha });
-    // }
     const LimitedTAResumen = ({ rows, cols, value, limit }) => {
         const [{ content, wordCount }, setContent] = React.useState({
             content: value,

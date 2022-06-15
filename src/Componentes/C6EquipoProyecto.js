@@ -1,17 +1,43 @@
 import React, { useState } from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
 
+import { useNavigate } from "react-router-dom";
+
 import { Modal, ModalBody, ModalHeader, ModalFooter } from 'reactstrap';
 import TitleBar from "./TitleBar";
 
 import PersonalExternoCooperante from './PersonalExternoCooperante';
 import PersonalExternoContratar from './PersonalExternoContratar';
 
+import {
+    getFirestore,
+    collection,
+    addDoc,
+    getDocs,
+    doc,
+    deleteDoc,
+    getDoc,
+    updateDoc,
+    setDoc,
+} from "firebase/firestore";
+
+const db = getFirestore();
 
 // import NavBar from "../NavBar";
-import "../style.css"
+
 
 export default function EquipoProyecto() {
+
+
+    let navigate = useNavigate();
+
+    const routeChange = () => {
+        window.scrollTo(0, 0)
+        let path = `/informacion-tecnica-proyecto`;
+        navigate(path);
+    }
+
+
 
     const dataPersonal = [
         {
@@ -102,11 +128,28 @@ export default function EquipoProyecto() {
         setModalInsertar(false);
     }
 
+    const handleSubmit = async (event) => {
+        event.preventDefault()
+        // submitToApi(formData)
+        /*
+        try {
+            await addDoc(collection(db, 'proyectos-investigacion'), {
+                ...formData
+            })
+        } catch (error) {
+            console.log(error)
+        }
+        console.log(formData)
+        setFormData({ ...formInicial })
+        */
+        routeChange()
+    }
+
     return (
         <section>
             <form
                 className="form"
-            //onSubmit={handleSubmit}
+            onSubmit={handleSubmit}
             >
                 <TitleBar />
                 {/* <NavBar /> */}

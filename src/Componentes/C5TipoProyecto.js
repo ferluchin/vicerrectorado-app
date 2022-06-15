@@ -3,6 +3,8 @@ import React from "react";
 import "../style.css"
 import TitleBar from "./TitleBar";
 
+import { useNavigate } from "react-router-dom";
+
 import { app, auth } from "../firebase"
 import {
     getFirestore,
@@ -19,6 +21,19 @@ import {
 const db = getFirestore();
 
 export default function TipoProyecto() {
+
+
+
+    let navigate = useNavigate();
+
+    const routeChange = () => {
+        window.scrollTo(0, 0)
+        let path = `/equipo-proyecto`;
+        navigate(path);
+    }
+
+
+
     /*
     const [formData, setFormData] = React.useState(
         {
@@ -80,6 +95,7 @@ export default function TipoProyecto() {
         }
         console.log(formData)
         setFormData({ ...formInicial })
+        routeChange()
     }
 
     return (

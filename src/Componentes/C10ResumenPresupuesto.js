@@ -5,6 +5,7 @@ import "../style.css"
 
 import { app, auth } from "../firebase"
 
+import { useNavigate } from "react-router-dom";
 
 import {
     getFirestore,
@@ -29,6 +30,14 @@ const firestore = getFirestore(app);
 const storage = getStorage(app);
 
 export default function ResumenPresupuesto() {
+
+
+    let navigate = useNavigate();
+    const routeChange = () => {
+        window.scrollTo(0, 0)
+        let path = `/pruebas`;
+        navigate(path);
+    }
 
     const correoUsuario = "lgrandab@gmail.com"
     const formInicial = {
@@ -82,9 +91,9 @@ export default function ResumenPresupuesto() {
                 ...formData
             })
             */
-            
+
             const docuRef = doc(firestore, `proyectos-investigacion/${correoUsuario}`)
-            updateDoc(docuRef, { proyectos: {...formData}})
+            updateDoc(docuRef, { proyectos: { ...formData } })
 
             /*
                         const docuRef =  doc(firestore, 'proyectos-investigacion');
@@ -289,11 +298,19 @@ export default function ResumenPresupuesto() {
                 <br />
                 <button
                     className="btn btn-primary"
-                //onClick={() => console.log(docenteSeleccionado)}
+                onClick={ routeChange}
                 //type="button"
                 >
                     Enviar Información
                 </button>
+{/* 
+                <button
+                    className="btn btn-primary"
+                    onClick={ routeChange }
+                //type="button"
+                >
+                    Siguiente
+                </button> */}
             </form>
 
         </section>

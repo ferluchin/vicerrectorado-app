@@ -5,6 +5,7 @@ import "../style.css"
 
 import { app, auth } from "../firebase"
 
+import { useNavigate } from "react-router-dom";
 
 import {
     getFirestore,
@@ -21,6 +22,17 @@ import {
 const db = getFirestore();
 
 export default function MetodologiaProyecto() {
+
+
+    let navigate = useNavigate();
+
+    const routeChange = () => {
+        window.scrollTo(0, 0)
+        let path = `/cronograma-actividades`;
+        navigate(path);
+    }
+
+
 
     const formInicial = {
         metodologia: "",
@@ -97,6 +109,7 @@ export default function MetodologiaProyecto() {
         }
         console.log(formData)
         setFormData({ ...formInicial })
+        routeChange ()
     }
 
     return (

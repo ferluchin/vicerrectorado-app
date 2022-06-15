@@ -4,6 +4,7 @@ import TitleBar from "./TitleBar";
 import "../style.css"
 import { app, auth } from "../firebase"
 
+import { useNavigate } from "react-router-dom";
 
 import {
     getFirestore,
@@ -20,6 +21,15 @@ import {
 const db = getFirestore()
 
 export default function InformacionTecnicaProyecto() {
+
+
+    let navigate = useNavigate();
+
+    const routeChange = () => {
+        window.scrollTo(0, 0)
+        let path = `/metodologia-proyecto`;
+        navigate(path);
+    }
 
     const formInicial = {
         resumenProyecto: "",
@@ -96,6 +106,7 @@ export default function InformacionTecnicaProyecto() {
         }
         console.log(formData)
         setFormData({ ...formInicial })
+        routeChange ()
     }
     
     return (
