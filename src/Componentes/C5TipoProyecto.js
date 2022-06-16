@@ -33,24 +33,6 @@ export default function TipoProyecto() {
     }
 
 
-
-    /*
-    const [formData, setFormData] = React.useState(
-        {
-            tipoProyecto: "",
-            tipoInvestigacion: "",
-            tipoFinanciamiento: "",
-
-            organismoEntidadFinanciador: "",
-
-            presupuestoTotal: "",
-            aporteUTPL: "",
-            aporteContraparte: "",
-
-        }
-    )
-    */
-
     const formInicial = {
         tipoProyecto: "",
         tipoInvestigacion: "",

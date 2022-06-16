@@ -88,16 +88,24 @@ export default function Home() {
 
     //function calculateDaysLeft() {
 
-    const calculateDaysLeft = () => {
+    function calculateDaysLeft ()  {
+        var given = Moment("2023-03-10", "YYYY-MM-DD");
+        var current = Moment().startOf('day');
 
+        //Difference in number of days
+        let amount = Moment.duration(given.diff(current)).asDays();
         //let { startDate, endDate } = this.state;
         //let fechaInicio = (formData.fechaInicio).toDate();
-        let fechaInicio = Moment(formData.fechaInicio)
-        let fechaFin = Moment(formData.fechaFin)
-        console.log(fechaInicio);
-        console.log(fechaFin);
+
+        /*
+                let fechaInicio = Moment(formData.fechaInicio)
+                let fechaFin = Moment(formData.fechaFin)
+                console.log(fechaInicio);
+                console.log(fechaFin);
+                
+                */
         //let amount = endDate.diff(startDate, 'days');
-        let amount = fechaFin.diff(fechaInicio, 'days');
+        //let amount = fechaFin.diff(fechaInicio, 'days');
 
         setFormData(prevFormData => {
             return {
@@ -577,6 +585,7 @@ export default function Home() {
                                     fechaInicio: date
                                 })}
                             className="form-control"
+
                             minDate={new Date()}
                         //isClearable
                         />
@@ -603,9 +612,12 @@ export default function Home() {
                         <input
                             type="number"
                             placeholder="ingresar valor"
+                            //placeholder={formData.duracionProyectoSemanas}
                             className="form--input"
                             name="duracionProyectoSemanas"
+                            onMouseEnter={calculateDaysLeft}
                             onChange={handleChange}
+                            min={"1"}
                             value={formData.duracionProyectoSemanas}
                         />
                     </div>
