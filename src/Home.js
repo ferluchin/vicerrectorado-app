@@ -1,10 +1,7 @@
 import React from "react";
 import TitleBar from "./Componentes/TitleBar";
 import DirectorProyecto from "./Componentes/C3DirectorProyecto";
-
 import Moment from 'react-moment';
-//import 'moment-timezone';
-
 
 import { useNavigate } from "react-router-dom";
 
@@ -43,7 +40,6 @@ export default function Home() {
         let path = `/tipo-proyecto`;
         navigate(path);
     }
-
 
 
     const formInicial = {
@@ -163,10 +159,7 @@ export default function Home() {
 
             <br />
 
-
-
             <div className="container">
-
                 {/* <form
                 className="form"
                 onSubmit={handleSubmit}
