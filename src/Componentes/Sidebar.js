@@ -16,18 +16,12 @@ export default function Sidebar(props) {
                 <li><Link to="/personal-externo-cooperante">Personal Externo cooperante</Link></li>
                 <li><Link to="/personal-externo-contratar">Personal Externo a contratar</Link></li>
 
-                {/* <li><Link to="/equipo-proyecto">Equipo del Proyecto</Link></li> */}
                 <li><Link to="/informacion-tecnica-proyecto">Información Técnica del Proyecto</Link></li>
                 <li><Link to="/metodologia-proyecto">Metodología del Proyecto</Link></li>
                 <li><Link to="/cronograma-actividades">Cronograma de Actividades</Link></li>
                 <li><Link to="/resumen-presupuesto">Resumen del Presupuesto</Link></li>
                 <li><Link to="/pruebas">Zona Pruebas</Link></li>
-                {/* 
-                <li><Link to="/informacion-general">Información General</Link></li>
-                <li><Link to="/fechas-proyecto">Fechas del Proyecto</Link></li>
-                <li><Link to="/director-proyecto">Director del Proyecto</Link></li>
-                <li><Link to="/areas-conocimiento">Áreas del Conocimiento</Link></li>
-                */}
+
 
             </ul>
             {/*noteElements */}

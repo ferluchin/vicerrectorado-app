@@ -23,7 +23,6 @@ import PersonalExternoContratar from './Componentes/PersonalExternoContratar';
 function App() {
   return (
     <main>
-
       <Split
         sizes={[20, 80]}
         direction="horizontal"
@@ -48,7 +47,6 @@ function App() {
             {/* <Route path="/areas-conocimiento" element={<AreasConocimiento />} /> */}
             <Route path="/tipo-proyecto" element={<TipoProyecto />} />
             {/* <Route path="/equipo-proyecto" element={<EquipoProyecto />} /> */}
-
             <Route path="/personal-interno" element={<EquipoProyecto />} />
             <Route path="/personal-externo-cooperante" element={<PersonalExternoCooperante />} />
             <Route path="/personal-externo-contratar" element={<PersonalExternoContratar />} />
