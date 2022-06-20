@@ -28,7 +28,7 @@ export default function TipoProyecto() {
 
     const routeChange = () => {
         window.scrollTo(0, 0)
-        let path = `/equipo-proyecto`;
+        let path = `/personal-interno`;
         navigate(path);
     }
 
@@ -227,9 +227,7 @@ export default function TipoProyecto() {
 
                     <div className="row">
                         <div
-                            //className="column"
                             className="col-4"
-
                         >
                             <input
                                 type="number"
@@ -243,9 +241,7 @@ export default function TipoProyecto() {
                         </div>
 
                         <div
-                            //className="column"
                             className="col-4"
-
                         >
 
                             <input

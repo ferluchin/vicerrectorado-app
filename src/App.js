@@ -8,7 +8,7 @@ import { Routes, Link, Route } from "react-router-dom";
 import DirectorProyecto from './Componentes/C3DirectorProyecto';
 // import AreasConocimiento from './Componentes/C4AreasConocimiento';
 import TipoProyecto from './Componentes/C5TipoProyecto';
-import EquipoProyecto from './Componentes/C6EquipoProyecto';
+import EquipoProyecto from './Componentes/PersonalInterno';
 import InformacionTecnicaProyecto from './Componentes/C7InformacionTecnicaProyecto';
 import MetodologiaProyecto from './Componentes/C8MetodologiaProyecto';
 import CronogramaActividades from './Componentes/C9CronogramaActividades';
@@ -18,6 +18,8 @@ import C11Pruebas from './Componentes/C11Pruebas';
 
 import Split from 'react-split';
 import Sidebar from './Componentes/Sidebar';
+import PersonalExternoCooperante from './Componentes/PersonalExternoCooperante';
+import PersonalExternoContratar from './Componentes/PersonalExternoContratar';
 function App() {
   return (
     <main>
@@ -45,7 +47,11 @@ function App() {
             <Route path="/director-proyecto" element={<DirectorProyecto />} />
             {/* <Route path="/areas-conocimiento" element={<AreasConocimiento />} /> */}
             <Route path="/tipo-proyecto" element={<TipoProyecto />} />
-            <Route path="/equipo-proyecto" element={<EquipoProyecto />} />
+            {/* <Route path="/equipo-proyecto" element={<EquipoProyecto />} /> */}
+
+            <Route path="/personal-interno" element={<EquipoProyecto />} />
+            <Route path="/personal-externo-cooperante" element={<PersonalExternoCooperante />} />
+            <Route path="/personal-externo-contratar" element={<PersonalExternoContratar />} />
             <Route path="/informacion-tecnica-proyecto" element={<InformacionTecnicaProyecto />} />
             <Route path="/metodologia-proyecto" element={<MetodologiaProyecto />} />
             <Route path="/cronograma-actividades" element={<CronogramaActividades />} />

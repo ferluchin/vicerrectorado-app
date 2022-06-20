@@ -6,8 +6,7 @@ import { useNavigate } from "react-router-dom";
 import { Modal, ModalBody, ModalHeader, ModalFooter } from 'reactstrap';
 import TitleBar from "./TitleBar";
 
-import PersonalExternoCooperante from './PersonalExternoCooperante';
-import PersonalExternoContratar from './PersonalExternoContratar';
+
 
 import {
     getFirestore,
@@ -26,18 +25,16 @@ const db = getFirestore();
 // import NavBar from "../NavBar";
 
 
-export default function EquipoProyecto() {
+export default function PersonalInterno() {
 
 
     let navigate = useNavigate();
 
     const routeChange = () => {
         window.scrollTo(0, 0)
-        let path = `/informacion-tecnica-proyecto`;
+        let path = `/personal-externo-cooperante`;
         navigate(path);
     }
-
-
 
     const dataPersonal = [
         {
@@ -50,12 +47,9 @@ export default function EquipoProyecto() {
             horasSemanales: "00",
             horasTotales: "00"
         },
-
-
         { id: 2, rol: "Co-Dirección", tipo: "Docente a tiempo completo", senescyt: "SI", identificacion: 1499332590, nombres: "Charlie Cárdemas", horasSemanales: "00", horasTotales: "00" },
         { id: 3, rol: "Participación", tipo: "Técnico Docente", senescyt: "SI", identificacion: 1121354698, nombres: "Maximo Décimo", horasSemanales: "00", horasTotales: "00" },
         { id: 4, rol: "Participación", tipo: "Estudiante", senescyt: "NO", identificacion: 1101258746, nombres: "Marie Curie", horasSemanales: "00", horasTotales: "00" },
-
     ];
 
     const [data, setData] = useState(dataPersonal);
@@ -108,6 +102,10 @@ export default function EquipoProyecto() {
         setModalEditar(false);
     }
 
+    const consolaPersonalInterno = () => {
+    console.log(data)
+    }
+
     const eliminar = () => {
         setData(data.filter(personal => personal.id !== personalSeleccionado.id));
         setModalEliminar(false);
@@ -142,6 +140,10 @@ export default function EquipoProyecto() {
         console.log(formData)
         setFormData({ ...formInicial })
         */
+        consolaPersonalInterno();
+        //consolaPersonalExternoCooperante();
+        
+        //consolaPersonalExternoContratar();
         routeChange()
     }
 
@@ -160,7 +162,7 @@ export default function EquipoProyecto() {
 
                 >
                     <h2>
-                        Personal Interno
+                        Equipo del Proyecto - Personal Interno
                     </h2>
                     <br />
                     <button
@@ -235,7 +237,14 @@ export default function EquipoProyecto() {
                             </tbody>
                         </table>
                     </div>
-
+                    <button
+                        className='btn btn-primary'
+                        //onClick={() => editar()}
+                        onClick={() => consolaPersonalInterno()}
+                        type="button"
+                    >
+                        Consolear los datos tabla
+                    </button>
                     <Modal isOpen={modalEditar}>
                         <ModalHeader>
                             <div>
@@ -586,18 +595,10 @@ export default function EquipoProyecto() {
 
 
                 </div>
-                <h3> Equipo del Proyecto</h3>
-                <h4>Personal Interno</h4>
-
-                <PersonalExternoCooperante
-
-                />
-
-                <PersonalExternoContratar />
+                
                 <button
                     className="btn btn-primary"
-                //onClick={() => console.log(docenteSeleccionado)}
-                //type="button"
+
                 >
                     Enviar Información
                 </button>
