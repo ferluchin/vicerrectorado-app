@@ -5,9 +5,9 @@
 #main-body {
     margin: 0;
     /* background-color: #639; */
-    /* background-color: #000080; */
+    /* background-color: #000080; 004170;*/ 
     background-color: #004170;
-    height: 200vh;
+    height: 250vh;
     font-family: 'Inter', sans-serif;
 }
 
@@ -158,12 +158,8 @@ h5 {
 
 .sidebar {
     width: 20%;
-    height: 150vh;
+    height: 250vh;
     background-color: white;
-}
-
-.sidebar--note {
-    /* display: flex; */
 }
 
 .sidebar--header {
@@ -207,4 +203,3 @@ a:link {
     border-radius: 12px;
 
 }
-

@@ -4,10 +4,10 @@
 
 #main-body {
     margin: 0;
-    /* background-color: #639; */
+    background-color: #639;
     /* background-color: #000080; */
-    background-color: #004170;
-    height: 200vh;
+    /* background-color: #004170; */
+    height: 1000vh;
     font-family: 'Inter', sans-serif;
 }
 
@@ -162,10 +162,6 @@ h5 {
     background-color: white;
 }
 
-.sidebar--note {
-    /* display: flex; */
-}
-
 .sidebar--header {
     display: flex;
     justify-content: space-around;
@@ -207,4 +203,3 @@ a:link {
     border-radius: 12px;
 
 }
-

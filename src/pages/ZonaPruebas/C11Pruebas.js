@@ -1,15 +1,19 @@
 import React, { useState } from "react";
-import "../style.css"
-import image from "../assets/utpl.png"
+
+import image from "../../assets/utpl.png"
 import DatePicker from "react-datepicker"
 
 import "react-datepicker/dist/react-datepicker.css"
+
+import Split from "react-split";
+import Sidebar from "../../Componentes/Sidebar";
+import "./pruebas.css"
 
 export default function C11Pruebas() {
 
 
     const LimitedTAResumen = ({ rows, cols, value, limit }) => {
-        const [{ content, wordCount }, setContent] = React.useState({
+        const [{ content, wordCount }, setContent] = useState({
             content: value,
             wordCount: 0
         });
@@ -37,7 +41,7 @@ export default function C11Pruebas() {
             <form className="form">
 
                 <div>
-                    <img className="utpl-logo" src={image} />
+                    
 
                     <textarea
                         rows={rows}
@@ -145,12 +149,29 @@ export default function C11Pruebas() {
         );
     };
     return (
-        <div>
-            <section>
-                <LimitedTAResumen limit={150} value="" />,
-                <LimitedTAAntecedentes limit={500} value="" />,
-                <LimitedTAJustificacion limit={500} value="" />,
-                {/* <DatePicker
+        <>
+            <Split
+                sizes={[30, 70]}
+                direction="horizontal"
+                className="split"
+                minSize={100}
+                expandToMin={false}
+                dragInterval={1}
+                cursor="col-resize"
+            >
+                <Sidebar
+                //notes={notes}
+                //currentNote={findCurrentNote()}
+                //setCurrentNoteId={setCurrentNoteId}
+                //newNote={createNewNote}
+                />
+
+                <div>
+                    <section>
+                        <LimitedTAResumen limit={150} value="" />,
+                        <LimitedTAAntecedentes limit={500} value="" />,
+                        <LimitedTAJustificacion limit={500} value="" />,
+                        {/* <DatePicker
                     selected={this.state.fecha}
                     // selected={date}
                     // onSelect={handleDateSelect} //when day is clicked
@@ -158,9 +179,12 @@ export default function C11Pruebas() {
                     
                 /> */}
 
-            </section>
+                    </section>
 
-        </ div>
+                </ div>
+            </Split>
+        </>
+
     )
 }
 

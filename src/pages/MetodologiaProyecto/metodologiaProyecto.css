@@ -162,9 +162,7 @@ h5 {
     background-color: white;
 }
 
-.sidebar--note {
-    /* display: flex; */
-}
+
 
 .sidebar--header {
     display: flex;
@@ -207,4 +205,3 @@ a:link {
     border-radius: 12px;
 
 }
-
