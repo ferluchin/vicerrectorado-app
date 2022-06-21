@@ -2,11 +2,9 @@ import React from "react";
 
 import TitleBar from "../../Componentes/TitleBar";
 
-
-
 import {
     app,
-    // auth
+    auth
 } from "../../firebase"
 
 import { useNavigate } from "react-router-dom";

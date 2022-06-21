@@ -3,7 +3,7 @@ import React from "react";
 import TitleBar from "../../Componentes/TitleBar";
 import "./metodologiaProyecto.css"
 
-//import { app, auth } from "../../firebase"
+import { app, auth } from "../../firebase"
 
 import { useNavigate } from "react-router-dom";
 

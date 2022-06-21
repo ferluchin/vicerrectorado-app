@@ -1,10 +1,7 @@
 import './App.css';
 
-import Home from './pages/Home/Home';
 
-// import FechasProyecto from './Componentes/C2FechasProyecto';
 import DirectorProyecto from './Componentes/C3DirectorProyecto';
-// import AreasConocimiento from './Componentes/C4AreasConocimiento';
 import TipoProyecto from './pages/TipoProyecto/C5TipoProyecto';
 import EquipoProyecto from './pages/PersonalInterno/PersonalInterno';
 import InformacionTecnicaProyecto from './pages/InformacionTecnicaProyecto/C7InformacionTecnicaProyecto';
@@ -16,6 +13,7 @@ import C11Pruebas from './pages/ZonaPruebas/C11Pruebas';
 import PersonalExternoContratar from './pages/PersonalExternoContratar/PersonalExternoContratar';
 import PersonalExternoCooperante from './pages/PersonalExternoCooperante/PersonalExternoCooperante';
 import Login from './pages/login/Login';
+import Home from './pages/Home/Home';
 import { Routes, Route, Navigate } from "react-router-dom";
 
 import { useContext } from 'react';

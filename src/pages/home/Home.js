@@ -19,15 +19,15 @@ import {
     getFirestore,
     collection,
     addDoc,
-    // getDocs,
-    // doc,
-    // deleteDoc,
-    // getDoc,
-    // updateDoc,
-    // setDoc,
+    getDocs,
+    doc,
+    deleteDoc,
+    getDoc,
+    updateDoc,
+    setDoc,
 } from "firebase/firestore";
 
-
+import { app } from "../../firebase";
 
 const db = getFirestore();
 

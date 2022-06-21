@@ -2,7 +2,7 @@ import React from "react";
 import TitleBar from "../../Componentes/TitleBar";
 // import NavBar from "../NavBar";
 import "./informacionTecnica.css"
-//import { app, auth } from "../../firebase"
+import { app, auth } from "../../firebase"
 
 import { useNavigate } from "react-router-dom";
 

@@ -11,15 +11,17 @@ import {
     getFirestore,
     collection,
     addDoc,
-    // getDocs,
-    // doc,
-    // deleteDoc,
-    // getDoc,
-    // updateDoc,
-    // setDoc,
+    getDocs,
+    doc,
+    deleteDoc,
+    getDoc,
+    updateDoc,
+    setDoc,
 } from "firebase/firestore";
 
-const db = getFirestore();
+import { app } from "../../firebase";
+
+const db = getFirestore(app);
 
 export default function TipoProyecto() {
 
