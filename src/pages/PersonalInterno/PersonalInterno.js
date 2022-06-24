@@ -3,10 +3,10 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 import { Modal, ModalBody, ModalHeader, ModalFooter } from 'reactstrap';
-import TitleBar from "../../Componentes/TitleBar";
+import TitleBar from "../../components/TitleBar";
 
 import Split from "react-split";
-import Sidebar from "../../Componentes/Sidebar";
+import Sidebar from "../../components/Sidebar";
 
 import {
     getFirestore,

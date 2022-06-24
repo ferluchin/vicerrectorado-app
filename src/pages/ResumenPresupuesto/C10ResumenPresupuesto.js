@@ -1,6 +1,6 @@
 import React from "react";
 
-import TitleBar from "../../Componentes/TitleBar";
+import TitleBar from "../../components/TitleBar";
 
 import {
     app,
@@ -29,7 +29,7 @@ import {
 } from "firebase/storage"
 
 import Split from "react-split";
-import Sidebar from "../../Componentes/Sidebar";
+import Sidebar from "../../components/Sidebar";
 
 import "./resumenPresupuesto.scss"
 const firestore = getFirestore(app);

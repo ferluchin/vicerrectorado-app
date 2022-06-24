@@ -5,10 +5,10 @@ import { Modal, ModalBody, ModalHeader, ModalFooter } from 'reactstrap';
 //import "../style.css"
 import "./personalExternoContratar.scss"
 import { useNavigate } from "react-router-dom";
-import TitleBar from "../../Componentes/TitleBar";
+import TitleBar from "../../components/TitleBar";
 
 import Split from "react-split";
-import Sidebar from "../../Componentes/Sidebar";
+import Sidebar from "../../components/Sidebar";
 
 export default function PersonalExternoContratar(props) {
 

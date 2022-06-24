@@ -1,12 +1,12 @@
 import React from "react";
 // import NavBar from "../NavBar";
-import TitleBar from "../../Componentes/TitleBar";
-import TablaCronograma from "../../Componentes/TablaCronograma";
+import TitleBar from "../../components/TitleBar";
+import TablaCronograma from "../../components/TablaCronograma";
 import "./cronogramaActividades.scss";
 import { useNavigate } from "react-router-dom";
 
 import Split from "react-split";
-import Sidebar from "../../Componentes/Sidebar";
+import Sidebar from "../../components/Sidebar";
 
 export default function CronogramaActividades() {
 

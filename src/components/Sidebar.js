@@ -11,7 +11,7 @@ export default function Sidebar(props) {
             </div>
             <ul className="w3-ul w3-hoverable">
                 <li><Link to="/" >Administrador</Link> </li>
-                <li><Link to="/home">Formulario Inicial</Link></li>
+                <li><Link to="/home">Información General</Link></li>
                 <li><Link to="/tipo-proyecto">Tipo de Proyecto</Link></li>
                 <li><Link to="/personal-interno">Equipo del Proyecto - Personal Interno</Link></li>
                 <li><Link to="/personal-externo-cooperante">Personal Externo cooperante</Link></li>

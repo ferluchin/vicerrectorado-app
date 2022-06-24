@@ -1,9 +1,9 @@
 import React from "react";
 // import NavBar from "../NavBar";
 import "./tipoProyecto.scss";
-import TitleBar from "../../Componentes/TitleBar";
+import TitleBar from "../../components/TitleBar";
 import Split from "react-split";
-import Sidebar from "../../Componentes/Sidebar";
+import Sidebar from "../../components/Sidebar";
 
 import { useNavigate } from "react-router-dom";
 

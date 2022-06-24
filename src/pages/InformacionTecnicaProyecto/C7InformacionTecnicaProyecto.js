@@ -1,5 +1,5 @@
 import React from "react";
-import TitleBar from "../../Componentes/TitleBar";
+import TitleBar from "../../components/TitleBar";
 // import NavBar from "../NavBar";
 import "./informacionTecnica.scss"
 import { app, auth } from "../../firebase"
@@ -19,7 +19,7 @@ import {
 } from "firebase/firestore";
 
 import Split from "react-split";
-import Sidebar from "../../Componentes/Sidebar";
+import Sidebar from "../../components/Sidebar";
 
 const db = getFirestore()
 

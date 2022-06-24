@@ -1,12 +1,12 @@
-import AdminNavbar from "../../Componentes/AdminNavbar/AdminNavbar";
-import AdminSidebar from "../../Componentes/AdminSidebar/AdminSidebar";
+import AdminNavbar from "../../components/AdminNavbar/AdminNavbar";
+import AdminSidebar from "../../components/AdminSidebar/AdminSidebar";
 
 import "./admin.scss";
 // import Widget from "../../components/widget/Widget";
 // import Featured from "../../components/featured/Featured";
 // import Chart from "../../components/chart/Chart";
-import Table from "../../Componentes/table/Table";
-import TableFirebase from "../../Componentes/tableFirebase/TableFirebase";
+import Table from "../../components/table/Table";
+import TableFirebase from "../../components/tableFirebase/TableFirebase";
 
 const Admin = () => {
     return (
@@ -30,6 +30,7 @@ const Admin = () => {
             <Chart title="Last 6 Months (Revenue)" aspect={2 / 1} />
         </div> 
         */}
+                
                 
             </div>
         </div>
