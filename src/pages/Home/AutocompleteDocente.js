@@ -2,7 +2,7 @@ import React, { useEffect, useState, useRef } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Autosuggest from 'react-autosuggest';
 
-import "./support.css"
+import "./support.scss"
 
 
 const data = [
@@ -42,37 +42,15 @@ const data = [
         "correo": "gpalacio@utpl.edu.ec"
     }
 ]
-// const data = [
-//     { nombre: "Nombre1", correo: "Jair Messias Bolsonaro" },
-//     { nombre: "Name", correo: "Andrés Manuel López Obrador" },
-// ];
+
 
 export default function AutocompleteDocente() {
-    /*
-        function useDocentes() {
-            const [docentes, setDocentes] = useState([])
-    
-            useEffect(() => {
-                fetch("json/docentes.json")
-                    .then(response => response.json())
-                    .then(datos => {
-                        setDocentes(datos)
-                    })
-            }, [])
-            return docentes
-        }
-    
-        // const [docentes, setDocentes] = useState(data);
-    
-        // const docentes = useDocentes()
-    */
+
     const [docentes, setDocentes] = useState(data);
     const [value, setValue] = useState("");
     const [docenteSeleccionado, setDocenteSeleccionado] = useState({});
 
     const onSuggestionsFetchRequested = ({ value }) => {
-        // setDocentes(filtrarDocentes(value));
-        // useDocentes(filtrarDocentes(value));
         setDocentes(filtrarDocentes(value));
 
 
@@ -100,8 +78,7 @@ export default function AutocompleteDocente() {
     }
 
     const onSuggestionsClearRequested = () => {
-        // setDocentes([]);
-        // useDocentes([]);
+
         setDocentes([]);
     }
 
@@ -149,31 +126,34 @@ export default function AutocompleteDocente() {
     }
 
     return (
-        <div className="container">
+        <div className="support">
 
-            <div className="col-12">
+            <div className="container">
 
-                <Autosuggest
-                    suggestions={docentes}
-                    onSuggestionsFetchRequested={onSuggestionsFetchRequested}
-                    onSuggestionsClearRequested={onSuggestionsClearRequested}
-                    getSuggestionValue={getSuggestionValue}
-                    renderSuggestion={renderSuggestion}
-                    inputProps={inputProps}
-                    onSuggestionSelected={eventEnter}
+                <div className="col-12">
 
-                />
-                <br />
-                <div className="col-7">
-                    <button
-                        className='btn btn-primary'
-                        onClick={() => console.log(docenteSeleccionado)}
-                        type="button"
-                    >
-                        Seleccionar Docente
-                    </button>
+                    <Autosuggest
+                        suggestions={docentes}
+                        onSuggestionsFetchRequested={onSuggestionsFetchRequested}
+                        onSuggestionsClearRequested={onSuggestionsClearRequested}
+                        getSuggestionValue={getSuggestionValue}
+                        renderSuggestion={renderSuggestion}
+                        inputProps={inputProps}
+                        onSuggestionSelected={eventEnter}
+
+                    />
+                    <br />
+                    <div className="col-7">
+                        <button
+                            className='btn btn-primary'
+                            onClick={() => console.log(docenteSeleccionado)}
+                            type="button"
+                        >
+                            Seleccionar Docente
+                        </button>
+                    </div>
+
                 </div>
-
             </div>
         </div>
 

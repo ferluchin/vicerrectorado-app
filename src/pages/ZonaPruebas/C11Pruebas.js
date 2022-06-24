@@ -7,7 +7,7 @@ import "react-datepicker/dist/react-datepicker.css"
 
 import Split from "react-split";
 import Sidebar from "../../Componentes/Sidebar";
-import "./pruebas.css"
+import "./pruebas.scss"
 
 export default function C11Pruebas() {
 
@@ -41,7 +41,7 @@ export default function C11Pruebas() {
             <form className="form">
 
                 <div>
-                    
+
 
                     <textarea
                         rows={rows}
@@ -129,6 +129,8 @@ export default function C11Pruebas() {
         }, [content, setFormattedContent]);
 
         return (
+
+
             <form className="form">
 
                 <div>
@@ -149,29 +151,31 @@ export default function C11Pruebas() {
         );
     };
     return (
-        <>
-            <Split
-                sizes={[30, 70]}
-                direction="horizontal"
-                className="split"
-                minSize={100}
-                expandToMin={false}
-                dragInterval={1}
-                cursor="col-resize"
-            >
-                <Sidebar
-                //notes={notes}
-                //currentNote={findCurrentNote()}
-                //setCurrentNoteId={setCurrentNoteId}
-                //newNote={createNewNote}
-                />
+        <div className="pruebas">
+            <div className="main-body">
 
-                <div>
-                    <section>
-                        <LimitedTAResumen limit={150} value="" />,
-                        <LimitedTAAntecedentes limit={500} value="" />,
-                        <LimitedTAJustificacion limit={500} value="" />,
-                        {/* <DatePicker
+                <Split
+                    sizes={[20, 80]}
+                    direction="horizontal"
+                    className="split"
+                    minSize={100}
+                    expandToMin={false}
+                    dragInterval={1}
+                    cursor="col-resize"
+                >
+                    <Sidebar
+                    //notes={notes}
+                    //currentNote={findCurrentNote()}
+                    //setCurrentNoteId={setCurrentNoteId}
+                    //newNote={createNewNote}
+                    />
+
+                    <div>
+                        <section>
+                            <LimitedTAResumen limit={150} value="" />,
+                            <LimitedTAAntecedentes limit={500} value="" />,
+                            <LimitedTAJustificacion limit={500} value="" />,
+                            {/* <DatePicker
                     selected={this.state.fecha}
                     // selected={date}
                     // onSelect={handleDateSelect} //when day is clicked
@@ -179,11 +183,13 @@ export default function C11Pruebas() {
                     
                 /> */}
 
-                    </section>
+                        </section>
 
-                </ div>
-            </Split>
-        </>
+                    </ div>
+                </Split>
+            </div>
+
+        </ div>
 
     )
 }

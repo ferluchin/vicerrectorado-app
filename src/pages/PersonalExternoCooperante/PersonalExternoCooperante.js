@@ -4,7 +4,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { useNavigate } from "react-router-dom";
 
 import { Modal, ModalBody, ModalHeader, ModalFooter } from 'reactstrap';
-import "./personalExternoCooperante.css";
+import "./personalExternoCooperante.scss";
 import TitleBar from "../../Componentes/TitleBar";
 
 import Split from "react-split";
@@ -119,311 +119,315 @@ export default function PersonalExternoCooperante(props) {
     }
 
     return (
-        <main>
-            <Split
-                sizes={[30, 70]}
-                direction="horizontal"
-                className="split"
-                minSize={100}
-                expandToMin={false}
-                dragInterval={1}
-                cursor="col-resize"
-            >
-                <Sidebar
-                //notes={notes}
-                //currentNote={findCurrentNote()}
-                //setCurrentNoteId={setCurrentNoteId}
-                //newNote={createNewNote}
-                />
-                <section>
-                    <form
-                        className="form"
-                        onSubmit={handleSubmit}
-                    >
-                        <TitleBar />
-                        <div className="col-12">
-                            <h4>
-                                Personal Externo Cooperante
-                            </h4>
-                            <br />
+        <div className="personal-externo-cooperante">
+            <div className="main-body">
 
-                            <button
-                                className='btn btn-success'
-                                onClick={() => abrirModalInsertar()}
-                                type="button"
-                            >
-                                Insertar
-                            </button>
-                            <div
-                                //className="table-responsive"
-                                className="table-responsive"
+                <Split
+                    sizes={[20, 80]}
+                    direction="horizontal"
+                    className="split"
+                    minSize={100}
+                    expandToMin={false}
+                    dragInterval={1}
+                    cursor="col-resize"
+                >
+                    <Sidebar
+                    //notes={notes}
+                    //currentNote={findCurrentNote()}
+                    //setCurrentNoteId={setCurrentNoteId}
+                    //newNote={createNewNote}
+                    />
+                    <section>
+                        <form
+                            className="form"
+                            onSubmit={handleSubmit}
+                        >
+                            <TitleBar />
+                            <div className="col-12">
+                                <h4>
+                                    Personal Externo Cooperante
+                                </h4>
+                                <br />
 
-                            >
-
-                                <table
-                                    // className='table table-bordered'
-                                    className='table table-hover'
+                                <button
+                                    className='btn btn-success'
+                                    onClick={() => abrirModalInsertar()}
+                                    type="button"
                                 >
-                                    <thead>
-                                        <tr>
-                                            <th>Nro.</th>
-                                            <th>ROL</th>
-                                            <th>Nombres Completos</th>
-                                            <th>Entidad</th>
-                                            <th>Acciones</th>
+                                    Insertar
+                                </button>
+                                <div
+                                    //className="table-responsive"
+                                    className="table-responsive"
 
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        {data.map(elemento => (
-                                            <tr key={elemento.id}>
-                                                <td className="tg-0lax">{elemento.id}</td>
-                                                <td className="tg-0lax">{elemento.rol}</td>
-                                                <td className="tg-0lax">{elemento.nombres}</td>
-                                                <td className="tg-0lax">{elemento.entidad}</td>
-                                                <td className="tg-0lax" style={{ width: "fit-content" }}>
-                                                    <button
-                                                        className='btn btn-primary'
-                                                        onClick={() => seleccionarPersonal(elemento, 'Editar')}
-                                                        type="button"
-                                                    >
-                                                        ✍️
-                                                    </button>
-                                                    <button
-                                                        className='btn btn-warning'
-                                                        onClick={() => seleccionarPersonal(elemento, 'Eliminar')}
-                                                        type="button"
-                                                    >
-                                                        ❌
-                                                    </button>
-                                                </td>
+                                >
+
+                                    <table
+                                        // className='table table-bordered'
+                                        className='table table-hover'
+                                    >
+                                        <thead>
+                                            <tr>
+                                                <th>Nro.</th>
+                                                <th>ROL</th>
+                                                <th>Nombres Completos</th>
+                                                <th>Entidad</th>
+                                                <th>Acciones</th>
+
                                             </tr>
-                                        ))}
-                                    </tbody>
-                                </table>
+                                        </thead>
+                                        <tbody>
+                                            {data.map(elemento => (
+                                                <tr key={elemento.id}>
+                                                    <td className="tg-0lax">{elemento.id}</td>
+                                                    <td className="tg-0lax">{elemento.rol}</td>
+                                                    <td className="tg-0lax">{elemento.nombres}</td>
+                                                    <td className="tg-0lax">{elemento.entidad}</td>
+                                                    <td className="tg-0lax" style={{ width: "fit-content" }}>
+                                                        <button
+                                                            className='btn btn-primary'
+                                                            onClick={() => seleccionarPersonal(elemento, 'Editar')}
+                                                            type="button"
+                                                        >
+                                                            ✍️
+                                                        </button>
+                                                        <button
+                                                            className='btn btn-warning'
+                                                            onClick={() => seleccionarPersonal(elemento, 'Eliminar')}
+                                                            type="button"
+                                                        >
+                                                            ❌
+                                                        </button>
+                                                    </td>
+                                                </tr>
+                                            ))}
+                                        </tbody>
+                                    </table>
 
 
+                                </div>
+                                <button
+                                    className='btn btn-danger'
+                                    onClick={() => consolaPersonalExternoCooperante()}
+                                    type="button"
+                                >
+                                    Consola Personal Externo Cooperante
+                                </button>
+                                <Modal isOpen={modalEditar}>
+                                    <ModalHeader>
+                                        <div>
+                                            <h4>
+                                                Editar Personal <br />
+                                                Externo Cooperante
+                                            </h4>
+                                        </div>
+                                    </ModalHeader>
+                                    <ModalBody>
+                                        <div className='form-group'>
+                                            <label>ID</label>
+                                            <input
+                                                className='form-control'
+                                                readOnly
+                                                type="text"
+                                                name='id'
+                                                value={personalExternoCooperanteSeleccionado &&
+                                                    personalExternoCooperanteSeleccionado.id}
+                                            />
+                                            <br />
+
+
+
+                                            <label htmlFor="rol">ROL</label>
+                                            <br />
+                                            <select
+                                                id="rol"
+                                                value={personalExternoCooperanteSeleccionado &&
+                                                    personalExternoCooperanteSeleccionado.rol}
+                                                onChange={handleChange}
+                                                name="rol"
+                                                // className="form-select"
+                                                className='form-control'
+
+                                            >
+                                                <option value="Tutor/ Asesor">Tutor/ Asesor</option>
+                                                <option value="Participación">Participación</option>
+
+                                            </select>
+
+                                            <label>
+                                                Nombres Completos
+                                            </label>
+
+                                            <input
+                                                className='form-control'
+                                                type="text"
+                                                name="nombres"
+                                                value={personalExternoCooperanteSeleccionado &&
+                                                    personalExternoCooperanteSeleccionado.nombres}
+                                                onChange={handleChange}
+                                            />
+                                            <br />
+
+                                            <label>
+                                                Entidad
+                                            </label>
+
+                                            <input
+                                                className='form-control'
+                                                type="text"
+                                                name="entidad"
+                                                value={personalExternoCooperanteSeleccionado &&
+                                                    personalExternoCooperanteSeleccionado.entidad}
+                                                onChange={handleChange}
+                                            />
+                                            <br />
+
+
+                                        </div>
+                                    </ModalBody>
+                                    <ModalFooter
+                                        className="modal-footer-pg"
+                                    >
+                                        <button
+                                            className='btn btn-primary'
+                                            onClick={() => editar()}
+                                            type="button"
+                                        >
+                                            Actualizar
+                                        </button>
+                                        <button
+                                            className='btn btn-danger'
+                                            onClick={() => setModalEditar(false)}
+                                            type="button"
+                                        >
+                                            Cancelar
+                                        </button>
+                                    </ModalFooter>
+                                </Modal>
+
+                                <Modal isOpen={modalEliminar}>
+                                    <ModalBody >
+                                        ¿Estás seguro que deseas eliminar el registro seleccionado?
+                                        {personalExternoCooperanteSeleccionado &&
+                                            personalExternoCooperanteSeleccionado.rol}
+                                    </ModalBody>
+                                    <ModalFooter
+                                        className="modal-footer-pg"
+                                    >
+                                        <button
+                                            className='btn btn-danger'
+                                            onClick={() => eliminar()}
+                                            type="button"
+                                        >
+                                            Sí
+                                        </button>
+                                        <button
+                                            className='btn btn-secondary'
+                                            onClick={() => setModalEliminar(false)}
+                                            type="button"
+                                        >
+                                            No
+                                        </button>
+                                    </ModalFooter>
+                                </Modal>
+
+                                <Modal isOpen={modalInsertar}>
+                                    <ModalHeader>
+                                        <div>
+                                            <h3>
+                                                Insertar nuevo registro <br /> Personal Externo Cooperante
+                                            </h3>
+                                        </div>
+                                    </ModalHeader>
+                                    <ModalBody>
+                                        <div className='form-group'>
+                                            <label>
+                                                ID
+                                            </label>
+                                            <input
+                                                className='form-control'
+                                                readOnly
+                                                type="text"
+                                                name="id"
+                                                value={data[data.length - 1].id + 1}
+                                            />
+
+                                            <br />
+                                            <label htmlFor="rol">ROL</label>
+                                            <br />
+                                            <select
+                                                id="rol"
+                                                value={personalExternoCooperanteSeleccionado &&
+                                                    personalExternoCooperanteSeleccionado.rol}
+                                                onChange={handleChange}
+                                                name="rol"
+                                                // className="form-select"
+                                                className='form-control'
+                                            >
+                                                <option value="Tutor/ Asesor">Tutor/ Asesor</option>
+                                                <option value="Participación">Participación</option>
+                                            </select>
+
+
+                                            <label>Nombres Completos</label>
+                                            <input
+                                                className='form-control'
+                                                type="text"
+                                                name="nombres"
+                                                value={personalExternoCooperanteSeleccionado ?
+                                                    personalExternoCooperanteSeleccionado.nombres : ''}
+                                                onChange={handleChange}
+                                            />
+                                            <br />
+
+                                            <label>
+                                                Entidad
+                                            </label>
+                                            <input
+                                                className='form-control'
+                                                type="text"
+                                                name="entidad"
+                                                value={personalExternoCooperanteSeleccionado ?
+                                                    personalExternoCooperanteSeleccionado.entidad : ''}
+                                                onChange={handleChange}
+                                            />
+                                            <br />
+
+                                        </div>
+                                    </ModalBody>
+                                    <ModalFooter
+                                        className="modal-footer-pg"
+                                    >
+                                        <button
+                                            className='btn btn-primary'
+                                            onClick={() => insertar()}
+                                            type="button"
+                                        >
+                                            Insertar
+                                        </button>
+                                        <button
+                                            className='btn btn-danger'
+                                            onClick={() => setModalInsertar(false)}
+                                            type="button"
+                                        >
+                                            Cancelar
+                                        </button>
+                                    </ModalFooter>
+                                </Modal>
                             </div>
                             <button
-                                className='btn btn-danger'
-                                onClick={() => consolaPersonalExternoCooperante()}
-                                type="button"
+                                className="btn btn-primary"
+                            //onClick={() => console.log(docenteSeleccionado)}
+                            //type="button"
                             >
-                                Consola Personal Externo Cooperante
+                                Enviar Información
                             </button>
-                            <Modal isOpen={modalEditar}>
-                                <ModalHeader>
-                                    <div>
-                                        <h4>
-                                            Editar Personal <br />
-                                            Externo Cooperante
-                                        </h4>
-                                    </div>
-                                </ModalHeader>
-                                <ModalBody>
-                                    <div className='form-group'>
-                                        <label>ID</label>
-                                        <input
-                                            className='form-control'
-                                            readOnly
-                                            type="text"
-                                            name='id'
-                                            value={personalExternoCooperanteSeleccionado &&
-                                                personalExternoCooperanteSeleccionado.id}
-                                        />
-                                        <br />
+                        </form>
+                    </section>
+                </Split>
+            </div>
 
-
-
-                                        <label htmlFor="rol">ROL</label>
-                                        <br />
-                                        <select
-                                            id="rol"
-                                            value={personalExternoCooperanteSeleccionado &&
-                                                personalExternoCooperanteSeleccionado.rol}
-                                            onChange={handleChange}
-                                            name="rol"
-                                            // className="form-select"
-                                            className='form-control'
-
-                                        >
-                                            <option value="Tutor/ Asesor">Tutor/ Asesor</option>
-                                            <option value="Participación">Participación</option>
-
-                                        </select>
-
-                                        <label>
-                                            Nombres Completos
-                                        </label>
-
-                                        <input
-                                            className='form-control'
-                                            type="text"
-                                            name="nombres"
-                                            value={personalExternoCooperanteSeleccionado &&
-                                                personalExternoCooperanteSeleccionado.nombres}
-                                            onChange={handleChange}
-                                        />
-                                        <br />
-
-                                        <label>
-                                            Entidad
-                                        </label>
-
-                                        <input
-                                            className='form-control'
-                                            type="text"
-                                            name="entidad"
-                                            value={personalExternoCooperanteSeleccionado &&
-                                                personalExternoCooperanteSeleccionado.entidad}
-                                            onChange={handleChange}
-                                        />
-                                        <br />
-
-
-                                    </div>
-                                </ModalBody>
-                                <ModalFooter
-                                    className="modal-footer-pg"
-                                >
-                                    <button
-                                        className='btn btn-primary'
-                                        onClick={() => editar()}
-                                        type="button"
-                                    >
-                                        Actualizar
-                                    </button>
-                                    <button
-                                        className='btn btn-danger'
-                                        onClick={() => setModalEditar(false)}
-                                        type="button"
-                                    >
-                                        Cancelar
-                                    </button>
-                                </ModalFooter>
-                            </Modal>
-
-                            <Modal isOpen={modalEliminar}>
-                                <ModalBody >
-                                    ¿Estás seguro que deseas eliminar el registro seleccionado?
-                                    {personalExternoCooperanteSeleccionado &&
-                                        personalExternoCooperanteSeleccionado.rol}
-                                </ModalBody>
-                                <ModalFooter
-                                    className="modal-footer-pg"
-                                >
-                                    <button
-                                        className='btn btn-danger'
-                                        onClick={() => eliminar()}
-                                        type="button"
-                                    >
-                                        Sí
-                                    </button>
-                                    <button
-                                        className='btn btn-secondary'
-                                        onClick={() => setModalEliminar(false)}
-                                        type="button"
-                                    >
-                                        No
-                                    </button>
-                                </ModalFooter>
-                            </Modal>
-
-                            <Modal isOpen={modalInsertar}>
-                                <ModalHeader>
-                                    <div>
-                                        <h3>
-                                            Insertar nuevo registro <br /> Personal Externo Cooperante
-                                        </h3>
-                                    </div>
-                                </ModalHeader>
-                                <ModalBody>
-                                    <div className='form-group'>
-                                        <label>
-                                            ID
-                                        </label>
-                                        <input
-                                            className='form-control'
-                                            readOnly
-                                            type="text"
-                                            name="id"
-                                            value={data[data.length - 1].id + 1}
-                                        />
-
-                                        <br />
-                                        <label htmlFor="rol">ROL</label>
-                                        <br />
-                                        <select
-                                            id="rol"
-                                            value={personalExternoCooperanteSeleccionado &&
-                                                personalExternoCooperanteSeleccionado.rol}
-                                            onChange={handleChange}
-                                            name="rol"
-                                            // className="form-select"
-                                            className='form-control'
-                                        >
-                                            <option value="Tutor/ Asesor">Tutor/ Asesor</option>
-                                            <option value="Participación">Participación</option>
-                                        </select>
-
-
-                                        <label>Nombres Completos</label>
-                                        <input
-                                            className='form-control'
-                                            type="text"
-                                            name="nombres"
-                                            value={personalExternoCooperanteSeleccionado ?
-                                                personalExternoCooperanteSeleccionado.nombres : ''}
-                                            onChange={handleChange}
-                                        />
-                                        <br />
-
-                                        <label>
-                                            Entidad
-                                        </label>
-                                        <input
-                                            className='form-control'
-                                            type="text"
-                                            name="entidad"
-                                            value={personalExternoCooperanteSeleccionado ?
-                                                personalExternoCooperanteSeleccionado.entidad : ''}
-                                            onChange={handleChange}
-                                        />
-                                        <br />
-
-                                    </div>
-                                </ModalBody>
-                                <ModalFooter
-                                    className="modal-footer-pg"
-                                >
-                                    <button
-                                        className='btn btn-primary'
-                                        onClick={() => insertar()}
-                                        type="button"
-                                    >
-                                        Insertar
-                                    </button>
-                                    <button
-                                        className='btn btn-danger'
-                                        onClick={() => setModalInsertar(false)}
-                                        type="button"
-                                    >
-                                        Cancelar
-                                    </button>
-                                </ModalFooter>
-                            </Modal>
-                        </div>
-                        <button
-                            className="btn btn-primary"
-                        //onClick={() => console.log(docenteSeleccionado)}
-                        //type="button"
-                        >
-                            Enviar Información
-                        </button>
-                    </form>
-                </section>
-            </Split>
-        </main>
+        </div>
 
     )
 }

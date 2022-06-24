@@ -1,7 +1,5 @@
 import './App.css';
 
-
-import DirectorProyecto from './Componentes/C3DirectorProyecto';
 import TipoProyecto from './pages/TipoProyecto/C5TipoProyecto';
 import EquipoProyecto from './pages/PersonalInterno/PersonalInterno';
 import InformacionTecnicaProyecto from './pages/InformacionTecnicaProyecto/C7InformacionTecnicaProyecto';
@@ -14,6 +12,8 @@ import PersonalExternoContratar from './pages/PersonalExternoContratar/PersonalE
 import PersonalExternoCooperante from './pages/PersonalExternoCooperante/PersonalExternoCooperante';
 import Login from './pages/login/Login';
 import Home from './pages/Home/Home';
+import Admin from './pages/Admin/Admin';
+
 import { Routes, Route, Navigate } from "react-router-dom";
 
 import { useContext } from 'react';
@@ -36,19 +36,20 @@ function App() {
 
                     <Route path="login" element={<Login />} />
 
-                    <Route path="/" element={
+                    <Route path="/" exact element={
+                        <RequireAuth>
+                            <Admin />
+                        </RequireAuth>
+                    } />
+
+                    <Route path="/home" element={
                         <RequireAuth>
                             <Home />
                         </RequireAuth>
                     } />
 
-
                     {/* <Route path="/fechas-proyecto" element={<FechasProyecto />} /> */}
-                    <Route path="/director-proyecto" element={
-                        <RequireAuth>
-                            <DirectorProyecto />
-                        </RequireAuth>
-                    } />
+                    
                     {/* <Route path="/areas-conocimiento" element={<AreasConocimiento />} /> */}
                     <Route path="/tipo-proyecto" element={
                         <RequireAuth>
@@ -96,6 +97,15 @@ function App() {
                         </RequireAuth>
                     } />
                     <Route path="/pruebas" element={<C11Pruebas />} />
+
+                    <Route
+                        path="*"
+                        element={
+                            <main style={{ padding: '1rem' }}>
+                                <p>There's nothing here!</p>
+                            </main>
+                        }
+                    />
                 </Routes>
 
             </div>

@@ -31,7 +31,7 @@ import {
 import Split from "react-split";
 import Sidebar from "../../Componentes/Sidebar";
 
-import "./resumenPresupuesto.css"
+import "./resumenPresupuesto.scss"
 const firestore = getFirestore(app);
 const storage = getStorage(app);
 
@@ -115,218 +115,220 @@ export default function ResumenPresupuesto() {
     }
 
     return (
-        <>
-            <Split
-                sizes={[30, 70]}
-                direction="horizontal"
-                className="split"
-                minSize={100}
-                expandToMin={false}
-                dragInterval={1}
-                cursor="col-resize"
-            >
-                <Sidebar
-                //notes={notes}
-                //currentNote={findCurrentNote()}
-                //setCurrentNoteId={setCurrentNoteId}
-                //newNote={createNewNote}
-                />
+        <div className="resumen-presupuesto">
+            <div className="main-body">
 
-                <section>
-                    <form
-                        className="form"
-                        onSubmit={handleSubmit}
-                    >
-                        <TitleBar />
-                        {/* <NavBar /> */}
-                        <h3>
-                            2.12 Resumen Presupuestos
-                        </h3>
+                <Split
+                    sizes={[20, 80]}
+                    direction="horizontal"
+                    className="split"
+                    minSize={100}
+                    expandToMin={false}
+                    dragInterval={1}
+                    cursor="col-resize"
+                >
+                    <Sidebar
+                    //notes={notes}
+                    //currentNote={findCurrentNote()}
+                    //setCurrentNoteId={setCurrentNoteId}
+                    //newNote={createNewNote}
+                    />
 
-                        <h3>
-                            Items
-                        </h3>
-
-                        <br />
-                        <div className="container">
-                            <div className="row">
-                                <div className="col-4">
-
-                                    <h5>
-                                        Viáticos, subsistencias y movilización.
-                                    </h5>
-                                </div>
-                                <div className="col-8">
-
-                                    <input
-                                        type="number"
-                                        min={0}
-                                        placeholder="$ "
-                                        className="form--input"
-                                        name="viaticosSubsistenciasMovilizacion"
-                                        onChange={handleChange}
-                                        value={formData.viaticosSubsistenciasMovilizacion}
-                                    />
-                                </div>
-                            </div>
-
-                            <div className="row">
-                                <div className="col-4">
-
-                                    <h5>
-                                        Honorarios.
-                                    </h5>
-
-                                </div>
-
-                                <div className="col-8">
-                                    <input
-                                        type="number"
-                                        min={0}
-                                        placeholder="$ "
-                                        className="form--input"
-                                        name="honorarios"
-                                        onChange={handleChange}
-                                        value={formData.honorarios}
-                                    />
-                                </div>
-
-                            </div>
-
-                            <div className="row">
-                                <div className="col-4">
-
-                                    <h5>
-                                        Materiales, suministros y reactivos.
-                                    </h5>
-                                </div>
-                                <div className="col-8">
-
-                                    <input
-                                        type="number"
-                                        min={0}
-                                        placeholder="$ "
-                                        className="form--input"
-                                        name="materialesSuministrosReactivos"
-                                        onChange={handleChange}
-                                        value={formData.materialesSuministrosReactivos}
-                                    />
-                                </div>
-                            </div>
-                            <div className="row">
-                                <div className="col-4">
-
-                                    <h5>
-                                        Equipos
-                                    </h5>
-                                </div>
-
-                                <div className="col-8">
-
-                                    <input
-                                        type="number"
-                                        min={0}
-                                        placeholder="$ "
-                                        className="form--input"
-                                        name="equipos"
-                                        onChange={handleChange}
-                                        value={formData.equipos}
-                                    />
-                                </div>
-
-                            </div>
-                            <div className="row">
-                                <div className="col-4">
-                                    <h5>
-                                        Capacitación.
-                                    </h5>
-                                </div>
-                                <div className="col-8">
-
-                                    <input
-                                        type="number"
-                                        min={0}
-                                        placeholder="$"
-                                        className="form--input"
-                                        name="capacitacion"
-                                        onChange={handleChange}
-                                        value={formData.capacitacion}
-                                    />
-                                </div>
-
-                            </div>
-                            <div className="row">
-                                <div className="col-4">
-
-                                    <h5>
-                                        Total de gastos directos.
-                                    </h5>
-                                </div>
-                                <div className="col-8">
-
-                                    <input
-                                        type="number"
-                                        min={0}
-                                        placeholder="$"
-                                        className="form--input"
-                                        name="totalGastosDirectos"
-                                        onChange={handleChange}
-                                        value={formData.totalGastosDirectos}
-                                    />
-                                </div>
-
-                            </div>
-
-                        </div>
-                        <br />
-                        <div className="container">
-                            <div className="row">
-                                <div className="col-4">
-                                    <h5>
-                                        Bibliografía.
-                                    </h5>
-
-                                </div>
-                                <div className="col-8">
-                                    <textarea
-                                        value={formData.bibliografia}
-                                        placeholder="Escribir Texto "
-                                        onChange={handleChange}
-                                        name="bibliografia"
-                                    />
-                                </div>
-                            </div>
-                        </div>
-                        <br />
-
-                        <div className="container">
-                            <div className="row">
-                                <div className="col-4">
-                                    <h5>
-                                        Observaciones.
-                                    </h5>
-
-                                </div>
-                                <div className="col-8">
-                                    <textarea
-                                        value={formData.observaciones}
-                                        placeholder="Escribir Texto "
-                                        onChange={handleChange}
-                                        name="observaciones"
-                                    />
-                                </div>
-                            </div>
-                        </div>
-
-                        <br />
-                        <button
-                            className="btn btn-primary"
-                            onClick={routeChange}
-                        //type="button"
+                    <section>
+                        <form
+                            className="form"
+                            onSubmit={handleSubmit}
                         >
-                            Enviar Información
-                        </button>
-                        {/* 
+                            <TitleBar />
+                            {/* <NavBar /> */}
+                            <h3>
+                                2.12 Resumen Presupuestos
+                            </h3>
+
+                            <h3>
+                                Items
+                            </h3>
+
+                            <br />
+                            <div className="container">
+                                <div className="row">
+                                    <div className="col-4">
+
+                                        <h5>
+                                            Viáticos, subsistencias y movilización.
+                                        </h5>
+                                    </div>
+                                    <div className="col-8">
+
+                                        <input
+                                            type="number"
+                                            min={0}
+                                            placeholder="$ "
+                                            className="form--input"
+                                            name="viaticosSubsistenciasMovilizacion"
+                                            onChange={handleChange}
+                                            value={formData.viaticosSubsistenciasMovilizacion}
+                                        />
+                                    </div>
+                                </div>
+
+                                <div className="row">
+                                    <div className="col-4">
+
+                                        <h5>
+                                            Honorarios.
+                                        </h5>
+
+                                    </div>
+
+                                    <div className="col-8">
+                                        <input
+                                            type="number"
+                                            min={0}
+                                            placeholder="$ "
+                                            className="form--input"
+                                            name="honorarios"
+                                            onChange={handleChange}
+                                            value={formData.honorarios}
+                                        />
+                                    </div>
+
+                                </div>
+
+                                <div className="row">
+                                    <div className="col-4">
+
+                                        <h5>
+                                            Materiales, suministros y reactivos.
+                                        </h5>
+                                    </div>
+                                    <div className="col-8">
+
+                                        <input
+                                            type="number"
+                                            min={0}
+                                            placeholder="$ "
+                                            className="form--input"
+                                            name="materialesSuministrosReactivos"
+                                            onChange={handleChange}
+                                            value={formData.materialesSuministrosReactivos}
+                                        />
+                                    </div>
+                                </div>
+                                <div className="row">
+                                    <div className="col-4">
+
+                                        <h5>
+                                            Equipos
+                                        </h5>
+                                    </div>
+
+                                    <div className="col-8">
+
+                                        <input
+                                            type="number"
+                                            min={0}
+                                            placeholder="$ "
+                                            className="form--input"
+                                            name="equipos"
+                                            onChange={handleChange}
+                                            value={formData.equipos}
+                                        />
+                                    </div>
+
+                                </div>
+                                <div className="row">
+                                    <div className="col-4">
+                                        <h5>
+                                            Capacitación.
+                                        </h5>
+                                    </div>
+                                    <div className="col-8">
+
+                                        <input
+                                            type="number"
+                                            min={0}
+                                            placeholder="$"
+                                            className="form--input"
+                                            name="capacitacion"
+                                            onChange={handleChange}
+                                            value={formData.capacitacion}
+                                        />
+                                    </div>
+
+                                </div>
+                                <div className="row">
+                                    <div className="col-4">
+
+                                        <h5>
+                                            Total de gastos directos.
+                                        </h5>
+                                    </div>
+                                    <div className="col-8">
+
+                                        <input
+                                            type="number"
+                                            min={0}
+                                            placeholder="$"
+                                            className="form--input"
+                                            name="totalGastosDirectos"
+                                            onChange={handleChange}
+                                            value={formData.totalGastosDirectos}
+                                        />
+                                    </div>
+
+                                </div>
+
+                            </div>
+                            <br />
+                            <div className="container">
+                                <div className="row">
+                                    <div className="col-4">
+                                        <h5>
+                                            Bibliografía.
+                                        </h5>
+
+                                    </div>
+                                    <div className="col-8">
+                                        <textarea
+                                            value={formData.bibliografia}
+                                            placeholder="Escribir Texto "
+                                            onChange={handleChange}
+                                            name="bibliografia"
+                                        />
+                                    </div>
+                                </div>
+                            </div>
+                            <br />
+
+                            <div className="container">
+                                <div className="row">
+                                    <div className="col-4">
+                                        <h5>
+                                            Observaciones.
+                                        </h5>
+
+                                    </div>
+                                    <div className="col-8">
+                                        <textarea
+                                            value={formData.observaciones}
+                                            placeholder="Escribir Texto "
+                                            onChange={handleChange}
+                                            name="observaciones"
+                                        />
+                                    </div>
+                                </div>
+                            </div>
+
+                            <br />
+                            <button
+                                className="btn btn-primary"
+                                onClick={routeChange}
+                            //type="button"
+                            >
+                                Enviar Información
+                            </button>
+                            {/* 
                 <button
                     className="btn btn-primary"
                     onClick={ routeChange }
@@ -334,11 +336,13 @@ export default function ResumenPresupuesto() {
                 >
                     Siguiente
                 </button> */}
-                    </form>
+                        </form>
 
-                </section>
-            </Split>
-        </>
+                    </section>
+                </Split>
+            </div>
+
+        </div>
 
     )
 }

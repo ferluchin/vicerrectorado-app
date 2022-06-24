@@ -1,6 +1,6 @@
 import React from "react";
 // import NavBar from "../NavBar";
-import "./tipoProyecto.css";
+import "./tipoProyecto.scss";
 import TitleBar from "../../Componentes/TitleBar";
 import Split from "react-split";
 import Sidebar from "../../Componentes/Sidebar";
@@ -84,9 +84,11 @@ export default function TipoProyecto() {
     }
 
     return (
-        <>
+        <div className="tipo-proyecto">
+            <div className="main-body">
+
             <Split
-                sizes={[30, 70]}
+                sizes={[20, 80]}
                 direction="horizontal"
                 className="split"
                 minSize={100}
@@ -304,8 +306,10 @@ export default function TipoProyecto() {
                     </form>
 
                 </section>
-            </Split>
-        </>
+                </Split>
+            </div>
+
+        </div>
 
     )
 }

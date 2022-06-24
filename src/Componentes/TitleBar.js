@@ -3,7 +3,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 // import { Modal, ModalBody, ModalHeader, ModalFooter } from 'reactstrap'
 
 import image from "../assets/utpl.png"
-import "../style.css"
+//import "../style.css"
 
 export default function TitleBar() {
 
