@@ -18,16 +18,16 @@ import { useContext } from "react";
 const AdminSidebar = () => {
     const { dispatch } = useContext(DarkModeContext);
     return (
-        <div className="sidebar">
+        <div className="admin-sidebar">
             <div className="top">
                 <Link to="/" style={{ textDecoration: "none" }}>
-                    <span className="logo">Administrador Proyectos</span>
+                    <span className="logo">Administrador Docente</span>
                 </Link>
             </div>
             <hr />
             <div className="center">
                 <ul>
-                    <p className="title">MAIN</p>
+                    <p className="title">PRINCIPAL</p>
                     <li>
                         <DashboardIcon className="icon" />
                         <span>Dashboard</span>

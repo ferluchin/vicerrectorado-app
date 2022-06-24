@@ -31,11 +31,11 @@ const List = () => {
 
   const [arrayProyectos, setArrayProyectos] = useState(null);
 
-  const citiesRef = collection(app, "usuarios/lgrandab@gmail.com/cities");
+  const citiesRef = collection(db, "usuarios/lgrandab@gmail.com/cities");
 
   async function buscarProyectoOrCrearProyecto(idDocumento) {
     //crear referencia al documento
-    const docuRef = doc(app, `usuarios/${correoUsuario}/cities`);
+    const docuRef = doc(db, `usuarios/${correoUsuario}/cities`);
 
     //Buscar documento
     const consulta = await getDoc(docuRef);
@@ -72,7 +72,7 @@ const List = () => {
   //Recuperar el contenido de un solo documento
   async function getData() {
     var rows = [];
-    var docRef = collection(app, "proyectos-investigacion");
+    var docRef = collection(db, "proyectos-investigacion");
     const docSnap = await getDocs(docRef);
     docSnap.forEach((doc) => {
       // doc.data() is never undefined for query doc snapshots

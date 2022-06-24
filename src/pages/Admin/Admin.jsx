@@ -14,6 +14,7 @@ const Admin = () => {
             <AdminSidebar />
             <div className="adminContainer">
                 <AdminNavbar />
+                
 
                 {/*         
         <div className="widgets">
@@ -30,8 +31,20 @@ const Admin = () => {
             <Chart title="Last 6 Months (Revenue)" aspect={2 / 1} />
         </div> 
         */}
-                
-                
+                <div className="listContainer">
+                    <div className="listTitle">
+                        Últimos  Registros
+                    </div>
+                    <Table />
+                </div>
+
+                <div className="listContainer">
+                    <div className="listTitle">
+                        Últimos  Registros Firebase
+                    </div>
+                    <TableFirebase />
+                </div>
+
             </div>
         </div>
     );
