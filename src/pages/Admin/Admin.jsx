@@ -7,6 +7,7 @@ import "./admin.scss";
 // import Chart from "../../components/chart/Chart";
 import Table from "../../components/table/Table";
 import TableFirebase from "../../components/tableFirebase/TableFirebase";
+import TableInformacionGeneral  from "../../components/tableInformacionGeneral/TableInformacionGeneral";
 
 const Admin = () => {
     return (
@@ -41,10 +42,18 @@ const Admin = () => {
 
                 <div className="listContainer">
                     <div className="listTitle">
+                        Datos Información General
+                    </div>
+                    <TableInformacionGeneral />
+                </div>
+
+                {/*                 
+                <div className="listContainer">
+                    <div className="listTitle">
                         Últimos  Registros Firebase
                     </div>
                     <TableFirebase />
-                </div>
+                </div> */}
 
             </div>
         </div>
