@@ -8,28 +8,32 @@ import TitleBar from "../../components/TitleBar";
 import Split from "react-split";
 import Sidebar from "../../components/Sidebar";
 
+import { app } from "../../firebase";
+
 import {
     getFirestore,
-    // collection,
-    // addDoc,
-    // getDocs,
-    // doc,
-    // deleteDoc,
-    // getDoc,
-    // updateDoc,
-    // setDoc,
+    collection,
+    addDoc,
+    getDocs,
+    doc,
+    deleteDoc,
+    getDoc,
+    updateDoc,
+    setDoc,
 } from "firebase/firestore";
 
 import "./personalInterno.scss"
-import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap/dist/css/bootstrap.css';
 
 // const db = getFirestore();
 
 // import NavBar from "../NavBar";
 
+const firestore = getFirestore(app);
 
 export default function PersonalInterno() {
 
+    const correoUsuario = "lgrandab@gmail.com";
 
     let navigate = useNavigate();
 
@@ -131,22 +135,18 @@ export default function PersonalInterno() {
 
     const handleSubmit = async (event) => {
         event.preventDefault()
-        // submitToApi(formData)
-        /*
+
         try {
-            await addDoc(collection(db, 'proyectos-investigacion'), {
-                ...formData
+            const docuRef = doc(firestore, `proyectos-investigacion/${correoUsuario}`)
+            await updateDoc(docuRef, {
+                personalInterno: {
+                    ...data
+                }
             })
         } catch (error) {
             console.log(error)
         }
-        console.log(formData)
-        setFormData({ ...formInicial })
-        */
         consolaPersonalInterno();
-        //consolaPersonalExternoCooperante();
-
-        //consolaPersonalExternoContratar();
         routeChange()
     }
 

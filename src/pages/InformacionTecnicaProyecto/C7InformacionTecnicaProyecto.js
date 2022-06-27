@@ -10,22 +10,23 @@ import {
     getFirestore,
     collection,
     addDoc,
-    // getDocs,
-    // doc,
-    // deleteDoc,
-    // getDoc,
-    // updateDoc,
-    // setDoc,
+    getDocs,
+    doc,
+    deleteDoc,
+    getDoc,
+    updateDoc,
+    setDoc,
 } from "firebase/firestore";
 
 import Split from "react-split";
 import Sidebar from "../../components/Sidebar";
 
-const db = getFirestore()
+
+const firestore = getFirestore(app)
 
 export default function InformacionTecnicaProyecto() {
 
-
+    const correoUsuario = "lgrandab@gmail.com"
     let navigate = useNavigate();
 
     const routeChange = () => {
@@ -100,14 +101,31 @@ export default function InformacionTecnicaProyecto() {
     const handleSubmit = async (event) => {
         event.preventDefault()
         // submitToApi(formData)
+        // try {
+        //     await addDoc(collection(db, 'proyectos-investigacion'), {
+        //         ...formData
+        //     })
+        // } catch (error) {
+        //     console.log(error)
+        // }
+        // console.log(formData)
+        // setFormData({ ...formInicial })
+        // routeChange()
+
         try {
-            await addDoc(collection(db, 'proyectos-investigacion'), {
-                ...formData
+            const docuRef = doc(firestore, `proyectos-investigacion/${correoUsuario}`)
+            updateDoc(docuRef, {
+                informacionTecnicaProyecto: {
+                    ...formData
+                }
             })
+
+
         } catch (error) {
             console.log(error)
         }
-        console.log(formData)
+        //console.log(formData)
+        console.log({ ...formData })
         setFormData({ ...formInicial })
         routeChange()
     }
@@ -125,10 +143,6 @@ export default function InformacionTecnicaProyecto() {
                     cursor="col-resize"
                 >
                     <Sidebar
-                    //notes={notes}
-                    //currentNote={findCurrentNote()}
-                    //setCurrentNoteId={setCurrentNoteId}
-                    //newNote={createNewNote}
                     />
 
                     <section>
@@ -137,7 +151,6 @@ export default function InformacionTecnicaProyecto() {
                             onSubmit={handleSubmit}
                         >
                             <TitleBar />
-                            {/* <NavBar /> */}
 
                             <div className="container">
 

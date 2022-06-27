@@ -78,28 +78,13 @@ export default function ResumenPresupuesto() {
         // submitToApi(formData)
 
         try {
-            // addDooc or updateDoc?
 
-            //actualizar base de datos
-            //previous
-            /*
-            await addDoc(collection(firestore, 'proyectos-investigacion'), {
-                ...formData
+            const docuRef = doc(firestore, `proyectos-investigacion/${correoUsuario}` )
+            await updateDoc(docuRef, {
+                resumenPresupuesto: {
+                    ...formData
+                }
             })
-            */
-            /*
-            await addDoc(collection(firestore, `proyectos-investigacion/link`), {
-                ...formData
-            })
-            */
-
-            /*await addDoc(collection(firestore, `proyectos-investigacion/link`), {
-                ...formData
-            })
-            */
-
-            const docuRef = doc(firestore, `proyectos-investigacion/${correoUsuario}`)
-            updateDoc(docuRef, { proyectos: { ...formData } })
 
             /*
                         const docuRef =  doc(firestore, 'proyectos-investigacion');
@@ -112,6 +97,7 @@ export default function ResumenPresupuesto() {
         //console.log(formData)
         console.log({ ...formData })
         setFormData({ ...formInicial })
+        routeChange();
     }
 
     return (
@@ -323,7 +309,7 @@ export default function ResumenPresupuesto() {
                             <br />
                             <button
                                 className="btn btn-primary"
-                                onClick={routeChange}
+                               // onClick={routeChange}
                             //type="button"
                             >
                                 Enviar Información

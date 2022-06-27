@@ -3,13 +3,32 @@ import React from "react";
 import TitleBar from "../../components/TitleBar";
 import TablaCronograma from "../../components/TablaCronograma";
 import "./cronogramaActividades.scss";
+
+import { app, auth } from "../../firebase"
+
+
 import { useNavigate } from "react-router-dom";
+
+import {
+    getFirestore,
+    collection,
+    addDoc,
+    getDocs,
+    doc,
+    deleteDoc,
+    getDoc,
+    updateDoc,
+    setDoc,
+} from "firebase/firestore";
 
 import Split from "react-split";
 import Sidebar from "../../components/Sidebar";
 
-export default function CronogramaActividades() {
+const firestore = getFirestore(app)
 
+
+export default function CronogramaActividades() {
+    const correoUsuario = "lgrandab@gmail.com"
 
     let navigate = useNavigate();
 
@@ -20,18 +39,22 @@ export default function CronogramaActividades() {
     }
 
 
+    const formInicial = {
+        //Cronograma de Actividades
+        objetivoGeneral: "",
+        objetivoEspecifico1: "",
+        resultadoObjetivoEspecifico1: "",
+
+        //Personal Externo a Contratar
+
+        //objetivos y resultados
+        objectivoEspecifico2: "",
+        resultadoObjetivoEspecifico2: "",
+    }
+
     const [formData, setFormData] = React.useState(
         {
-            //Cronograma de Actividades
-            objetivoGeneral: "",
-            objetivoEspecifico1: "",
-            resultadoObjetivoEspecifico1: "",
-
-            //Personal Externo a Contratar
-
-            //objetivos y resultados
-            objectivoEspecifico2: "",
-            resultadoObjetivoEspecifico2: "",
+            ...formInicial
         }
     )
 
@@ -45,13 +68,31 @@ export default function CronogramaActividades() {
         })
     }
 
-    function handleSubmit(event) {
+    // function oldHandleSubmit(event) {
+    //     event.preventDefault()
+    //     // submitToApi(formData)
+    //     console.log(formData)
+    //     routeChange()
+    // }
+
+    const handleSubmit = async (event) => {
         event.preventDefault()
-        // submitToApi(formData)
-        console.log(formData)
+
+        try {
+            const docuRef = doc(firestore, `proyectos-investigacion/${correoUsuario}`)
+            updateDoc(docuRef, {
+                metodologiaProyecto: {
+                    ...formData
+                }
+            })
+
+        } catch (error) {
+            console.log(error)
+        }
+        console.log({ ...formData })
+        setFormData({ ...formInicial })
         routeChange()
     }
-
 
     return (
         <div className="cronograma-actividades">
@@ -67,10 +108,6 @@ export default function CronogramaActividades() {
                     cursor="col-resize"
                 >
                     <Sidebar
-                    //notes={notes}
-                    //currentNote={findCurrentNote()}
-                    //setCurrentNoteId={setCurrentNoteId}
-                    //newNote={createNewNote}
                     />
 
                     <section>

@@ -7,10 +7,28 @@ import { Modal, ModalBody, ModalHeader, ModalFooter } from 'reactstrap';
 import "./personalExternoCooperante.scss";
 import TitleBar from "../../components/TitleBar";
 
+import { app, auth } from "../../firebase"
+
+import {
+    getFirestore,
+    collection,
+    addDoc,
+    getDocs,
+    doc,
+    deleteDoc,
+    getDoc,
+    updateDoc,
+    setDoc,
+} from "firebase/firestore";
+
 import Split from "react-split";
 import Sidebar from "../../components/Sidebar";
 
+const firestore = getFirestore(app)
+
 export default function PersonalExternoCooperante(props) {
+
+    const correoUsuario = "lgrandab@gmail.com";
 
     let navigate = useNavigate();
 
@@ -103,18 +121,18 @@ export default function PersonalExternoCooperante(props) {
 
     const handleSubmit = async (event) => {
         event.preventDefault()
-        // submitToApi(formData)
-        /*
+
         try {
-            await addDoc(collection(db, 'proyectos-investigacion'), {
-                ...formData
+            const docuRef = doc(firestore, `proyectos-investigacion/${correoUsuario}`)
+            await updateDoc(docuRef, {
+                personalExternoCooperante: {
+                    ...data
+                }
             })
         } catch (error) {
             console.log(error)
         }
-        console.log(formData)
-        setFormData({ ...formInicial })
-        */
+        consolaPersonalExternoCooperante();
         routeChange()
     }
 

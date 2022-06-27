@@ -11,21 +11,22 @@ import {
     getFirestore,
     collection,
     addDoc,
-    // getDocs,
-    // doc,
-    // deleteDoc,
-    // getDoc,
-    // updateDoc,
-    // setDoc,
+    getDocs,
+    doc,
+    deleteDoc,
+    getDoc,
+    updateDoc,
+    setDoc,
 } from "firebase/firestore";
 
 import Split from "react-split";
 import Sidebar from "../../components/Sidebar";
 
-const db = getFirestore();
+const firestore = getFirestore(app)
 
 export default function MetodologiaProyecto() {
 
+    const correoUsuario = "lgrandab@gmail.com"
 
     let navigate = useNavigate();
 
@@ -100,17 +101,36 @@ export default function MetodologiaProyecto() {
         console.log(formData)
     }
     */
+    // const oldHandleSubmit = async (event) => {
+    //     event.preventDefault()
+    //     // submitToApi(formData)
+    //     try {
+    //         await addDoc(collection(firestore, 'proyectos-investigacion'), {
+    //             ...formData
+    //         })
+    //     } catch (error) {
+    //         console.log(error)
+    //     }
+    //     console.log(formData)
+    //     setFormData({ ...formInicial })
+    //     routeChange()
+    // }
+
     const handleSubmit = async (event) => {
         event.preventDefault()
-        // submitToApi(formData)
+
         try {
-            await addDoc(collection(db, 'proyectos-investigacion'), {
-                ...formData
+            const docuRef = doc(firestore, `proyectos-investigacion/${correoUsuario}`)
+            updateDoc(docuRef, {
+                metodologiaProyecto: {
+                    ...formData
+                }
             })
+
         } catch (error) {
             console.log(error)
         }
-        console.log(formData)
+        console.log({ ...formData })
         setFormData({ ...formInicial })
         routeChange()
     }
@@ -129,10 +149,6 @@ export default function MetodologiaProyecto() {
                     cursor="col-resize"
                 >
                     <Sidebar
-                    //notes={notes}
-                    //currentNote={findCurrentNote()}
-                    //setCurrentNoteId={setCurrentNoteId}
-                    //newNote={createNewNote}
                     />
 
                     <section>

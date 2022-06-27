@@ -7,10 +7,29 @@ import "./personalExternoContratar.scss"
 import { useNavigate } from "react-router-dom";
 import TitleBar from "../../components/TitleBar";
 
+import { app, auth } from "../../firebase";
+
+import {
+  getFirestore,
+  collection,
+  addDoc,
+  getDocs,
+  doc,
+  deleteDoc,
+  getDoc,
+  updateDoc,
+  setDoc,
+} from "firebase/firestore";
+
 import Split from "react-split";
 import Sidebar from "../../components/Sidebar";
 
+const firestore = getFirestore(app)
+
+
 export default function PersonalExternoContratar(props) {
+
+  const correoUsuario = "lgrandab@gmail.com";
 
   let navigate = useNavigate();
 
@@ -116,21 +135,26 @@ export default function PersonalExternoContratar(props) {
   }
 
   const handleSubmit = async (event) => {
-    event.preventDefault()
-    // submitToApi(formData)
-    /*
-    try {
-        await addDoc(collection(db, 'proyectos-investigacion'), {
-            ...formData
-        })
-    } catch (error) {
-        console.log(error)
-    }
-    console.log(formData)
-    setFormData({ ...formInicial })
-    */
+    event.preventDefault();
 
+    try {
+      const docuRef = doc(firestore, `proyectos-investigacion/${correoUsuario}`)
+      await updateDoc(docuRef, {
+        // kira: {
+        //   personalExternoContratar: {
+        //     ...data
+        //   }
+        // }
+        personalExternoContratar: {
+          ...data
+        }
+      })
+    } catch (error) {
+      console.log(error)
+    }
+    consolaPersonalExternoContratar();
     routeChange()
+
   }
 
 
@@ -150,10 +174,6 @@ export default function PersonalExternoContratar(props) {
           cursor="col-resize"
         >
           <Sidebar
-          //notes={notes}
-          //currentNote={findCurrentNote()}
-          //setCurrentNoteId={setCurrentNoteId}
-          //newNote={createNewNote}
           />
           <section>
             <form

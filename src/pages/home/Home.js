@@ -24,14 +24,18 @@ import {
     deleteDoc,
     getDoc,
     updateDoc,
+    //updateDoc,
     setDoc,
 } from "firebase/firestore";
 
-import { app } from "../../firebase";
+import { app, auth } from "../../firebase";
 
-const db = getFirestore();
+const firestore = getFirestore(app);
+const db = getFirestore(app);
 
 export default function Home() {
+
+    const correoUsuario = "lgrandab@gmail.com"
 
     let navigate = useNavigate();
 
@@ -120,17 +124,56 @@ export default function Home() {
         })
     }
 
+    // const oldHandleSubmit = async (event) => {
+    //     event.preventDefault()
+    //     // submitToApi(formData)
+    //     try {
+    //         await addDoc(collection(db, 'proyectos-investigacion'), {
+    //             ...formData
+    //         })
+    //     } catch (error) {
+    //         console.log(error)
+    //     }
+    //     console.log(formData)
+    //     setFormData({ ...formInicial })
+    //     routeChange()
+    // }
+
+    // try {
+    //     const docuRef = doc(firestore, `proyectos-investigacion/${correoUsuario}`, `proyectos`)
+    //     updateDoc(docuRef, { proyectos: { ...formData } })
+
+    // } catch (error) {
+    //     console.log(error)
+    // }
+
     const handleSubmit = async (event) => {
-        event.preventDefault()
-        // submitToApi(formData)
+        event.preventDefault();
         try {
-            await addDoc(collection(db, 'proyectos-investigacion'), {
-                ...formData
+            // const docuRef = collection(firestore, `proyectos-investigacion/${correoUsuario}`, "proyectos")
+
+            //const docuRef = collection(firestore, `proyectos-investigacion/`, `${correoUsuario}/ `, `proyectos` )
+            //const docuRef = collection(firestore, `proyectos-investigacion/`, `${correoUsuario}/`, `proyectos`)
+            
+            
+            ////const docuRef = doc(firestore, `proyectos-investigacion/${correoUsuario}`, `proyectos`)
+
+
+            //updateDoc(docuRef, { proyectos: { ...formData } })
+            ////await updateDoc(docuRef,  { ...formData } )
+            const docuRef = doc(firestore, `proyectos-investigacion/${correoUsuario}`)
+            updateDoc(docuRef, {
+                informacionGeneral: {
+                    ...formData
+                }
             })
+
+            
         } catch (error) {
             console.log(error)
         }
-        console.log(formData)
+        //console.log(formData)
+        console.log({ ...formData })
         setFormData({ ...formInicial })
         routeChange()
     }
@@ -156,25 +199,17 @@ export default function Home() {
                             className="form"
                             onSubmit={handleSubmit}
                         >
-
-
                             <TitleBar />
 
                             <br />
-
                             <div className="container">
-
                                 <h4>1.  Información General.</h4> {<br />}
                                 <div className="mb-3 row">
 
                                     <h5 className="col-sm-2">
                                         Titulo
                                     </h5>
-                                    {/* <label
-                        className="col-sm-2 col-form-label"
-                    >
-                        Título.
-                    </label> */}
+
                                     <div className="col-sm-10">
                                         <input
                                             type="text"
@@ -186,8 +221,6 @@ export default function Home() {
                                         />
                                     </div>
                                 </div>
-
-
 
                                 <div className="container">
                                     <div className="row">
@@ -207,7 +240,6 @@ export default function Home() {
                                             </h5>
                                         </div>
                                     </div>
-
 
                                     <div className="row">
                                         <div className="col-4">
@@ -360,7 +392,6 @@ export default function Home() {
                                                 Línea de Investigación
                                             </h5>
 
-
                                             <select
                                                 id="lineaInvestigacion"
                                                 value={formData.lineaInvestigacion}
@@ -424,7 +455,6 @@ export default function Home() {
                                                 <option value="Política educativa y organización escolar.">Política educativa y organización escolar. </option>
                                             </select>
 
-
                                             <br />
                                         </div>
 
@@ -467,10 +497,6 @@ export default function Home() {
                                 </div>
                             </div>
 
-
-                            {/* <InformacionGeneral /> */}
-                            {/* <FechasProyecto /> */}
-
                             <div className="container">
 
                                 <div className="row">
@@ -485,7 +511,6 @@ export default function Home() {
                                         <h5>
                                             Fecha de Finalización
                                         </h5>
-
                                     </div>
 
                                     <div className="col-4">
@@ -695,9 +720,6 @@ export default function Home() {
                                                 Objetivos del plan de Creación de Oportunidades.
 
                                             </h5>
-                                            {/* <label htmlFor="planCreacionOportunidades">
-                                Objetivos del plan de Creación de Oportunidades.
-                            </label> */}
 
                                         </div>
                                         <div className="col-8">
@@ -742,12 +764,7 @@ export default function Home() {
                                         <div className="col-4">
                                             <h5>
                                                 Campo amplio
-
                                             </h5>
-
-                                            {/* <label>
-                                Campo amplio
-                            </label> */}
 
                                             <select
                                                 id="campoAmplio"
@@ -812,7 +829,6 @@ export default function Home() {
                                                 <option value="2-10A Servicios de protección "> 2-10A Servicios de protección </option>
                                                 <option value="3-10A Servicios de seguridad ">3-10A Servicios de seguridad  </option>
                                                 <option value="4-10A Servicio de transporte">4-10A Servicio de transporte </option>
-
                                             </select>
 
                                         </div>
@@ -937,9 +953,6 @@ export default function Home() {
                                                 Objetivos del desarrollo Sostenible
                                             </h5>
 
-                                            {/* <label>
-                                Objetivos del desarrollo Sostenible
-                            </label> */}
                                         </div>
                                         <div className="col-8">
                                             <select

@@ -80,12 +80,16 @@ const List = () => {
       try {
         rows.push({
           id: doc.id,
+          bibliografia: doc.data().bibliografia,
           capacitacion: doc.data().proyectos.capacitacion,
+          equipos: doc.data().proyectos.equipos,
           honorarios: doc.data().proyectos.honorarios,
+          materialesSuministrosReactivos: doc.data().proyectos.materialesSuministrosReactivos,
           observaciones: doc.data().proyectos.observaciones,
           totalGastos: doc.data().proyectos.totalGastosDirectos,
           viaticos: doc.data().proyectos.viaticosSubsistenciasMovilizacion,
           status: "Pending",
+
         })
       }
       catch (e) {
@@ -120,12 +124,16 @@ const List = () => {
         <Table sx={{ minWidth: 650 }} aria-label="simple table">
           <TableHead>
             <TableRow>
-              <TableCell className="tableCell">Proyecto de Investigación</TableCell>
+              <TableCell className="tableCell">Correo de Investigador</TableCell>
               <TableCell className="tableCell">Identificador</TableCell>
-              <TableCell className="tableCell">capacitacion</TableCell>
-              <TableCell className="tableCell">honorarios</TableCell>
-              <TableCell className="tableCell">observaciones</TableCell>
-              <TableCell className="tableCell">Viaticos</TableCell>
+              <TableCell className="tableCell">Bibliografía</TableCell>
+              <TableCell className="tableCell">Capacitación</TableCell>
+              <TableCell className="tableCell">Equipos</TableCell>
+              <TableCell className="tableCell">Honorarios</TableCell>
+              <TableCell className="tableCell">Materiales y Suministros Reactivos</TableCell>
+              <TableCell className="tableCell">Observaciones</TableCell>
+              <TableCell className="tableCell">Total Gastos Directos</TableCell>
+              <TableCell className="tableCell">Viáticos</TableCell>
               {/* <TableCell className="tableCell">Payment Method</TableCell> */}
               <TableCell className="tableCell">Status</TableCell>
             </TableRow>
@@ -140,7 +148,12 @@ const List = () => {
                     {row.capacitacion}
                   </div>
                 </TableCell>
+
+                <TableCell className="tableCell">{row.bibliografia}</TableCell>
+                <TableCell className="tableCell">{row.capacitacion}</TableCell>
+                <TableCell className="tableCell">{row.equipos}</TableCell>
                 <TableCell className="tableCell">{row.honorarios}</TableCell>
+                <TableCell className="tableCell">{row.materialesSuministrosReactivos}</TableCell>
                 <TableCell className="tableCell">{row.observaciones}</TableCell>
                 <TableCell className="tableCell">{row.totalGastos}</TableCell>
                 <TableCell className="tableCell">{row.viaticos}</TableCell>

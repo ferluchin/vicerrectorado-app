@@ -14,11 +14,64 @@ import AccountCircleOutlinedIcon from "@mui/icons-material/AccountCircleOutlined
 import { Link } from "react-router-dom";
 import { DarkModeContext } from "../../context/darkModeContext";
 import { useContext } from "react";
+import { getAuth, signOut } from 'firebase/auth'
+import { app, auth } from '../../firebase'
+import { AuthContext } from "../../context/AuthContext";
+import { Routes, Route, useNavigate, Navigate } from 'react-router-dom'
+
+
+
+
+
 
 const AdminSidebar = () => {
+
+    const navigate = useNavigate();
+
+    const { currentUser } = useContext(AuthContext)
+
+    const RequireAuth = ({ children }) => {
+        return currentUser ? children : <Navigate to="/login" />;
+    };
+
+
+    const handleLogout = (e) => {
+        //e.preventDefault();
+        
+        // Signed OUT
+        
+        currentUser({ type: "LOGOUT", payload: null })
+        navigate("/login");
+        
+            
+    };
+
+    const usuarioActual = () => {
+        console.log(currentUser.email)
+    }
+    const cerrarSesion = () => {
+        signOut(auth).then(() => {
+
+            console.log("Sesión cerrada", currentUser.email)
+            currentUser = null
+
+        }).catch((error) => {
+            // An error happened.
+            console.log("An error happened.")
+        });
+
+
+        // <Link to="/login" >
+        //     Administrador
+        // </Link >
+        //navigate("/login")
+
+    }
+
     const { dispatch } = useContext(DarkModeContext);
     return (
         <div className="admin-sidebar">
+
             <div className="top">
                 <Link to="/" style={{ textDecoration: "none" }}>
                     <span className="logo">Administrador Docente</span>
@@ -55,11 +108,13 @@ const AdminSidebar = () => {
             <span>Delivery</span>
           </li> */}
 
-                    <p className="title">UTILIDADES</p>
-                    <li>
-                        <InsertChartIcon className="icon" />
-                        <span>Estadísticas</span>
-                    </li>
+                    <p className="title">PROYECTOS</p>
+                    <Link to="/home" style={{ textDecoration: "none" }}>
+                        <li>
+                            <InsertChartIcon className="icon" />
+                            <span>Continuar Formulario</span>
+                        </li>
+                    </Link>
                     <li>
                         <NotificationsNoneIcon className="icon" />
                         <span>Notificationes</span>
@@ -82,7 +137,9 @@ const AdminSidebar = () => {
                         <AccountCircleOutlinedIcon className="icon" />
                         <span>Perfil</span>
                     </li>
-                    <li>
+                    <li
+                        onClick={() => signOut(auth)}
+                    >
                         <ExitToAppIcon className="icon" />
                         <span>Cerrar Sesión</span>
                     </li>
@@ -98,7 +155,20 @@ const AdminSidebar = () => {
                     onClick={() => dispatch({ type: "DARK" })}
                 ></div>
             </div>
+            <button
+                onClick={() => usuarioActual()}
+                type="button"
+            >
+                usuario actual consola
+            </button>
+
+            <button
+                onClick={() => handleLogout()}
+            >
+                cerrar sesión
+            </button>
         </div>
+
     );
 };
 
