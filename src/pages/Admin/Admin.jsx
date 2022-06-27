@@ -7,9 +7,12 @@ import "./admin.scss";
 // import Chart from "../../components/chart/Chart";
 import Table from "../../components/table/Table";
 import TableFirebase from "../../components/tableFirebase/TableFirebase";
-import TableInformacionGeneral  from "../../components/tableInformacionGeneral/TableInformacionGeneral";
+import TableInformacionGeneral from "../../components/tableInformacionGeneral/TableInformacionGeneral";
 import TableTipoProyecto from "../../components/tableTipoProyecto/TableTipoProyecto";
 import TablePersonalInterno from "../../components/tablePersonalInterno/TablePersonalInterno";
+import TableInformacionTecnicaProyecto from "../../components/tableInformacionTecnicaProyecto/TableInformacionTecnicaProyecto";
+import TableMetodologiaProyecto from "../../components/tableMetodologiaProyecto/TableMetodologiaProyecto";
+import TableResumenPresupuesto from "../../components/tableResumenPresupuesto/TableResumenPresupuesto";
 
 const Admin = () => {
     return (
@@ -17,7 +20,7 @@ const Admin = () => {
             <AdminSidebar />
             <div className="adminContainer">
                 <AdminNavbar />
-                
+
 
                 {/*         
         <div className="widgets">
@@ -34,7 +37,7 @@ const Admin = () => {
             <Chart title="Last 6 Months (Revenue)" aspect={2 / 1} />
         </div> 
         */}
-                
+
                 {/* <div className="listContainer">
                     <div className="listTitle">
                         Últimos  Registros
@@ -42,11 +45,9 @@ const Admin = () => {
                     <Table />
                 </div> */}
 
-                
 
 
 
-{/*                 
                 <div className="listContainer">
                     <div className="listTitle">
                         Datos Información General
@@ -62,7 +63,11 @@ const Admin = () => {
                     <TableTipoProyecto />
                     <button className="btn btn-primary">Editar Sección</button>
 
-                </div> */}
+                </div>
+                {/*                 
+                
+                
+                */}
 
                 <div className="listContainer">
                     <div className="listTitle">
@@ -73,7 +78,8 @@ const Admin = () => {
 
                 </div>
 
-                {/* <div className="listContainer">
+                {/* 
+                <div className="listContainer">
                     <div className="listTitle">
                         Personal Externo Cooperante
                     </div>
@@ -90,13 +96,14 @@ const Admin = () => {
                     <button className="btn btn-primary">Editar Sección</button>
 
                 </div>
-
+            */}
                 <div className="listContainer">
                     <div className="listTitle">
                         Información Técnica del Proyecto
                     </div>
-                    <TableTipoProyecto />
+                    <TableInformacionTecnicaProyecto />
                     <button className="btn btn-primary">Editar Sección</button>
+
 
                 </div>
 
@@ -104,10 +111,20 @@ const Admin = () => {
                     <div className="listTitle">
                         Metodología del Proyecto
                     </div>
-                    <TableTipoProyecto />
+                    <TableMetodologiaProyecto />
                     <button className="btn btn-primary">Editar Sección</button>
 
                 </div>
+
+                <div className="listContainer">
+                    <div className="listTitle">
+                        Resumen del Presupuesto
+                    </div>
+                    <TableResumenPresupuesto />
+                    <button className="btn btn-primary">Editar Sección</button>
+
+                </div>
+                {/*
 
 
                 <div className="listContainer">
@@ -126,7 +143,9 @@ const Admin = () => {
                     <TableTipoProyecto />
                     <button className="btn btn-primary">Editar Sección</button>
 
-                </div> */}
+                </div>
+                
+                */}
                 {/*                 
                 <div className="listContainer">
                     <div className="listTitle">

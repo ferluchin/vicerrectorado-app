@@ -1,4 +1,4 @@
-import "./tableTipoProyecto.scss";
+import "./tableResumenPresupuesto.scss";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
 import TableCell from "@mui/material/TableCell";
@@ -51,12 +51,14 @@ const List = () => {
                 rows.push({
                     id: doc.id,
                     tipoProyecto: doc.data().tipoProyecto.tipoProyecto,
-                    tipoInvestigacion: doc.data().tipoProyecto.tipoInvestigacion,
-                    tipoFinanciamiento: doc.data().tipoProyecto.tipoFinanciamiento,
-                    organismoEntidadFinanciador: doc.data().tipoProyecto.organismoEntidadFinanciador,
-                    presupuestoTotal: doc.data().tipoProyecto.presupuestoTotal,
-                    aporteUTPL: doc.data().tipoProyecto.aporteUTPL,
-                    aporteContraparte: doc.data().tipoProyecto.aporteContraparte,
+                    viaticosSubsistenciasMovilizacion: doc.data().resumenPresupuesto.viaticosSubsistenciasMovilizacion,
+                    honorarios: doc.data().resumenPresupuesto.honorarios,
+                    materialesSuministrosReactivos: doc.data().resumenPresupuesto.materialesSuministrosReactivos,
+                    equipos: doc.data().resumenPresupuesto.equipos,
+                    capacitacion: doc.data().resumenPresupuesto.capacitacion,
+                    totalGastosDirectos: doc.data().resumenPresupuesto.totalGastosDirectos,
+                    bibliografia: doc.data().resumenPresupuesto.bibliografia,
+                    observaciones: doc.data().resumenPresupuesto.observaciones,
 
                     //status: "Pending",
                 })
@@ -89,33 +91,34 @@ const List = () => {
             <div
                 className="table-responsive"
             >
-                <TableContainer component={Paper} className="tableTipoProyecto">
+                <TableContainer component={Paper} className="tableResumenPresupuesto">
 
                     <Table sx={{ minWidth: 650, maxWidth: 800 }} aria-label="simple table">
                         <TableHead>
                             <TableRow>
-                                <TableCell className="tableCell">Correo de Investigador.</TableCell>
-                                <TableCell className="tableCell">Tipo de Proyecto.</TableCell>
-                                <TableCell className="tableCell">Tipo de Investigación.</TableCell>
-                                <TableCell className="tableCell">Tipo de Financiamiento.</TableCell>
-                                <TableCell className="tableCell">Organismo / Entidiad Financiador.</TableCell>
-                                <TableCell className="tableCell">Presupuesto Total.</TableCell>
-                                <TableCell className="tableCell">Aporte UTPL.</TableCell>
-                                <TableCell className="tableCell">Aporte Contraparte.</TableCell>
+                                <TableCell className="tableCell">Viáticos</TableCell>
+                                <TableCell className="tableCell">Honorarios.</TableCell>
+                                <TableCell className="tableCell">Materiales Suministros Reactivos.</TableCell>
+                                <TableCell className="tableCell">Equipos.</TableCell>
+                                <TableCell className="tableCell">Capacitacion.</TableCell>
+                                <TableCell className="tableCell">Total de gastos Directos.</TableCell>
+                                <TableCell className="tableCell">Bibliografía.</TableCell>
+                                <TableCell className="tableCell">Observaciones.</TableCell>
                             </TableRow>
                         </TableHead>
                         <TableBody>
                             {nodes.map((row) => (
                                 <TableRow key={row.id}>
-                                    <TableCell className="tableCell">{row.id}</TableCell>
+                                    
 
-                                    <TableCell className="tableCell">{row.tipoProyecto}</TableCell>
-                                    <TableCell className="tableCell">{row.tipoInvestigacion}</TableCell>
-                                    <TableCell className="tableCell">{row.tipoFinanciamiento}</TableCell>
-                                    <TableCell className="tableCell">{row.organismoEntidadFinanciador}</TableCell>
-                                    <TableCell className="tableCell">{row.presupuestoTotal}</TableCell>
-                                    <TableCell className="tableCell">{row.aporteUTPL}</TableCell>
-                                    <TableCell className="tableCell">{row.aporteContraparte}</TableCell>
+                                    <TableCell className="tableCell">{row.viaticosSubsistenciasMovilizacion}</TableCell>
+                                    <TableCell className="tableCell">{row.honorarios}</TableCell>
+                                    <TableCell className="tableCell">{row.materialesSuministrosReactivos}</TableCell>
+                                    <TableCell className="tableCell">{row.equipos}</TableCell>
+                                    <TableCell className="tableCell">{row.capacitacion}</TableCell>
+                                    <TableCell className="tableCell">{row.totalGastosDirectos}</TableCell>
+                                    <TableCell className="tableCell">{row.bibliografia}</TableCell>
+                                    <TableCell className="tableCell">{row.observaciones}</TableCell>
 
                                 </TableRow>
                             ))}

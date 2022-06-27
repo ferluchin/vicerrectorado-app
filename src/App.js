@@ -11,7 +11,7 @@ import C11Pruebas from './pages/ZonaPruebas/C11Pruebas';
 import PersonalExternoContratar from './pages/PersonalExternoContratar/PersonalExternoContratar';
 import PersonalExternoCooperante from './pages/PersonalExternoCooperante/PersonalExternoCooperante';
 import Login from './pages/login/Login';
-import Home from './pages/Home/Home';
+import Home from './pages/home/Home';
 import Admin from './pages/Admin/Admin';
 
 import { Routes, Route, Navigate } from "react-router-dom";
@@ -35,7 +35,6 @@ function App() {
                 <Routes>
 
                     <Route path="login" element={<Login />} />
-
                     <Route path="/" exact element={
                         <RequireAuth>
                             <Admin />
@@ -115,23 +114,3 @@ function App() {
 }
 
 export default App;
-
-/*
-            <Split
-                sizes={[20, 80]}
-                direction="horizontal"
-                className="split"
-                minSize={100}
-                expandToMin={false}
-                dragInterval={1}
-                cursor="col-resize"
-            >
-                <Sidebar
-                //notes={notes}
-                //currentNote={findCurrentNote()}
-                //setCurrentNoteId={setCurrentNoteId}
-                //newNote={createNewNote}
-                />
-
-            </Split>
-*/

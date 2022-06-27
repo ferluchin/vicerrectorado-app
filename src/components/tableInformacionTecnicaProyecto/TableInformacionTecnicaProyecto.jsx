@@ -51,16 +51,19 @@ const List = () => {
             try {
                 rows.push({
                     //id: doc.id,
-                    objetivoEspecifico1: doc.data().proyectos.objetivoEspecifico1,
-                    numero: doc.data().personalInterno.id,
-                    rol: doc.data().personalInterno.id.rol,
-                    tipo: doc.data().personalInterno.id.tipo,
-                    senescyt: doc.data().personalInterno.id.senescyt,
-                    identificacion: doc.data().personalInterno.id.identificacion,
-                    nombres: doc.data().personalInterno.id.nombres,
-                    horasSemanales: doc.data().personalInterno.id.horasSemanales,
-                    horasTotales: doc.data().personalInterno.id.horasTotales,
-
+                    resumenProyecto: doc.data().informacionTecnicaProyecto.resumenProyecto,
+                    palabraClave1: doc.data().informacionTecnicaProyecto.palabraClave1,
+                    palabraClave2: doc.data().informacionTecnicaProyecto.palabraClave2,
+                    palabraClave3: doc.data().informacionTecnicaProyecto.palabraClave3,
+                    palabraClave4: doc.data().informacionTecnicaProyecto.palabraClave4,
+                    antecedentes: doc.data().informacionTecnicaProyecto.introduccionAntecedentes,
+                    justificacion: doc.data().informacionTecnicaProyecto.introduccionJustificacion,
+                    objetivoGeneral: doc.data().informacionTecnicaProyecto.objetivoGeneral,
+                    objetivoEspecifico1: doc.data().informacionTecnicaProyecto.objetivoEspecifico1,
+                    objetivoEspecifico2: doc.data().informacionTecnicaProyecto.objetivoEspecifico2,
+                    objetivoEspecifico3: doc.data().informacionTecnicaProyecto.objetivoEspecifico3,
+                    objetivoEspecifico4: doc.data().informacionTecnicaProyecto.objetivoEspecifico4,
+                    objetivoEspecifico5: doc.data().informacionTecnicaProyecto.objetivoEspecifico5,
 
                     //rol , tipo, investigadores acreditados, identificacion, nombres y apellidos, horas semanales de participacion
                     // total horas participacion en el proyecto
@@ -120,16 +123,21 @@ const List = () => {
                         <TableBody>
                             {nodes.map((row) => (
                                 <TableRow key={row.id}>
-                                    <TableCell className="tableCell">{row.id}</TableCell>
+                                    <TableCell className="tableCell">{row.resumenProyecto}</TableCell>
 
-                                    <TableCell className="tableCell">{row.numero}</TableCell>
-                                    <TableCell className="tableCell">{row.rol}</TableCell>
-                                    <TableCell className="tableCell">{row.tipo}</TableCell>
-                                    <TableCell className="tableCell">{row.senescyt}</TableCell>
-                                    <TableCell className="tableCell">{row.identificacion}</TableCell>
-                                    <TableCell className="tableCell">{row.nombres}</TableCell>
-                                    <TableCell className="tableCell">{row.horasSemanales}</TableCell>
-                                    <TableCell className="tableCell">{row.horasTotales}</TableCell>
+                                    <TableCell className="tableCell">{row.palabraClave1}</TableCell>
+                                    <TableCell className="tableCell">{row.palabraClave2}</TableCell>
+                                    <TableCell className="tableCell">{row.palabraClave3}</TableCell>
+                                    <TableCell className="tableCell">{row.palabraClave4}</TableCell>
+                                    <TableCell className="tableCell">{row.antecedentes}</TableCell>
+                                    <TableCell className="tableCell">{row.justificacion}</TableCell>
+                                    <TableCell className="tableCell">{row.objetivoGeneral}</TableCell>
+                                    <TableCell className="tableCell">{row.objetivoEspecifico1}</TableCell>
+                                    <TableCell className="tableCell">{row.objetivoEspecifico2}</TableCell>
+                                    <TableCell className="tableCell">{row.objetivoEspecifico3}</TableCell>
+                                    <TableCell className="tableCell">{row.objetivoEspecifico4}</TableCell>
+                                    <TableCell className="tableCell">{row.objetivoEspecifico5}</TableCell>
+
                                 </TableRow>
                             ))}
                         </TableBody>
