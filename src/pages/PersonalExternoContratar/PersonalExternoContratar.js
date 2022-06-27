@@ -250,14 +250,14 @@ export default function PersonalExternoContratar(props) {
                     </tbody>
                   </table>
                 </div>
-                <button
+                {/* <button
                   className='btn btn-danger'
                   onClick={() => consolaPersonalExternoContratar()}
                   type="button"
 
                 >
                   Consola Personal Externo a Contratar
-                </button>
+                </button> */}
                 <Modal isOpen={modalEditar}>
                   <ModalHeader>
                     <div>

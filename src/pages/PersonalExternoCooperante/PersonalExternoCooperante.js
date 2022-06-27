@@ -224,13 +224,13 @@ export default function PersonalExternoCooperante(props) {
 
 
                                 </div>
-                                <button
+                                {/* <button
                                     className='btn btn-danger'
                                     onClick={() => consolaPersonalExternoCooperante()}
                                     type="button"
                                 >
                                     Consola Personal Externo Cooperante
-                                </button>
+                                </button> */}
                                 <Modal isOpen={modalEditar}>
                                     <ModalHeader>
                                         <div>

@@ -253,14 +253,14 @@ export default function PersonalInterno() {
                                         </tbody>
                                     </table>
                                 </div>
-                                <button
+                                {/* <button
                                     className='btn btn-primary'
                                     //onClick={() => editar()}
                                     onClick={() => consolaPersonalInterno()}
                                     type="button"
                                 >
                                     Consolear los datos tabla
-                                </button>
+                                </button> */}
                                 <Modal isOpen={modalEditar}>
                                     <ModalHeader>
                                         <div>

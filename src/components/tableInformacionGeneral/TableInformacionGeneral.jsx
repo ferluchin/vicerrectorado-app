@@ -63,10 +63,8 @@ const List = () => {
                     // fechaFin: doc.data().informacionGeneral.fechaFin,
                     //fechaInicio: "hoy",
                     temp : doc.data().informacionGeneral.fechaInicio,
-                    fechaInicio: toString(doc.data().informacionGeneral.fechaInicio),
-
-                    fechaFin: "mañana",
-
+                    fechaInicio: "YYYY-MM-DD",
+                    fechaFin: "YYYY-MM-DD",
 
                     duracionProyectoSemanas: doc.data().informacionGeneral.duracionProyectoSemanas,
                     alcanceTerritorial: doc.data().informacionGeneral.alcanceTerritorial,
@@ -111,9 +109,9 @@ const List = () => {
             <div
                 className="table-responsive"
             >
-                <TableContainer component={Paper} className="table">
+                <TableContainer component={Paper} className="tableInformacion">
 
-                    <Table sx={{ minWidth: 650 }} aria-label="simple table">
+                    <Table sx={{ minWidth: 650, maxWidth: 800} } aria-label="simple table">
                         <TableHead>
                             <TableRow>
                                 <TableCell className="tableCell">Correo de Investigador.</TableCell>

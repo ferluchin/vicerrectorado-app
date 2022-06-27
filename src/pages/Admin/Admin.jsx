@@ -8,6 +8,8 @@ import "./admin.scss";
 import Table from "../../components/table/Table";
 import TableFirebase from "../../components/tableFirebase/TableFirebase";
 import TableInformacionGeneral  from "../../components/tableInformacionGeneral/TableInformacionGeneral";
+import TableTipoProyecto from "../../components/tableTipoProyecto/TableTipoProyecto";
+import TablePersonalInterno from "../../components/tablePersonalInterno/TablePersonalInterno";
 
 const Admin = () => {
     return (
@@ -40,13 +42,91 @@ const Admin = () => {
                     <Table />
                 </div> */}
 
+                
+
+
+
+{/*                 
                 <div className="listContainer">
                     <div className="listTitle">
                         Datos Información General
                     </div>
                     <TableInformacionGeneral />
+                    <button className="btn btn-primary">Editar Sección</button>
                 </div>
 
+                <div className="listContainer">
+                    <div className="listTitle">
+                        Tipo de Proyecto
+                    </div>
+                    <TableTipoProyecto />
+                    <button className="btn btn-primary">Editar Sección</button>
+
+                </div> */}
+
+                <div className="listContainer">
+                    <div className="listTitle">
+                        Personal Interno
+                    </div>
+                    <TablePersonalInterno />
+                    <button className="btn btn-primary">Editar Sección</button>
+
+                </div>
+
+                {/* <div className="listContainer">
+                    <div className="listTitle">
+                        Personal Externo Cooperante
+                    </div>
+                    <TableTipoProyecto />
+                    <button className="btn btn-primary">Editar Sección</button>
+
+                </div>
+
+                <div className="listContainer">
+                    <div className="listTitle">
+                        Personal Externo a Contratar
+                    </div>
+                    <TableTipoProyecto />
+                    <button className="btn btn-primary">Editar Sección</button>
+
+                </div>
+
+                <div className="listContainer">
+                    <div className="listTitle">
+                        Información Técnica del Proyecto
+                    </div>
+                    <TableTipoProyecto />
+                    <button className="btn btn-primary">Editar Sección</button>
+
+                </div>
+
+                <div className="listContainer">
+                    <div className="listTitle">
+                        Metodología del Proyecto
+                    </div>
+                    <TableTipoProyecto />
+                    <button className="btn btn-primary">Editar Sección</button>
+
+                </div>
+
+
+                <div className="listContainer">
+                    <div className="listTitle">
+                        Cronograma de Actividades
+                    </div>
+                    <TableTipoProyecto />
+                    <button className="btn btn-primary">Editar Sección</button>
+
+                </div>
+
+                <div className="listContainer">
+                    <div className="listTitle">
+                        Resumen del Presupuesto
+                    </div>
+                    <TableTipoProyecto />
+                    <button className="btn btn-primary">Editar Sección</button>
+
+                </div> */}
                 {/*                 
                 <div className="listContainer">
                     <div className="listTitle">

@@ -119,11 +119,44 @@ const AdminSidebar = () => {
                         <NotificationsNoneIcon className="icon" />
                         <span>Notificationes</span>
                     </li>
-                    <p className="title">SERVICIOS</p>
+                    <p className="title">ETAPAS</p>
                     <li>
                         <SettingsSystemDaydreamOutlinedIcon className="icon" />
-                        <span>Salud del sistema</span>
+                        <span>Información General</span>
                     </li>
+                    <li>
+                        <SettingsSystemDaydreamOutlinedIcon className="icon" />
+                        <span>Tipo de Proyecto</span>
+                    </li>
+                    <li>
+                        <SettingsSystemDaydreamOutlinedIcon className="icon" />
+                        <span>Personal Interno</span>
+                    </li>
+                    <li>
+                        <SettingsSystemDaydreamOutlinedIcon className="icon" />
+                        <span>Personal Externo Cooperante</span>
+                    </li>
+                    <li>
+                        <SettingsSystemDaydreamOutlinedIcon className="icon" />
+                        <span>Personal Externo a Contratar</span>
+                    </li>
+                    <li>
+                        <SettingsSystemDaydreamOutlinedIcon className="icon" />
+                        <span>Informaciónn Técnica del Proyecto</span>
+                    </li>
+                    <li>
+                        <SettingsSystemDaydreamOutlinedIcon className="icon" />
+                        <span>Metodología del Proyecto</span>
+                    </li>
+                    <li>
+                        <SettingsSystemDaydreamOutlinedIcon className="icon" />
+                        <span>Cronograma de Actividades</span>
+                    </li>
+                    <li>
+                        <SettingsSystemDaydreamOutlinedIcon className="icon" />
+                        <span>Resumen del Presupuesto</span>
+                    </li>
+
                     <li>
                         <PsychologyOutlinedIcon className="icon" />
                         <span>Logs</span>
