@@ -515,7 +515,7 @@ export default function Home() {
 
                                     <div className="col-4">
                                         <h5>
-                                            Duración del proyecto
+                                            Duración del proyecto (Semanas)
                                         </h5>
                                     </div>
                                 </div>

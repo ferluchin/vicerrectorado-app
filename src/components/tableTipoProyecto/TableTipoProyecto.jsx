@@ -91,7 +91,7 @@ const List = () => {
             >
                 <TableContainer component={Paper} className="tableTipoProyecto">
 
-                    <Table sx={{ minWidth: 650, maxWidth: 800 }} aria-label="simple table">
+                    <Table sx={{ minWidth: 650 }} aria-label="simple table">
                         <TableHead>
                             <TableRow>
                                 <TableCell className="tableCell">Correo de Investigador.</TableCell>

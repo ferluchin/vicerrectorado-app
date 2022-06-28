@@ -1,7 +1,7 @@
 import AdminNavbar from "../../components/AdminNavbar/AdminNavbar";
 import AdminSidebar from "../../components/AdminSidebar/AdminSidebar";
 
-import "./etapaTipoProyecto.scss";
+import "./etapaCronogramaActividades.scss";
 // import Widget from "../../components/widget/Widget";
 // import Featured from "../../components/featured/Featured";
 // import Chart from "../../components/chart/Chart";
@@ -17,19 +17,12 @@ import { Routes, Route, useNavigate, Navigate, Link } from 'react-router-dom'
 
 
 
-const EtapaTipoProyecto = () => {
+const EtapaCronogramaActividades = () => {
 
     const navigate = useNavigate();
 
-    const editarInformacionGeneral = () => {
-        // <Link to="/home" >
-        //     Informacion General
-        // </Link >
-        navigate("/home")
-    }
-
-    const editarTipoProyecto = () => {
-        navigate("/tipo-proyecto")
+    const editarCronogramaActividades = () => {
+        navigate("/cronograma-actividades")
     }
 
     return (
@@ -40,16 +33,15 @@ const EtapaTipoProyecto = () => {
 
                 <div className="listContainer">
                     <div className="listTitle">
-                        Tipo de Proyecto
+                        Datos Cronograma Actividades
                     </div>
-                    <TableTipoProyecto />
+                    <TableInformacionGeneral />
                     <button
                         className="btn btn-primary"
-                        onClick={() => editarTipoProyecto()}
+                        onClick={() => editarCronogramaActividades()}
                     >
                         Editar Sección
                     </button>
-
                 </div>
 
             </div>
@@ -57,4 +49,4 @@ const EtapaTipoProyecto = () => {
     );
 };
 
-export default EtapaTipoProyecto;
+export default EtapaCronogramaActividades;

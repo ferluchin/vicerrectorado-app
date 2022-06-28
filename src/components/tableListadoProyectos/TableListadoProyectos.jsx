@@ -1,4 +1,4 @@
-import "./tableInformacionGeneral.scss";
+import "./tableListadoProyectos.scss";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
 import TableCell from "@mui/material/TableCell";
@@ -62,7 +62,7 @@ const List = () => {
                     // fechaInicio: doc.data().informacionGeneral.fechaInicio,
                     // fechaFin: doc.data().informacionGeneral.fechaFin,
                     //fechaInicio: "hoy",
-                    temp : doc.data().informacionGeneral.fechaInicio,
+                    temp: doc.data().informacionGeneral.fechaInicio,
                     fechaInicio: "YYYY-MM-DD",
                     fechaFin: "YYYY-MM-DD",
 
@@ -78,7 +78,7 @@ const List = () => {
                     campoEspecifico: doc.data().informacionGeneral.campoEspecifico,
                     camploDetallado: doc.data().informacionGeneral.camploDetallado,
                     objetivosDesarrolloSostenible: doc.data().informacionGeneral.objetivosDesarrolloSostenible,
-                    //status: "Pending",
+                    status: "Borrador",
                 })
             }
             catch (e) {
@@ -109,39 +109,17 @@ const List = () => {
             <div
                 className="table-responsive"
             >
-                <TableContainer component={Paper} className="tableInformacion">
+                <TableContainer component={Paper} className="tableListadoProyectos">
 
-                    <Table sx={{ minWidth: 650, maxWidth: 800} } aria-label="simple table">
+                    <Table sx={{ minWidth: 650 }} aria-label="simple table">
                         <TableHead>
                             <TableRow>
                                 <TableCell className="tableCell">Correo de Investigador.</TableCell>
-                                <TableCell className="tableCell">Título.</TableCell>
+                                <TableCell className="tableCell">Título del Proyecto.</TableCell>
                                 <TableCell className="tableCell">Facultad.</TableCell>
                                 <TableCell className="tableCell">Departamento.</TableCell>
                                 <TableCell className="tableCell">Grupo de Investigación.</TableCell>
-                                <TableCell className="tableCell">Dominio Académico.</TableCell>
-                                <TableCell className="tableCell">Línea de Investigación.</TableCell>
-                                <TableCell className="tableCell">Programa de Investigación.</TableCell>
-
-                                <TableCell className="tableCell">Fecha de Inicio.</TableCell>
-                                <TableCell className="tableCell">Fecha de Finalización</TableCell>
-
-                                <TableCell className="tableCell">Duración del Proyecto (en Semanas)</TableCell>
-                                <TableCell className="tableCell">Alcance Territorial</TableCell>
-
-
-                                <TableCell className="tableCell">Actividad Científica</TableCell>
-                                <TableCell className="tableCell">Objetivo Socioeconómico</TableCell>
-                                <TableCell className="tableCell">Área temática de I+D</TableCell>
-                                <TableCell className="tableCell">Objetivos del Plan de creación de Oportunidades</TableCell>
-
-                                {/* Clasificación Internacional Normalizada de la Educación */}
-
-
-                                <TableCell className="tableCell">Campo Amplio</TableCell>
-                                <TableCell className="tableCell">Campo Específico</TableCell>
-                                <TableCell className="tableCell">Campo Detallado</TableCell>
-                                <TableCell className="tableCell">Objetivos del Desarrollo Sostenible</TableCell>
+                                <TableCell className="tableCell">Status</TableCell>
 
                             </TableRow>
                         </TableHead>
@@ -154,29 +132,10 @@ const List = () => {
                                     <TableCell className="tableCell">{row.facultad}</TableCell>
                                     <TableCell className="tableCell">{row.departamento}</TableCell>
                                     <TableCell className="tableCell">{row.grupoInvestigacion}</TableCell>
-                                    <TableCell className="tableCell">{row.dominioAcademico}</TableCell>
-                                    <TableCell className="tableCell">{row.lineaInvestigacion}</TableCell>
-                                    <TableCell className="tableCell">{row.programaInvestigacion}</TableCell>
-                                    <TableCell className="tableCell">{row.fechaInicio}</TableCell>
-                                    <TableCell className="tableCell">{row.fechaFin}</TableCell>
-                                    <TableCell className="tableCell">{row.duracionProyectoSemanas}</TableCell>
-                                    <TableCell className="tableCell">{row.alcanceTerritorial}</TableCell>
 
-                                    <TableCell className="tableCell">{row.actividadCientifica}</TableCell>
-                                    <TableCell className="tableCell">{row.objetivoSocioeconomico}</TableCell>
-                                    <TableCell className="tableCell">{row.areaTematicaID}</TableCell>
-                                    <TableCell className="tableCell">{row.objetivosPlanCreacionOportunidades}</TableCell>
-                                    <TableCell className="tableCell">{row.camploAmplio}</TableCell>
-                                    <TableCell className="tableCell">{row.campoEspecifico}</TableCell>
-                                    <TableCell className="tableCell">{row.camploDetallado}</TableCell>
-
-                                    <TableCell className="tableCell">{row.objetivosDesarrolloSostenible}</TableCell>
-
-
-                                    {/*                             
-                                <TableCell className="tableCell">
-                                    <span className={`status ${row.status}`}>{row.status}</span>
-                                </TableCell> */}
+                                    <TableCell className="tableCell">
+                                        <span className={`status ${row.status}`}>{row.status}</span>
+                                    </TableCell>
                                 </TableRow>
                             ))}
                         </TableBody>

@@ -13,6 +13,8 @@ import TablePersonalInterno from "../../components/tablePersonalInterno/TablePer
 import TableInformacionTecnicaProyecto from "../../components/tableInformacionTecnicaProyecto/TableInformacionTecnicaProyecto";
 import TableMetodologiaProyecto from "../../components/tableMetodologiaProyecto/TableMetodologiaProyecto";
 import TableResumenPresupuesto from "../../components/tableResumenPresupuesto/TableResumenPresupuesto";
+import TableListadoProyectos from "../../components/tableListadoProyectos/TableListadoProyectos";
+
 import { Routes, Route, useNavigate, Navigate, Link } from 'react-router-dom'
 
 
@@ -31,22 +33,6 @@ const Admin = () => {
     const editarTipoProyecto = () => {
         navigate("/tipo-proyecto")
     }
-
-    const editarPersonalInterno = () => {
-        navigate("/personal-interno")
-
-    }
-
-    const editarPersonalExternoContratar = () => {
-        navigate("/personal-externo-contratar")
-
-    }
-
-    const editarPersonalExternoCooperante = () => {
-        navigate("/personal-externo-cooperante")
-    }
-
-    //const 
 
 
     return (
@@ -82,7 +68,7 @@ const Admin = () => {
 
 
 
-                <div className="listContainer">
+                {/* <div className="listContainer">
                     <div className="listTitle">
                         Datos Información General
                     </div>
@@ -93,26 +79,25 @@ const Admin = () => {
                     >
                         Editar Sección
                     </button>
-                </div>
+                </div> */}
 
                 <div className="listContainer">
                     <div className="listTitle">
-                        Tipo de Proyecto
+                        Listado de Proyectos
                     </div>
-                    <TableTipoProyecto />
-                    <button
+                    <TableListadoProyectos/>
+                    
+                    {/* <button
                         className="btn btn-primary"
                         onClick={() => editarTipoProyecto()}
                     >
                         Editar Sección
-                    </button>
+                    </button> */}
 
+                    
                 </div>
                 {/*                 
                 
-                
-                */}
-
                 <div className="listContainer">
                     <div className="listTitle">
                         Personal Interno
@@ -121,6 +106,10 @@ const Admin = () => {
                     <button className="btn btn-primary">Editar Sección</button>
 
                 </div>
+
+                */}
+
+                
 
                 {/* 
                 <div className="listContainer">
@@ -141,6 +130,8 @@ const Admin = () => {
 
                 </div>
             */}
+                
+                {/* 
                 <div className="listContainer">
                     <div className="listTitle">
                         Información Técnica del Proyecto
@@ -149,8 +140,9 @@ const Admin = () => {
                     <button className="btn btn-primary">Editar Sección</button>
 
 
-                </div>
-
+                </div> 
+                */}
+{/* 
                 <div className="listContainer">
                     <div className="listTitle">
                         Metodología del Proyecto
@@ -158,8 +150,11 @@ const Admin = () => {
                     <TableMetodologiaProyecto />
                     <button className="btn btn-primary">Editar Sección</button>
 
-                </div>
+                </div> 
+                */}
 
+                
+                {/* 
                 <div className="listContainer">
                     <div className="listTitle">
                         Resumen del Presupuesto
@@ -167,7 +162,10 @@ const Admin = () => {
                     <TableResumenPresupuesto />
                     <button className="btn btn-primary">Editar Sección</button>
 
-                </div>
+                </div> 
+                */}
+
+
                 {/*
 
 

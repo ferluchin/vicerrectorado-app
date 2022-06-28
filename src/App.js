@@ -14,9 +14,11 @@ import PersonalExternoCooperante from './pages/PersonalExternoCooperante/Persona
 
 import EtapaInformacionGeneral from './pages/EtapaInformacionGeneral/EtapaInformacionGeneral';
 import EtapaTipoProyecto from './pages/EtapaTipoProyecto/EtapaTipoProyecto';
+import EtapaResumenPresupuesto from './pages/EtapaResumenPresupuesto/EtapaResumenPresupuesto';
+import EtapaCronogramaActividades from './pages/EtapaCronogramaActividades/EtapaCronogramaActividaddes';
 
 import Login from './pages/login/Login';
-import Home from './pages/home/Home';
+import Home from './pages/Home/Home';
 import Admin from './pages/Admin/Admin';
 
 import { Routes, Route, Navigate } from "react-router-dom";
@@ -107,13 +109,11 @@ function App() {
                         </RequireAuth>
                     } />
 
-
                     <Route path="/etapa-tipo-proyecto" element={
                         <RequireAuth>
                             <EtapaTipoProyecto />
                         </RequireAuth>
                     } />
-
 
                     <Route path="/etapa-personal-interno" element={
                         <RequireAuth>
@@ -128,13 +128,11 @@ function App() {
                         </RequireAuth>
                     } />
 
-
                     <Route path="/etapa-personal-externo-contratar" element={
                         <RequireAuth>
                             <EtapaInformacionGeneral />
                         </RequireAuth>
                     } />
-
 
                     <Route path="/etapa-informacion-tecnica-proyecto" element={
                         <RequireAuth>
@@ -149,17 +147,16 @@ function App() {
                         </RequireAuth>
                     } />
 
-
                     <Route path="/etapa-cronograma-actividades" element={
                         <RequireAuth>
-                            <EtapaInformacionGeneral />
+                            <EtapaCronogramaActividades />
                         </RequireAuth>
                     } />
                     
 
                     <Route path="/etapa-resumen-presupuesto" element={
                         <RequireAuth>
-                            <EtapaInformacionGeneral />
+                            <EtapaResumenPresupuesto />
                         </RequireAuth>
                     } />
 

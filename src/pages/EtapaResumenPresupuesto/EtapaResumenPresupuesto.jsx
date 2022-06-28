@@ -1,7 +1,7 @@
 import AdminNavbar from "../../components/AdminNavbar/AdminNavbar";
 import AdminSidebar from "../../components/AdminSidebar/AdminSidebar";
 
-import "./etapaTipoProyecto.scss";
+import "./etapaResumenPresupuesto.scss";
 // import Widget from "../../components/widget/Widget";
 // import Featured from "../../components/featured/Featured";
 // import Chart from "../../components/chart/Chart";
@@ -17,19 +17,12 @@ import { Routes, Route, useNavigate, Navigate, Link } from 'react-router-dom'
 
 
 
-const EtapaTipoProyecto = () => {
+const EtapaInformacionGeneral = () => {
 
     const navigate = useNavigate();
 
-    const editarInformacionGeneral = () => {
-        // <Link to="/home" >
-        //     Informacion General
-        // </Link >
-        navigate("/home")
-    }
-
-    const editarTipoProyecto = () => {
-        navigate("/tipo-proyecto")
+    const editarResumenPresupuesto = () => {
+        navigate("/resumen-presupuesto")
     }
 
     return (
@@ -40,12 +33,12 @@ const EtapaTipoProyecto = () => {
 
                 <div className="listContainer">
                     <div className="listTitle">
-                        Tipo de Proyecto
+                        Resumen Presupuesto
                     </div>
-                    <TableTipoProyecto />
+                    <TableResumenPresupuesto />
                     <button
                         className="btn btn-primary"
-                        onClick={() => editarTipoProyecto()}
+                        onClick={() => editarResumenPresupuesto()}
                     >
                         Editar Sección
                     </button>
@@ -57,4 +50,4 @@ const EtapaTipoProyecto = () => {
     );
 };
 
-export default EtapaTipoProyecto;
+export default EtapaInformacionGeneral;
