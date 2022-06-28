@@ -13,8 +13,42 @@ import TablePersonalInterno from "../../components/tablePersonalInterno/TablePer
 import TableInformacionTecnicaProyecto from "../../components/tableInformacionTecnicaProyecto/TableInformacionTecnicaProyecto";
 import TableMetodologiaProyecto from "../../components/tableMetodologiaProyecto/TableMetodologiaProyecto";
 import TableResumenPresupuesto from "../../components/tableResumenPresupuesto/TableResumenPresupuesto";
+import { Routes, Route, useNavigate, Navigate, Link } from 'react-router-dom'
+
+
 
 const Admin = () => {
+
+    const navigate = useNavigate();
+
+    const editarInformacionGeneral = () => {
+        // <Link to="/home" >
+        //     Informacion General
+        // </Link >
+        navigate("/home")
+    }
+
+    const editarTipoProyecto = () => {
+        navigate("/tipo-proyecto")
+    }
+
+    const editarPersonalInterno = () => {
+        navigate("/personal-interno")
+
+    }
+
+    const editarPersonalExternoContratar = () => {
+        navigate("/personal-externo-contratar")
+
+    }
+
+    const editarPersonalExternoCooperante = () => {
+        navigate("/personal-externo-cooperante")
+    }
+
+    //const 
+
+
     return (
         <div className="admin">
             <AdminSidebar />
@@ -53,7 +87,12 @@ const Admin = () => {
                         Datos Información General
                     </div>
                     <TableInformacionGeneral />
-                    <button className="btn btn-primary">Editar Sección</button>
+                    <button
+                        className="btn btn-primary"
+                        onClick={() => editarInformacionGeneral()}
+                    >
+                        Editar Sección
+                    </button>
                 </div>
 
                 <div className="listContainer">
@@ -61,7 +100,12 @@ const Admin = () => {
                         Tipo de Proyecto
                     </div>
                     <TableTipoProyecto />
-                    <button className="btn btn-primary">Editar Sección</button>
+                    <button
+                        className="btn btn-primary"
+                        onClick={() => editarTipoProyecto()}
+                    >
+                        Editar Sección
+                    </button>
 
                 </div>
                 {/*                 

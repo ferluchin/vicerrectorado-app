@@ -10,6 +10,11 @@ import C11Pruebas from './pages/ZonaPruebas/C11Pruebas';
 
 import PersonalExternoContratar from './pages/PersonalExternoContratar/PersonalExternoContratar';
 import PersonalExternoCooperante from './pages/PersonalExternoCooperante/PersonalExternoCooperante';
+
+
+import EtapaInformacionGeneral from './pages/EtapaInformacionGeneral/EtapaInformacionGeneral';
+import EtapaTipoProyecto from './pages/EtapaTipoProyecto/EtapaTipoProyecto';
+
 import Login from './pages/login/Login';
 import Home from './pages/home/Home';
 import Admin from './pages/Admin/Admin';
@@ -95,6 +100,69 @@ function App() {
                             <ResumenPresupuesto />
                         </RequireAuth>
                     } />
+
+                    <Route path="/etapa-informacion-general" element={
+                        <RequireAuth>
+                            <EtapaInformacionGeneral />
+                        </RequireAuth>
+                    } />
+
+
+                    <Route path="/etapa-tipo-proyecto" element={
+                        <RequireAuth>
+                            <EtapaTipoProyecto />
+                        </RequireAuth>
+                    } />
+
+
+                    <Route path="/etapa-personal-interno" element={
+                        <RequireAuth>
+                            <EtapaInformacionGeneral />
+                        </RequireAuth>
+                    } />
+
+
+                    <Route path="/etapa-personal-externo-cooperante" element={
+                        <RequireAuth>
+                            <EtapaInformacionGeneral />
+                        </RequireAuth>
+                    } />
+
+
+                    <Route path="/etapa-personal-externo-contratar" element={
+                        <RequireAuth>
+                            <EtapaInformacionGeneral />
+                        </RequireAuth>
+                    } />
+
+
+                    <Route path="/etapa-informacion-tecnica-proyecto" element={
+                        <RequireAuth>
+                            <EtapaInformacionGeneral />
+                        </RequireAuth>
+                    } />
+
+
+                    <Route path="/etapa-metodologia-proyecto" element={
+                        <RequireAuth>
+                            <EtapaInformacionGeneral />
+                        </RequireAuth>
+                    } />
+
+
+                    <Route path="/etapa-cronograma-actividades" element={
+                        <RequireAuth>
+                            <EtapaInformacionGeneral />
+                        </RequireAuth>
+                    } />
+                    
+
+                    <Route path="/etapa-resumen-presupuesto" element={
+                        <RequireAuth>
+                            <EtapaInformacionGeneral />
+                        </RequireAuth>
+                    } />
+
                     <Route path="/pruebas" element={<C11Pruebas />} />
 
                     <Route

@@ -37,13 +37,13 @@ const AdminSidebar = () => {
 
     const handleLogout = (e) => {
         //e.preventDefault();
-        
+
         // Signed OUT
-        
+
         currentUser({ type: "LOGOUT", payload: null })
         navigate("/login");
-        
-            
+
+
     };
 
     const usuarioActual = () => {
@@ -120,43 +120,73 @@ const AdminSidebar = () => {
                         <span>Notificationes</span>
                     </li>
                     <p className="title">ETAPAS</p>
-                    <li>
-                        <SettingsSystemDaydreamOutlinedIcon className="icon" />
-                        <span>Información General</span>
-                    </li>
-                    <li>
-                        <SettingsSystemDaydreamOutlinedIcon className="icon" />
-                        <span>Tipo de Proyecto</span>
-                    </li>
-                    <li>
-                        <SettingsSystemDaydreamOutlinedIcon className="icon" />
-                        <span>Personal Interno</span>
-                    </li>
-                    <li>
-                        <SettingsSystemDaydreamOutlinedIcon className="icon" />
-                        <span>Personal Externo Cooperante</span>
-                    </li>
-                    <li>
-                        <SettingsSystemDaydreamOutlinedIcon className="icon" />
-                        <span>Personal Externo a Contratar</span>
-                    </li>
-                    <li>
-                        <SettingsSystemDaydreamOutlinedIcon className="icon" />
-                        <span>Informaciónn Técnica del Proyecto</span>
-                    </li>
+
+                    <Link to="/etapa-informacion-general" style={{ textDecoration: "none" }}>
+                        <li>
+                            <SettingsSystemDaydreamOutlinedIcon className="icon" />
+                            <span>Información General</span>
+                        </li>
+                    </Link>
+
+                    <Link to="/etapa-tipo-proyecto" style={{ textDecoration: "none" }}>
+
+                        <li>
+                            <SettingsSystemDaydreamOutlinedIcon className="icon" />
+                            <span>Tipo de Proyecto</span>
+                        </li>
+                    </Link >
+
+                    <Link to="/etapa-personal-interno" style={{ textDecoration: "none" }}>
+                        <li>
+                            <SettingsSystemDaydreamOutlinedIcon className="icon" />
+                            <span>Personal Interno</span>
+                        </li>
+                    </Link>
+
+                    <Link to="/etapa-personal-externo-cooperante" style={{ textDecoration: "none" }}>
+                        <li>
+                            <SettingsSystemDaydreamOutlinedIcon className="icon" />
+                            <span>Personal Externo Cooperante</span>
+                        </li>
+                    </Link>
+
+                    <Link to="/etapa-personal-externo-contratar" style={{ textDecoration: "none" }}>
+                        <li>
+                            <SettingsSystemDaydreamOutlinedIcon className="icon" />
+                            <span>Personal Externo a Contratar</span>
+                        </li>
+                    </Link>
+
+                    <Link to="/etapa-informacion-tecnica-proyecto" style={{ textDecoration: "none" }}>
+                        <li>
+                            <SettingsSystemDaydreamOutlinedIcon className="icon" />
+                            <span>Informaciónn Técnica del Proyecto</span>
+                        </li>
+                    </Link>
+
+                    <Link to="/etapa-metodologia-proyecto" style={{ textDecoration: "none" }}>
+
                     <li>
                         <SettingsSystemDaydreamOutlinedIcon className="icon" />
                         <span>Metodología del Proyecto</span>
                     </li>
+                    </Link>
+
+                    <Link to="/etapa-cronograma-actividades" style={{ textDecoration: "none" }}>
                     <li>
                         <SettingsSystemDaydreamOutlinedIcon className="icon" />
                         <span>Cronograma de Actividades</span>
-                    </li>
+                        </li>
+                    </Link>
+                    
+                    <Link to="/etapa-resumen-presupuesto" style={{ textDecoration: "none" }}>
                     <li>
                         <SettingsSystemDaydreamOutlinedIcon className="icon" />
                         <span>Resumen del Presupuesto</span>
                     </li>
+                    </Link>
 
+                    
                     <li>
                         <PsychologyOutlinedIcon className="icon" />
                         <span>Logs</span>
