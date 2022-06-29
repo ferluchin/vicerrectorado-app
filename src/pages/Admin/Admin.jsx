@@ -80,13 +80,47 @@ const Admin = () => {
                         Editar Sección
                     </button>
                 </div> */}
+                <br />
+                <h2>Proyectos de Investigación</h2>
+                <hr />
+
+                <h3>Convocatoria 2022</h3>
+
+
+                <hr />
 
                 <div className="listContainer">
                     <div className="listTitle">
-                        Listado de Proyectos
+                        <div className="container">
+                            Datos Personales
+                        </div>
+
                     </div>
-                    <TableListadoProyectos/>
-                    
+                    <TableListadoProyectos />
+
+
+                </div>
+
+                <div className="listContainer">
+                    <div className="listTitle">
+                        <div className="container">
+                            <div className="row">
+                                <div className="col-md-11">
+                                    Listado de Proyectos de Investigación
+                                </div>
+                                <div className="col-md-1">
+                                    <button
+                                        className="btn btn-success"
+                                    >
+                                        +
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <TableListadoProyectos />
+
                     {/* <button
                         className="btn btn-primary"
                         onClick={() => editarTipoProyecto()}
@@ -94,7 +128,7 @@ const Admin = () => {
                         Editar Sección
                     </button> */}
 
-                    
+
                 </div>
                 {/*                 
                 
@@ -109,7 +143,7 @@ const Admin = () => {
 
                 */}
 
-                
+
 
                 {/* 
                 <div className="listContainer">
@@ -130,7 +164,7 @@ const Admin = () => {
 
                 </div>
             */}
-                
+
                 {/* 
                 <div className="listContainer">
                     <div className="listTitle">
@@ -142,7 +176,7 @@ const Admin = () => {
 
                 </div> 
                 */}
-{/* 
+                {/* 
                 <div className="listContainer">
                     <div className="listTitle">
                         Metodología del Proyecto
@@ -153,7 +187,7 @@ const Admin = () => {
                 </div> 
                 */}
 
-                
+
                 {/* 
                 <div className="listContainer">
                     <div className="listTitle">
