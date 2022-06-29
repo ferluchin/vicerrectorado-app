@@ -30,6 +30,8 @@ import {
 
 import Split from "react-split";
 import Sidebar from "../../components/Sidebar";
+import { AuthContext } from "../../context/AuthContext";
+import { useContext } from "react";
 
 import "./resumenPresupuesto.scss"
 const firestore = getFirestore(app);
@@ -37,6 +39,8 @@ const storage = getStorage(app);
 
 export default function ResumenPresupuesto() {
 
+    const { currentUser } = useContext(AuthContext)
+    const correoUsuario = currentUser.email;
 
     let navigate = useNavigate();
     const routeChange = () => {
@@ -45,7 +49,7 @@ export default function ResumenPresupuesto() {
         navigate(path);
     }
 
-    const correoUsuario = "lgrandab@gmail.com"
+    //const correoUsuario = "lgrandab@gmail.com"
     const formInicial = {
         //resumen Presupuestos
         viaticosSubsistenciasMovilizacion: "",

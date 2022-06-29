@@ -179,3 +179,5 @@ function App() {
 }
 
 export default App;
+export const goblalCurrentUser = App.currentUser;
+

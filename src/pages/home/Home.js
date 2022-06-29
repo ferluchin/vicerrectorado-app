@@ -13,7 +13,8 @@ import 'react-datepicker/dist/react-datepicker.css';
 
 import Split from "react-split";
 import Sidebar from "../../components/Sidebar";
-
+import { AuthContext } from "../../context/AuthContext";
+import { useContext, useEffect } from "react";
 
 import {
     getFirestore,
@@ -33,9 +34,21 @@ import { app, auth } from "../../firebase";
 const firestore = getFirestore(app);
 const db = getFirestore(app);
 
+
 export default function Home() {
 
-    const correoUsuario = "lgrandab@gmail.com"
+    
+    const { currentUser } = useContext(AuthContext)
+    //console.log("🚀 ~ file: Home.js ~ line 40 ~ Home ~ currentUser", currentUser.email)
+    const correoUsuario = currentUser.email
+    
+    const baseDocRef = doc(firestore, "proyectos-investigacion", `${correoUsuario}`);
+    
+    setDoc(baseDocRef, { informacionGeneral: { status: "Borrador"} }, { merge:true });
+    //setDoc(baseDocRef, { informacionGeneral: {} } );
+
+
+    //const correoUsuario = "lgrandab@gmail.com"
 
     let navigate = useNavigate();
 
@@ -77,6 +90,9 @@ export default function Home() {
         campoEspecifico: "",
         campoDetallado: "",
         objetivosDesarrolloSostenible: "",
+
+        //status
+        status: "Borrador",
     }
 
     const [formData, setFormData] = React.useState({ ...formInicial })
@@ -154,8 +170,8 @@ export default function Home() {
 
             //const docuRef = collection(firestore, `proyectos-investigacion/`, `${correoUsuario}/ `, `proyectos` )
             //const docuRef = collection(firestore, `proyectos-investigacion/`, `${correoUsuario}/`, `proyectos`)
-            
-            
+
+
             ////const docuRef = doc(firestore, `proyectos-investigacion/${correoUsuario}`, `proyectos`)
 
 
@@ -168,7 +184,7 @@ export default function Home() {
                 }
             })
 
-            
+
         } catch (error) {
             console.log(error)
         }
@@ -251,7 +267,7 @@ export default function Home() {
                                                 name="facultad"
                                                 className="form-select"
                                             >
-                                                {/* <option value="">-- Elija un Elemento --</option> */}
+                                                <option value="">-- Elija un Elemento --</option>
                                                 <option value="Ciencias Económicas y Empresariales">Ciencias Económicas y Empresariales</option>
                                                 <option value="Ciencias de la Salud">Ciencias de la Salud</option>
                                                 <option value="Ciencias Exactas y Naturales">Ciencias Exactas y Naturales</option>

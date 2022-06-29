@@ -7,6 +7,10 @@ import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import React, { useState, useEffect } from "react";
+import { getAuth } from "firebase/auth";
+import { useContext } from "react";
+
+import { AuthContext } from "../../context/AuthContext";
 
 import 'bootstrap/dist/css/bootstrap.css';
 
@@ -30,9 +34,24 @@ const db = getFirestore();
 
 const List = () => {
 
+    const { currentUser } = useContext(AuthContext);
+    console.log("🚀 ~ file: TableListadoProyectos.jsx ~ line 38 ~ List ~ currentUser", currentUser)
+
+    const auth = getAuth();
+
+    const user = auth.currentUser;
+
+
+    if (currentUser) {
+        console.log(currentUser.email);
+    } else {
+        console.log("No user signed in");
+    }
+
 
     const [nodes, setNodes] = useState({});
     const [isLoading, setLoading] = useState(true);
+
 
     const correoUsuario = "lgrandab@gmail.com"
 
@@ -62,23 +81,23 @@ const List = () => {
                     // fechaInicio: doc.data().informacionGeneral.fechaInicio,
                     // fechaFin: doc.data().informacionGeneral.fechaFin,
                     //fechaInicio: "hoy",
-                    temp: doc.data().informacionGeneral.fechaInicio,
-                    fechaInicio: "YYYY-MM-DD",
-                    fechaFin: "YYYY-MM-DD",
+                    // temp: doc.data().informacionGeneral.fechaInicio,
+                    // fechaInicio: "YYYY-MM-DD",
+                    // fechaFin: "YYYY-MM-DD",
 
-                    duracionProyectoSemanas: doc.data().informacionGeneral.duracionProyectoSemanas,
-                    alcanceTerritorial: doc.data().informacionGeneral.alcanceTerritorial,
+                    // duracionProyectoSemanas: doc.data().informacionGeneral.duracionProyectoSemanas,
+                    // alcanceTerritorial: doc.data().informacionGeneral.alcanceTerritorial,
 
-                    actividadCientifica: doc.data().informacionGeneral.actividadCientifica,
-                    objetivoSocioeconomico: doc.data().informacionGeneral.objetivoSocioeconomico,
-                    areaTematicaID: doc.data().informacionGeneral.areaTematicaID,
-                    objetivosPlanCreacionOportunidades: doc.data().informacionGeneral.objetivosPlanCreacionOportunidades,
+                    // actividadCientifica: doc.data().informacionGeneral.actividadCientifica,
+                    // objetivoSocioeconomico: doc.data().informacionGeneral.objetivoSocioeconomico,
+                    // areaTematicaID: doc.data().informacionGeneral.areaTematicaID,
+                    // objetivosPlanCreacionOportunidades: doc.data().informacionGeneral.objetivosPlanCreacionOportunidades,
 
-                    camploAmplio: doc.data().informacionGeneral.camploAmplio,
-                    campoEspecifico: doc.data().informacionGeneral.campoEspecifico,
-                    camploDetallado: doc.data().informacionGeneral.camploDetallado,
-                    objetivosDesarrolloSostenible: doc.data().informacionGeneral.objetivosDesarrolloSostenible,
-                    status: "Borrador",
+                    // camploAmplio: doc.data().informacionGeneral.camploAmplio,
+                    // campoEspecifico: doc.data().informacionGeneral.campoEspecifico,
+                    // camploDetallado: doc.data().informacionGeneral.camploDetallado,
+                    // objetivosDesarrolloSostenible: doc.data().informacionGeneral.objetivosDesarrolloSostenible,
+                    status: doc.data().informacionGeneral.status,
                 })
             }
             catch (e) {
@@ -141,6 +160,7 @@ const List = () => {
                         </TableBody>
                     </Table>
                 </TableContainer>
+
             </div>
 
         </div>

@@ -20,13 +20,18 @@ import {
 
 import Split from "react-split";
 import Sidebar from "../../components/Sidebar";
-
+import { useContext } from "react";
+import { AuthContext } from "../../context/AuthContext";
 
 const firestore = getFirestore(app)
 
 export default function InformacionTecnicaProyecto() {
 
-    const correoUsuario = "lgrandab@gmail.com"
+
+    const { currentUser } = useContext(AuthContext)
+
+    const correoUsuario = currentUser.email;
+    //const correoUsuario = "lgrandab@gmail.com"
     let navigate = useNavigate();
 
     const routeChange = () => {

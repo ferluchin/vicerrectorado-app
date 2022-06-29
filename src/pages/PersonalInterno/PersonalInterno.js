@@ -22,6 +22,9 @@ import {
     setDoc,
 } from "firebase/firestore";
 
+import { AuthContext } from "../../context/AuthContext";
+import { useContext } from "react";
+
 import "./personalInterno.scss"
 import 'bootstrap/dist/css/bootstrap.css';
 
@@ -33,7 +36,11 @@ const firestore = getFirestore(app);
 
 export default function PersonalInterno() {
 
-    const correoUsuario = "lgrandab@gmail.com";
+    const { currentUser } = useContext(AuthContext)
+
+    const correoUsuario = currentUser.email;
+
+    //const correoUsuario = "lgrandab@gmail.com";
 
     let navigate = useNavigate();
 

@@ -18,6 +18,8 @@ import {
     updateDoc,
     setDoc,
 } from "firebase/firestore";
+import { AuthContext } from "../../context/AuthContext";
+import { useContext } from "react";
 
 import { app } from "../../firebase";
 
@@ -25,7 +27,12 @@ const db = getFirestore(app);
 
 export default function TipoProyecto() {
 
-    const correoUsuario = "lgrandab@gmail.com"
+    const { currentUser } = useContext(AuthContext)
+
+    const correoUsuario = currentUser.email;
+    console.log("🚀 ~ file: C5TipoProyecto.js ~ line 33 ~ TipoProyecto ~ correoUsuario", correoUsuario)
+    
+    //const correoUsuario = "lgrandab@gmail.com"
 
     let navigate = useNavigate();
 
@@ -93,7 +100,7 @@ export default function TipoProyecto() {
 
         console.log({ ...formData })
         setFormData({ ...formInicial })
-        //routeChange()
+        routeChange()
     }
 
     return (

@@ -23,13 +23,19 @@ import {
 
 import Split from "react-split";
 import Sidebar from "../../components/Sidebar";
+import { AuthContext } from "../../context/AuthContext";
+import { useContext } from "react";
 
 const firestore = getFirestore(app)
 
 
 export default function PersonalExternoContratar(props) {
 
-  const correoUsuario = "lgrandab@gmail.com";
+  //const correoUsuario = "lgrandab@gmail.com";
+
+  const { currentUser } = useContext(AuthContext)
+
+  const correoUsuario = currentUser.email;
 
   let navigate = useNavigate();
 
