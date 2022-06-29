@@ -1,5 +1,6 @@
 import "./tableListadoProyectos.scss";
 import Table from "@mui/material/Table";
+import Button from "@mui/material/Button";
 import TableBody from "@mui/material/TableBody";
 import TableCell from "@mui/material/TableCell";
 import TableContainer from "@mui/material/TableContainer";
@@ -50,7 +51,9 @@ const List = () => {
 
     const [arrayProyectos, setArrayProyectos] = useState(null);
 
+    const cambiarStatus = async (id, status) => {
 
+    }
     //Recuperar el contenido de un solo documento
     async function getData() {
         var rows = [];
@@ -65,11 +68,8 @@ const List = () => {
             //console.log(doc.id, " => ", doc.data().proyectos.equipos);
             //console.log(doc.id + " 🚀🚀🚀")
 
-
             if (doc.id === correoUsuario) {
                 try {
-
-
                     rows.push({
                         id: doc.id,
 
@@ -80,26 +80,7 @@ const List = () => {
                         dominioAcademico: doc.data().informacionGeneral.dominioAcademico,
                         lineaInvestigacion: doc.data().informacionGeneral.lineaInvestigacion,
                         programaInvestigacion: doc.data().informacionGeneral.programaInvestigacion,
-
-                        // fechaInicio: doc.data().informacionGeneral.fechaInicio,
-                        // fechaFin: doc.data().informacionGeneral.fechaFin,
-                        //fechaInicio: "hoy",
-                        // temp: doc.data().informacionGeneral.fechaInicio,
-                        // fechaInicio: "YYYY-MM-DD",
-                        // fechaFin: "YYYY-MM-DD",
-
-                        // duracionProyectoSemanas: doc.data().informacionGeneral.duracionProyectoSemanas,
-                        // alcanceTerritorial: doc.data().informacionGeneral.alcanceTerritorial,
-
-                        // actividadCientifica: doc.data().informacionGeneral.actividadCientifica,
-                        // objetivoSocioeconomico: doc.data().informacionGeneral.objetivoSocioeconomico,
-                        // areaTematicaID: doc.data().informacionGeneral.areaTematicaID,
-                        // objetivosPlanCreacionOportunidades: doc.data().informacionGeneral.objetivosPlanCreacionOportunidades,
-
-                        // camploAmplio: doc.data().informacionGeneral.camploAmplio,
-                        // campoEspecifico: doc.data().informacionGeneral.campoEspecifico,
-                        // camploDetallado: doc.data().informacionGeneral.camploDetallado,
-                        // objetivosDesarrolloSostenible: doc.data().informacionGeneral.objetivosDesarrolloSostenible,
+                        
                         status: doc.data().informacionGeneral.status,
                     })
                 }
@@ -108,13 +89,9 @@ const List = () => {
                     console.log(e);
                 }
             }
-                
-            
-
-
         });
         //console.log("🚀 ~ file: TableListadoProyectos.jsx ~ line 113 ~ docSnap.forEach ~ doc", doc)
-        console.log(rows);
+        //console.log(rows);
         return rows;
     }
 
@@ -148,6 +125,7 @@ const List = () => {
                                 <TableCell className="tableCell">Departamento.</TableCell>
                                 <TableCell className="tableCell">Grupo de Investigación.</TableCell>
                                 <TableCell className="tableCell">Status</TableCell>
+                                <TableCell className="tableCell">Acciones</TableCell>
 
                             </TableRow>
                         </TableHead>
@@ -164,14 +142,17 @@ const List = () => {
                                     <TableCell className="tableCell">
                                         <span className={`status ${row.status}`}>{row.status}</span>
                                     </TableCell>
+                                    <TableCell className="tableCell">
+                                        <Button variant="contained" color="primary" onClick={ () => cambiarStatus(row, "Status") }>
+                                            Confirmar
+                                        </Button>
+                                    </TableCell>
                                 </TableRow>
                             ))}
                         </TableBody>
                     </Table>
                 </TableContainer>
-
             </div>
-
         </div>
     );
 };

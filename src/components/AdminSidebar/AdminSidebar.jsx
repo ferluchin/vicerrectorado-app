@@ -146,21 +146,21 @@ const AdminSidebar = () => {
                     <Link to="/etapa-personal-externo-cooperante" style={{ textDecoration: "none" }}>
                         <li>
                             <SettingsSystemDaydreamOutlinedIcon className="icon" />
-                            <span>Personal Externo Cooperante</span>
+                            <span>P. Externo Cooperante</span>
                         </li>
                     </Link>
 
                     <Link to="/etapa-personal-externo-contratar" style={{ textDecoration: "none" }}>
                         <li>
                             <SettingsSystemDaydreamOutlinedIcon className="icon" />
-                            <span>Personal Externo a Contratar</span>
+                            <span>P. Externo a Contratar</span>
                         </li>
                     </Link>
 
                     <Link to="/etapa-informacion-tecnica-proyecto" style={{ textDecoration: "none" }}>
                         <li>
                             <SettingsSystemDaydreamOutlinedIcon className="icon" />
-                            <span>Informaciónn Técnica del Proyecto</span>
+                            <span>Información Técnica</span>
                         </li>
                     </Link>
 

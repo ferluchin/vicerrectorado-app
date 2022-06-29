@@ -89,7 +89,7 @@ const Admin = () => {
 
                 <hr />
 
-                <div className="listContainer">
+                {/* <div className="listContainer">
                     <div className="listTitle">
                         <div className="container">
                             Datos Personales
@@ -99,7 +99,7 @@ const Admin = () => {
                     <TableListadoProyectos />
 
 
-                </div>
+                </div> */}
 
                 <div className="listContainer">
                     <div className="listTitle">
