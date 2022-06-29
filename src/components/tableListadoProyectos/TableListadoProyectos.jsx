@@ -35,25 +35,18 @@ const db = getFirestore();
 const List = () => {
 
     const { currentUser } = useContext(AuthContext);
-    console.log("🚀 ~ file: TableListadoProyectos.jsx ~ line 38 ~ List ~ currentUser", currentUser)
+    //console.log("🚀 ~ file: TableListadoProyectos.jsx ~ line 38 ~ List ~ currentUser", currentUser.email)
 
+    const correoUsuario = currentUser.email
     const auth = getAuth();
 
-    const user = auth.currentUser;
 
-
-    if (currentUser) {
-        console.log(currentUser.email);
-    } else {
-        console.log("No user signed in");
-    }
 
 
     const [nodes, setNodes] = useState({});
     const [isLoading, setLoading] = useState(true);
 
 
-    const correoUsuario = "lgrandab@gmail.com"
 
     const [arrayProyectos, setArrayProyectos] = useState(null);
 
@@ -61,50 +54,66 @@ const List = () => {
     //Recuperar el contenido de un solo documento
     async function getData() {
         var rows = [];
-        var docRef = collection(db, "proyectos-investigacion");
+        var docRef = collection(db, `proyectos-investigacion/`);
+        //var docRef = collection(db, "proyectos-investigacion", `${correoUsuario}`);
+
         const docSnap = await getDocs(docRef);
+        //console.log(" ~ file: TableListadoProyectos.jsx ~ line 66 ~ getData ~ docSnap", docSnap)
+        
         docSnap.forEach((doc) => {
             // doc.data() is never undefined for query doc snapshots
             //console.log(doc.id, " => ", doc.data().proyectos.equipos);
-            try {
-                rows.push({
-                    id: doc.id,
+            //console.log(doc.id + " 🚀🚀🚀")
 
-                    titulo: doc.data().informacionGeneral.titulo,
-                    facultad: doc.data().informacionGeneral.facultad,
-                    departamento: doc.data().informacionGeneral.departamento,
-                    grupoInvestigacion: doc.data().informacionGeneral.grupoInvestigacion,
-                    dominioAcademico: doc.data().informacionGeneral.dominioAcademico,
-                    lineaInvestigacion: doc.data().informacionGeneral.lineaInvestigacion,
-                    programaInvestigacion: doc.data().informacionGeneral.programaInvestigacion,
 
-                    // fechaInicio: doc.data().informacionGeneral.fechaInicio,
-                    // fechaFin: doc.data().informacionGeneral.fechaFin,
-                    //fechaInicio: "hoy",
-                    // temp: doc.data().informacionGeneral.fechaInicio,
-                    // fechaInicio: "YYYY-MM-DD",
-                    // fechaFin: "YYYY-MM-DD",
+            if (doc.id === correoUsuario) {
+                try {
 
-                    // duracionProyectoSemanas: doc.data().informacionGeneral.duracionProyectoSemanas,
-                    // alcanceTerritorial: doc.data().informacionGeneral.alcanceTerritorial,
 
-                    // actividadCientifica: doc.data().informacionGeneral.actividadCientifica,
-                    // objetivoSocioeconomico: doc.data().informacionGeneral.objetivoSocioeconomico,
-                    // areaTematicaID: doc.data().informacionGeneral.areaTematicaID,
-                    // objetivosPlanCreacionOportunidades: doc.data().informacionGeneral.objetivosPlanCreacionOportunidades,
+                    rows.push({
+                        id: doc.id,
 
-                    // camploAmplio: doc.data().informacionGeneral.camploAmplio,
-                    // campoEspecifico: doc.data().informacionGeneral.campoEspecifico,
-                    // camploDetallado: doc.data().informacionGeneral.camploDetallado,
-                    // objetivosDesarrolloSostenible: doc.data().informacionGeneral.objetivosDesarrolloSostenible,
-                    status: doc.data().informacionGeneral.status,
-                })
+                        titulo: doc.data().informacionGeneral.titulo,
+                        facultad: doc.data().informacionGeneral.facultad,
+                        departamento: doc.data().informacionGeneral.departamento,
+                        grupoInvestigacion: doc.data().informacionGeneral.grupoInvestigacion,
+                        dominioAcademico: doc.data().informacionGeneral.dominioAcademico,
+                        lineaInvestigacion: doc.data().informacionGeneral.lineaInvestigacion,
+                        programaInvestigacion: doc.data().informacionGeneral.programaInvestigacion,
+
+                        // fechaInicio: doc.data().informacionGeneral.fechaInicio,
+                        // fechaFin: doc.data().informacionGeneral.fechaFin,
+                        //fechaInicio: "hoy",
+                        // temp: doc.data().informacionGeneral.fechaInicio,
+                        // fechaInicio: "YYYY-MM-DD",
+                        // fechaFin: "YYYY-MM-DD",
+
+                        // duracionProyectoSemanas: doc.data().informacionGeneral.duracionProyectoSemanas,
+                        // alcanceTerritorial: doc.data().informacionGeneral.alcanceTerritorial,
+
+                        // actividadCientifica: doc.data().informacionGeneral.actividadCientifica,
+                        // objetivoSocioeconomico: doc.data().informacionGeneral.objetivoSocioeconomico,
+                        // areaTematicaID: doc.data().informacionGeneral.areaTematicaID,
+                        // objetivosPlanCreacionOportunidades: doc.data().informacionGeneral.objetivosPlanCreacionOportunidades,
+
+                        // camploAmplio: doc.data().informacionGeneral.camploAmplio,
+                        // campoEspecifico: doc.data().informacionGeneral.campoEspecifico,
+                        // camploDetallado: doc.data().informacionGeneral.camploDetallado,
+                        // objetivosDesarrolloSostenible: doc.data().informacionGeneral.objetivosDesarrolloSostenible,
+                        status: doc.data().informacionGeneral.status,
+                    })
+                }
+                catch (e) {
+
+                    console.log(e);
+                }
             }
-            catch (e) {
+                
+            
 
-                console.log(e);
-            }
+
         });
+        //console.log("🚀 ~ file: TableListadoProyectos.jsx ~ line 113 ~ docSnap.forEach ~ doc", doc)
         console.log(rows);
         return rows;
     }
