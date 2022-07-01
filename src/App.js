@@ -25,6 +25,7 @@ import { Routes, Route, Navigate } from "react-router-dom";
 
 import { useContext } from 'react';
 import { AuthContext } from "./context/AuthContext";
+import AreasConocimiento from './pages/AreasConocimiento/AreasConocimiento';
 
 function App() {
 
@@ -57,6 +58,12 @@ function App() {
                     {/* <Route path="/fechas-proyecto" element={<FechasProyecto />} /> */}
                     
                     {/* <Route path="/areas-conocimiento" element={<AreasConocimiento />} /> */}
+                    <Route path="/areas-conocimiento" element={
+                        <RequireAuth>
+                            <AreasConocimiento />
+                        </RequireAuth>
+                    } />
+
                     <Route path="/tipo-proyecto" element={
                         <RequireAuth>
                             <TipoProyecto />

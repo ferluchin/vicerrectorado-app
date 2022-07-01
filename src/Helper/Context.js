@@ -11,8 +11,21 @@ const { setGlobalState, useGlobalState } = createGlobalState({
         status: '',
         titulo: '',
     },
+    areasConocimiento: {
+        actividadCientifica: '',
+        objetivoSocioeconomico: '',
+        areaTematicaID: '',
+        objetivosPlanCreacionOportunidades: '',
 
-    tipoProyecto : {
+        //Clasifiación internacional normalizada de la educacion
+        campoAmplio: '',
+        campoEspecifico: '',
+        campoDetallado: '',
+        objetivosDesarrolloSostenible: '',  
+
+    },
+
+    tipoProyecto: {
         tipoProyecto: "",
         tipoInvestigacion: "",
         tipoFinanciamiento: "",
@@ -24,7 +37,16 @@ const { setGlobalState, useGlobalState } = createGlobalState({
         aporteContraparte: "",
     },
 
-        informacionTecnicaProyecto : {
+    personalInterno: {
+
+    },
+
+    personalExternoContratar: {
+    },
+    personalExternoCooperante: {
+    },
+
+    informacionTecnicaProyecto: {
         resumenProyecto: "",
 
         palabraClave1: "",
@@ -42,7 +64,38 @@ const { setGlobalState, useGlobalState } = createGlobalState({
         objetivoEspecifico3: "",
         objetivoEspecifico4: "",
         objetivoEspecifico5: ""
-    }
+    },
+
+    metodologiaProyecto: {
+        articuloCientifico: '',
+        aspectosBioeticos: '',
+        descripcionActividadeID: '',
+        impactoCientifico: '',
+        impactoEconomico: '',
+        impactoPolitico: '',
+        impactoSocial: '',
+        metodologia: '',
+        otroImpacto: '',
+        otrosTranferenciaConocimiento: '',
+        prototipo: '',
+        registroPropiedadIndustrial: '',
+    },
+
+    cronogramaActividades: {
+
+    },
+
+    resumenPresupuesto: {
+        bibliografia: '',
+        capacitacion: '',
+        equipos: '',
+        honorarios: '',
+        materialesSuministrosreactivos: '',
+        observaciones: '',
+        totalGastosDirectos: '',
+        viaticosSubsistenciasMovilizacion: '',
+
+    },
 
 });
 

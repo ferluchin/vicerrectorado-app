@@ -42,6 +42,22 @@ const List = () => {
 
     const [value, update] = useGlobalState("isLoggedIn");
     const [globalInformacionGeneral, setGlobalInformacionGeneral] = useGlobalState("informacionGeneral");
+    //tipo de proyecto 
+    //P interno
+    //P externo cooperante
+    //P externo a contratar
+    //informacion tecnica
+    //metodologia del proyecto
+    //cronograma de activiades
+    //resumen del presupuesto
+    const [globalTipoProyecto, setGlobalTipoProyecto] = useGlobalState("tipoProyecto");
+    const [globalPersonalInterno, setGlobalPersonalInterno] = useGlobalState("personalInterno");
+    const [globalPersonalExternoContratar, setGlobalPersonalExternoContratar] = useGlobalState("personalExternoContratar");
+    const [globalPersonalExternoCooperante, setGlobalPersonalExternoCooperante] = useGlobalState("personalExternoCooperante");
+    const [globalInformacionTecnicaProyecto, setGlobalInformacionTecnicaProyecto] = useGlobalState("informacionTecnicaProyecto");
+    const [globalMetodologiaProyecto, setGlobalMetodologiaProyecto] = useGlobalState("metodologiaProyecto");
+    const [globalCronogramaActividades, setGlobalCronogramaActividades] = useGlobalState("cronogramaActividades");
+    const [globalResumenPresupuesto, setGlobalResumenPresupuesto] = useGlobalState("resumenPresupuesto");
 
     const handleGlobalChange = (row) => {
         //setGlobalState("isLoggedIn", true);
@@ -132,7 +148,7 @@ const List = () => {
         //console.log("🚀 ~ file: TableListadoProyectos.jsx ~ line 51 ~ handleGlobalChange ~ titulo", titulo)
         
         console.log(value);
-        navigate("/home");
+        //navigate("/home");
     }
 
     const { currentUser } = useContext(AuthContext);
@@ -204,6 +220,17 @@ const List = () => {
                         objetivosDesarrolloSostenible: doc.data().informacionGeneral.objetivosDesarrolloSostenible,
 
                         status: doc.data().informacionGeneral.status,
+
+                        //Tipo de proyecto
+                        aporteContraparte: doc.data().tipoProyecto.aporteContraparte,
+                        aporteUTPL: doc.data().tipoProyecto.aporteUTPL,
+                        organismoEntidadFinanciador: doc.data().tipoProyecto.organismoEntidadFinanciador,
+                        presupuestoTotal: doc.data().tipoProyecto.presupuestoTotal,
+                        tipoFinanciamiento: doc.data().tipoProyecto.tipoFinanciamiento,
+                        tipoInvestigacion: doc.data().tipoProyecto.tipoInvestigacion,
+                        tipoProyecto: doc.data().tipoProyecto.tipoProyecto,
+
+                        //
                     })
                 }
                 catch (e) {

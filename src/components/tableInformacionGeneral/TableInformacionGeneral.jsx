@@ -79,6 +79,8 @@ const List = () => {
                     camploDetallado: doc.data().informacionGeneral.camploDetallado,
                     objetivosDesarrolloSostenible: doc.data().informacionGeneral.objetivosDesarrolloSostenible,
                     //status: "Pending",
+
+                    
                 })
             }
             catch (e) {
