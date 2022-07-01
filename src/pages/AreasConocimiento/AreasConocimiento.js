@@ -1,13 +1,30 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect, useRef, useContext} from 'react'
 import Split from "react-split";
 import Sidebar from "../../components/Sidebar";
 import TitleBar from '../../components/TitleBar';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './areasConocimiento.scss';
 import { useNavigate } from "react-router-dom";
+import { AuthContext } from '../../context/AuthContext';
+
+import {
+    getFirestore,
+    collection,
+    addDoc,
+    getDocs,
+    doc,
+    deleteDoc,
+    getDoc,
+    updateDoc,
+    //updateDoc,
+    setDoc,
+} from "firebase/firestore";
 
 import { app, auth } from "../../firebase";
 import { setGlobalState, useGlobalState } from "../../Helper/Context";
+
+
+const firestore = getFirestore(app);
 
 export default function AreasConocimiento() {
 
@@ -20,6 +37,9 @@ export default function AreasConocimiento() {
         navigate(path);
     }
 
+    const { currentUser } = useContext(AuthContext)
+    //console.log("🚀 ~ file: Home.js ~ line 40 ~ Home ~ currentUser", currentUser.email)
+    const correoUsuario = currentUser.email
     const formInicial = {
 
         //Areas del conocimiento de acuerdo a organismos internacionales 
@@ -42,7 +62,9 @@ export default function AreasConocimiento() {
     const [globalAreasConocimiento, setGlobalAreasConocimiento] = useGlobalState("areasConocimiento");
 
 
-    const [formData, setFormData] = useState({ ...globalAreasConocimiento } ? { ...globalAreasConocimiento } : { ...formInicial })
+    //const [formData, setFormData] = useState({ ...globalAreasConocimiento } ? { ...globalAreasConocimiento } : { ...formInicial })
+    const [formData, setFormData] = useState({ ...formInicial })
+
 
     function handleChange(event) {
         const { name, value, type, checked } = event.target
@@ -56,6 +78,28 @@ export default function AreasConocimiento() {
 
     const handleSubmit = async (event) => {
         event.preventDefault();
+
+
+        event.preventDefault();
+
+        try {
+            const docuRef = doc(firestore, `proyectos-investigacion/${correoUsuario}`)
+            //setDoc(baseDocRef, { informacionGeneral: { status: "Borrador" } }, { merge: true });
+            updateDoc(docuRef, {
+                areasConocimiento: {
+                    ...formData
+                }
+            }
+                //, { merge: true }
+            )
+
+
+        } catch (error) {
+            console.log(error)
+        }
+        //console.log(formData)
+        console.log({ ...formData })
+        setFormData({ ...formInicial })
         //console.log({ ...formData })
         //setFormData({ ...formInicial })
     }

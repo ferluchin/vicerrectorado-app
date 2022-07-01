@@ -208,16 +208,16 @@ const List = () => {
                         nombreDirectorProyecto: doc.data().informacionGeneral.nombreDirectorProyecto,
                         identificacionDirectorProyecto: doc.data().informacionGeneral.identificacionDirectorProyecto,
 
-                        actividadCientifica: doc.data().informacionGeneral.actividadCientifica,
-                        objetivoSocioEconomico: doc.data().informacionGeneral.objetivoSocioEconomico,
-                        areaTematicaID: doc.data().informacionGeneral.areaTematicaID,
+                        actividadCientifica: doc.data().areasConocimiento.actividadCientifica,
+                        objetivoSocioEconomico: doc.data().areasConocimiento.objetivoSocioEconomico,
+                        areaTematicaID: doc.data().areasConocimiento.areaTematicaID,
 
-                        objetivosPlanCreacionOportunidades: doc.data().informacionGeneral.objetivosPlanCreacionOportunidades,
+                        objetivosPlanCreacionOportunidades: doc.data().areasConocimiento.objetivosPlanCreacionOportunidades,
                         
-                        campoAmplio: doc.data().informacionGeneral.campoAmplio,
-                        campoEspecifico: doc.data().informacionGeneral.campoEspecifico,
-                        campoDetallado: doc.data().informacionGeneral.campoDetallado,
-                        objetivosDesarrolloSostenible: doc.data().informacionGeneral.objetivosDesarrolloSostenible,
+                        campoAmplio: doc.data().areasConocimiento.campoAmplio,
+                        campoEspecifico: doc.data().areasConocimiento.campoEspecifico,
+                        campoDetallado: doc.data().areasConocimiento.campoDetallado,
+                        objetivosDesarrolloSostenible: doc.data().areasConocimiento.objetivosDesarrolloSostenible,
 
                         status: doc.data().informacionGeneral.status,
 
