@@ -157,9 +157,7 @@ export default function TipoProyecto() {
                                     </div>
 
                                     <div
-                                        //className="column"
                                         className="col-4"
-
                                     >
                                         <h5>
                                             Tipo de Investigación:
@@ -293,11 +291,8 @@ export default function TipoProyecto() {
                                     </div>
 
                                     <div
-                                        //className="column"
                                         className="col-4"
-
                                     >
-
                                         <input
                                             type="number"
                                             min={0}
@@ -308,18 +303,14 @@ export default function TipoProyecto() {
                                             value={formData.aporteContraparte}
                                         />
                                     </div>
-
                                 </div>
                             </div>
-
                             <button
                                 className="btn btn-danger"
-
                             >
                                 Enviar Información
                             </button>
                         </form>
-
                     </section>
                 </Split>
             </div>

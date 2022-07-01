@@ -36,8 +36,6 @@ import { Button } from "reactstrap";
 
 
 const firestore = getFirestore(app);
-const db = getFirestore(app);
-
 
 const data = [
     {
@@ -86,8 +84,6 @@ export default function Home() {
 
     const onSuggestionsFetchRequested = ({ value }) => {
         setDocentes(filtrarDocentes(value));
-
-
     }
 
     const filtrarDocentes = (value) => {
@@ -216,55 +212,6 @@ export default function Home() {
 
     const [formData, setFormData] = React.useState({ ...globalInformacionGeneral } ? { ...globalInformacionGeneral } : { ...formInicial })
 
-
-    // if (globalInformacionGeneral) {
-    //    // setFormData(...globalInformacionGeneral)
-
-    //     setFormData(prevFormData => {
-    //         return {
-    //             ...prevFormData,
-    //             ...globalInformacionGeneral
-    //         }
-
-
-    //     })
-    // } else {
-    //     setFormData(...formInicial)
-
-    // }
-
-    // function calculateDaysLeft() {
-    //     var given = Moment("2023-03-10", "YYYY-MM-DD");
-    //     var current = Moment().startOf('day');
-
-    //     //Difference in number of days
-    //     let amount = Moment.duration(given.diff(current)).asDays();
-    //     //let { startDate, endDate } = this.state;
-    //     //let fechaInicio = (formData.fechaInicio).toDate();
-
-    //     /*
-    //             let fechaInicio = Moment(formData.fechaInicio)
-    //             let fechaFin = Moment(formData.fechaFin)
-    //             console.log(fechaInicio);
-    //             console.log(fechaFin);
-                
-    //             */
-    //     //let amount = endDate.diff(startDate, 'days');
-    //     //let amount = fechaFin.diff(fechaInicio, 'days');
-
-    //     setFormData(prevFormData => {
-    //         return {
-    //             ...prevFormData,
-    //             duracionProyectoSemanas: (amount / 7)
-    //         }
-
-
-    //     })
-    //     console.log("🚀 ~ file: Home.js ~ line 55 ~ calculateDaysLeft ~ duracionProyectoSemanas", formData.duracionProyectoSemanas)
-
-    // }
-
-
     function handleChange(event) {
         const { name, value, type, checked } = event.target
         setFormData(prevFormData => {
@@ -275,29 +222,6 @@ export default function Home() {
         })
     }
 
-    // const oldHandleSubmit = async (event) => {
-    //     event.preventDefault()
-    //     // submitToApi(formData)
-    //     try {
-    //         await addDoc(collection(db, 'proyectos-investigacion'), {
-    //             ...formData
-    //         })
-    //     } catch (error) {
-    //         console.log(error)
-    //     }
-    //     console.log(formData)
-    //     setFormData({ ...formInicial })
-    //     routeChange()
-    // }
-
-    // try {
-    //     const docuRef = doc(firestore, `proyectos-investigacion/${correoUsuario}`, `proyectos`)
-    //     updateDoc(docuRef, { proyectos: { ...formData } })
-
-    // } catch (error) {
-    //     console.log(error)
-    // }
-
     const handleSubmit = async (event) => {
         event.preventDefault();
 
@@ -306,24 +230,17 @@ export default function Home() {
             formData.identificacionDirectorProyecto = docenteSeleccionado.identificacion
             formData.telefonoDirectorProyecto = docenteSeleccionado.telefono
             formData.correoInstitucional = docenteSeleccionado.correo
-            //formData.fechaInicio = (formData.fechaInicio).toLocaleDateString()
+
             formData.fechaInicio = (formData.fechaInicio).toISOString().split('T')
-            //formData.fechaInicio = (formData.fechaInicio).toLocaleDateString()
             formData.fechaFin = (formData.fechaFin).toISOString().split('T')
 
             //toISOString().split('T')
             // const docuRef = collection(firestore, `proyectos-investigacion/${correoUsuario}`, "proyectos")
-
             //const docuRef = collection(firestore, `proyectos-investigacion/`, `${correoUsuario}/ `, `proyectos` )
             //const docuRef = collection(firestore, `proyectos-investigacion/`, `${correoUsuario}/`, `proyectos`)
-
-
             ////const docuRef = doc(firestore, `proyectos-investigacion/${correoUsuario}`, `proyectos`)
-
-
             //updateDoc(docuRef, { proyectos: { ...formData } })
             ////await updateDoc(docuRef,  { ...formData } )
-
 
             const docuRef = doc(firestore, `proyectos-investigacion/${correoUsuario}`)
 
@@ -826,7 +743,6 @@ export default function Home() {
                             <br />
                         </form>
                     </section>
-
                 </Split>
             </div>
         </div>

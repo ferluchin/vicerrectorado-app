@@ -106,7 +106,7 @@ export default function AreasConocimiento() {
 
 
     return (
-        <div className='home'>
+        <div className='areas-conocimiento'>
             <div className="main-body">
 
                 <Split
