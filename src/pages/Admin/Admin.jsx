@@ -14,7 +14,7 @@ import TableInformacionTecnicaProyecto from "../../components/tableInformacionTe
 import TableMetodologiaProyecto from "../../components/tableMetodologiaProyecto/TableMetodologiaProyecto";
 import TableResumenPresupuesto from "../../components/tableResumenPresupuesto/TableResumenPresupuesto";
 import TableListadoProyectos from "../../components/tableListadoProyectos/TableListadoProyectos";
-
+import { setGlobalState, useGlobalState } from "../../Helper/Context";
 import { Routes, Route, useNavigate, Navigate, Link } from 'react-router-dom'
 
 
@@ -22,6 +22,7 @@ import { Routes, Route, useNavigate, Navigate, Link } from 'react-router-dom'
 const Admin = () => {
 
     const navigate = useNavigate();
+
 
     const editarInformacionGeneral = () => {
         // <Link to="/home" >

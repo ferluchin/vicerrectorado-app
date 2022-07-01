@@ -12,6 +12,7 @@ import { getAuth } from "firebase/auth";
 import { useContext } from "react";
 
 import { AuthContext } from "../../context/AuthContext";
+import { setGlobalState, useGlobalState } from "../../Helper/Context";
 
 import 'bootstrap/dist/css/bootstrap.css';
 
@@ -29,11 +30,108 @@ import {
 //import { async } from "@firebase/util";
 import { app } from "../../firebase";
 import { async } from "@firebase/util";
-
+import { useNavigate } from "react-router-dom";
 
 const db = getFirestore();
 
 const List = () => {
+
+
+
+    const navigate = useNavigate();
+
+    const [value, update] = useGlobalState("isLoggedIn");
+    const [globalInformacionGeneral, setGlobalInformacionGeneral] = useGlobalState("informacionGeneral");
+
+    const handleGlobalChange = (row) => {
+        //setGlobalState("isLoggedIn", true);
+        //() => update(() => true);
+        const {
+            id,
+            titulo,
+            facultad,
+            departamento,
+            grupoInvestigacion,
+
+            dominioAcademico,
+            lineaInvestigacion,
+            programaInvestigacion,
+
+            fechaInicio,
+            fechaFin,
+            duracionProyectoSemanas,
+
+            alcanceTerritorial,
+            // Datos del Director del Proyecto 
+            nombreDirectorProyecto,
+            identificacionDirectorProyecto,
+            telefonoDirectorProyecto,
+            correoInstitucional,
+
+            //Areas del conocimiento de acuerdo a organismos internacionales 
+            actividadCientifica,
+            objetivoSocioEconomico,
+            areaTematicaID,
+            objetivosPlanCreacionOportunidades,
+
+            //Clasificacion internacional Normalizada de la educación
+            campoAmplio,
+            campoEspecifico,
+            campoDetallado,
+            objetivosDesarrolloSostenible,
+
+        } = row;
+        console.log("🚀 ~ file: TableListadoProyectos.jsx ~ line 121 ~ handleGlobalChange ~ row", row)
+
+        //update(() => !value)
+
+
+
+        //setGlobalInformacionGeneral((p) => ({ ...p, newFormData }));
+        setGlobalInformacionGeneral(prevFormData => {
+            return {
+                ...prevFormData,
+                id: id,
+                titulo: titulo,
+                facultad: facultad,
+                departamento: departamento,
+                grupoInvestigacion: grupoInvestigacion,
+
+                dominioAcademico: dominioAcademico,
+                lineaInvestigacion: lineaInvestigacion,
+                programaInvestigacion: programaInvestigacion,
+
+                fechaInicio: fechaInicio,
+                fechaFin: fechaFin,
+                duracionProyectoSemanas: duracionProyectoSemanas,
+
+                alcanceTerritorial: alcanceTerritorial,
+                
+                // Datos del Director del Proyecto
+                nombreDirectorProyecto: nombreDirectorProyecto,
+                identificacionDirectorProyecto: identificacionDirectorProyecto,
+                telefonoDirectorProyecto: telefonoDirectorProyecto,
+                correoInstitucional: correoInstitucional,
+
+                //Areas del conocimiento de acuerdo a organismos internacionales
+                actividadCientifica: actividadCientifica,
+                objetivoSocioEconomico: objetivoSocioEconomico,
+                areaTematicaID: areaTematicaID,
+                objetivosPlanCreacionOportunidades: objetivosPlanCreacionOportunidades,
+
+                //Clasificacion internacional Normalizada de la educación
+                campoAmplio: campoAmplio,
+                campoEspecifico: campoEspecifico,
+                campoDetallado: campoDetallado,
+                objetivosDesarrolloSostenible: objetivosDesarrolloSostenible,
+                
+            }
+        })
+        //console.log("🚀 ~ file: TableListadoProyectos.jsx ~ line 51 ~ handleGlobalChange ~ titulo", titulo)
+        
+        console.log(value);
+        navigate("/home");
+    }
 
     const { currentUser } = useContext(AuthContext);
     //console.log("🚀 ~ file: TableListadoProyectos.jsx ~ line 38 ~ List ~ currentUser", currentUser.email)
@@ -62,7 +160,7 @@ const List = () => {
 
         const docSnap = await getDocs(docRef);
         //console.log(" ~ file: TableListadoProyectos.jsx ~ line 66 ~ getData ~ docSnap", docSnap)
-        
+
         docSnap.forEach((doc) => {
             // doc.data() is never undefined for query doc snapshots
             //console.log(doc.id, " => ", doc.data().proyectos.equipos);
@@ -72,15 +170,37 @@ const List = () => {
                 try {
                     rows.push({
                         id: doc.id,
-
+                        
                         titulo: doc.data().informacionGeneral.titulo,
                         facultad: doc.data().informacionGeneral.facultad,
                         departamento: doc.data().informacionGeneral.departamento,
                         grupoInvestigacion: doc.data().informacionGeneral.grupoInvestigacion,
+                        
+                        
+                        
                         dominioAcademico: doc.data().informacionGeneral.dominioAcademico,
                         lineaInvestigacion: doc.data().informacionGeneral.lineaInvestigacion,
                         programaInvestigacion: doc.data().informacionGeneral.programaInvestigacion,
                         
+                        //fechaInicio: doc.data().informacionGeneral.fechaInicio,
+                        //fechaFin: doc.data().informacionGeneral.fechaFin,
+                        //duracionProyectoSemanas: doc.data().informacionGeneral.duracionProyectoSemanas,
+                        
+                        alcanceTerritorial: doc.data().informacionGeneral.alcanceTerritorial,
+                        //nombreDirectorProyecto: doc.data().informacionGeneral.nombreDirectorProyecto,
+                        //identificacionDirectorProyecto: doc.data().informacionGeneral.identificacionDirectorProyecto,
+
+                        actividadCientifica: doc.data().informacionGeneral.actividadCientifica,
+                        objetivoSocioEconomico: doc.data().informacionGeneral.objetivoSocioEconomico,
+                        areaTematicaID: doc.data().informacionGeneral.areaTematicaID,
+
+                        objetivosPlanCreacionOportunidades: doc.data().informacionGeneral.objetivosPlanCreacionOportunidades,
+                        
+                        campoAmplio: doc.data().informacionGeneral.campoAmplio,
+                        campoEspecifico: doc.data().informacionGeneral.campoEspecifico,
+                        campoDetallado: doc.data().informacionGeneral.campoDetallado,
+                        objetivosDesarrolloSostenible: doc.data().informacionGeneral.objetivosDesarrolloSostenible,
+
                         status: doc.data().informacionGeneral.status,
                     })
                 }
@@ -134,7 +254,7 @@ const List = () => {
                                 <TableRow key={row.id}>
                                     <TableCell className="tableCell">{row.id}</TableCell>
 
-                                    <TableCell className="tableCell">{row.titulo}</TableCell>
+                                    <TableCell name="titulo" className="tableCell">{row.titulo}</TableCell>
                                     <TableCell className="tableCell">{row.facultad}</TableCell>
                                     <TableCell className="tableCell">{row.departamento}</TableCell>
                                     <TableCell className="tableCell">{row.grupoInvestigacion}</TableCell>
@@ -143,7 +263,9 @@ const List = () => {
                                         <span className={`status ${row.status}`}>{row.status}</span>
                                     </TableCell>
                                     <TableCell className="tableCell">
-                                        <Button variant="contained" color="primary" onClick={ () => cambiarStatus(row, "Status") }>
+                                        {/* <Button variant="contained" color="primary" onClick={ () => cambiarStatus(row, "Status") }> */}
+                                        <Button variant="contained" color="primary" onClick={() => handleGlobalChange(row)}>
+
                                             Confirmar
                                         </Button>
                                     </TableCell>

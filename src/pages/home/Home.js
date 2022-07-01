@@ -1,6 +1,8 @@
-import React from "react";
+import React, { useEffect, useState, useRef, useContext } from "react";
 import TitleBar from "../../components/TitleBar";
 import AutocompleteDocente from "./AutocompleteDocente";
+import Autosuggest from 'react-autosuggest';
+
 import Moment from 'react-moment';
 
 import { useNavigate } from "react-router-dom";
@@ -14,7 +16,6 @@ import 'react-datepicker/dist/react-datepicker.css';
 import Split from "react-split";
 import Sidebar from "../../components/Sidebar";
 import { AuthContext } from "../../context/AuthContext";
-import { useContext, useEffect } from "react";
 
 import {
     getFirestore,
@@ -30,23 +31,151 @@ import {
 } from "firebase/firestore";
 
 import { app, auth } from "../../firebase";
+import { setGlobalState, useGlobalState } from "../../Helper/Context";
+import { Button } from "reactstrap";
+
 
 const firestore = getFirestore(app);
 const db = getFirestore(app);
 
 
+const data = [
+    {
+        //"id": "1",
+        "nombre": "Luis Fernando Granda Morales",
+        "identificacion": "1104435092",
+        "telefono": "0961769500",
+        "correo": "lfgranda3@utpl.edu.ec"
+    },
+    {
+        //"id": "2",
+        "nombre": "Monica Elizabeth Abendaño Ramirez",
+        "identificacion": "11025879365",
+        "telefono": "2418",
+        "correo": "mabendano@utpl.edu.ec"
+    },
+    {
+        //"id": "3",
+        "nombre": "Boris Antonio Galarza Aguirre",
+        "identificacion": "1104435092",
+        "telefono": "073701444",
+        "correo": "bagalarza1@utpl.edu.ec"
+    },
+    {
+        //"id": "4",
+        "nombre": "Rocio del Cisne Uchuari Uchuari",
+        "identificacion": "1104435092",
+        "telefono": "2346",
+        "correo": "ruchuari@utpl.edu.ec"
+    },
+    {
+        //"id": "5",
+        "nombre": "Gloria del Carmen Palacio Valdivieso",
+        "identificacion": "1104435092",
+        "telefono": "07370144",
+        "correo": "gpalacio@utpl.edu.ec"
+    }
+]
+
 export default function Home() {
 
-    
+    // Codigo autocomplete docentes
+    const [docentes, setDocentes] = useState(data);
+    const [value, setValue] = useState("");
+    const [docenteSeleccionado, setDocenteSeleccionado] = useState({});
+
+    const onSuggestionsFetchRequested = ({ value }) => {
+        setDocentes(filtrarDocentes(value));
+
+
+    }
+
+    const filtrarDocentes = (value) => {
+        const inputValue = value.trim().toLowerCase();
+        const inputLength = inputValue.length;
+
+        var filtrado = data.filter((docente) => {
+            var textoCompleto = docente.nombre +
+                " - " + docente.identificacion +
+                " - " + docente.telefono + " - "
+                + docente.correo;
+
+            if (textoCompleto.toLowerCase()
+                .normalize("NFD")
+                .replace(/[\u0300-\u036f]/g, "")
+                .includes(inputValue)) {
+                return docente;
+            }
+        });
+
+        return inputLength === 0 ? [] : filtrado;
+    }
+
+    const onSuggestionsClearRequested = () => {
+
+        setDocentes([]);
+    }
+
+    const getSuggestionValue = (suggestion) => {
+        return `${suggestion.nombre} - ${suggestion.identificacion} - ${suggestion.telefono} - ${suggestion.correo}`;
+    }
+
+    const renderSuggestion = (suggestion) => (
+        <div
+            className='sugerencia'
+            onClick={() => seleccionarDocente(suggestion)}
+        >
+            {`${suggestion.nombre} - ${suggestion.identificacion} - ${suggestion.telefono} - ${suggestion.correo}`}
+        </div>
+    );
+
+    const seleccionarDocente = (docente) => {
+        setDocenteSeleccionado(docente);
+    }
+
+    const onChange = (e, { newValue }) => {
+        setValue(newValue);
+    }
+
+    const inputProps = {
+        placeholder: "Nombre del docente",
+        value,
+        //className: "form--input",
+        onChange
+
+    };
+
+    const eventEnter = (e) => {
+        if (e.key == "Enter") {
+            var split = e.target.value.split('-');
+            var docente = {
+                nombre: split[0].trim(),
+                identificacion: split[1].trim(),
+                telefono: split[2].trim(),
+                correo: split[3].trim(),
+
+            };
+            seleccionarDocente(docente);
+        }
+    }
+    //end código autocomplete docentes
+    const [globalInformacionGeneral, setGlobalInformacionGeneral] = useGlobalState("informacionGeneral");
+
+
     const { currentUser } = useContext(AuthContext)
     //console.log("🚀 ~ file: Home.js ~ line 40 ~ Home ~ currentUser", currentUser.email)
     const correoUsuario = currentUser.email
-    
+
     const baseDocRef = doc(firestore, "proyectos-investigacion", `${correoUsuario}`);
-    
-    setDoc(baseDocRef, { informacionGeneral: { status: "Borrador"} }, { merge:true });
+
+    setDoc(baseDocRef, { informacionGeneral: { status: "Borrador" } }, { merge: true });
     //setDoc(baseDocRef, { informacionGeneral: {} } );
 
+    function logeoDatos(event) {
+        console.log(globalInformacionGeneral)
+
+        console.log("SET FORM DATA", formData)
+    }
 
     //const correoUsuario = "lgrandab@gmail.com"
 
@@ -95,9 +224,25 @@ export default function Home() {
         status: "Borrador",
     }
 
-    const [formData, setFormData] = React.useState({ ...formInicial })
+
+    const [formData, setFormData] = React.useState({ ...globalInformacionGeneral } ? { ...globalInformacionGeneral } : { ...formInicial })
 
 
+    // if (globalInformacionGeneral) {
+    //    // setFormData(...globalInformacionGeneral)
+
+    //     setFormData(prevFormData => {
+    //         return {
+    //             ...prevFormData,
+    //             ...globalInformacionGeneral
+    //         }
+
+
+    //     })
+    // } else {
+    //     setFormData(...formInicial)
+
+    // }
     function calculateDaysLeft() {
         var given = Moment("2023-03-10", "YYYY-MM-DD");
         var current = Moment().startOf('day');
@@ -165,7 +310,14 @@ export default function Home() {
 
     const handleSubmit = async (event) => {
         event.preventDefault();
+
         try {
+            formData.nombreDirectorProyecto = docenteSeleccionado.nombre
+            formData.identificacionDirectorProyecto = docenteSeleccionado.identificacion
+            formData.telefonoDirectorProyecto = docenteSeleccionado.telefono
+            formData.correoInstitucional = docenteSeleccionado.correo
+            formData.fechaInicio = (formData.fechaInicio).toLocaleDateString()
+            formData.fechaFin = (formData.fechaFin).toLocaleDateString()
             // const docuRef = collection(firestore, `proyectos-investigacion/${correoUsuario}`, "proyectos")
 
             //const docuRef = collection(firestore, `proyectos-investigacion/`, `${correoUsuario}/ `, `proyectos` )
@@ -177,12 +329,19 @@ export default function Home() {
 
             //updateDoc(docuRef, { proyectos: { ...formData } })
             ////await updateDoc(docuRef,  { ...formData } )
+
+
             const docuRef = doc(firestore, `proyectos-investigacion/${correoUsuario}`)
+
+            //setDoc(baseDocRef, { informacionGeneral: { status: "Borrador" } }, { merge: true });
+
             updateDoc(docuRef, {
                 informacionGeneral: {
                     ...formData
                 }
-            })
+            }
+                //, { merge: true }
+            )
 
 
         } catch (error) {
@@ -191,7 +350,7 @@ export default function Home() {
         //console.log(formData)
         console.log({ ...formData })
         setFormData({ ...formInicial })
-        routeChange()
+        //routeChange()
     }
 
     return (
@@ -218,6 +377,14 @@ export default function Home() {
                             <TitleBar />
 
                             <br />
+
+                            <Button
+                                type="button"
+                                onClick={logeoDatos}
+                                className="btn btn-primary">
+                                Consola
+                            </Button>
+
                             <div className="container">
                                 <h4>1.  Información General.</h4> {<br />}
                                 <div className="mb-3 row">
@@ -560,11 +727,8 @@ export default function Home() {
                                             onChange={date => setFormData(
                                                 {
                                                     ...formData,
-                                                    fechaFin: date,
-                                                }
-                                            )
-
-                                            }
+                                                    fechaFin: date
+                                                })}
                                             className="form-control"
                                             minDate={new Date()}
                                         //isClearable
@@ -626,6 +790,37 @@ export default function Home() {
                                 Datos del Director del Proyecto.
                             </label>
 
+                            {/* <AutocompleteDocente /> */}
+                            <div className="support">
+
+                                <div className="container">
+
+                                    <div className="col-12">
+
+                                        <Autosuggest
+                                            suggestions={docentes}
+                                            onSuggestionsFetchRequested={onSuggestionsFetchRequested}
+                                            onSuggestionsClearRequested={onSuggestionsClearRequested}
+                                            getSuggestionValue={getSuggestionValue}
+                                            renderSuggestion={renderSuggestion}
+                                            inputProps={inputProps}
+                                            onSuggestionSelected={eventEnter}
+
+                                        />
+                                        <br />
+                                        <div className="col-7">
+                                            <button
+                                                className='btn btn-primary'
+                                                onClick={() => console.log(docenteSeleccionado)}
+                                                type="button"
+                                            >
+                                                Seleccionar Docente
+                                            </button>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
                             {/* <AutocompleteDocente /> */}
 
                             <section>
@@ -727,6 +922,7 @@ export default function Home() {
                                         </div>
                                     </div>
                                 </div>
+
                                 {<br />}
 
                                 <div className="container">
@@ -1014,6 +1210,5 @@ export default function Home() {
                 </Split>
             </div>
         </div>
-
     )
 } 
