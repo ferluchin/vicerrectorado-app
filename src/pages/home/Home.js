@@ -316,8 +316,12 @@ export default function Home() {
             formData.identificacionDirectorProyecto = docenteSeleccionado.identificacion
             formData.telefonoDirectorProyecto = docenteSeleccionado.telefono
             formData.correoInstitucional = docenteSeleccionado.correo
-            formData.fechaInicio = (formData.fechaInicio).toLocaleDateString()
-            formData.fechaFin = (formData.fechaFin).toLocaleDateString()
+            //formData.fechaInicio = (formData.fechaInicio).toLocaleDateString()
+            formData.fechaInicio = (formData.fechaInicio).toISOString().split('T')
+            //formData.fechaInicio = (formData.fechaInicio).toLocaleDateString()
+            formData.fechaFin = (formData.fechaFin).toISOString().split('T')
+
+            //toISOString().split('T')
             // const docuRef = collection(firestore, `proyectos-investigacion/${correoUsuario}`, "proyectos")
 
             //const docuRef = collection(firestore, `proyectos-investigacion/`, `${correoUsuario}/ `, `proyectos` )

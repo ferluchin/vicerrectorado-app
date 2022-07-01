@@ -101,8 +101,10 @@ const List = () => {
                 lineaInvestigacion: lineaInvestigacion,
                 programaInvestigacion: programaInvestigacion,
 
-                fechaInicio: fechaInicio,
-                fechaFin: fechaFin,
+                //fechaInicio: fechaInicio,
+                //fechaFin: fechaFin,
+                fechaInicio: new Date(fechaInicio),
+                fechaFin: new Date(fechaFin),
                 duracionProyectoSemanas: duracionProyectoSemanas,
 
                 alcanceTerritorial: alcanceTerritorial,
@@ -182,13 +184,13 @@ const List = () => {
                         lineaInvestigacion: doc.data().informacionGeneral.lineaInvestigacion,
                         programaInvestigacion: doc.data().informacionGeneral.programaInvestigacion,
                         
-                        //fechaInicio: doc.data().informacionGeneral.fechaInicio,
-                        //fechaFin: doc.data().informacionGeneral.fechaFin,
-                        //duracionProyectoSemanas: doc.data().informacionGeneral.duracionProyectoSemanas,
+                        fechaInicio: doc.data().informacionGeneral.fechaInicio,
+                        fechaFin: doc.data().informacionGeneral.fechaFin,
+                        duracionProyectoSemanas: doc.data().informacionGeneral.duracionProyectoSemanas,
                         
                         alcanceTerritorial: doc.data().informacionGeneral.alcanceTerritorial,
-                        //nombreDirectorProyecto: doc.data().informacionGeneral.nombreDirectorProyecto,
-                        //identificacionDirectorProyecto: doc.data().informacionGeneral.identificacionDirectorProyecto,
+                        nombreDirectorProyecto: doc.data().informacionGeneral.nombreDirectorProyecto,
+                        identificacionDirectorProyecto: doc.data().informacionGeneral.identificacionDirectorProyecto,
 
                         actividadCientifica: doc.data().informacionGeneral.actividadCientifica,
                         objetivoSocioEconomico: doc.data().informacionGeneral.objetivoSocioEconomico,
