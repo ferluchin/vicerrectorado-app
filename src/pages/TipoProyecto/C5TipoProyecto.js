@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect, useRef, useContext } from "react";
 // import NavBar from "../NavBar";
 import "./tipoProyecto.scss";
 import TitleBar from "../../components/TitleBar";
@@ -19,9 +19,10 @@ import {
     setDoc,
 } from "firebase/firestore";
 import { AuthContext } from "../../context/AuthContext";
-import { useContext } from "react";
 
 import { app } from "../../firebase";
+import { setGlobalState, useGlobalState } from "../../Helper/Context";
+
 
 const db = getFirestore(app);
 
@@ -31,7 +32,7 @@ export default function TipoProyecto() {
 
     const correoUsuario = currentUser.email;
     console.log("🚀 ~ file: C5TipoProyecto.js ~ line 33 ~ TipoProyecto ~ correoUsuario", correoUsuario)
-    
+
     //const correoUsuario = "lgrandab@gmail.com"
 
     let navigate = useNavigate();
@@ -55,8 +56,11 @@ export default function TipoProyecto() {
         aporteContraparte: "",
     }
 
-    const [formData, setFormData] = React.useState(
-        { ...formInicial });
+    const [globalTipoProyecto, setGlobalTipoProyecto] = useGlobalState("tipoProyecto");
+
+    //const [formData, setFormData] = React.useState({ ...formInicial });
+
+    const [formData, setFormData] = useState({ ...globalTipoProyecto } ? { ...globalTipoProyecto } : { ...formInicial })
 
 
     function handleChange(event) {
@@ -71,7 +75,7 @@ export default function TipoProyecto() {
     /*
         function handleSubmit(event) {
             event.preventDefault()
-            // submitToApi(formData)
+            // submitToApi(formData) 
             console.log(formData)
         }
     */
@@ -99,7 +103,9 @@ export default function TipoProyecto() {
         }
 
         console.log({ ...formData })
-        setFormData({ ...formInicial })
+        //setFormData({ ...formInicial })
+        setGlobalTipoProyecto({ ...formData })
+        
         routeChange()
     }
 

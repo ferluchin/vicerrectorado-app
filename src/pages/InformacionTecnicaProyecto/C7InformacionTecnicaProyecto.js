@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect, useRef, useContext } from "react";
 import TitleBar from "../../components/TitleBar";
 // import NavBar from "../NavBar";
 import "./informacionTecnica.scss"
@@ -20,8 +20,9 @@ import {
 
 import Split from "react-split";
 import Sidebar from "../../components/Sidebar";
-import { useContext } from "react";
 import { AuthContext } from "../../context/AuthContext";
+import { setGlobalState, useGlobalState } from "../../Helper/Context";
+
 
 const firestore = getFirestore(app)
 
@@ -60,32 +61,12 @@ export default function InformacionTecnicaProyecto() {
         objetivoEspecifico5: ""
     }
 
-    const [formData, setFormData] = React.useState(
-        { ...formInicial });
+    const [globalInformacionTecnicaProyecto, setGlobalInformacionTecnicaProyecto] = useGlobalState("informacionTecnicaProyecto");
 
-    /*
-    const [formData, setFormData] = React.useState(
-        {
-            resumenProyecto: "",
-
-            palabraClave1: "",
-            palabraClave2: "",
-            palabraClave3: "",
-            palabraClave4: "",
-
-            introduccionAntecedentes: "",
-            introduccionJustificacion: "",
+    //const [formData, setFormData] = React.useState({ ...formInicial });
+    const [formData, setFormData] = useState({ ...globalInformacionTecnicaProyecto} ? { ...globalInformacionTecnicaProyecto } : { ...formInicial })
 
 
-            objetivoGeneral: "",
-            objetivoEspecifico1: "",
-            objetivoEspecifico2: "",
-            objetivoEspecifico3: "",
-            objetivoEspecifico4: "",
-            objetivoEspecifico5: ""
-        }
-    )
-*/
 
     function handleChange(event) {
         const { name, value, type, checked } = event.target
@@ -96,13 +77,7 @@ export default function InformacionTecnicaProyecto() {
             }
         })
     }
-    /*
-        function handleSubmit(event) {
-            event.preventDefault()
-            // submitToApi(formData)
-            console.log(formData)
-        }
-    */
+
     const handleSubmit = async (event) => {
         event.preventDefault()
         // submitToApi(formData)
@@ -131,7 +106,8 @@ export default function InformacionTecnicaProyecto() {
         }
         //console.log(formData)
         console.log({ ...formData })
-        setFormData({ ...formInicial })
+        setGlobalInformacionTecnicaProyecto({ ...formData })
+        //setFormData({ ...formInicial })
         routeChange()
     }
 

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect, useRef, useContext } from 'react'
 // import NavBar from "../NavBar";
 import TitleBar from "../../components/TitleBar";
 import "./metodologiaProyecto.scss"
@@ -7,6 +7,7 @@ import { app, auth } from "../../firebase"
 
 import { useNavigate } from "react-router-dom";
 
+import { Button } from "reactstrap"
 import {
     getFirestore,
     collection,
@@ -21,7 +22,8 @@ import {
 
 import Split from "react-split";
 import Sidebar from "../../components/Sidebar";
-import { useContext } from "react";
+import { setGlobalState, useGlobalState } from "../../Helper/Context";
+
 import { AuthContext } from "../../context/AuthContext";
 
 const firestore = getFirestore(app)
@@ -62,32 +64,11 @@ export default function MetodologiaProyecto() {
         aspectosBioeticos: "",
     }
 
-    const [formData, setFormData] = React.useState({
-        ...formInicial
-    })
+    const [globalMetodologiaProyecto, setGlobalMetodologiaProyecto] = useGlobalState("metodologiaProyecto");
 
-    /*
-    const [formData, setFormData] = React.useState(
-        {
-            metodologia: "",
+    //const [formData, setFormData] = React.useState({ ...formInicial });
+    const [formData, setFormData] = React.useState({ ...globalMetodologiaProyecto } ? { ...globalMetodologiaProyecto } : { ...formInicial })
 
-            //Tranferencia de conocimiento 
-            articuloCientifico: "",
-            prototipo: "",
-            registroPropiedadIndustrial: "",
-            otrosTransferenciaConocimiento: "",
-            //Impactos del Proyecto
-            impactoSocial: "",
-            impactoCientifico: "",
-            impactoEconomico: "",
-            impactoPolitico: "",
-            otroImpacto: "",
-
-            descripcionActividadID: "",
-            aspectosBioeticos: "",
-            }   
-        )
-    */
 
     function handleChange(event) {
         const { name, value, type, checked } = event.target
@@ -99,27 +80,13 @@ export default function MetodologiaProyecto() {
         })
     }
 
-    /*
-    function handleSubmit(event) {
-        event.preventDefault()
-        // submitToApi(formData)
-        console.log(formData)
+
+    function logeoDatos(event) {
+        console.log(globalMetodologiaProyecto)
+
+        console.log("SET FORM DATA", formData)
     }
-    */
-    // const oldHandleSubmit = async (event) => {
-    //     event.preventDefault()
-    //     // submitToApi(formData)
-    //     try {
-    //         await addDoc(collection(firestore, 'proyectos-investigacion'), {
-    //             ...formData
-    //         })
-    //     } catch (error) {
-    //         console.log(error)
-    //     }
-    //     console.log(formData)
-    //     setFormData({ ...formInicial })
-    //     routeChange()
-    // }
+
 
     const handleSubmit = async (event) => {
         event.preventDefault()
@@ -136,7 +103,8 @@ export default function MetodologiaProyecto() {
             console.log(error)
         }
         console.log({ ...formData })
-        setFormData({ ...formInicial })
+        setGlobalMetodologiaProyecto({ ...formData })
+        //setFormData({ ...formInicial })
         routeChange()
     }
 
@@ -163,6 +131,14 @@ export default function MetodologiaProyecto() {
                         >
                             <TitleBar />
                             {/* <NavBar /> */}
+
+                            <Button
+                                type="button"
+                                onClick={logeoDatos}
+                                className="btn btn-primary">
+                                Consola
+                            </Button>
+
                             <div className="container">
 
                                 <div className="row">

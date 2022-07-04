@@ -9,6 +9,7 @@ import { useNavigate } from "react-router-dom";
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './home.scss'
+import './support.scss'
 
 import DatePicker from "react-datepicker";
 import 'react-datepicker/dist/react-datepicker.css';
@@ -260,8 +261,10 @@ export default function Home() {
         }
         //console.log(formData)
         console.log({ ...formData })
-        setFormData({ ...formInicial })
-        //routeChange()
+        //setFormData({ ...formInicial })
+        setGlobalInformacionGeneral({ ...formData }) //guardar en el global state
+
+        routeChange()
     }
 
     return (
@@ -697,29 +700,42 @@ export default function Home() {
                             {/* </form> */}
 
                             {/* Termina Fechas Proyecto */}
-                            <label>
-                                Datos del Director del Proyecto.
-                            </label>
+
 
                             {/* <AutocompleteDocente /> */}
-                            <div className="support">
+                            {/* <div className="support"> */}
 
-                                <div className="container">
+                            <div className="container">
+                                <div className="row">
+                                    <div className="col-4">
+                                        <h5>
+                                            Datos del Director del Proyecto.
+                                        </h5>
+                                    </div>
+                                    <div className="col-8">
+                                        <div className="support">
 
-                                    <div className="col-6">
+                                            <Autosuggest
+                                                suggestions={docentes}
+                                                onSuggestionsFetchRequested={onSuggestionsFetchRequested}
+                                                onSuggestionsClearRequested={onSuggestionsClearRequested}
+                                                getSuggestionValue={getSuggestionValue}
+                                                renderSuggestion={renderSuggestion}
+                                                inputProps={inputProps}
+                                                onSuggestionSelected={eventEnter}
 
-                                        <Autosuggest
-                                            suggestions={docentes}
-                                            onSuggestionsFetchRequested={onSuggestionsFetchRequested}
-                                            onSuggestionsClearRequested={onSuggestionsClearRequested}
-                                            getSuggestionValue={getSuggestionValue}
-                                            renderSuggestion={renderSuggestion}
-                                            inputProps={inputProps}
-                                            onSuggestionSelected={eventEnter}
+                                            />
+                                            <br />
+                                        </div>
 
-                                        />
-                                        <br />
-                                        <div className="col-6">
+                                    </div>
+                                </div>
+
+                                {/* <div className="col-12"> */}
+
+
+                                {/* BOTON SELECCIONAR DOCENTE  */}
+                                {/* <div className="col-6">
                                             <button
                                                 className='btn btn-primary'
                                                 onClick={() => console.log(docenteSeleccionado)}
@@ -728,11 +744,11 @@ export default function Home() {
                                                 Seleccionar Docente
                                             </button>
                                             
-                                        </div>
+                                        </div> */}
 
-                                    </div>
-                                </div>
+                                {/* </div> */}
                             </div>
+                            {/* </div> */}
                             {/* <AutocompleteDocente /> */}
 
                             <button

@@ -62,8 +62,8 @@ export default function AreasConocimiento() {
     const [globalAreasConocimiento, setGlobalAreasConocimiento] = useGlobalState("areasConocimiento");
 
 
-    //const [formData, setFormData] = useState({ ...globalAreasConocimiento } ? { ...globalAreasConocimiento } : { ...formInicial })
-    const [formData, setFormData] = useState({ ...formInicial })
+    const [formData, setFormData] = useState({ ...globalAreasConocimiento } ? { ...globalAreasConocimiento } : { ...formInicial })
+    //const [formData, setFormData] = useState({ ...formInicial })
 
 
     function handleChange(event) {
@@ -77,9 +77,6 @@ export default function AreasConocimiento() {
     }
 
     const handleSubmit = async (event) => {
-        event.preventDefault();
-
-
         event.preventDefault();
 
         try {
@@ -99,9 +96,10 @@ export default function AreasConocimiento() {
         }
         //console.log(formData)
         console.log({ ...formData })
-        setFormData({ ...formInicial })
-        //console.log({ ...formData })
         //setFormData({ ...formInicial })
+        setGlobalAreasConocimiento({ ...formData })
+        
+        routeChange()
     }
 
 
