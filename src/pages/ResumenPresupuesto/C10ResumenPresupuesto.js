@@ -124,6 +124,7 @@ export default function ResumenPresupuesto() {
 
         //setFormData({ ...formInicial })
         setGlobalResumenPresupuesto({ ...formData })
+        
         routeChange();
     }
 

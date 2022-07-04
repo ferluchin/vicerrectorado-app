@@ -121,7 +121,21 @@ const List = () => {
             palabraClave4,
             resumenProyecto,
 
-            //RESUMEN DEL PRESUPUESTO DESTRUCTURING
+            //METODOLOGIA DEL PROYECTO - 12 - DESTRUCTURING
+            articuloCientifico,
+            aspectosBioeticos,
+            descripcionActividadID,
+            impactoCientifico,
+            impactoEconomico,
+            impactoPolitico,
+            impactoSocial,
+            metodologia,
+            otroImpacto,
+            otrosTransferenciaConocimiento,
+            prototipo,
+            registroPropiedadIndustrial,
+
+            //RESUMEN DEL PRESUPUESTO - 8 - DESTRUCTURING
             bibliografia,
             capacitacion,
             equipos,
@@ -228,7 +242,25 @@ const List = () => {
             }
         })
 
-        
+        setGlobalMetodologiaProyecto(prevFormDataMetodologiaProyecto => {
+            return {
+                ...prevFormDataMetodologiaProyecto,
+                articuloCientifico: articuloCientifico,
+                aspectosBioeticos: aspectosBioeticos,
+                descripcionActividadID: descripcionActividadID,
+                impactoCientifico: impactoCientifico,
+                impactoEconomico: impactoEconomico,
+                impactoPolitico: impactoPolitico,
+                impactoSocial: impactoSocial,
+                metodologia: metodologia,
+                otroImpacto: otroImpacto,
+                otrosTransferenciaConocimiento: otrosTransferenciaConocimiento,
+                prototipo: prototipo,
+                registroPropiedadIndustrial: registroPropiedadIndustrial,
+            }
+        })
+
+
         setGlobalResumenPresupuesto(prevFormData => {
             return {
                 ...prevFormData,
@@ -246,23 +278,27 @@ const List = () => {
         console.log(row)
 
         console.log(
-            "🚀 ~ file: TableListadoProyectos.jsx ~ line 249 ~ handleGlobalChange ~ setGlobalInformacionGeneral",
+            "🚀 ~ file: TableListadoProyectos.jsx ~ line 249 ~ handleGlobalChange ~ globalInformacionGeneral",
             globalInformacionGeneral)
 
         console.log(
-            "🚀 ~ file: TableListadoProyectos.jsx ~ line 253 ~ handleGlobalChange ~ setGlobalAreasConocimiento",
+            "🚀 ~ file: TableListadoProyectos.jsx ~ line 253 ~ handleGlobalChange ~ globalAreasConocimiento",
             globalAreasConocimiento)
         
         console.log(
-            "🚀 ~ file: TableListadoProyectos.jsx ~ line 257 ~ handleGlobalChange ~ setGlobalTipoProyecto",
+            "🚀 ~ file: TableListadoProyectos.jsx ~ line 257 ~ handleGlobalChange ~ globalTipoProyecto",
             globalTipoProyecto)
         
         console.log(
-            "🚀 ~ file: TableListadoProyectos.jsx ~ line 261 ~ handleGlobalChange ~ setGlobalInformacionTecnicaProyecto",
+            "🚀 ~ file: TableListadoProyectos.jsx ~ line 261 ~ handleGlobalChange ~ globalInformacionTecnicaProyecto",
             globalInformacionTecnicaProyecto)
         
         console.log(
-            "🚀 ~ file: TableListadoProyectos.jsx ~ line 265 ~ handleGlobalChange ~ setGlobalResumenPresupuesto",
+            "🚀 ~ file: TableListadoProyectos.jsx ~ line 261 ~ handleGlobalChange ~ globalMetodologiaProyecto",
+            globalMetodologiaProyecto)
+        
+        console.log(
+            "🚀 ~ file: TableListadoProyectos.jsx ~ line 265 ~ handleGlobalChange ~ globalResumenPresupuesto",
             globalResumenPresupuesto)
         
         
@@ -380,6 +416,18 @@ const List = () => {
                         resumenProyecto: doc.data().informacionTecnicaProyecto.resumenProyecto,
 
                         //Metodología del Proyecto
+                        articuloCientifico: doc.data().metodologiaProyecto.articuloCientifico,
+                        aspectosBioeticos: doc.data().metodologiaProyecto.aspectosBioeticos,
+                        descripcionActividadID: doc.data().metodologiaProyecto.descripcionActividadID,
+                        impactoCientifico: doc.data().metodologiaProyecto.impactoCientifico,
+                        impactoEconomico: doc.data().metodologiaProyecto.impactoEconomico,	
+                        impactoPolitico: doc.data().metodologiaProyecto.impactoPolitico,
+                        impactoSocial: doc.data().metodologiaProyecto.impactoSocial,
+                        metodologia: doc.data().metodologiaProyecto.metodologia,
+                        otroImpacto: doc.data().metodologiaProyecto.otroImpacto,
+                        otrosTransferenciaConocimiento: doc.data().metodologiaProyecto.otrosTransferenciaConocimiento,
+                        prototipo: doc.data().metodologiaProyecto.prototipo,
+                        registroPropiedadIndustrial: doc.data().metodologiaProyecto.registroPropiedadIndustrial,
 
                         //Cronograma de Actividades del Proyecto
 

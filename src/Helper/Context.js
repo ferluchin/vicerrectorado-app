@@ -99,7 +99,7 @@ const { setGlobalState, useGlobalState } = createGlobalState({
         capacitacion: '',
         equipos: '',
         honorarios: '',
-        materialesSuministrosreactivos: '',
+        materialesSuministrosReactivos: '',
         observaciones: '',
         totalGastosDirectos: '',
         viaticosSubsistenciasMovilizacion: '',
