@@ -1,4 +1,10 @@
-import React, { useEffect, useState, useRef, useContext } from "react";
+import React, {
+    useEffect,
+    useState,
+    useRef,
+    useContext
+} from "react";
+
 import TitleBar from "../../components/TitleBar";
 
 import Autosuggest from 'react-autosuggest';

@@ -1,4 +1,9 @@
-import React from "react";
+import React, {
+    useEffect,
+    useState,
+    useRef,
+    useContext
+} from "react";
 
 import TitleBar from "../../components/TitleBar";
 
@@ -13,12 +18,12 @@ import {
     getFirestore,
     doc,
     updateDoc,
-    // collection,
-    // addDoc,
-    // getDocs,
-    // deleteDoc,
-    // getDoc,
-    // setDoc,
+    collection,
+    addDoc,
+    getDocs,
+    deleteDoc,
+    getDoc,
+    setDoc,
 } from "firebase/firestore";
 
 import {
@@ -31,15 +36,23 @@ import {
 import Split from "react-split";
 import Sidebar from "../../components/Sidebar";
 import { AuthContext } from "../../context/AuthContext";
-import { useContext } from "react";
+import {
+    setGlobalState,
+    useGlobalState,
+} from "../../Helper/Context";
+
+import { Button } from "reactstrap";
+
 
 import "./resumenPresupuesto.scss"
+
 const firestore = getFirestore(app);
-const storage = getStorage(app);
+
 
 export default function ResumenPresupuesto() {
 
     const { currentUser } = useContext(AuthContext)
+
     const correoUsuario = currentUser.email;
 
     let navigate = useNavigate();
@@ -63,9 +76,17 @@ export default function ResumenPresupuesto() {
         observaciones: "",
     }
 
-    const [formData, setFormData] = React.useState(
-        { ...formInicial })
+    const [globalResumenPresupuesto, setGlobalResumenPresupuesto] = useGlobalState("resumenPresupuesto");
 
+    //const [formData, setFormData] = React.useState({ ...formInicial })
+    const [formData, setFormData] = React.useState({ ...globalResumenPresupuesto } ? { ...globalResumenPresupuesto } : { ...formInicial })
+
+
+    function logeoDatos(event) {
+        console.log(globalResumenPresupuesto)
+
+        console.log("SET FORM DATA", formData)
+    }
 
     function handleChange(event) {
         const { name, value, type, checked } = event.target
@@ -100,7 +121,9 @@ export default function ResumenPresupuesto() {
         }
         //console.log(formData)
         console.log({ ...formData })
-        setFormData({ ...formInicial })
+
+        //setFormData({ ...formInicial })
+        setGlobalResumenPresupuesto({ ...formData })
         routeChange();
     }
 
