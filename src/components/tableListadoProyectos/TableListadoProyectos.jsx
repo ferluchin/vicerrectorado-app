@@ -267,7 +267,7 @@ const List = () => {
         
         
         //console.log(value);
-        //navigate("/home");
+        navigate("/home");
     }
 
     const { currentUser } = useContext(AuthContext);
