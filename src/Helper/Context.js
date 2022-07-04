@@ -38,7 +38,16 @@ const { setGlobalState, useGlobalState } = createGlobalState({
     },
 
     personalInterno: {
-
+        // id: {
+        //     horasSemanales: "",
+        //     horasTotales: "",
+        //     id: "",
+        //     identificacion: "",
+        //     nombres: "",
+        //     rol: "",
+        //     senescyt: "",
+        //     tipo: "",
+        // }
     },
 
     personalExternoContratar: {
@@ -94,7 +103,6 @@ const { setGlobalState, useGlobalState } = createGlobalState({
         observaciones: '',
         totalGastosDirectos: '',
         viaticosSubsistenciasMovilizacion: '',
-
     },
 
 });
