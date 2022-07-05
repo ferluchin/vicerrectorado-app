@@ -160,7 +160,7 @@ export default function PersonalExternoCooperante(props) {
         }
         consolaPersonalExternoCooperante();
 
-        setGlobalPersonalExternoCooperante(data);
+        // setGlobalPersonalExternoCooperante(data);
 
 
         routeChange()

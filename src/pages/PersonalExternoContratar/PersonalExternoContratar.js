@@ -173,9 +173,7 @@ export default function PersonalExternoContratar(props) {
       console.log(error)
     }
     consolaPersonalExternoContratar();
-  
-    setGlobalPersonalExternoContratar(data);
-
+    // setGlobalPersonalExternoContratar(data);
     routeChange()
 
   }
