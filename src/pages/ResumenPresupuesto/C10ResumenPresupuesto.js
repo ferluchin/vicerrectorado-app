@@ -124,7 +124,7 @@ export default function ResumenPresupuesto() {
 
         //setFormData({ ...formInicial })
         setGlobalResumenPresupuesto({ ...formData })
-        
+
         routeChange();
     }
 
@@ -142,10 +142,6 @@ export default function ResumenPresupuesto() {
                     cursor="col-resize"
                 >
                     <Sidebar
-                    //notes={notes}
-                    //currentNote={findCurrentNote()}
-                    //setCurrentNoteId={setCurrentNoteId}
-                    //newNote={createNewNote}
                     />
 
                     <section>
