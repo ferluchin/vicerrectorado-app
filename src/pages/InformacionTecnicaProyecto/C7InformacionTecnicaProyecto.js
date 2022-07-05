@@ -52,7 +52,16 @@ export default function InformacionTecnicaProyecto() {
         introduccionAntecedentes: "",
         introduccionJustificacion: "",
 
+        // PRINCIPALES EQUIPOS
+        equipoProyecto1: "",
+        equipoProyecto2: "",
+        equipoProyecto3: "",
 
+        ubicacionEquipo1: "",
+        ubicacionEquipo2: "",
+        ubicacionEquipo3: "",
+
+        //OBJETIVOS DEL PROYECTO
         objetivoGeneral: "",
         objetivoEspecifico1: "",
         objetivoEspecifico2: "",
@@ -64,7 +73,7 @@ export default function InformacionTecnicaProyecto() {
     const [globalInformacionTecnicaProyecto, setGlobalInformacionTecnicaProyecto] = useGlobalState("informacionTecnicaProyecto");
 
     //const [formData, setFormData] = React.useState({ ...formInicial });
-    const [formData, setFormData] = useState({ ...globalInformacionTecnicaProyecto} ? { ...globalInformacionTecnicaProyecto } : { ...formInicial })
+    const [formData, setFormData] = useState({ ...globalInformacionTecnicaProyecto } ? { ...globalInformacionTecnicaProyecto } : { ...formInicial })
 
 
 
@@ -236,6 +245,88 @@ export default function InformacionTecnicaProyecto() {
                                 </div>
 
                                 < br />
+                                <h4 style={{ textAlign: "left" }}> 2.4 Principales Equipos </h4>
+                                <br />
+                                <div className="row">
+                                    <div className="col-6">
+                                        <h4> Nombre Equipo </h4>
+
+                                    </div>
+
+                                    <div className="col-6">
+                                        <h4> Ubicación (Laboratorio) </h4>
+                                    </div>
+                                </div>
+                                <br />
+                                <div className="row">
+                                    <div className="col-6">
+                                        <input
+                                            type="text"
+                                            placeholder="Nombre Equipo"
+                                            className="form--input"
+                                            name="nombreEquipo1"
+                                            onChange={handleChange}
+                                            value={formData.nombreEquipo1}
+                                        />
+                                    </div>
+                                    <div className="col-6">
+                                        <input
+                                            type="text"
+                                            placeholder="Ubicación"
+                                            className="form--input"
+                                            name="ubicacionEquipo1"
+                                            onChange={handleChange}
+                                            value={formData.ubicacionEquipo1}
+                                        />
+                                    </div>
+                                </div>
+
+                                <div className="row">
+                                    <div className="col-6">
+                                        <input
+                                            type="text"
+                                            placeholder="Nombre Equipo"
+                                            className="form--input"
+                                            name="nombreEquipo2"
+                                            onChange={handleChange}
+                                            value={formData.nombreEquipo2}
+                                        />
+                                    </div>
+                                    <div className="col-6">
+                                        <input
+                                            type="text"
+                                            placeholder="Ubicación"
+                                            className="form--input"
+                                            name="ubicacionEquipo2"
+                                            onChange={handleChange}
+                                            value={formData.ubicacionEquipo2}
+                                        />
+                                    </div>
+                                </div>
+
+                                <div className="row">
+                                    <div className="col-6">
+                                        <input
+                                            type="text"
+                                            placeholder="Nombre Equipo"
+                                            className="form--input"
+                                            name="nombreEquipo3"
+                                            onChange={handleChange}
+                                            value={formData.nombreEquipo3}
+                                        />
+                                    </div>
+                                    <div className="col-6">
+                                        <input
+                                            type="text"
+                                            placeholder="Ubicación"
+                                            className="form--input"
+                                            name="ubicacionEquipo3"
+                                            onChange={handleChange}
+                                            value={formData.ubicacionEquipo3}
+                                        />
+                                    </div>
+                                </div>
+                                <br />
 
                                 <h4 style={{ textAlign: "left", marginLeft: "10px" }}> 2.5 Objetivos del Proyecto.</h4>
                                 <br />

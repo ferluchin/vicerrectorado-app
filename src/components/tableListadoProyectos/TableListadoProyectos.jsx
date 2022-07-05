@@ -119,6 +119,17 @@ const List = () => {
             //INFORMACION TECNICA DEL PROYECTO - 13
             introduccionAntecedentes,
             introduccionJustificacion,
+
+            
+            // PRINCIPALES EQUIPOS
+            equipoProyecto1,
+            equipoProyecto2,
+            equipoProyecto3,
+
+            ubicacionEquipo1,
+            ubicacionEquipo2,
+            ubicacionEquipo3,
+            //
             objetivoEspecifico1,
             objetivoEspecifico2,
             objetivoEspecifico3,
@@ -262,6 +273,15 @@ const List = () => {
                 ...prevFormDataInformacionTecnicaProyecto,
                 introduccionAntecedentes: introduccionAntecedentes,
                 introduccionJustificacion: introduccionJustificacion,
+                // PRINCIPALES EQUIPOS
+                equipoProyecto1: equipoProyecto1,
+                equipoProyecto2: equipoProyecto2,
+                equipoProyecto3: equipoProyecto3,
+
+                ubicacionEquipo1: ubicacionEquipo1,
+                ubicacionEquipo2: ubicacionEquipo2,
+                ubicacionEquipo3: ubicacionEquipo3,
+
                 objetivoEspecifico1: objetivoEspecifico1,
                 objetivoEspecifico2: objetivoEspecifico2,
                 objetivoEspecifico3: objetivoEspecifico3,
@@ -453,6 +473,15 @@ const List = () => {
                         //Información Técnica del Proyecto.
                         introduccionAntecedentes: doc.data().informacionTecnicaProyecto.introduccionAntecedentes,
                         introduccionJustificacion: doc.data().informacionTecnicaProyecto.introduccionJustificacion,
+                        // PRINCIPALES EQUIPOS
+                        equipoProyecto1: doc.data().informacionTecnicaProyecto.equipoProyecto1,
+                        equipoProyecto2: doc.data().informacionTecnicaProyecto.equipoProyecto2,
+                        equipoProyecto3: doc.data().informacionTecnicaProyecto.equipoProyecto3,
+
+                        ubicacionEquipo1: doc.data().informacionTecnicaProyecto.ubicacionEquipo1,
+                        ubicacionEquipo2: doc.data().informacionTecnicaProyecto.ubicacionEquipo2,
+                        ubicacionEquipo3: doc.data().informacionTecnicaProyecto.ubicacionEquipo3,
+
                         objetivoEspecifico1: doc.data().informacionTecnicaProyecto.objetivoEspecifico1,
                         objetivoEspecifico2: doc.data().informacionTecnicaProyecto.objetivoEspecifico2,
                         objetivoEspecifico3: doc.data().informacionTecnicaProyecto.objetivoEspecifico3,
