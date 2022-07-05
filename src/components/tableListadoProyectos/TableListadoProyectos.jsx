@@ -271,6 +271,7 @@ const List = () => {
         setGlobalInformacionTecnicaProyecto(prevFormDataInformacionTecnicaProyecto => {
             return {
                 ...prevFormDataInformacionTecnicaProyecto,
+                
                 introduccionAntecedentes: introduccionAntecedentes,
                 introduccionJustificacion: introduccionJustificacion,
                 // PRINCIPALES EQUIPOS
