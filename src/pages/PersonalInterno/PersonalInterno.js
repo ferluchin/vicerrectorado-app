@@ -1,9 +1,15 @@
-import React, { useState } from "react";
+import React, {
+    useState,
+    useEffect,
+    useRef,
+    useContext,
+} from "react";
+
+import TitleBar from "../../components/TitleBar";
 
 import { useNavigate } from "react-router-dom";
 
 import { Modal, ModalBody, ModalHeader, ModalFooter } from 'reactstrap';
-import TitleBar from "../../components/TitleBar";
 
 import Split from "react-split";
 import Sidebar from "../../components/Sidebar";
@@ -23,10 +29,13 @@ import {
 } from "firebase/firestore";
 
 import { AuthContext } from "../../context/AuthContext";
-import { useContext } from "react";
+import { setGlobalState, useGlobalState } from "../../Helper/Context"
+import { Button } from "reactstrap";
+
 
 import "./personalInterno.scss"
 import 'bootstrap/dist/css/bootstrap.css';
+
 
 // const db = getFirestore();
 
@@ -50,7 +59,7 @@ export default function PersonalInterno() {
         navigate(path);
     }
 
-    const dataPersonal = [
+    const dataPersonalInicial = [
         {
             id: 1,
             rol: "Dirección",
@@ -61,12 +70,24 @@ export default function PersonalInterno() {
             horasSemanales: "00",
             horasTotales: "00"
         },
-        { id: 2, rol: "Co-Dirección", tipo: "Docente a tiempo completo", senescyt: "SI", identificacion: 1499332590, nombres: "Charlie Cárdemas", horasSemanales: "00", horasTotales: "00" },
-        { id: 3, rol: "Participación", tipo: "Técnico Docente", senescyt: "SI", identificacion: 1121354698, nombres: "Maximo Décimo", horasSemanales: "00", horasTotales: "00" },
-        { id: 4, rol: "Participación", tipo: "Estudiante", senescyt: "NO", identificacion: 1101258746, nombres: "Marie Curie", horasSemanales: "00", horasTotales: "00" },
-    ];
+        //{ id: 2, rol: "Co-Dirección", tipo: "Docente a tiempo completo", senescyt: "SI", identificacion: 1499332590, nombres: "Charlie Cárdemas", horasSemanales: "00", horasTotales: "00" },
+        // { id: 3, rol: "Participación", tipo: "Técnico Docente", senescyt: "SI", identificacion: 1121354698, nombres: "Maximo Décimo", horasSemanales: "00", horasTotales: "00" },
+        // { id: 4, rol: "Participación", tipo: "Estudiante", senescyt: "NO", identificacion: 1101258746, nombres: "Marie Curie", horasSemanales: "00", horasTotales: "00" },
 
-    const [data, setData] = useState(dataPersonal);
+    ];
+    const [globalPersonalInterno, setGlobalPersonalInterno] = useGlobalState("personalInterno");
+    console.log("globalPersonalInterno", globalPersonalInterno);
+    
+    let dataFirebase = Object.values(globalPersonalInterno.idPersonalInterno)
+
+
+    //const [data, setData] = useState(dataPersonalInicial);
+    //const [data, setData] = React.useState({ ...[globalPersonalInterno.idPersonalInterno] } ? { ...[globalPersonalInterno.idPersonalInterno] } : { ...dataPersonalInicial })
+    //const [data, setData] = useState([{ ...dataFirebase }] ? [{ ...dataFirebase }] : { ...dataPersonalInicial })
+    const [data, setData] = useState([ ...dataFirebase ] ? [ ...dataFirebase ] : { ...dataPersonalInicial })
+
+
+
     const [modalEditar, setModalEditar] = useState(false);
     const [modalEliminar, setModalEliminar] = useState(false);
     const [modalInsertar, setModalInsertar] = useState(false);
@@ -83,6 +104,33 @@ export default function PersonalInterno() {
         horasSemanales: '',
         horasTotales: ''
     });
+
+
+    function logeoDatos(event) {
+        console.log(globalPersonalInterno);
+
+
+        let result = Object.values(globalPersonalInterno.idPersonalInterno)
+        //result = result.horasSemanales
+        console.log("RESULT", result)
+
+        console.log("🚀 ~ file: PersonalInterno.js ~ line 87 ~ PersonalInterno ~ dataFirebase", dataFirebase)
+
+        // Object.keys(globalPersonalInterno).map((key, i) => {
+        //     key = { i }
+        //     //{ key } : { val }
+        //     console.log(key);
+        //     console.log("globalPersonalInterno[key]", globalPersonalInterno[key]);
+            
+        // })
+
+
+
+        //console.log("SET FORM DATA", ...data)
+
+        console.log("🚀 ~ file: PersonalInterno.js ~ line 78 ~ PersonalInterno ~ dataPersonalInicial", dataPersonalInicial)
+
+    }
 
     const seleccionarPersonal = (elemento, caso) => {
         setPersonalSeleccionado(elemento);
@@ -154,6 +202,9 @@ export default function PersonalInterno() {
             console.log(error)
         }
         consolaPersonalInterno();
+
+        setGlobalPersonalInterno(data);
+
         routeChange()
     }
 
@@ -301,6 +352,7 @@ export default function PersonalInterno() {
                                                 name="rol"
                                                 className="form-control"
                                             >
+                                                <option value=""> Selecciona una opción </option>
                                                 <option value="Dirección">Dirección</option>
                                                 <option value="Co-Dirección">Co-Dirección</option>
                                                 <option value="Participación">Participación</option>
@@ -319,6 +371,7 @@ export default function PersonalInterno() {
                                                 name="tipo"
                                                 className="form-control"
                                             >
+                                                <option value=""> Selecciona una opción </option>
                                                 <option value="Docente a tiempo Completo">Docente a tiempo Completo</option>
                                                 <option value="Técnico Docente">Técnico Docente</option>
                                                 <option value="Estudiante">Estudiante</option>
@@ -338,6 +391,7 @@ export default function PersonalInterno() {
                                                 name="senescyt"
                                                 className="form-control"
                                             >
+                                                <option value=""> Selecciona una opción </option>
                                                 <option value="SI">SI</option>
                                                 <option value="NO">NO</option>
                                             </select>
@@ -488,6 +542,7 @@ export default function PersonalInterno() {
                                                 name="rol"
                                                 className="form-control"
                                             >
+                                                <option value=""> Selecciona una opción </option>
                                                 <option value="Dirección">Dirección</option>
                                                 <option value="Co-Dirección">Co-Dirección</option>
                                                 <option value="Participación">Participación</option>
@@ -506,6 +561,7 @@ export default function PersonalInterno() {
                                                 name="tipo"
                                                 className="form-control"
                                             >
+                                                <option value=""> Selecciona una opción </option>
                                                 <option value="Docente a tiempo Completo">Docente a tiempo Completo</option>
                                                 <option value="Técnico Docente">Técnico Docente</option>
                                                 <option value="Estudiante">Estudiante</option>
@@ -526,6 +582,7 @@ export default function PersonalInterno() {
                                                 name="senescyt"
                                                 className="form-control"
                                             >
+                                                <option value=""> Selecciona una opción </option>
                                                 <option value="SI">SI</option>
                                                 <option value="NO">NO</option>
                                             </select>
@@ -616,6 +673,15 @@ export default function PersonalInterno() {
                                 </Modal>
                                 <br />
                             </div>
+
+                            <Button
+                                className="btn btn-primary"
+                                type="button"
+                                onClick={logeoDatos}
+
+                            >
+                                Consoleo datos
+                            </Button>
                             <button
                                 className="btn btn-primary"
                             >

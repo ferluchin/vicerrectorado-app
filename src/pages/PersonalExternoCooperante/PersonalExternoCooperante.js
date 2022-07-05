@@ -1,4 +1,9 @@
-import React, { useState } from "react";
+import React, {
+    useState,
+    useEffect,
+    useRef,
+    useContext,
+} from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
 // import '../App.css';
 import { useNavigate } from "react-router-dom";
@@ -23,7 +28,11 @@ import {
 
 import Split from "react-split";
 import Sidebar from "../../components/Sidebar";
-import { useContext } from "react";
+import { Button } from "reactstrap";
+
+import { setGlobalState, useGlobalState } from "../../Helper/Context";
+
+
 import { AuthContext } from "../../context/AuthContext";
 
 const firestore = getFirestore(app)
@@ -51,12 +60,12 @@ export default function PersonalExternoCooperante(props) {
             entidad: "Ediloja",
         },
 
-        {
-            id: 2,
-            rol: "Participación",
-            nombres: "David Rojas",
-            entidad: "Solca Loja",
-        }
+        // {
+        //     id: 2,
+        //     rol: "Participación",
+        //     nombres: "David Rojas",
+        //     entidad: "Solca Loja",
+        // }
     ];
 
     const consolaPersonalExternoCooperante = () => {
@@ -65,10 +74,19 @@ export default function PersonalExternoCooperante(props) {
 
     }
 
-    const [data, setData] = useState(dataPersonalExternoCooperante);
+    const [globalPersonalExternoCooperante, setGlobalPersonalExternoCooperante] = useGlobalState("personalExternoCooperante");
+
+    let dataFirebase = Object.values(globalPersonalExternoCooperante.idPersonalExternoCooperante)
+
+    //const [data, setData] = useState(dataPersonalExternoCooperante);
+
+    const [data, setData] = useState([...dataFirebase] ? [...dataFirebase] : { ...dataPersonalExternoCooperante })
+
+
     const [modalEditar, setModalEditar] = useState(false);
     const [modalEliminar, setModalEliminar] = useState(false);
     const [modalInsertar, setModalInsertar] = useState(false);
+
 
     const [personalExternoCooperanteSeleccionado, setPersonalExternoCooperanteSeleccionado] = useState({
         id: '',
@@ -76,6 +94,9 @@ export default function PersonalExternoCooperante(props) {
         nombres: '',
         entidad: ''
     });
+
+    //const [globalPersonalInterno, setGlobalPersonalInterno] = useGlobalState("personalInterno");
+
 
     const seleccionarPersonal = (elemento, caso) => {
         setPersonalExternoCooperanteSeleccionado(elemento);
@@ -138,6 +159,10 @@ export default function PersonalExternoCooperante(props) {
             console.log(error)
         }
         consolaPersonalExternoCooperante();
+
+        setGlobalPersonalExternoCooperante(data);
+
+
         routeChange()
     }
 

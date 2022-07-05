@@ -1,10 +1,15 @@
 
-import React, { useState } from "react";
+import React, {
+  useState,
+  useEffect,
+  useRef,
+  useContext,
+} from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { useNavigate } from "react-router-dom";
 import { Modal, ModalBody, ModalHeader, ModalFooter } from 'reactstrap';
 //import "../style.css"
 import "./personalExternoContratar.scss"
-import { useNavigate } from "react-router-dom";
 import TitleBar from "../../components/TitleBar";
 
 import { app, auth } from "../../firebase";
@@ -24,7 +29,9 @@ import {
 import Split from "react-split";
 import Sidebar from "../../components/Sidebar";
 import { AuthContext } from "../../context/AuthContext";
-import { useContext } from "react";
+
+import { setGlobalState, useGlobalState } from "../../Helper/Context"
+import { Button } from "reactstrap";
 
 const firestore = getFirestore(app)
 
@@ -45,7 +52,7 @@ export default function PersonalExternoContratar(props) {
     navigate(path);
   }
 
-  const dataPersonalExternoCooperante = [
+  const dataPersonalExternoContratar = [
     {
       id: 1,
       perfilRequerido: "Perfil de asistente",
@@ -56,31 +63,38 @@ export default function PersonalExternoContratar(props) {
     },
 
 
-    {
-      id: 2,
-      perfilRequerido: "Participación",
-      funcion: "David Rojas",
-      principalesActividades: "Solca Loja",
-      tiempoContratacionMeses: "5",
-      numeroPersonas: "2"
-    },
+    // {
+    //   id: 2,
+    //   perfilRequerido: "Participación",
+    //   funcion: "David Rojas",
+    //   principalesActividades: "Solca Loja",
+    //   tiempoContratacionMeses: "5",
+    //   numeroPersonas: "2"
+    // },
 
 
-    {
-      id: 3,
-      perfilRequerido: "Analista de datos",
-      funcion: "Analista",
-      principalesActividades: "Analisis de datos UTPL",
-      tiempoContratacionMeses: "4",
-      numeroPersonas: "1"
-    }
+    // {
+    //   id: 3,
+    //   perfilRequerido: "Analista de datos",
+    //   funcion: "Analista",
+    //   principalesActividades: "Analisis de datos UTPL",
+    //   tiempoContratacionMeses: "4",
+    //   numeroPersonas: "1"
+    // }
   ];
 
   const consolaPersonalExternoContratar = () => {
     console.log(data);
   }
 
-  const [data, setData] = useState(dataPersonalExternoCooperante);
+  const [globalPersonalExternoContratar, setGlobalPersonalExternoContratar] = useGlobalState("personalExternoContratar");
+
+  let dataFirebase = Object.values(globalPersonalExternoContratar.idPersonalExternoContratar)
+  //const [data, setData] = useState(dataPersonalExternoCooperante);
+  
+  const [data, setData] = useState([...dataFirebase] ? [...dataFirebase] : { ...dataPersonalExternoContratar });
+
+
   const [modalEditar, setModalEditar] = useState(false);
   const [modalEliminar, setModalEliminar] = useState(false);
   const [modalInsertar, setModalInsertar] = useState(false);
@@ -159,6 +173,9 @@ export default function PersonalExternoContratar(props) {
       console.log(error)
     }
     consolaPersonalExternoContratar();
+  
+    setGlobalPersonalExternoContratar(data);
+
     routeChange()
 
   }

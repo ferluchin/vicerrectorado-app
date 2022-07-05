@@ -13,7 +13,7 @@ const { setGlobalState, useGlobalState } = createGlobalState({
     },
     areasConocimiento: {
         actividadCientifica: '',
-        objetivoSocioeconomico: '',
+        objetivoSocioEconomico: '',
         areaTematicaID: '',
         objetivosPlanCreacionOportunidades: '',
 
@@ -21,7 +21,7 @@ const { setGlobalState, useGlobalState } = createGlobalState({
         campoAmplio: '',
         campoEspecifico: '',
         campoDetallado: '',
-        objetivosDesarrolloSostenible: '',  
+        objetivosDesarrolloSostenible: '',
 
     },
 
@@ -38,21 +38,36 @@ const { setGlobalState, useGlobalState } = createGlobalState({
     },
 
     personalInterno: {
-        // id: {
-        //     horasSemanales: "",
-        //     horasTotales: "",
-        //     id: "",
-        //     identificacion: "",
-        //     nombres: "",
-        //     rol: "",
-        //     senescyt: "",
-        //     tipo: "",
-        // }
+        idPersonalInterno: {
+            horasSemanales: "",
+            horasTotales: "",
+            id: "",
+            identificacion: "",
+            nombres: "",
+            rol: "",
+            senescyt: "",
+            tipo: "",
+        }
     },
 
     personalExternoContratar: {
+        idPersonalExternoContratar: {
+            funcion: "",
+            id: "",
+            numeroPersonas: "",
+            perfilRequerido: "",
+            principalesActividades: "",
+            tiempoContratacionMeses: "",
+        }
+
     },
     personalExternoCooperante: {
+        idPersonalExternoCooperante: {
+            entidad: "",
+            id: "",
+            nombres: "",
+            rol: "",
+        }
     },
 
     informacionTecnicaProyecto: {

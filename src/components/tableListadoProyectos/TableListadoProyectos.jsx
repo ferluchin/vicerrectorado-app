@@ -66,6 +66,8 @@ const List = () => {
         //() => update(() => true);
         const {
             id,
+
+            //INFORMACION GENERAL
             titulo,
             facultad,
             departamento,
@@ -78,7 +80,6 @@ const List = () => {
             fechaInicio,
             fechaFin,
             duracionProyectoSemanas,
-
             alcanceTerritorial,
             // Datos del Director del Proyecto 
             nombreDirectorProyecto,
@@ -105,6 +106,15 @@ const List = () => {
             tipoFinanciamiento,
             tipoInvestigacion,
             tipoProyecto,
+
+            //PERSONAL INTERNO
+            idPersonalInterno,
+
+            //PERSONAL EXTERNO COOPERANTE
+            idPersonalExternoCooperante,
+
+            //PERSONAL EXTERNO CONTRATAR
+            idPersonalExternoContratar,
 
             //INFORMACION TECNICA DEL PROYECTO - 13
             introduccionAntecedentes,
@@ -134,6 +144,9 @@ const List = () => {
             otrosTransferenciaConocimiento,
             prototipo,
             registroPropiedadIndustrial,
+
+            //CRONOGRAMA DE ACTIVIDADES - 
+
 
             //RESUMEN DEL PRESUPUESTO - 8 - DESTRUCTURING
             bibliografia,
@@ -220,8 +233,30 @@ const List = () => {
             }
         })
 
+        //Personal Interno
+        setGlobalPersonalInterno(prevFormDataPersonalInterno => {
+            return {
+                ...prevFormDataPersonalInterno,
+                idPersonalInterno: idPersonalInterno,
+            }
+        })
 
+        //Personal Externo Cooperante
+        setGlobalPersonalExternoCooperante(prevFormDataPersonalExternoCooperante => {
+            return {
+                ...prevFormDataPersonalExternoCooperante,
+                idPersonalExternoCooperante: idPersonalExternoCooperante,
+            }
+        })
+        //Personal Externo Contratar   
+        setGlobalPersonalExternoContratar(prevFormDataPersonalExternoContratar=> {
+            return {
+                ...prevFormDataPersonalExternoContratar,
+                idPersonalExternoContratar: idPersonalExternoContratar,
+            }
+        })
 
+        //Informacion Tecnica del Proyecto
         setGlobalInformacionTecnicaProyecto(prevFormDataInformacionTecnicaProyecto => {
             return {
                 ...prevFormDataInformacionTecnicaProyecto,
@@ -264,6 +299,7 @@ const List = () => {
         setGlobalResumenPresupuesto(prevFormData => {
             return {
                 ...prevFormData,
+
                 bibliografia: bibliografia,
                 capacitacion: capacitacion,
                 equipos: equipos,
@@ -277,33 +313,45 @@ const List = () => {
         })
         console.log(row)
 
-        console.log(
-            "🚀 ~ file: TableListadoProyectos.jsx ~ line 249 ~ handleGlobalChange ~ globalInformacionGeneral",
-            globalInformacionGeneral)
+        // console.log(
+        //     "🚀 ~ file: TableListadoProyectos.jsx ~ line 249 ~ handleGlobalChange ~ globalInformacionGeneral",
+        //     globalInformacionGeneral)
 
-        console.log(
-            "🚀 ~ file: TableListadoProyectos.jsx ~ line 253 ~ handleGlobalChange ~ globalAreasConocimiento",
-            globalAreasConocimiento)
+        // console.log(
+        //     "🚀 ~ file: TableListadoProyectos.jsx ~ line 253 ~ handleGlobalChange ~ globalAreasConocimiento",
+        //     globalAreasConocimiento)
+        
+        // console.log(
+        //     "🚀 ~ file: TableListadoProyectos.jsx ~ line 257 ~ handleGlobalChange ~ globalTipoProyecto",
+        //     globalTipoProyecto)
+        
+        //Personal Interno
+        // console.log(
+        //     `🚀 ~ file: TableListadoProyectos.jsx ~ line 257 ~ handleGlobalChange ~ globalPersonalInterno",
+        //     ${ JSON.stringify(globalPersonalInterno)}`)
         
         console.log(
-            "🚀 ~ file: TableListadoProyectos.jsx ~ line 257 ~ handleGlobalChange ~ globalTipoProyecto",
-            globalTipoProyecto)
+            "🚀 ~ file: TableListadoProyectos.jsx ~ line 257 ~ handleGlobalChange ~ globalPersonalInterno",
+            (globalPersonalInterno))
+        //Personal Externo Cooperante
+
+        //Personal Externo Contratar
         
-        console.log(
-            "🚀 ~ file: TableListadoProyectos.jsx ~ line 261 ~ handleGlobalChange ~ globalInformacionTecnicaProyecto",
-            globalInformacionTecnicaProyecto)
+        // console.log(
+        //     "🚀 ~ file: TableListadoProyectos.jsx ~ line 261 ~ handleGlobalChange ~ globalInformacionTecnicaProyecto",
+        //     globalInformacionTecnicaProyecto)
         
-        console.log(
-            "🚀 ~ file: TableListadoProyectos.jsx ~ line 261 ~ handleGlobalChange ~ globalMetodologiaProyecto",
-            globalMetodologiaProyecto)
+        // console.log(
+        //     "🚀 ~ file: TableListadoProyectos.jsx ~ line 261 ~ handleGlobalChange ~ globalMetodologiaProyecto",
+        //     globalMetodologiaProyecto)
         
-        console.log(
-            "🚀 ~ file: TableListadoProyectos.jsx ~ line 265 ~ handleGlobalChange ~ globalResumenPresupuesto",
-            globalResumenPresupuesto)
+        // console.log(
+        //     "🚀 ~ file: TableListadoProyectos.jsx ~ line 265 ~ handleGlobalChange ~ globalResumenPresupuesto",
+        //     globalResumenPresupuesto)
         
         
         //console.log(value);
-        navigate("/home");
+        //navigate("/home");
     }
 
     const { currentUser } = useContext(AuthContext);
@@ -394,10 +442,13 @@ const List = () => {
                         aporteContraparte: doc.data().tipoProyecto.aporteContraparte,
 
                         //Equipo del Proyecto - Personal Interno 
+                        //idPersonalInterno: doc.data().personalInterno.id,
+                        idPersonalInterno: doc.data().personalInterno,
 
                         //Personal Externo Cooperante
-
+                        idPersonalExternoCooperante: doc.data().personalExternoCooperante,
                         //Personal Externo a Contratar
+                        idPersonalExternoContratar: doc.data().personalExternoContratar,
 
                         //Información Técnica del Proyecto.
                         introduccionAntecedentes: doc.data().informacionTecnicaProyecto.introduccionAntecedentes,
@@ -451,7 +502,7 @@ const List = () => {
             }
         });
         //console.log("🚀 ~ file: TableListadoProyectos.jsx ~ line 113 ~ docSnap.forEach ~ doc", doc)
-        //console.log(rows);
+        console.log(rows);
         return rows;
     }
 
