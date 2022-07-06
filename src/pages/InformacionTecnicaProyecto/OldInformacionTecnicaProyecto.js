@@ -63,7 +63,11 @@ export default function InformacionTecnicaProyecto() {
 
         //OBJETIVOS DEL PROYECTO
         objetivoGeneral: "",
-
+        objetivoEspecifico1: "",
+        objetivoEspecifico2: "",
+        objetivoEspecifico3: "",
+        objetivoEspecifico4: "",
+        objetivoEspecifico5: "",
     }
 
     const [globalInformacionTecnicaProyecto, setGlobalInformacionTecnicaProyecto] = useGlobalState("informacionTecnicaProyecto");
@@ -341,7 +345,87 @@ export default function InformacionTecnicaProyecto() {
                                     </div>
                                 </div>
                                 <br />
+                                <div className="row">
+                                    <div className="col-12">
+                                        <h4>Objetivos Específicos</h4>
+                                    </div>
 
+                                </div>
+                                <br />
+
+                                <div className="row">
+                                    <div className="col-3">
+                                        <h4> Objetivo Específico 1: </h4>
+                                    </div>
+                                    <div className="col-9">
+                                        <textarea
+                                            name="objetivoEspecifico1"
+                                            value={formData.objetivoEspecifico1}
+                                            placeholder="Detallar"
+                                            onChange={handleChange}
+                                        />
+                                    </div>
+                                </div>
+
+                                <br />
+                                <div className="row">
+                                    <div className="col-3">
+                                        <h4> Objetivo Específico 2: </h4>
+                                    </div>
+                                    <div className="col-9">
+                                        <textarea
+                                            name="objetivoEspecifico2"
+                                            value={formData.objetivoEspecifico2}
+                                            placeholder="Detallar"
+                                            onChange={handleChange}
+                                        />
+                                    </div>
+                                </div>
+                                <br />
+
+                                <div className="row">
+                                    <div className="col-3">
+                                        <h4> Objetivo Específico 3: </h4>
+                                    </div>
+                                    <div className="col-9">
+                                        <textarea
+                                            name="objetivoEspecifico3"
+                                            value={formData.objetivoEspecifico3}
+                                            placeholder="Detallar"
+                                            onChange={handleChange}
+                                        />
+                                    </div>
+                                </div>
+                                <br />
+
+                                <div className="row">
+                                    <div className="col-3">
+                                        <h4> Objetivo Específico 4: </h4>
+                                    </div>
+                                    <div className="col-9">
+                                        <textarea
+                                            value={formData.objetivoEspecifico4}
+                                            placeholder="Detallar"
+                                            onChange={handleChange}
+                                            name="objetivoEspecifico4"
+                                        />
+                                    </div>
+                                </div>
+
+                                <br />
+                                <div className="row">
+                                    <div className="col-3">
+                                        <h4> Objetivo Específico 5: </h4>
+                                    </div>
+                                    <div className="col-9">
+                                        <textarea
+                                            name="objetivoEspecifico5"
+                                            value={formData.objetivoEspecifico5}
+                                            placeholder="Detallar"
+                                            onChange={handleChange}
+                                        />
+                                    </div>
+                                </div>
                             </div>
 
                             <button

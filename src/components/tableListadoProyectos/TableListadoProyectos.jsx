@@ -31,7 +31,7 @@ import {
 import { app } from "../../firebase";
 import { async } from "@firebase/util";
 import { useNavigate } from "react-router-dom";
-import { ConstructionTwoTone } from "@mui/icons-material";
+import { ConstructionTwoTone, DockOutlined } from "@mui/icons-material";
 
 const db = getFirestore();
 
@@ -58,7 +58,7 @@ const List = () => {
     const [globalPersonalExternoCooperante, setGlobalPersonalExternoCooperante] = useGlobalState("personalExternoCooperante");
     const [globalInformacionTecnicaProyecto, setGlobalInformacionTecnicaProyecto] = useGlobalState("informacionTecnicaProyecto");
     const [globalMetodologiaProyecto, setGlobalMetodologiaProyecto] = useGlobalState("metodologiaProyecto");
-    const [globalCronogramaActividades, setGlobalCronogramaActividades] = useGlobalState("cronogramaActividades");
+    //const [globalCronogramaActividades, setGlobalCronogramaActividades] = useGlobalState("cronogramaActividades");
     const [globalCronogramaEspA, setGlobalCronogramaEspA] = useGlobalState("cronogramaEspA");
     const [globalCronogramaEspB, setGlobBlCronogramaEspB] = useGlobalState("cronogramaEspB");
     const [globalCronogramaEspC, setGlobalCronogramaEspC] = useGlobalState("cronogramaEspC");
@@ -117,10 +117,57 @@ const List = () => {
             idPersonalInterno,
 
             //PERSONAL EXTERNO COOPERANTE
-            idPersonalExternoCooperante,
+            //idPersonalExternoCooperante,
+            rolPersonalCooperante1,
+            rolPersonalCooperante2,
+            rolPersonalCooperante3,
+            rolPersonalCooperante4,
+            rolPersonalCooperante5,
+
+            nombrePersonalCooperante1,
+            nombrePersonalCooperante2,
+            nombrePersonalCooperante3,
+            nombrePersonalCooperante4,
+            nombrePersonalCooperante5,
+
+            entidadPersonalCooperante1,
+            entidadPersonalCooperante2,
+            entidadPersonalCooperante3,
+            entidadPersonalCooperante4,
+            entidadPersonalCooperante5,
 
             //PERSONAL EXTERNO CONTRATAR
-            idPersonalExternoContratar,
+            //idPersonalExternoContratar,
+
+            perfilRequerido1,
+            perfilRequerido2,
+            perfilRequerido3,
+            perfilRequerido4,
+            perfilRequerido5,
+
+            funcion1,
+            funcion2,
+            funcion3,
+            funcion4,
+            funcion5,
+
+            actividadesDesarrollar1,
+            actividadesDesarrollar2,
+            actividadesDesarrollar3,
+            actividadesDesarrollar4,
+            actividadesDesarrollar5,
+
+            tiempoContratacion1,
+            tiempoContratacion2,
+            tiempoContratacion3,
+            tiempoContratacion4,
+            tiempoContratacion5,
+
+            personasContratar1,
+            personasContratar2,
+            personasContratar3,
+            personasContratar4,
+            personasContratar5,
 
             //INFORMACION TECNICA DEL PROYECTO - 13
             introduccionAntecedentes,
@@ -136,11 +183,6 @@ const List = () => {
             ubicacionEquipo2,
             ubicacionEquipo3,
             //
-            objetivoEspecifico1,
-            objetivoEspecifico2,
-            objetivoEspecifico3,
-            objetivoEspecifico4,
-            objetivoEspecifico5,
             //
 
             objetivoGeneral,
@@ -306,14 +348,61 @@ const List = () => {
         setGlobalPersonalExternoCooperante(prevFormDataPersonalExternoCooperante => {
             return {
                 ...prevFormDataPersonalExternoCooperante,
-                idPersonalExternoCooperante: idPersonalExternoCooperante,
+                //idPersonalExternoCooperante: idPersonalExternoCooperante,
+                rolPersonalCooperante1: rolPersonalCooperante1,
+                rolPersonalCooperante2: rolPersonalCooperante2,
+                rolPersonalCooperante3: rolPersonalCooperante3,
+                rolPersonalCooperante4: rolPersonalCooperante4,
+                rolPersonalCooperante5: rolPersonalCooperante5,
+
+                nombrePersonalCooperante1: nombrePersonalCooperante1,
+                nombrePersonalCooperante2: nombrePersonalCooperante2,
+                nombrePersonalCooperante3: nombrePersonalCooperante3,
+                nombrePersonalCooperante4: nombrePersonalCooperante4,
+                nombrePersonalCooperante5: nombrePersonalCooperante5,
+
+                entidadPersonalCooperante1: entidadPersonalCooperante1,
+                entidadPersonalCooperante2: entidadPersonalCooperante2,
+                entidadPersonalCooperante3: entidadPersonalCooperante3,
+                entidadPersonalCooperante4: entidadPersonalCooperante4,
+                entidadPersonalCooperante5: entidadPersonalCooperante5,
             }
         })
         //Personal Externo Contratar   
         setGlobalPersonalExternoContratar(prevFormDataPersonalExternoContratar => {
             return {
                 ...prevFormDataPersonalExternoContratar,
-                idPersonalExternoContratar: idPersonalExternoContratar,
+                //idPersonalExternoContratar: idPersonalExternoContratar,
+                //PERSONAL EXTERNO CONTRATAR
+                perfilRequerido1: perfilRequerido1,
+                perfilRequerido2: perfilRequerido2,
+                perfilRequerido3: perfilRequerido3,
+                perfilRequerido4: perfilRequerido4,
+                perfilRequerido5: perfilRequerido5,
+
+                funcion1: funcion1,
+                funcion2: funcion2,
+                funcion3: funcion3,
+                funcion4: funcion4,
+                funcion5: funcion5,
+
+                actividadesDesarrollar1: actividadesDesarrollar1,
+                actividadesDesarrollar2: actividadesDesarrollar2,
+                actividadesDesarrollar3: actividadesDesarrollar3,
+                actividadesDesarrollar4: actividadesDesarrollar4,
+                actividadesDesarrollar5: actividadesDesarrollar5,
+
+                tiempoContratacion1: tiempoContratacion1,
+                tiempoContratacion2: tiempoContratacion2,
+                tiempoContratacion3: tiempoContratacion3,
+                tiempoContratacion4: tiempoContratacion4,
+                tiempoContratacion5: tiempoContratacion5,
+
+                personasContratar1: personasContratar1,
+                personasContratar2: personasContratar2,
+                personasContratar3: personasContratar3,
+                personasContratar4: personasContratar4,
+                personasContratar5: personasContratar5,
             }
         })
 
@@ -333,11 +422,6 @@ const List = () => {
                 ubicacionEquipo2: ubicacionEquipo2,
                 ubicacionEquipo3: ubicacionEquipo3,
 
-                objetivoEspecifico1: objetivoEspecifico1,
-                objetivoEspecifico2: objetivoEspecifico2,
-                objetivoEspecifico3: objetivoEspecifico3,
-                objetivoEspecifico4: objetivoEspecifico4,
-                objetivoEspecifico5: objetivoEspecifico5,
                 objetivoGeneral: objetivoGeneral,
                 palabraClave1: palabraClave1,
                 palabraClave2: palabraClave2,
@@ -345,6 +429,58 @@ const List = () => {
                 palabraClave4: palabraClave4,
                 resumenProyecto: resumenProyecto,
 
+            }
+        })
+
+        //CronogramaEspA
+
+        setGlobalCronogramaEspA(prevFormDataCronogramaEspA => {
+            return {
+                ...prevFormDataCronogramaEspA,
+
+                actividadEspecifica1: actividadEspecifica1,
+                actividadEspecifica2: actividadEspecifica2,
+                actividadEspecifica3: actividadEspecifica3,
+                actividadEspecifica4: actividadEspecifica4,
+                actividadEspecifica5: actividadEspecifica5,
+
+                fechaInicio1: fechaInicio1,
+                fechaInicio2: fechaInicio2,
+                fechaInicio3: fechaInicio3,
+                fechaInicio4: fechaInicio4,
+                fechaInicio5: fechaInicio5,
+
+                fechaFin1: fechaFin1,
+                fechaFin2: fechaFin2,
+                fechaFin3: fechaFin3,
+                fechaFin4: fechaFin4,
+                fechaFin5: fechaFin5,
+
+                itemPresupuesto1: itemPresupuesto1,
+                itemPresupuesto2: itemPresupuesto2,
+                itemPresupuesto3: itemPresupuesto3,
+                itemPresupuesto4: itemPresupuesto4,
+                itemPresupuesto5: itemPresupuesto5,
+
+                nombreEvidencia1: nombreEvidencia1,
+                nombreEvidencia2: nombreEvidencia2,
+                nombreEvidencia3: nombreEvidencia3,
+                nombreEvidencia4: nombreEvidencia4,
+                nombreEvidencia5: nombreEvidencia5,
+
+                nombreResponsableActividad1: nombreResponsableActividad1,
+                nombreResponsableActividad2: nombreResponsableActividad2,
+                nombreResponsableActividad3: nombreResponsableActividad3,
+                nombreResponsableActividad4: nombreResponsableActividad4,
+                nombreResponsableActividad5: nombreResponsableActividad5,
+
+                objetivoEspecificoCronograma1: objetivoEspecificoCronograma1,
+
+                valorPresupuesto1: valorPresupuesto1,
+                valorPresupuesto2: valorPresupuesto2,
+                valorPresupuesto3: valorPresupuesto3,
+                valorPresupuesto4: valorPresupuesto4,
+                valorPresupuesto5: valorPresupuesto5,
             }
         })
 
@@ -517,9 +653,58 @@ const List = () => {
                         idPersonalInterno: doc.data().personalInterno,
 
                         //Personal Externo Cooperante
-                        idPersonalExternoCooperante: doc.data().personalExternoCooperante,
+                        //idPersonalExternoCooperante: doc.data().personalExternoCooperante,
+                        rolPersonalCooperante1: doc.data().personalExternoCooperante.rolPersonalCooperante1,
+                        rolPersonalCooperante2: doc.data().personalExternoCooperante.rolPersonalCooperante2,
+                        rolPersonalCooperante3: doc.data().personalExternoCooperante.rolPersonalCooperante3,
+                        rolPersonalCooperante4: doc.data().personalExternoCooperante.rolPersonalCooperante4,
+                        rolPersonalCooperante5: doc.data().personalExternoCooperante.rolPersonalCooperante5,
+
+                        nombrePersonalCooperante1: doc.data().personalExternoCooperante.nombrePersonalCooperante1,
+                        nombrePersonalCooperante2: doc.data().personalExternoCooperante.nombrePersonalCooperante2,
+                        nombrePersonalCooperante3: doc.data().personalExternoCooperante.nombrePersonalCooperante3,
+                        nombrePersonalCooperante4: doc.data().personalExternoCooperante.nombrePersonalCooperante4,
+                        nombrePersonalCooperante5: doc.data().personalExternoCooperante.nombrePersonalCooperante5,
+
+                        entidadPersonalCooperante1: doc.data().personalExternoCooperante.entidadPersonalCooperante1,
+                        entidadPersonalCooperante2: doc.data().personalExternoCooperante.entidadPersonalCooperante2,
+                        entidadPersonalCooperante3: doc.data().personalExternoCooperante.entidadPersonalCooperante3,
+                        entidadPersonalCooperante4: doc.data().personalExternoCooperante.entidadPersonalCooperante4,
+                        entidadPersonalCooperante5: doc.data().personalExternoCooperante.entidadPersonalCooperante5,
+                        
                         //Personal Externo a Contratar
-                        idPersonalExternoContratar: doc.data().personalExternoContratar,
+                        //idPersonalExternoContratar: doc.data().personalExternoContratar,
+
+                        perfilRequerido1: doc.data().personalExternoContratar.perfilRequerido1,
+                        perfilRequerido2: doc.data().personalExternoContratar.perfilRequerido2,
+                        perfilRequerido3: doc.data().personalExternoContratar.perfilRequerido3,
+                        perfilRequerido4: doc.data().personalExternoContratar.perfilRequerido4,
+                        perfilRequerido5: doc.data().personalExternoContratar.perfilRequerido5,
+
+                        funcion1: doc.data().personalExternoContratar.funcion1,
+                        funcion2: doc.data().personalExternoContratar.funcion2,
+                        funcion3: doc.data().personalExternoContratar.funcion3,
+                        funcion4: doc.data().personalExternoContratar.funcion4,
+                        funcion5: doc.data().personalExternoContratar.funcion5,
+
+                        actividadesDesarrollar1: doc.data().personalExternoContratar.actividadesDesarrollar1,
+                        actividadesDesarrollar2: doc.data().personalExternoContratar.actividadesDesarrollar2,
+                        actividadesDesarrollar3: doc.data().personalExternoContratar.actividadesDesarrollar3,
+                        actividadesDesarrollar4: doc.data().personalExternoContratar.actividadesDesarrollar4,
+                        actividadesDesarrollar5: doc.data().personalExternoContratar.actividadesDesarrollar5,
+
+                        tiempoContratacion1: doc.data().personalExternoContratar.tiempoContratacion1,
+                        tiempoContratacion2: doc.data().personalExternoContratar.tiempoContratacion2,
+                        tiempoContratacion3: doc.data().personalExternoContratar.tiempoContratacion3,
+                        tiempoContratacion4: doc.data().personalExternoContratar.tiempoContratacion4,
+                        tiempoContratacion5: doc.data().personalExternoContratar.tiempoContratacion5,
+
+                        personasContratar1: doc.data().personalExternoContratar.personasContratar1,
+                        personasContratar2: doc.data().personalExternoContratar.personasContratar2,
+                        personasContratar3: doc.data().personalExternoContratar.personasContratar3,
+                        personasContratar4: doc.data().personalExternoContratar.personasContratar4,
+                        personasContratar5: doc.data().personalExternoContratar.personasContratar5,
+
 
                         //Información Técnica del Proyecto.
                         introduccionAntecedentes: doc.data().informacionTecnicaProyecto.introduccionAntecedentes,
@@ -533,11 +718,11 @@ const List = () => {
                         ubicacionEquipo2: doc.data().informacionTecnicaProyecto.ubicacionEquipo2,
                         ubicacionEquipo3: doc.data().informacionTecnicaProyecto.ubicacionEquipo3,
 
-                        objetivoEspecifico1: doc.data().informacionTecnicaProyecto.objetivoEspecifico1,
-                        objetivoEspecifico2: doc.data().informacionTecnicaProyecto.objetivoEspecifico2,
-                        objetivoEspecifico3: doc.data().informacionTecnicaProyecto.objetivoEspecifico3,
-                        objetivoEspecifico4: doc.data().informacionTecnicaProyecto.objetivoEspecifico4,
-                        objetivoEspecifico5: doc.data().informacionTecnicaProyecto.objetivoEspecifico5,
+                        // objetivoEspecifico1: doc.data().informacionTecnicaProyecto.objetivoEspecifico1,
+                        // objetivoEspecifico2: doc.data().informacionTecnicaProyecto.objetivoEspecifico2,
+                        // objetivoEspecifico3: doc.data().informacionTecnicaProyecto.objetivoEspecifico3,
+                        // objetivoEspecifico4: doc.data().informacionTecnicaProyecto.objetivoEspecifico4,
+                        // objetivoEspecifico5: doc.data().informacionTecnicaProyecto.objetivoEspecifico5,
 
                         objetivoGeneral: doc.data().informacionTecnicaProyecto.objetivoGeneral,
                         palabraClave1: doc.data().informacionTecnicaProyecto.palabraClave1,
