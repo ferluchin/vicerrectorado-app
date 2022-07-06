@@ -26,6 +26,7 @@ import { Routes, Route, Navigate } from "react-router-dom";
 import { useContext } from 'react';
 import { AuthContext } from "./context/AuthContext";
 import AreasConocimiento from './pages/AreasConocimiento/AreasConocimiento';
+import CronogramaEspA from './pages/CronogramaEspA/CronogramaEspA';
 
 function App() {
 
@@ -98,7 +99,39 @@ function App() {
                             <MetodologiaProyecto />
                         </RequireAuth>
                     } />
+
                     <Route path="/cronograma-actividades" element={
+                        <RequireAuth>
+                            {/* <CronogramaActividades /> */}
+                            <CronogramaEspA />
+                        </RequireAuth>
+                    } />
+
+                    <Route path="/cronograma-esp-a" element={
+                        <RequireAuth>
+                            <CronogramaEspA />
+                        </RequireAuth>
+                    } />
+
+                    <Route path="/cronograma-esp-b" element={
+                        <RequireAuth>
+                            <CronogramaActividades />
+                        </RequireAuth>
+                    } />
+
+                    <Route path="/cronograma-esp-c" element={
+                        <RequireAuth>
+                            <CronogramaActividades />
+                        </RequireAuth>
+                    } />
+
+                    <Route path="/cronograma-esp-d" element={
+                        <RequireAuth>
+                            <CronogramaActividades />
+                        </RequireAuth>
+                    } />
+
+                    <Route path="/cronograma-esp-e" element={
                         <RequireAuth>
                             <CronogramaActividades />
                         </RequireAuth>

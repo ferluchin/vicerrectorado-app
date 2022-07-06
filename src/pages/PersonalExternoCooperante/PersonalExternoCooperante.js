@@ -39,10 +39,6 @@ const firestore = getFirestore(app)
 
 export default function PersonalExternoCooperante(props) {
 
-    const { currentUser } = useContext(AuthContext)
-
-    const correoUsuario = currentUser.email;
-    //const correoUsuario = "lgrandab@gmail.com";
 
     let navigate = useNavigate();
 
@@ -52,116 +48,72 @@ export default function PersonalExternoCooperante(props) {
         navigate(path);
     }
 
-    const dataPersonalExternoCooperante = [
-        {
-            id: 1,
-            rol: "Tutor/Asesor",
-            nombres: "Jose Hurtado",
-            entidad: "Ediloja",
-        },
 
-        // {
-        //     id: 2,
-        //     rol: "Participación",
-        //     nombres: "David Rojas",
-        //     entidad: "Solca Loja",
-        // }
-    ];
+    const { currentUser } = useContext(AuthContext)
+    //console.log("🚀 ~ file: Home.js ~ line 40 ~ Home ~ currentUser", currentUser.email)
+    const correoUsuario = currentUser.email
 
-    const consolaPersonalExternoCooperante = () => {
-        console.log(data);
-        //const consolaPersonalExternoCooperante = data 
+    const formInicial = {
+        
+        //PERSONAL EXTERNO COOPERANTE
+        
+        rolPersonalCooperante1: "",
+        rolPersonalCooperante2: "",
+        rolPersonalCooperante3: "",
+        rolPersonalCooperante4: "",
+        rolPersonalCooperante5: "",
 
+        nombrePersonalCooperante1: "",
+        nombrePersonalCooperante2: "",
+        nombrePersonalCooperante3: "",
+        nombrePersonalCooperante4: "",
+        nombrePersonalCooperante5: "",
+
+        entidadPersonalCooperante1: "",
+        entidadPersonalCooperante2: "",
+        entidadPersonalCooperante3: "",
+        entidadPersonalCooperante4: "",
+        entidadPersonalCooperante5: "",
     }
 
     const [globalPersonalExternoCooperante, setGlobalPersonalExternoCooperante] = useGlobalState("personalExternoCooperante");
 
-    let dataFirebase = Object.values(globalPersonalExternoCooperante.idPersonalExternoCooperante)
-
-    //const [data, setData] = useState(dataPersonalExternoCooperante);
-
-    const [data, setData] = useState([...dataFirebase] ? [...dataFirebase] : { ...dataPersonalExternoCooperante })
+    const [formData, setFormData] = useState({ ...globalPersonalExternoCooperante } ? { ...globalPersonalExternoCooperante } : { ...formInicial })
+    //const [formData, setFormData] = useState({ ...formInicial })
 
 
-    const [modalEditar, setModalEditar] = useState(false);
-    const [modalEliminar, setModalEliminar] = useState(false);
-    const [modalInsertar, setModalInsertar] = useState(false);
-
-
-    const [personalExternoCooperanteSeleccionado, setPersonalExternoCooperanteSeleccionado] = useState({
-        id: '',
-        rol: '',
-        nombres: '',
-        entidad: ''
-    });
-
-    //const [globalPersonalInterno, setGlobalPersonalInterno] = useGlobalState("personalInterno");
-
-
-    const seleccionarPersonal = (elemento, caso) => {
-        setPersonalExternoCooperanteSeleccionado(elemento);
-        (caso === 'Editar') ? setModalEditar(true) : setModalEliminar(true)
-    }
-
-    const handleChange = e => {
-        const { name, value } = e.target;
-        setPersonalExternoCooperanteSeleccionado((prevState) => ({
-            ...prevState,
-            [name]: value
-        }));
-        console.log(personalExternoCooperanteSeleccionado);
-    }
-
-    const editar = () => {
-        var dataNueva = data;
-        dataNueva.map(personal => {
-            if (personal.id === personalExternoCooperanteSeleccionado.id) {
-                personal.rol = personalExternoCooperanteSeleccionado.rol;
-                personal.nombres = personalExternoCooperanteSeleccionado.nombres;
-                personal.entidad = personalExternoCooperanteSeleccionado.entidad;
+    function handleChange(event) {
+        const { name, value, type, checked } = event.target
+        setFormData(prevFormData => {
+            return {
+                ...prevFormData,
+                [name]: type === "checkbox" ? checked : value
             }
         })
-        setData(dataNueva);
-        setModalEditar(false);
-    }
-
-    const eliminar = () => {
-        setData(data.filter(personal => personal.id !== personalExternoCooperanteSeleccionado.id));
-        setModalEliminar(false);
-    }
-
-    const abrirModalInsertar = () => {
-        setPersonalExternoCooperanteSeleccionado(null);
-        setModalInsertar(true);
-
-    }
-
-    const insertar = () => {
-        var valorInsertar = personalExternoCooperanteSeleccionado;
-        valorInsertar.id = data[data.length - 1].id + 1;
-        var dataNueva = data;
-        dataNueva.push(valorInsertar);
-        setData(dataNueva);
-        setModalInsertar(false);
     }
 
     const handleSubmit = async (event) => {
-        event.preventDefault()
+        event.preventDefault();
 
         try {
             const docuRef = doc(firestore, `proyectos-investigacion/${correoUsuario}`)
-            await updateDoc(docuRef, {
+            //setDoc(baseDocRef, { informacionGeneral: { status: "Borrador" } }, { merge: true });
+            updateDoc(docuRef, {
                 personalExternoCooperante: {
-                    ...data
+                    ...formData
                 }
-            })
+            }
+                //, { merge: true }
+            )
+
+
         } catch (error) {
             console.log(error)
         }
-        consolaPersonalExternoCooperante();
-
-        // setGlobalPersonalExternoCooperante(data);
-
+        //console.log(formData)
+        console.log({ ...formData })
+        //setFormData({ ...formInicial })
+        setGlobalPersonalExternoCooperante({ ...formData })
 
         routeChange()
     }
@@ -197,272 +149,274 @@ export default function PersonalExternoCooperante(props) {
                                 </h4>
                                 <br />
 
-                                <button
-                                    className='btn btn-success'
-                                    onClick={() => abrirModalInsertar()}
-                                    type="button"
-                                >
-                                    Insertar
-                                </button>
-                                <div
-                                    //className="table-responsive"
-                                    className="table-responsive"
 
-                                >
+                                <div className="container">
+                                    <div className="row">
+                                        <div className="col-1">
+                                            <label>
+                                                Nro.
+                                            </label>
+                                        </div>
 
-                                    <table
-                                        // className='table table-bordered'
-                                        className='table table-hover'
-                                    >
-                                        <thead>
-                                            <tr>
-                                                <th>Nro.</th>
-                                                <th>ROL</th>
-                                                <th>Nombres Completos</th>
-                                                <th>Entidad</th>
-                                                <th>Acciones</th>
+                                        <div className="col-3">
+                                            <label>
+                                                ROL.
+                                            </label>
+                                        </div>
 
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            {data.map(elemento => (
-                                                <tr key={elemento.id}>
-                                                    <td className="tg-0lax">{elemento.id}</td>
-                                                    <td className="tg-0lax">{elemento.rol}</td>
-                                                    <td className="tg-0lax">{elemento.nombres}</td>
-                                                    <td className="tg-0lax">{elemento.entidad}</td>
-                                                    <td className="tg-0lax" style={{ width: "fit-content" }}>
-                                                        <button
-                                                            className='btn btn-primary'
-                                                            onClick={() => seleccionarPersonal(elemento, 'Editar')}
-                                                            type="button"
-                                                        >
-                                                            ✍️
-                                                        </button>
-                                                        <button
-                                                            className='btn btn-warning'
-                                                            onClick={() => seleccionarPersonal(elemento, 'Eliminar')}
-                                                            type="button"
-                                                        >
-                                                            ❌
-                                                        </button>
-                                                    </td>
-                                                </tr>
-                                            ))}
-                                        </tbody>
-                                    </table>
+                                        <div className="col-4">
+                                            <label>
+                                                Nombres Completos.
+                                            </label>
+                                        </div>
 
+                                        <div className="col-4">
+                                            <label>
+                                                Entidad.
+                                            </label>
+                                        </div>
+                                    </div> 
+                                    
+                                    <hr />
 
+                                    <div className="row">
+                                        <div className="col-1">
+                                            <label>
+                                                01
+                                            </label>
+                                        </div>
+
+                                        <div className="col-3">
+                                            <select
+                                                id="rolPersonalCooperante1"
+                                                value={formData.rolPersonalCooperante1}
+                                                onChange={handleChange}
+                                                name="rolPersonalCooperante1"
+                                                className="form-select"
+                                            >
+                                                <option value="">-- Elija un Elemento --</option>
+                                                <option value="Tutor / Asesor.">Tutor / Asesor.</option>
+                                                <option value="Participación.">Participación.</option>
+
+                                            </select>
+                                        </div>
+
+                                        <div className="col-4">
+                                            <input
+                                                type="text"
+                                                placeholder="Ingresar Texto"
+                                                className="form-control"
+                                                name="nombrePersonalCooperante1"
+                                                onChange={handleChange}
+                                                value={formData.nombrePersonalCooperante1}
+                                            />
+                                        </div>
+
+                                        <div className="col-4">
+                                            <input
+                                                type="text"
+                                                placeholder="Ingresar Texto"
+                                                className="form-control"
+                                                name="entidadPersonalCooperante1"
+                                                onChange={handleChange}
+                                                value={formData.entidadPersonalCooperante1}
+                                            />
+                                        </div>
+                                    </div>    
+
+                                    <br />
+                                    
+                                    <div className="row">
+                                        <div className="col-1">
+                                            <label>
+                                                02
+                                            </label>
+                                        </div>
+
+                                        <div className="col-3">
+                                            <select
+                                                id="rolPersonalCooperante2"
+                                                value={formData.rolPersonalCooperante2}
+                                                onChange={handleChange}
+                                                name="rolPersonalCooperante2"
+                                                className="form-select"
+                                            >
+                                                <option value="">-- Elija un Elemento --</option>
+                                                <option value="Tutor / Asesor.">Tutor / Asesor.</option>
+                                                <option value="Participación.">Participación.</option>
+
+                                            </select>
+                                        </div>
+
+                                        <div className="col-4">
+                                            <input
+                                                type="text"
+                                                placeholder="Ingresar Texto"
+                                                className="form-control"
+                                                name="nombrePersonalCooperante2"
+                                                onChange={handleChange}
+                                                value={formData.nombrePersonalCooperante2}
+                                            />
+                                        </div>
+
+                                        <div className="col-4">
+                                            <input
+                                                type="text"
+                                                placeholder="Ingresar Texto"
+                                                className="form-control"
+                                                name="entidadPersonalCooperante2"
+                                                onChange={handleChange}
+                                                value={formData.entidadPersonalCooperante2}
+                                            />
+                                        </div>
+                                    </div>
+
+                                    <br />
+
+                                    <div className="row">
+                                        <div className="col-1">
+                                            <label>
+                                                03
+                                            </label>
+                                        </div>
+
+                                        <div className="col-3">
+                                            <select
+                                                id="rolPersonalCooperante3"
+                                                value={formData.rolPersonalCooperante3}
+                                                onChange={handleChange}
+                                                name="rolPersonalCooperante3"
+                                                className="form-select"
+                                            >
+                                                <option value="">-- Elija un Elemento --</option>
+                                                <option value="Tutor / Asesor.">Tutor / Asesor.</option>
+                                                <option value="Participación.">Participación.</option>
+
+                                            </select>
+                                        </div>
+
+                                        <div className="col-4">
+                                            <input
+                                                type="text"
+                                                placeholder="Ingresar Texto"
+                                                className="form-control"
+                                                name="nombrePersonalCooperante3"
+                                                onChange={handleChange}
+                                                value={formData.nombrePersonalCooperante3}
+                                            />
+                                        </div>
+
+                                        <div className="col-4">
+                                            <input
+                                                type="text"
+                                                placeholder="Ingresar Texto"
+                                                className="form-control"
+                                                name="entidadPersonalCooperante3"
+                                                onChange={handleChange}
+                                                value={formData.entidadPersonalCooperante3}
+                                            />
+                                        </div>
+                                    </div>
+
+                                    <br />
+
+                                    <div className="row">
+                                        <div className="col-1">
+                                            <label>
+                                                04
+                                            </label>
+                                        </div>
+
+                                        <div className="col-3">
+                                            <select
+                                                id="rolPersonalCooperante4"
+                                                value={formData.rolPersonalCooperante4}
+                                                onChange={handleChange}
+                                                name="rolPersonalCooperante4"
+                                                className="form-select"
+                                            >
+                                                <option value="">-- Elija un Elemento --</option>
+                                                <option value="Tutor / Asesor.">Tutor / Asesor.</option>
+                                                <option value="Participación.">Participación.</option>
+
+                                            </select>
+                                        </div>
+
+                                        <div className="col-4">
+                                            <input
+                                                type="text"
+                                                placeholder="Ingresar Texto"
+                                                className="form-control"
+                                                name="nombrePersonalCooperante4"
+                                                onChange={handleChange}
+                                                value={formData.nombrePersonalCooperante4}
+                                            />
+                                        </div>
+
+                                        <div className="col-4">
+                                            <input
+                                                type="text"
+                                                placeholder="Ingresar Texto"
+                                                className="form-control"
+                                                name="entidadPersonalCooperante4"
+                                                onChange={handleChange}
+                                                value={formData.entidadPersonalCooperante4}
+                                            />
+                                        </div>
+                                    </div>
+
+                                    <br />
+
+                                    <div className="row">
+                                        <div className="col-1">
+                                            <label>
+                                                05
+                                            </label>
+                                        </div>
+
+                                        <div className="col-3">
+                                            <select
+                                                id="rolPersonalCooperante5"
+                                                value={formData.rolPersonalCooperante5}
+                                                onChange={handleChange}
+                                                name="rolPersonalCooperante5"
+                                                className="form-select"
+                                            >
+                                                <option value="">-- Elija un Elemento --</option>
+                                                <option value="Tutor / Asesor.">Tutor / Asesor.</option>
+                                                <option value="Participación.">Participación.</option>
+
+                                            </select>
+                                        </div>
+
+                                        <div className="col-4">
+                                            <input
+                                                type="text"
+                                                placeholder="Ingresar Texto"
+                                                className="form-control"
+                                                name="nombrePersonalCooperante5"
+                                                onChange={handleChange}
+                                                value={formData.nombrePersonalCooperante5}
+                                            />
+                                        </div>
+
+                                        <div className="col-4">
+                                            <input
+                                                type="text"
+                                                placeholder="Ingresar Texto"
+                                                className="form-control"
+                                                name="entidadPersonalCooperante5"
+                                                onChange={handleChange}
+                                                value={formData.entidadPersonalCooperante5}
+                                            />
+                                        </div>
+                                    </div>
                                 </div>
-                                {/* <button
-                                    className='btn btn-danger'
-                                    onClick={() => consolaPersonalExternoCooperante()}
-                                    type="button"
-                                >
-                                    Consola Personal Externo Cooperante
-                                </button> */}
-                                <Modal isOpen={modalEditar}>
-                                    <ModalHeader>
-                                        <div>
-                                            <h4>
-                                                Editar Personal <br />
-                                                Externo Cooperante
-                                            </h4>
-                                        </div>
-                                    </ModalHeader>
-                                    <ModalBody>
-                                        <div className='form-group'>
-                                            <label>ID</label>
-                                            <input
-                                                className='form-control'
-                                                readOnly
-                                                type="text"
-                                                name='id'
-                                                value={personalExternoCooperanteSeleccionado &&
-                                                    personalExternoCooperanteSeleccionado.id}
-                                            />
-                                            <br />
 
-
-
-                                            <label htmlFor="rol">ROL</label>
-                                            <br />
-                                            <select
-                                                id="rol"
-                                                value={personalExternoCooperanteSeleccionado &&
-                                                    personalExternoCooperanteSeleccionado.rol}
-                                                onChange={handleChange}
-                                                name="rol"
-                                                // className="form-select"
-                                                className='form-control'
-
-                                            >
-                                                <option value="Tutor/ Asesor">Tutor/ Asesor</option>
-                                                <option value="Participación">Participación</option>
-
-                                            </select>
-
-                                            <label>
-                                                Nombres Completos
-                                            </label>
-
-                                            <input
-                                                className='form-control'
-                                                type="text"
-                                                name="nombres"
-                                                value={personalExternoCooperanteSeleccionado &&
-                                                    personalExternoCooperanteSeleccionado.nombres}
-                                                onChange={handleChange}
-                                            />
-                                            <br />
-
-                                            <label>
-                                                Entidad
-                                            </label>
-
-                                            <input
-                                                className='form-control'
-                                                type="text"
-                                                name="entidad"
-                                                value={personalExternoCooperanteSeleccionado &&
-                                                    personalExternoCooperanteSeleccionado.entidad}
-                                                onChange={handleChange}
-                                            />
-                                            <br />
-
-
-                                        </div>
-                                    </ModalBody>
-                                    <ModalFooter
-                                        className="modal-footer-pg"
-                                    >
-                                        <button
-                                            className='btn btn-primary'
-                                            onClick={() => editar()}
-                                            type="button"
-                                        >
-                                            Actualizar
-                                        </button>
-                                        <button
-                                            className='btn btn-danger'
-                                            onClick={() => setModalEditar(false)}
-                                            type="button"
-                                        >
-                                            Cancelar
-                                        </button>
-                                    </ModalFooter>
-                                </Modal>
-
-                                <Modal isOpen={modalEliminar}>
-                                    <ModalBody >
-                                        ¿Estás seguro que deseas eliminar el registro seleccionado?
-                                        {personalExternoCooperanteSeleccionado &&
-                                            personalExternoCooperanteSeleccionado.rol}
-                                    </ModalBody>
-                                    <ModalFooter
-                                        className="modal-footer-pg"
-                                    >
-                                        <button
-                                            className='btn btn-danger'
-                                            onClick={() => eliminar()}
-                                            type="button"
-                                        >
-                                            Sí
-                                        </button>
-                                        <button
-                                            className='btn btn-secondary'
-                                            onClick={() => setModalEliminar(false)}
-                                            type="button"
-                                        >
-                                            No
-                                        </button>
-                                    </ModalFooter>
-                                </Modal>
-
-                                <Modal isOpen={modalInsertar}>
-                                    <ModalHeader>
-                                        <div>
-                                            <h3>
-                                                Insertar nuevo registro <br /> Personal Externo Cooperante
-                                            </h3>
-                                        </div>
-                                    </ModalHeader>
-                                    <ModalBody>
-                                        <div className='form-group'>
-                                            <label>
-                                                ID
-                                            </label>
-                                            <input
-                                                className='form-control'
-                                                readOnly
-                                                type="text"
-                                                name="id"
-                                                value={data[data.length - 1].id + 1}
-                                            />
-
-                                            <br />
-                                            <label htmlFor="rol">ROL</label>
-                                            <br />
-                                            <select
-                                                id="rol"
-                                                value={personalExternoCooperanteSeleccionado &&
-                                                    personalExternoCooperanteSeleccionado.rol}
-                                                onChange={handleChange}
-                                                name="rol"
-                                                // className="form-select"
-                                                className='form-control'
-                                            >
-                                                <option value="Tutor/ Asesor">Tutor/ Asesor</option>
-                                                <option value="Participación">Participación</option>
-                                            </select>
-
-
-                                            <label>Nombres Completos</label>
-                                            <input
-                                                className='form-control'
-                                                type="text"
-                                                name="nombres"
-                                                value={personalExternoCooperanteSeleccionado ?
-                                                    personalExternoCooperanteSeleccionado.nombres : ''}
-                                                onChange={handleChange}
-                                            />
-                                            <br />
-
-                                            <label>
-                                                Entidad
-                                            </label>
-                                            <input
-                                                className='form-control'
-                                                type="text"
-                                                name="entidad"
-                                                value={personalExternoCooperanteSeleccionado ?
-                                                    personalExternoCooperanteSeleccionado.entidad : ''}
-                                                onChange={handleChange}
-                                            />
-                                            <br />
-
-                                        </div>
-                                    </ModalBody>
-                                    <ModalFooter
-                                        className="modal-footer-pg"
-                                    >
-                                        <button
-                                            className='btn btn-primary'
-                                            onClick={() => insertar()}
-                                            type="button"
-                                        >
-                                            Insertar
-                                        </button>
-                                        <button
-                                            className='btn btn-danger'
-                                            onClick={() => setModalInsertar(false)}
-                                            type="button"
-                                        >
-                                            Cancelar
-                                        </button>
-                                    </ModalFooter>
-                                </Modal>
                             </div>
+
+                            <br />
+
                             <button
                                 className="btn btn-primary"
                             //onClick={() => console.log(docenteSeleccionado)}
@@ -474,7 +428,6 @@ export default function PersonalExternoCooperante(props) {
                     </section>
                 </Split>
             </div>
-
         </div>
 
     )

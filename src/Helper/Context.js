@@ -109,6 +109,26 @@ const { setGlobalState, useGlobalState } = createGlobalState({
 
     },
 
+    cronogramaEspA: {
+
+    },
+
+    cronogramaEspB: {
+
+    },
+
+    cronogramaEspC: {
+
+    },
+
+    cronogramaEspD: {
+
+    },
+
+    cronogramaEspE: {
+
+    },
+
     resumenPresupuesto: {
         bibliografia: '',
         capacitacion: '',

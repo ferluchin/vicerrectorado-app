@@ -694,8 +694,6 @@ export default function Home() {
                                             <option value="Parroquial.">Parroquial.</option>
                                             <option value="Institucional.">Institucional.</option>
                                             <option value="Internacional.">Internacional.</option>
-
-
                                         </select>
                                     </div>
                                 </div>

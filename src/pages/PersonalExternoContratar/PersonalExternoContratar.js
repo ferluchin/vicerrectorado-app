@@ -1,562 +1,580 @@
-
 import React, {
-  useState,
-  useEffect,
-  useRef,
-  useContext,
+    useState,
+    useEffect,
+    useRef,
+    useContext,
 } from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
+// import '../App.css';
 import { useNavigate } from "react-router-dom";
+
 import { Modal, ModalBody, ModalHeader, ModalFooter } from 'reactstrap';
-//import "../style.css"
-import "./personalExternoContratar.scss"
+import "./personalExternoContratar.scss";
 import TitleBar from "../../components/TitleBar";
 
-import { app, auth } from "../../firebase";
+import { app, auth } from "../../firebase"
 
 import {
-  getFirestore,
-  collection,
-  addDoc,
-  getDocs,
-  doc,
-  deleteDoc,
-  getDoc,
-  updateDoc,
-  setDoc,
+    getFirestore,
+    collection,
+    addDoc,
+    getDocs,
+    doc,
+    deleteDoc,
+    getDoc,
+    updateDoc,
+    setDoc,
 } from "firebase/firestore";
 
 import Split from "react-split";
 import Sidebar from "../../components/Sidebar";
-import { AuthContext } from "../../context/AuthContext";
-
-import { setGlobalState, useGlobalState } from "../../Helper/Context"
 import { Button } from "reactstrap";
+
+import { setGlobalState, useGlobalState } from "../../Helper/Context";
+
+
+import { AuthContext } from "../../context/AuthContext";
 
 const firestore = getFirestore(app)
 
 
-export default function PersonalExternoContratar(props) {
+function PersonalExternoContratar() {
 
-  //const correoUsuario = "lgrandab@gmail.com";
+    const { currentUser } = useContext(AuthContext)
+    //console.log("🚀 ~ file: Home.js ~ line 40 ~ Home ~ currentUser", currentUser.email)
+    const correoUsuario = currentUser.email
 
-  const { currentUser } = useContext(AuthContext)
+    const formInicial = {
 
-  const correoUsuario = currentUser.email;
+        //PERSONAL EXTERNO CONTRATAR
+        perfilRequerido1: "",
+        perfilRequerido2: "",
+        perfilRequerido3: "",
+        perfilRequerido4: "",
+        perfilRequerido5: "",
 
-  let navigate = useNavigate();
+        funcion1: "",
+        funcion2: "",
+        funcion3: "",
+        funcion4: "",
+        funcion5: "",
 
-  const routeChange = () => {
-    window.scrollTo(0, 0)
-    let path = `/informacion-tecnica-proyecto`;
-    navigate(path);
-  }
+        actividadesDesarrollar1: "",
+        actividadesDesarrollar2: "",
+        actividadesDesarrollar3: "",
+        actividadesDesarrollar4: "",
+        actividadesDesarrollar5: "",
 
-  const dataPersonalExternoContratar = [
-    {
-      id: 1,
-      perfilRequerido: "Perfil de asistente",
-      funcion: "Asistente",
-      principalesActividades: "Asistencia en actividades de investigacion",
-      tiempoContratacionMeses: "6",
-      numeroPersonas: "3"
-    },
+        tiempoContratacion1: "",
+        tiempoContratacion2: "",
+        tiempoContratacion3: "",
+        tiempoContratacion4: "",
+        tiempoContratacion5: "",
 
-
-    // {
-    //   id: 2,
-    //   perfilRequerido: "Participación",
-    //   funcion: "David Rojas",
-    //   principalesActividades: "Solca Loja",
-    //   tiempoContratacionMeses: "5",
-    //   numeroPersonas: "2"
-    // },
-
-
-    // {
-    //   id: 3,
-    //   perfilRequerido: "Analista de datos",
-    //   funcion: "Analista",
-    //   principalesActividades: "Analisis de datos UTPL",
-    //   tiempoContratacionMeses: "4",
-    //   numeroPersonas: "1"
-    // }
-  ];
-
-  const consolaPersonalExternoContratar = () => {
-    console.log(data);
-  }
-
-  const [globalPersonalExternoContratar, setGlobalPersonalExternoContratar] = useGlobalState("personalExternoContratar");
-
-  let dataFirebase = Object.values(globalPersonalExternoContratar.idPersonalExternoContratar)
-  //const [data, setData] = useState(dataPersonalExternoCooperante);
-  
-  const [data, setData] = useState([...dataFirebase] ? [...dataFirebase] : { ...dataPersonalExternoContratar });
-
-
-  const [modalEditar, setModalEditar] = useState(false);
-  const [modalEliminar, setModalEliminar] = useState(false);
-  const [modalInsertar, setModalInsertar] = useState(false);
-
-  const [personalExternoContratarSeleccionado, setPersonalExternoCooperanteSeleccionado] = useState({
-    id: '',
-    perfilRequerido: '',
-    funcion: '',
-    principalesActividades: ''
-  });
-
-  const seleccionarPersonal = (elemento, caso) => {
-    setPersonalExternoCooperanteSeleccionado(elemento);
-    (caso === 'Editar') ? setModalEditar(true) : setModalEliminar(true)
-  }
-
-  const handleChange = e => {
-    const { name, value } = e.target;
-    setPersonalExternoCooperanteSeleccionado((prevState) => ({
-      ...prevState,
-      [name]: value
-    }));
-    console.log(personalExternoContratarSeleccionado);
-  }
-
-  const editar = () => {
-    var dataNueva = data;
-    dataNueva.map(personal => {
-      if (personal.id === personalExternoContratarSeleccionado.id) {
-        personal.perfilRequerido = personalExternoContratarSeleccionado.perfilRequerido;
-        personal.funcion = personalExternoContratarSeleccionado.funcion;
-        personal.principalesActividades = personalExternoContratarSeleccionado.principalesActividades;
-        personal.tiempoContratacionMeses = personalExternoContratarSeleccionado.tiempoContratacionMeses;
-        personal.numeroPersonas = personalExternoContratarSeleccionado.numeroPersonas;
-      }
-    })
-    setData(dataNueva);
-    setModalEditar(false);
-  }
-
-  const eliminar = () => {
-    setData(data.filter(personal => personal.id !== personalExternoContratarSeleccionado.id));
-    setModalEliminar(false);
-  }
-
-  const abrirModalInsertar = () => {
-    setPersonalExternoCooperanteSeleccionado(null);
-    setModalInsertar(true);
-  }
-
-  const insertar = () => {
-    var valorInsertar = personalExternoContratarSeleccionado;
-    valorInsertar.id = data[data.length - 1].id + 1;
-    var dataNueva = data;
-    dataNueva.push(valorInsertar);
-    setData(dataNueva);
-    setModalInsertar(false);
-  }
-
-  const handleSubmit = async (event) => {
-    event.preventDefault();
-
-    try {
-      const docuRef = doc(firestore, `proyectos-investigacion/${correoUsuario}`)
-      await updateDoc(docuRef, {
-        // kira: {
-        //   personalExternoContratar: {
-        //     ...data
-        //   }
-        // }
-        personalExternoContratar: {
-          ...data
-        }
-      })
-    } catch (error) {
-      console.log(error)
+        personasContratar1: "",
+        personasContratar2: "",
+        personasContratar3: "",
+        personasContratar4: "",
+        personasContratar5: "",
     }
-    consolaPersonalExternoContratar();
-    // setGlobalPersonalExternoContratar(data);
-    routeChange()
 
-  }
+    let navigate = useNavigate();
+
+    const routeChange = () => {
+        window.scrollTo(0, 0)
+        let path = `/informacion-tecnica-proyecto`;
+        navigate(path);
+    }
+
+    const [globalPersonalExternoContratar, setGlobalPersonalExternoContratar] = useGlobalState("personalExternoContratar");
 
 
-  return (
+    const [formData, setFormData] = useState({ ...globalPersonalExternoContratar } ? { ...globalPersonalExternoContratar } : { ...formInicial })
+    //const [formData, setFormData] = useState({ ...formInicial })
+
+    function handleChange(event) {
+        const { name, value, type, checked } = event.target
+        setFormData(prevFormData => {
+            return {
+                ...prevFormData,
+                [name]: type === "checkbox" ? checked : value
+            }
+        })
+    }
+
+    const handleSubmit = async (event) => {
+        event.preventDefault();
+
+        try {
+            const docuRef = doc(firestore, `proyectos-investigacion/${correoUsuario}`)
+            //setDoc(baseDocRef, { informacionGeneral: { status: "Borrador" } }, { merge: true });
+            updateDoc(docuRef, {
+                personalExternoContratar: {
+                    ...formData
+                }
+            }
+                //, { merge: true }
+            )
 
 
-    <div className="personal-externo-contratar">
-      <div className="main-body">
+        } catch (error) {
+            console.log(error)
+        }
+        //console.log(formData)
+        console.log({ ...formData })
+        //setFormData({ ...formInicial })
+        setGlobalPersonalExternoContratar({ ...formData })
 
-        <Split
-          sizes={[20, 80]}
-          direction="horizontal"
-          className="split"
-          minSize={100}
-          expandToMin={false}
-          dragInterval={1}
-          cursor="col-resize"
-        >
-          <Sidebar
-          />
-          <section>
-            <form
-              className="form"
-              onSubmit={handleSubmit}
-            >
-              <TitleBar />
-              <div>
-                <h4>
-                  Personal Externo A Contratar
-                </h4>
-                <br />
-                <button
-                  className='btn btn-success'
-                  onClick={() => abrirModalInsertar()}
-                  type="button"
+        routeChange()
+    }
+
+    return (
+        <div className="personal-externo-contratar">
+            <div className="main-body">
+
+                <Split
+                    sizes={[20, 80]}
+                    direction="horizontal"
+                    className="split"
+                    minSize={100}
+                    expandToMin={false}
+                    dragInterval={1}
+                    cursor="col-resize"
                 >
-                  Insertar
-                </button>
-                <br />
-                <br />
+                    <Sidebar
+                    //notes={notes}
+                    //currentNote={findCurrentNote()}
+                    //setCurrentNoteId={setCurrentNoteId}
+                    //newNote={createNewNote}
+                    />
+                    <section>
+                        <form
+                            className="form"
+                            onSubmit={handleSubmit}
+                        >
+                            <TitleBar />
+                            <div className="col-12">
+                                <h4>
+                                    Personal Externo A Contratar
+                                </h4>
+                                <br />
 
-                <div
-                  className="table-responsive"
-                >
 
-                  <table
-                    className='table table-hover'
-                  >
-                    <thead>
-                      <tr>
-                        <th>Nro.</th>
-                        <th>Perfil Requerido</th>
-                        <th>Función</th>
-                        <th>Principales Actividades <br />a Desarrollar</th>
-                        <th>Tiempo Contratación <br /> Meses</th>
-                        <th>Número de personas <br /> a contratar</th>
-                        <th>Acciones</th>
+                                <div className="container">
+                                    <div className="row">
+                                        <div className="col-1">
+                                            <label>
+                                                Nro.
+                                            </label>
+                                        </div>
 
-                      </tr>
-                    </thead>
-                    <tbody>
-                      {data.map(elemento => (
-                        <tr key={elemento.id}>
-                          <td key={elemento.id}>{elemento.id}</td>
-                          <td >{elemento.perfilRequerido}</td>
-                          <td >{elemento.funcion}</td>
-                          <td >{elemento.principalesActividades}</td>
-                          <td >{elemento.tiempoContratacionMeses}</td>
-                          <td >{elemento.numeroPersonas}</td>
+                                        <div className="col-2">
+                                            <label>
+                                                Perfil Requerido.
+                                            </label>
+                                        </div>
 
-                          <td>
+                                        <div className="col-2">
+                                            <label>
+                                                Función.
+                                            </label>
+                                        </div>
+
+                                        <div className="col-3">
+                                            <label>
+                                                Actividades a desarrollar.
+                                            </label>
+                                        </div>
+                                        <div className="col-2">
+                                            <label>
+                                                Tiempo de Contratacion Meses.
+                                            </label>
+                                        </div>
+                                        <div className="col-2">
+                                            <label>
+                                                Número de personas a contratar.
+                                            </label>
+                                        </div>
+                                    </div>
+
+                                    <hr />
+
+                                    <div className="row">
+                                        <div className="col-1">
+                                            <label>
+                                                01
+                                            </label>
+                                        </div>
+
+                                        <div className="col-2">
+                                            <input
+                                                type="text"
+                                                placeholder="Ingresar Texto"
+                                                className="form-control"
+                                                name="perfilRequerido1"
+                                                onChange={handleChange}
+                                                value={formData.perfilRequerido1}
+                                            />
+                                        </div>
+
+                                        <div className="col-2">
+                                            <select
+                                                id="funcion1"
+                                                value={formData.funcion1}
+                                                onChange={handleChange}
+                                                name="funcion1"
+                                                className="form-select"
+                                            >
+                                                <option value="">-- Elija un Elemento --</option>
+                                                <option value="ASISTENTE">ASISTENTE</option>
+                                                <option value="TÉCNICO">TÉCNICO</option>
+                                                <option value="ANALISTA">ANALISTA</option>
+                                                <option value="CONSULTOR / ESPECIALISTA">CONSULTOR / ESPECIALISTA</option>
+                                            </select>
+                                        </div>
+
+                                        <div className="col-3">
+                                            <input
+                                                type="text"
+                                                placeholder="Ingresar Texto"
+                                                className="form-control"
+                                                name="actividadesDesarrollar1"
+                                                onChange={handleChange}
+                                                value={formData.actividadesDesarrollar1}
+                                            />
+                                        </div>
+
+                                        <div className="col-2">
+                                            <input
+                                                type="number"
+                                                placeholder="00"
+                                                min="0"
+                                                className="form-control"
+                                                name="tiempoContratacion1"
+                                                onChange={handleChange}
+                                                value={formData.tiempoContratacion1}
+                                            />
+                                        </div>
+
+                                        <div className="col-2">
+                                            <input
+                                                type="number"
+                                                placeholder="00"
+                                                min="0"
+                                                className="form-control"
+                                                name="personasContratar1"
+                                                onChange={handleChange}
+                                                value={formData.personasContratar1}
+                                            />
+                                        </div>
+                                    </div>
+
+                                    <br />
+                                    <div className="row">
+                                        <div className="col-1">
+                                            <label>
+                                                02
+                                            </label>
+                                        </div>
+
+                                        <div className="col-2">
+                                            <input
+                                                type="text"
+                                                placeholder="Ingresar Texto"
+                                                className="form-control"
+                                                name="perfilRequerido2"
+                                                onChange={handleChange}
+                                                value={formData.perfilRequerido2}
+                                            />
+                                        </div>
+
+                                        <div className="col-2">
+                                            <select
+                                                id="funcion2"
+                                                value={formData.funcion2}
+                                                onChange={handleChange}
+                                                name="funcion2"
+                                                className="form-select"
+                                            >
+                                                <option value="">-- Elija un Elemento --</option>
+                                                <option value="ASISTENTE">ASISTENTE</option>
+                                                <option value="TÉCNICO">TÉCNICO</option>
+                                                <option value="ANALISTA">ANALISTA</option>
+                                                <option value="CONSULTOR / ESPECIALISTA">CONSULTOR / ESPECIALISTA</option>
+                                            </select>
+                                        </div>
+
+                                        <div className="col-3">
+                                            <input
+                                                type="text"
+                                                placeholder="Ingresar Texto"
+                                                className="form-control"
+                                                name="actividadesDesarrollar2"
+                                                onChange={handleChange}
+                                                value={formData.actividadesDesarrollar2}
+                                            />
+                                        </div>
+
+                                        <div className="col-2">
+                                            <input
+                                                type="number"
+                                                placeholder="00"
+                                                min="0"
+                                                className="form-control"
+                                                name="tiempoContratacion2"
+                                                onChange={handleChange}
+                                                value={formData.tiempoContratacion2}
+                                            />
+                                        </div>
+
+                                        <div className="col-2">
+                                            <input
+                                                type="number"
+                                                placeholder="00"
+                                                min="0"
+                                                className="form-control"
+                                                name="personasContratar2"
+                                                onChange={handleChange}
+                                                value={formData.personasContratar2}
+                                            />
+                                        </div>
+                                    </div>
+
+                                    <br />
+
+                                    <div className="row">
+                                        <div className="col-1">
+                                            <label>
+                                                03
+                                            </label>
+                                        </div>
+
+                                        <div className="col-2">
+                                            <input
+                                                type="text"
+                                                placeholder="Ingresar Texto"
+                                                className="form-control"
+                                                name="perfilRequerido3"
+                                                onChange={handleChange}
+                                                value={formData.perfilRequerido3}
+                                            />
+                                        </div>
+
+                                        <div className="col-2">
+                                            <select
+                                                id="funcion3"
+                                                value={formData.funcion3}
+                                                onChange={handleChange}
+                                                name="funcion3"
+                                                className="form-select"
+                                            >
+                                                <option value="">-- Elija un Elemento --</option>
+                                                <option value="ASISTENTE">ASISTENTE</option>
+                                                <option value="TÉCNICO">TÉCNICO</option>
+                                                <option value="ANALISTA">ANALISTA</option>
+                                                <option value="CONSULTOR / ESPECIALISTA">CONSULTOR / ESPECIALISTA</option>
+                                            </select>
+                                        </div>
+
+                                        <div className="col-3">
+                                            <input
+                                                type="text"
+                                                placeholder="Ingresar Texto"
+                                                className="form-control"
+                                                name="actividadesDesarrollar3"
+                                                onChange={handleChange}
+                                                value={formData.actividadesDesarrollar3}
+                                            />
+                                        </div>
+
+                                        <div className="col-2">
+                                            <input
+                                                type="number"
+                                                placeholder="00"
+                                                min="0"
+                                                className="form-control"
+                                                name="tiempoContratacion3"
+                                                onChange={handleChange}
+                                                value={formData.tiempoContratacion3}
+                                            />
+                                        </div>
+
+                                        <div className="col-2">
+                                            <input
+                                                type="number"
+                                                placeholder="00"
+                                                min="0"
+                                                className="form-control"
+                                                name="personasContratar3"
+                                                onChange={handleChange}
+                                                value={formData.personasContratar3}
+                                            />
+                                        </div>
+                                    </div>
+
+                                    <br />
+
+                                    <div className="row">
+                                        <div className="col-1">
+                                            <label>
+                                                04
+                                            </label>
+                                        </div>
+
+                                        <div className="col-2">
+                                            <input
+                                                type="text"
+                                                placeholder="Ingresar Texto"
+                                                className="form-control"
+                                                name="perfilRequerido4"
+                                                onChange={handleChange}
+                                                value={formData.perfilRequerido4}
+                                            />
+                                        </div>
+
+                                        <div className="col-2">
+                                            <select
+                                                id="funcion4"
+                                                value={formData.funcion4}
+                                                onChange={handleChange}
+                                                name="funcion4"
+                                                className="form-select"
+                                            >
+                                                <option value="">-- Elija un Elemento --</option>
+                                                <option value="ASISTENTE">ASISTENTE</option>
+                                                <option value="TÉCNICO">TÉCNICO</option>
+                                                <option value="ANALISTA">ANALISTA</option>
+                                                <option value="CONSULTOR / ESPECIALISTA">CONSULTOR / ESPECIALISTA</option>
+                                            </select>
+                                        </div>
+
+                                        <div className="col-3">
+                                            <input
+                                                type="text"
+                                                placeholder="Ingresar Texto"
+                                                className="form-control"
+                                                name="actividadesDesarrollar4"
+                                                onChange={handleChange}
+                                                value={formData.actividadesDesarrollar4}
+                                            />
+                                        </div>
+
+                                        <div className="col-2">
+                                            <input
+                                                type="number"
+                                                placeholder="00"
+                                                min="0"
+                                                className="form-control"
+                                                name="tiempoContratacion4"
+                                                onChange={handleChange}
+                                                value={formData.tiempoContratacion4}
+                                            />
+                                        </div>
+
+                                        <div className="col-2">
+                                            <input
+                                                type="number"
+                                                placeholder="00"
+                                                min="0"
+                                                className="form-control"
+                                                name="personasContratar4"
+                                                onChange={handleChange}
+                                                value={formData.personasContratar4}
+                                            />
+                                        </div>
+                                    </div>
+
+                                    <br />
+
+                                    <div className="row">
+                                        <div className="col-1">
+                                            <label>
+                                                05
+                                            </label>
+                                        </div>
+
+                                        <div className="col-2">
+                                            <input
+                                                type="text"
+                                                placeholder="Ingresar Texto"
+                                                className="form-control"
+                                                name="perfilRequerido5"
+                                                onChange={handleChange}
+                                                value={formData.perfilRequerido5}
+                                            />
+                                        </div>
+
+                                        <div className="col-2">
+                                            <select
+                                                id="funcion5"
+                                                value={formData.funcion5}
+                                                onChange={handleChange}
+                                                name="funcion5"
+                                                className="form-select"
+                                            >
+                                                <option value="">-- Elija un Elemento --</option>
+                                                <option value="ASISTENTE">ASISTENTE</option>
+                                                <option value="TÉCNICO">TÉCNICO</option>
+                                                <option value="ANALISTA">ANALISTA</option>
+                                                <option value="CONSULTOR / ESPECIALISTA">CONSULTOR / ESPECIALISTA</option>
+                                            </select>
+                                        </div>
+
+                                        <div className="col-3">
+                                            <input
+                                                type="text"
+                                                placeholder="Ingresar Texto"
+                                                className="form-control"
+                                                name="actividadesDesarrollar5"
+                                                onChange={handleChange}
+                                                value={formData.actividadesDesarrollar5}
+                                            />
+                                        </div>
+
+                                        <div className="col-2">
+                                            <input
+                                                type="number"
+                                                placeholder="00"
+                                                min="0"
+                                                className="form-control"
+                                                name="tiempoContratacion5"
+                                                onChange={handleChange}
+                                                value={formData.tiempoContratacion5}
+                                            />
+                                        </div>
+
+                                        <div className="col-2">
+                                            <input
+                                                type="number"
+                                                placeholder="00"
+                                                min="0"
+                                                className="form-control"
+                                                name="personasContratar5"
+                                                onChange={handleChange}
+                                                value={formData.personasContratar5}
+                                            />
+                                        </div>
+                                    </div>
+                                    
+                                </div>
+
+                            </div>
+
+                            <br />
+
                             <button
-                              className='btn btn-primary'
-                              onClick={() => seleccionarPersonal(elemento, 'Editar')}
-                              type="button"
-
+                                className="btn btn-primary"
+                            //onClick={() => console.log(docenteSeleccionado)}
+                            //type="button"
                             >
-                              ✍️
+                                Enviar Información
                             </button>
-
-                            <button
-                              className='btn btn-warning'
-                              onClick={() => seleccionarPersonal(elemento, 'Eliminar')}
-                              type="button"
-                            >
-                              ❌
-                            </button>
-
-                          </td>
-
-                        </tr>
-                      ))}
-                    </tbody>
-                  </table>
-                </div>
-                {/* <button
-                  className='btn btn-danger'
-                  onClick={() => consolaPersonalExternoContratar()}
-                  type="button"
-
-                >
-                  Consola Personal Externo a Contratar
-                </button> */}
-                <Modal isOpen={modalEditar}>
-                  <ModalHeader>
-                    <div>
-                      <h4>
-                        Editar Personal <br />
-                        Externo A Contratar
-                      </h4>
-                    </div>
-                  </ModalHeader>
-                  <ModalBody>
-                    <div className='form-group'>
-                      <label>ID</label>
-                      <input
-                        className='form-control'
-                        readOnly
-                        type="text"
-                        name='id'
-                        value={personalExternoContratarSeleccionado &&
-                          personalExternoContratarSeleccionado.id}
-                      />
-                      <br />
-
-
-                      <label>
-                        Perfil Requerido
-                      </label>
-                      <input
-                        className='form-control'
-                        type="text"
-                        name="perfilRequerido"
-                        value={personalExternoContratarSeleccionado &&
-                          personalExternoContratarSeleccionado.perfilRequerido}
-                        onChange={handleChange}
-                      />
-                      < br />
-
-                      <label htmlFor="funcion">Función</label>
-                      <br />
-                      <select
-                        id="funcion"
-                        value={personalExternoContratarSeleccionado &&
-                          personalExternoContratarSeleccionado.funcion}
-                        onChange={handleChange}
-                        name="funcion"
-                        // className="select-css"
-                        className='form-control'
-                      >
-                        <option value="ASISTENTE">ASISTENTE</option>
-                        <option value="TÉCNICO">TÉCNICO</option>
-                        <option value="ANALISTA">ANALISTA</option>
-                        <option value="CONSULTOR-ESPECIALISTA">CONSULTOR-ESPECIALISTA</option>
-                      </select>
-                      <br />
-
-                      <label >
-                        Principales actividades a desarrollar
-                      </label>
-
-                      <input
-                        className='form-control'
-                        type="text"
-                        name="principalesActividades"
-                        value={personalExternoContratarSeleccionado &&
-                          personalExternoContratarSeleccionado.principalesActividades}
-                        onChange={handleChange}
-                      />
-                      <br />
-
-                      <label>
-                        Tiempo de Contratación (Meses)
-                      </label>
-
-                      <input
-                        className='form-control'
-                        type="number"
-                        min={0}
-                        name="tiempoContratacionMeses"
-                        value={personalExternoContratarSeleccionado
-                          && personalExternoContratarSeleccionado.tiempoContratacionMeses}
-                        onChange={handleChange}
-                      />
-                      <br />
-
-                      <label>
-                        Número de personas a Contratar
-                      </label>
-
-                      <input
-                        className='form-control'
-                        type="number"
-                        min={0}
-                        name="numeroPersonas"
-                        value={personalExternoContratarSeleccionado
-                          && personalExternoContratarSeleccionado.numeroPersonas}
-                        onChange={handleChange}
-                      />
-                      <br />
-
-                    </div>
-                  </ModalBody>
-                  <ModalFooter
-                    className="modal-footer-pg">
-                    <button
-                      className='btn btn-primary'
-                      onClick={() => editar()}
-                      type="button"
-                    >
-                      Actualizar
-                    </button>
-                    <button
-                      className='btn btn-danger'
-                      onClick={() => setModalEditar(false)}
-                      type="button"
-                    >
-                      Cancelar
-                    </button>
-                  </ModalFooter>
-                </Modal>
-
-                <Modal isOpen={modalEliminar}>
-                  <ModalBody >
-                    ¿Estás seguro que deseas eliminar el registro seleccionado?
-                    {personalExternoContratarSeleccionado &&
-                      personalExternoContratarSeleccionado.perfilRequerido}
-                  </ModalBody>
-                  <ModalFooter
-                    className="modal-footer-pg"
-                  >
-                    <button
-                      className='btn btn-danger'
-                      onClick={() => eliminar()}
-                      type="button"
-                    >
-                      Sí
-                    </button>
-                    <button
-                      className='btn btn-secondary'
-                      onClick={() => setModalEliminar(false)}
-                      type="button"
-                    >
-                      No
-                    </button>
-                  </ModalFooter>
-                </Modal>
-
-                <Modal isOpen={modalInsertar}>
-                  <ModalHeader>
-                    <div>
-                      <h3>
-                        Insertar nuevo registro <br />
-                        Personal Externo a Contratar
-                      </h3>
-                    </div>
-                  </ModalHeader>
-                  <ModalBody>
-                    <div className='form-group'>
-                      <label>
-                        ID
-                      </label>
-                      <input
-                        className='form-control'
-                        readOnly
-                        type="text"
-                        name="id"
-                        value={data[data.length - 1].id + 1}
-                      />
-
-                      <br />
-                      <label>
-                        Perfil Requerido
-                      </label>
-                      <input
-                        className='form-control'
-                        type="text"
-                        name="perfilRequerido"
-                        value={personalExternoContratarSeleccionado ?
-                          personalExternoContratarSeleccionado.perfilRequerido : ''}
-                        onChange={handleChange}
-                      />
-
-                      < br />
-
-                      <label htmlFor="funcion">Función</label>
-                      <br />
-                      <select
-                        id="funcion"
-                        value={personalExternoContratarSeleccionado ?
-                          personalExternoContratarSeleccionado.funcion : ''}
-                        onChange={handleChange}
-                        name="funcion"
-                        // className="select-css"
-                        className='form-control'
-                      >
-                        <option value="ASISTENTE">ASISTENTE</option>
-                        <option value="TÉCNICO">TÉCNICO</option>
-                        <option value="ANALISTA">ANALISTA</option>
-                        <option value="CONSULTOR-ESPECIALISTA">CONSULTOR-ESPECIALISTA</option>
-                      </select>
-                      <br />
-
-                      <label>
-                        Principales Actividades a desarrollar
-                      </label>
-                      <input
-                        className='form-control'
-                        type="text"
-                        name="principalesActividades"
-                        value={personalExternoContratarSeleccionado ?
-                          personalExternoContratarSeleccionado.principalesActividades : ''}
-                        onChange={handleChange}
-
-                      />
-                      <br />
-
-                      <label>
-                        Tiempo de Contratación (Meses)
-                      </label>
-                      <input
-                        className='form-control'
-                        type="number"
-                        min={0}
-                        name="tiempoContratacionMeses"
-                        value={personalExternoContratarSeleccionado ?
-                          personalExternoContratarSeleccionado.tiempoContratacionMeses : ''}
-                        onChange={handleChange}
-
-                      />
-                      <br />
-
-                      <label>
-                        Número de Personas a Contratar
-                      </label>
-                      <input
-                        className='form-control'
-                        type="number"
-                        min={0}
-                        name="numeroPersonas"
-                        value={personalExternoContratarSeleccionado ?
-                          personalExternoContratarSeleccionado.numeroPersonas : ''}
-                        onChange={handleChange}
-                      />
-                      <br />
-
-                    </div>
-                  </ModalBody>
-                  <ModalFooter
-                    className="modal-footer-pg"
-                  >
-                    <button
-                      className='btn btn-primary'
-                      onClick={() => insertar()}
-                      type="button"
-                    >
-                      Insertar
-                    </button>
-                    <button
-                      className='btn btn-danger'
-                      onClick={() => setModalInsertar(false)}
-                      type="button"
-                    >
-                      Cancelar
-                    </button>
-                  </ModalFooter>
-                </Modal>
-              </div>
-              <button
-                className="btn btn-primary"
-              //onClick={() => console.log(docenteSeleccionado)}
-              //type="button"
-              >
-                Enviar Información
-              </button>
-            </form>
-          </section>
-        </Split>
-      </div>
-
-    </div>
-
-  )
+                        </form>
+                    </section>
+                </Split>
+            </div>
+        </div>
+    )
 }
+
+export default PersonalExternoContratar

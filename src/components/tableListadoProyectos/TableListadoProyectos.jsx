@@ -135,6 +135,8 @@ const List = () => {
             objetivoEspecifico3,
             objetivoEspecifico4,
             objetivoEspecifico5,
+            //
+
             objetivoGeneral,
             palabraClave1,
             palabraClave2,
@@ -156,9 +158,51 @@ const List = () => {
             prototipo,
             registroPropiedadIndustrial,
 
-            //CRONOGRAMA DE ACTIVIDADES - 
+            //CRONOGRAMA DE ACTIVIDADES A - 
+            actividadEspecifica1,
+            actividadEspecifica2,
+            actividadEspecifica3,
+            actividadEspecifica4,
+            actividadEspecifica5,
 
+            fechaInicio1,
+            fechaInicio2,
+            fechaInicio3,
+            fechaInicio4,
+            fechaInicio5,
 
+            fechaFin1,
+            fechaFin2,
+            fechaFin3,
+            fechaFin4,
+            fechaFin5,
+
+            itemPresupuesto1,
+            itemPresupuesto2,
+            itemPresupuesto3,
+            itemPresupuesto4,
+            itemPresupuesto5,
+
+            nombreEvidencia1,
+            nombreEvidencia2,
+            nombreEvidencia3,
+            nombreEvidencia4,
+            nombreEvidencia5,
+
+            nombreResponsableActividad1,
+            nombreResponsableActividad2,
+            nombreResponsableActividad3,
+            nombreResponsableActividad4,
+            nombreResponsableActividad5,
+
+            objetivoEspecificoCronograma1,
+            
+            valorPresupuesto1,
+            valorPresupuesto2,
+            valorPresupuesto3,
+            valorPresupuesto4,
+            valorPresupuesto5,
+            
             //RESUMEN DEL PRESUPUESTO - 8 - DESTRUCTURING
             bibliografia,
             capacitacion,
