@@ -59,6 +59,12 @@ const List = () => {
     const [globalInformacionTecnicaProyecto, setGlobalInformacionTecnicaProyecto] = useGlobalState("informacionTecnicaProyecto");
     const [globalMetodologiaProyecto, setGlobalMetodologiaProyecto] = useGlobalState("metodologiaProyecto");
     const [globalCronogramaActividades, setGlobalCronogramaActividades] = useGlobalState("cronogramaActividades");
+    const [globalCronogramaEspA, setGlobalCronogramaEspA] = useGlobalState("cronogramaEspA");
+    const [globalCronogramaEspB, setGlobBlCronogramaEspB] = useGlobalState("cronogramaEspB");
+    const [globalCronogramaEspC, setGlobalCronogramaEspC] = useGlobalState("cronogramaEspC");
+    const [globalCronogramaEspD, setGlobalCronogramaEspD] = useGlobalState("cronogramaEspD");
+    const [globalCronogramaEspE, setGlobalCronogramaEspE] = useGlobalState("cronogramaEspE");
+
     const [globalResumenPresupuesto, setGlobalResumenPresupuesto] = useGlobalState("resumenPresupuesto");
 
     const handleGlobalChange = (row) => {
@@ -120,7 +126,7 @@ const List = () => {
             introduccionAntecedentes,
             introduccionJustificacion,
 
-            
+
             // PRINCIPALES EQUIPOS
             equipoProyecto1,
             equipoProyecto2,
@@ -196,13 +202,13 @@ const List = () => {
             nombreResponsableActividad5,
 
             objetivoEspecificoCronograma1,
-            
+
             valorPresupuesto1,
             valorPresupuesto2,
             valorPresupuesto3,
             valorPresupuesto4,
             valorPresupuesto5,
-            
+
             //RESUMEN DEL PRESUPUESTO - 8 - DESTRUCTURING
             bibliografia,
             capacitacion,
@@ -304,7 +310,7 @@ const List = () => {
             }
         })
         //Personal Externo Contratar   
-        setGlobalPersonalExternoContratar(prevFormDataPersonalExternoContratar=> {
+        setGlobalPersonalExternoContratar(prevFormDataPersonalExternoContratar => {
             return {
                 ...prevFormDataPersonalExternoContratar,
                 idPersonalExternoContratar: idPersonalExternoContratar,
@@ -315,7 +321,7 @@ const List = () => {
         setGlobalInformacionTecnicaProyecto(prevFormDataInformacionTecnicaProyecto => {
             return {
                 ...prevFormDataInformacionTecnicaProyecto,
-                
+
                 introduccionAntecedentes: introduccionAntecedentes,
                 introduccionJustificacion: introduccionJustificacion,
                 // PRINCIPALES EQUIPOS
@@ -385,36 +391,36 @@ const List = () => {
         // console.log(
         //     "🚀 ~ file: TableListadoProyectos.jsx ~ line 253 ~ handleGlobalChange ~ globalAreasConocimiento",
         //     globalAreasConocimiento)
-        
+
         // console.log(
         //     "🚀 ~ file: TableListadoProyectos.jsx ~ line 257 ~ handleGlobalChange ~ globalTipoProyecto",
         //     globalTipoProyecto)
-        
+
         //Personal Interno
         // console.log(
         //     `🚀 ~ file: TableListadoProyectos.jsx ~ line 257 ~ handleGlobalChange ~ globalPersonalInterno",
         //     ${ JSON.stringify(globalPersonalInterno)}`)
-        
+
         console.log(
             "🚀 ~ file: TableListadoProyectos.jsx ~ line 257 ~ handleGlobalChange ~ globalPersonalInterno",
             (globalPersonalInterno))
         //Personal Externo Cooperante
 
         //Personal Externo Contratar
-        
+
         // console.log(
         //     "🚀 ~ file: TableListadoProyectos.jsx ~ line 261 ~ handleGlobalChange ~ globalInformacionTecnicaProyecto",
         //     globalInformacionTecnicaProyecto)
-        
+
         // console.log(
         //     "🚀 ~ file: TableListadoProyectos.jsx ~ line 261 ~ handleGlobalChange ~ globalMetodologiaProyecto",
         //     globalMetodologiaProyecto)
-        
+
         // console.log(
         //     "🚀 ~ file: TableListadoProyectos.jsx ~ line 265 ~ handleGlobalChange ~ globalResumenPresupuesto",
         //     globalResumenPresupuesto)
-        
-        
+
+
         //console.log(value);
         //navigate("/home");
     }
@@ -545,7 +551,7 @@ const List = () => {
                         aspectosBioeticos: doc.data().metodologiaProyecto.aspectosBioeticos,
                         descripcionActividadID: doc.data().metodologiaProyecto.descripcionActividadID,
                         impactoCientifico: doc.data().metodologiaProyecto.impactoCientifico,
-                        impactoEconomico: doc.data().metodologiaProyecto.impactoEconomico,	
+                        impactoEconomico: doc.data().metodologiaProyecto.impactoEconomico,
                         impactoPolitico: doc.data().metodologiaProyecto.impactoPolitico,
                         impactoSocial: doc.data().metodologiaProyecto.impactoSocial,
                         metodologia: doc.data().metodologiaProyecto.metodologia,
@@ -555,6 +561,51 @@ const List = () => {
                         registroPropiedadIndustrial: doc.data().metodologiaProyecto.registroPropiedadIndustrial,
 
                         //Cronograma de Actividades del Proyecto
+                        //Cronograma Actividades A
+                        //CRONOGRAMA DE ACTIVIDADES A - 
+                        actividadEspecifica1: doc.data().cronogramaEspA.actividadEspecifica1,
+                        actividadEspecifica2: doc.data().cronogramaEspA.actividadEspecifica2,
+                        actividadEspecifica3: doc.data().cronogramaEspA.actividadEspecifica3,
+                        actividadEspecifica4: doc.data().cronogramaEspA.actividadEspecifica4,
+                        actividadEspecifica5: doc.data().cronogramaEspA.actividadEspecifica5,
+
+                        fechaInicio1: doc.data().cronogramaEspA.fechaInicio1,
+                        fechaInicio2: doc.data().cronogramaEspA.fechaInicio2,
+                        fechaInicio3: doc.data().cronogramaEspA.fechaInicio3,
+                        fechaInicio4: doc.data().cronogramaEspA.fechaInicio4,
+                        fechaInicio5: doc.data().cronogramaEspA.fechaInicio5,
+
+                        fechaFin1: doc.data().cronogramaEspA.fechaFin1,
+                        fechaFin2: doc.data().cronogramaEspA.fechaFin2,
+                        fechaFin3: doc.data().cronogramaEspA.fechaFin3,
+                        fechaFin4: doc.data().cronogramaEspA.fechaFin4,
+                        fechaFin5: doc.data().cronogramaEspA.fechaFin5,
+
+                        itemPresupuesto1: doc.data().cronogramaEspA.itemPresupuesto1,
+                        itemPresupuesto2: doc.data().cronogramaEspA.itemPresupuesto2,
+                        itemPresupuesto3: doc.data().cronogramaEspA.itemPresupuesto3,
+                        itemPresupuesto4: doc.data().cronogramaEspA.itemPresupuesto4,
+                        itemPresupuesto5: doc.data().cronogramaEspA.itemPresupuesto5,
+
+                        nombreEvidencia1: doc.data().cronogramaEspA.nombreEvidencia1,
+                        nombreEvidencia2: doc.data().cronogramaEspA.nombreEvidencia2,
+                        nombreEvidencia3: doc.data().cronogramaEspA.nombreEvidencia3,
+                        nombreEvidencia4: doc.data().cronogramaEspA.nombreEvidencia4,
+                        nombreEvidencia5: doc.data().cronogramaEspA.nombreEvidencia5,
+
+                        nombreResponsableActividad1: doc.data().cronogramaEspA.nombreResponsableActividad1,
+                        nombreResponsableActividad2: doc.data().cronogramaEspA.nombreResponsableActividad2,
+                        nombreResponsableActividad3: doc.data().cronogramaEspA.nombreResponsableActividad3,
+                        nombreResponsableActividad4: doc.data().cronogramaEspA.nombreResponsableActividad4,
+                        nombreResponsableActividad5: doc.data().cronogramaEspA.nombreResponsableActividad5,
+
+                        objetivoEspecificoCronograma1: doc.data().cronogramaEspA.objetivoEspecificoCronograma1,
+
+                        valorPresupuesto1: doc.data().cronogramaEspA.valorPresupuesto1,
+                        valorPresupuesto2: doc.data().cronogramaEspA.valorPresupuesto2,
+                        valorPresupuesto3: doc.data().cronogramaEspA.valorPresupuesto3,
+                        valorPresupuesto4: doc.data().cronogramaEspA.valorPresupuesto4,
+                        valorPresupuesto5: doc.data().cronogramaEspA.valorPresupuesto5,
 
                         //Resumen del Presupuesto
                         viaticosSubsistenciasMovilizacion: doc.data().resumenPresupuesto.viaticosSubsistenciasMovilizacion,
