@@ -114,7 +114,48 @@ const List = () => {
             tipoProyecto,
 
             //PERSONAL INTERNO
-            idPersonalInterno,
+            //idPersonalInterno,
+            rolPersonalInterno1,
+            rolPersonalInterno2,
+            rolPersonalInterno3,
+            rolPersonalInterno4,
+            rolPersonalInterno5,
+
+            tipoPersonalInterno1,
+            tipoPersonalInterno2,
+            tipoPersonalInterno3,
+            tipoPersonalInterno4,
+            tipoPersonalInterno5,
+
+            senescyt1,
+            senescyt2,
+            senescyt3,
+            senescyt4,
+            senescyt5,
+
+            identificacionPersonalInterno1,
+            identificacionPersonalInterno2,
+            identificacionPersonalInterno3,
+            identificacionPersonalInterno4,
+            identificacionPersonalInterno5,
+
+            nombrePersonalInterno1,
+            nombrePersonalInterno2,
+            nombrePersonalInterno3,
+            nombrePersonalInterno4,
+            nombrePersonalInterno5,
+
+            horasSemanalesPersonalInterno1,
+            horasSemanalesPersonalInterno2,
+            horasSemanalesPersonalInterno3,
+            horasSemanalesPersonalInterno4,
+            horasSemanalesPersonalInterno5,
+
+            horasTotalesPersonalInterno1,
+            horasTotalesPersonalInterno2,
+            horasTotalesPersonalInterno3,
+            horasTotalesPersonalInterno4,
+            horasTotalesPersonalInterno5,
 
             //PERSONAL EXTERNO COOPERANTE
             //idPersonalExternoCooperante,
@@ -340,7 +381,48 @@ const List = () => {
         setGlobalPersonalInterno(prevFormDataPersonalInterno => {
             return {
                 ...prevFormDataPersonalInterno,
-                idPersonalInterno: idPersonalInterno,
+                //idPersonalInterno: idPersonalInterno,
+                rolPersonalInterno1: rolPersonalInterno1,
+                rolPersonalInterno2: rolPersonalInterno2,
+                rolPersonalInterno3: rolPersonalInterno3,
+                rolPersonalInterno4: rolPersonalInterno4,
+                rolPersonalInterno5: rolPersonalInterno5,
+
+                tipoPersonalInterno1: tipoPersonalInterno1,
+                tipoPersonalInterno2: tipoPersonalInterno2,
+                tipoPersonalInterno3: tipoPersonalInterno3,
+                tipoPersonalInterno4: tipoPersonalInterno4,
+                tipoPersonalInterno5: tipoPersonalInterno5,
+
+                senescyt1: senescyt1,
+                senescyt2: senescyt2,
+                senescyt3: senescyt3,
+                senescyt4: senescyt4,
+                senescyt5: senescyt5,
+
+                identificacionPersonalInterno1: identificacionPersonalInterno1,
+                identificacionPersonalInterno2: identificacionPersonalInterno2,
+                identificacionPersonalInterno3: identificacionPersonalInterno3,
+                identificacionPersonalInterno4: identificacionPersonalInterno4,
+                identificacionPersonalInterno5: identificacionPersonalInterno5,
+
+                nombrePersonalInterno1: nombrePersonalInterno1,
+                nombrePersonalInterno2: nombrePersonalInterno2,
+                nombrePersonalInterno3: nombrePersonalInterno3,
+                nombrePersonalInterno4: nombrePersonalInterno4,
+                nombrePersonalInterno5: nombrePersonalInterno5,
+
+                horasSemanalesPersonalInterno1: horasSemanalesPersonalInterno1,
+                horasSemanalesPersonalInterno2: horasSemanalesPersonalInterno2,
+                horasSemanalesPersonalInterno3: horasSemanalesPersonalInterno3,
+                horasSemanalesPersonalInterno4: horasSemanalesPersonalInterno4,
+                horasSemanalesPersonalInterno5: horasSemanalesPersonalInterno5,
+
+                horasTotalesPersonalInterno1: horasTotalesPersonalInterno1,
+                horasTotalesPersonalInterno2: horasTotalesPersonalInterno2,
+                horasTotalesPersonalInterno3: horasTotalesPersonalInterno3,
+                horasTotalesPersonalInterno4: horasTotalesPersonalInterno4,
+                horasTotalesPersonalInterno5: horasTotalesPersonalInterno5,
             }
         })
 
@@ -538,8 +620,8 @@ const List = () => {
         //     ${ JSON.stringify(globalPersonalInterno)}`)
 
         console.log(
-            "🚀 ~ file: TableListadoProyectos.jsx ~ line 257 ~ handleGlobalChange ~ globalPersonalInterno",
-            (globalPersonalInterno))
+            "🚀 ~ file: TableListadoProyectos.jsx ~ line 257 ~ handleGlobalChange ~ globalInformacionTecnicaProyecto",
+            (globalInformacionTecnicaProyecto))
         //Personal Externo Cooperante
 
         //Personal Externo Contratar
@@ -650,7 +732,49 @@ const List = () => {
 
                         //Equipo del Proyecto - Personal Interno 
                         //idPersonalInterno: doc.data().personalInterno.id,
-                        idPersonalInterno: doc.data().personalInterno,
+                        //idPersonalInterno: doc.data().personalInterno,
+                        rolPersonalInterno1: doc.data().personalInterno.rolPersonalInterno1,
+                        rolPersonalInterno2: doc.data().personalInterno.rolPersonalInterno2,
+                        rolPersonalInterno3: doc.data().personalInterno.rolPersonalInterno3,
+                        rolPersonalInterno4: doc.data().personalInterno.rolPersonalInterno4,
+                        rolPersonalInterno5: doc.data().personalInterno.rolPersonalInterno5,
+
+                        tipoPersonalInterno1: doc.data().personalInterno.tipoPersonalInterno1,
+                        tipoPersonalInterno2: doc.data().personalInterno.tipoPersonalInterno2,
+                        tipoPersonalInterno3: doc.data().personalInterno.tipoPersonalInterno3,
+                        tipoPersonalInterno4: doc.data().personalInterno.tipoPersonalInterno4,
+                        tipoPersonalInterno5: doc.data().personalInterno.tipoPersonalInterno5,
+
+                        senescyt1: doc.data().personalInterno.senescyt1,
+                        senescyt2: doc.data().personalInterno.senescyt2,
+                        senescyt3: doc.data().personalInterno.senescyt3,
+                        senescyt4: doc.data().personalInterno.senescyt4,
+                        senescyt5: doc.data().personalInterno.senescyt5,
+
+                        identificacionPersonalInterno1: doc.data().personalInterno.identificacionPersonalInterno1,
+                        identificacionPersonalInterno2: doc.data().personalInterno.identificacionPersonalInterno2,
+                        identificacionPersonalInterno3: doc.data().personalInterno.identificacionPersonalInterno3,
+                        identificacionPersonalInterno4: doc.data().personalInterno.identificacionPersonalInterno4,
+                        identificacionPersonalInterno5: doc.data().personalInterno.identificacionPersonalInterno5,
+
+                        nombrePersonalInterno1: doc.data().personalInterno.nombrePersonalInterno1,
+                        nombrePersonalInterno2: doc.data().personalInterno.nombrePersonalInterno2,
+                        nombrePersonalInterno3: doc.data().personalInterno.nombrePersonalInterno3,
+                        nombrePersonalInterno4: doc.data().personalInterno.nombrePersonalInterno4,
+                        nombrePersonalInterno5: doc.data().personalInterno.nombrePersonalInterno5,
+
+                        horasSemanalesPersonalInterno1: doc.data().personalInterno.horasSemanalesPersonalInterno1,
+                        horasSemanalesPersonalInterno2: doc.data().personalInterno.horasSemanalesPersonalInterno2,
+                        horasSemanalesPersonalInterno3: doc.data().personalInterno.horasSemanalesPersonalInterno3,
+                        horasSemanalesPersonalInterno4: doc.data().personalInterno.horasSemanalesPersonalInterno4,
+                        horasSemanalesPersonalInterno5: doc.data().personalInterno.horasSemanalesPersonalInterno5,
+
+                        horasTotalesPersonalInterno1: doc.data().personalInterno.horasTotalesPersonalInterno1,
+                        horasTotalesPersonalInterno2: doc.data().personalInterno.horasTotalesPersonalInterno2,
+                        horasTotalesPersonalInterno3: doc.data().personalInterno.horasTotalesPersonalInterno3,
+                        horasTotalesPersonalInterno4: doc.data().personalInterno.horasTotalesPersonalInterno4,
+                        horasTotalesPersonalInterno5: doc.data().personalInterno.horasTotalesPersonalInterno5,
+
 
                         //Personal Externo Cooperante
                         //idPersonalExternoCooperante: doc.data().personalExternoCooperante,
