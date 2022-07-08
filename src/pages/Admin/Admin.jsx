@@ -511,7 +511,8 @@ const Admin = () => {
 
         getData()
         handleGlobalChange()
-        //navigate("/home")
+        
+        navigate("/home")
     }
 
     return (
