@@ -5,6 +5,9 @@ const { setGlobalState, useGlobalState } = createGlobalState({
     currentProject: null,
     isLoggedIn: false,
 
+    auxiliar: "",
+    contador: "",
+
     informacionGeneral: {
         actividadCientifica: '',
         alcanceTerritorial: '',
@@ -157,7 +160,7 @@ const { setGlobalState, useGlobalState } = createGlobalState({
         objetivoGeneral: "",
 
         resultadoObjetivoEspecificoCronograma1: "",
-        
+
         valorPresupuesto1: "",
         valorPresupuesto2: "",
         valorPresupuesto3: "",

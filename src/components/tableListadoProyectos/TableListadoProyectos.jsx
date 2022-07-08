@@ -64,7 +64,6 @@ const List = () => {
     const [globalCronogramaEspC, setGlobalCronogramaEspC] = useGlobalState("cronogramaEspC");
     const [globalCronogramaEspD, setGlobalCronogramaEspD] = useGlobalState("cronogramaEspD");
     const [globalCronogramaEspE, setGlobalCronogramaEspE] = useGlobalState("cronogramaEspE");
-
     const [globalResumenPresupuesto, setGlobalResumenPresupuesto] = useGlobalState("resumenPresupuesto");
 
     const handleGlobalChange = (row) => {
@@ -640,13 +639,14 @@ const List = () => {
 
 
         //console.log(value);
-        //navigate("/home");
+        navigate("/home");
     }
 
     const { currentUser } = useContext(AuthContext);
     //console.log("🚀 ~ file: TableListadoProyectos.jsx ~ line 38 ~ List ~ currentUser", currentUser.email)
 
     const correoUsuario = currentUser.email
+
     const auth = getAuth();
 
 

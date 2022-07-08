@@ -139,6 +139,7 @@ export default function Home() {
         setValue(newValue);
     }
 
+
     const inputProps = {
         placeholder: "Nombre del docente",
         value,
@@ -162,6 +163,7 @@ export default function Home() {
     }
     //end código autocomplete docentes
     const [globalInformacionGeneral, setGlobalInformacionGeneral] = useGlobalState("informacionGeneral");
+    const [globalAuxiliar, setGlobalAuxiliar] = useGlobalState("auxiliar");
 
 
     const { currentUser } = useContext(AuthContext)
@@ -250,10 +252,11 @@ export default function Home() {
 
             const docuRef = doc(firestore, `proyectos-investigacion/${correoUsuario}`)
 
+            console.log(globalAuxiliar)
             //setDoc(baseDocRef, { informacionGeneral: { status: "Borrador" } }, { merge: true });
 
             updateDoc(docuRef, {
-                informacionGeneral: {
+                ["informacionGeneral"+globalAuxiliar]: {
                     ...formData
                 }
             }
