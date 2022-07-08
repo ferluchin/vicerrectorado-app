@@ -36,6 +36,7 @@ import { Button } from "reactstrap";
 import "./personalInterno.scss"
 import 'bootstrap/dist/css/bootstrap.css';
 
+const db = getFirestore();
 
 // const db = getFirestore();
 
@@ -44,7 +45,8 @@ import 'bootstrap/dist/css/bootstrap.css';
 const firestore = getFirestore(app);
 
 export default function PersonalInterno() {
-
+    const [nodes, setNodes] = useState({});
+    const [isLoading, setLoading] = useState(true);
     const { currentUser } = useContext(AuthContext)
 
     const correoUsuario = currentUser.email;
@@ -104,8 +106,22 @@ export default function PersonalInterno() {
         let path = `/personal-externo-cooperante`;
         navigate(path);
     }
+    async function  getAux(){
+        var docRef = doc(db, `proyectos-investigacion/${correoUsuario}`);
+        //var docRef = collection(db, "proyectos-investigacion", `${correoUsuario}`);
+        const docSnap = await getDoc(docRef);
 
+        if (docSnap.exists()) {
+            console.log("Document data:", docSnap.data().contador);
+            setGlobalAuxiliar(docSnap.data().contador)
+          } else {
+            // doc.data() will be undefined in this case
+            console.log("No such document!");
+          }
+    }
     const [globalPersonalInterno, setGlobalPersonalInterno] = useGlobalState("personalInterno");
+    const [globalAuxiliar, setGlobalAuxiliar] = useGlobalState("auxiliar");
+
     //const [globalPersonalInterno, setGlobalPersonalInterno] = useGlobalState("personalInterno");
 
     console.log("globalPersonalInterno", globalPersonalInterno);
@@ -164,7 +180,7 @@ export default function PersonalInterno() {
         try {
             const docuRef = doc(firestore, `proyectos-investigacion/${correoUsuario}`)
             await updateDoc(docuRef, {
-                personalInterno: {
+                ["personalInterno"+globalAuxiliar]: {
                     ...formData
                 }
             })
@@ -180,7 +196,19 @@ export default function PersonalInterno() {
 
         routeChange()
 }
+useEffect(() => {
+    getAllNodes();
+}, []);
 
+const getAllNodes = () => {
+    getAux().then((response) => {
+        setNodes(response);
+        setLoading(false);
+    });
+};
+if (isLoading) {
+    return <div className="App">Cargando...</div>;
+}
 return (
     <div className="personal-interno">
         <div className="main-body">

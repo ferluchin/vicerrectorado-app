@@ -45,12 +45,13 @@ import { Button } from "reactstrap";
 
 
 import "./resumenPresupuesto.scss"
-
+const db = getFirestore();
 const firestore = getFirestore(app);
 
 
 export default function ResumenPresupuesto() {
-
+    const [nodes, setNodes] = useState({});
+    const [isLoading, setLoading] = useState(true);
     const { currentUser } = useContext(AuthContext)
 
     const correoUsuario = currentUser.email;
@@ -80,6 +81,7 @@ export default function ResumenPresupuesto() {
 
     //const [formData, setFormData] = React.useState({ ...formInicial })
     const [formData, setFormData] = React.useState({ ...globalResumenPresupuesto } ? { ...globalResumenPresupuesto } : { ...formInicial })
+    const [globalAuxiliar, setGlobalAuxiliar] = useGlobalState("auxiliar");
 
 
     function logeoDatos(event) {
@@ -97,7 +99,19 @@ export default function ResumenPresupuesto() {
             }
         })
     }
+    async function  getAux(){
+        var docRef = doc(db, `proyectos-investigacion/${correoUsuario}`);
+        //var docRef = collection(db, "proyectos-investigacion", `${correoUsuario}`);
+        const docSnap = await getDoc(docRef);
 
+        if (docSnap.exists()) {
+            console.log("Document data:", docSnap.data().contador);
+            setGlobalAuxiliar(docSnap.data().contador)
+          } else {
+            // doc.data() will be undefined in this case
+            console.log("No such document!");
+          }
+    }
     const handleSubmit = async (event) => {
         event.preventDefault();
         // submitToApi(formData)
@@ -106,7 +120,7 @@ export default function ResumenPresupuesto() {
 
             const docuRef = doc(firestore, `proyectos-investigacion/${correoUsuario}` )
             await updateDoc(docuRef, {
-                resumenPresupuesto: {
+                ["resumenPresupuesto"+globalAuxiliar]: {
                     ...formData
                 }
             })
@@ -127,7 +141,19 @@ export default function ResumenPresupuesto() {
 
         routeChange();
     }
+    useEffect(() => {
+        getAllNodes();
+    }, []);
 
+    const getAllNodes = () => {
+        getAux().then((response) => {
+            setNodes(response);
+            setLoading(false);
+        });
+    };
+    if (isLoading) {
+        return <div className="App">Cargando...</div>;
+    }
     return (
         <div className="resumen-presupuesto">
             <div className="main-body">

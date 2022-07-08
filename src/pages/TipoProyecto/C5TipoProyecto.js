@@ -27,7 +27,9 @@ import { setGlobalState, useGlobalState } from "../../Helper/Context";
 const db = getFirestore(app);
 
 export default function TipoProyecto() {
-
+    
+    const [nodes, setNodes] = useState({});
+    const [isLoading, setLoading] = useState(true);
     const { currentUser } = useContext(AuthContext)
 
     const correoUsuario = currentUser.email;
@@ -57,12 +59,25 @@ export default function TipoProyecto() {
     }
 
     const [globalTipoProyecto, setGlobalTipoProyecto] = useGlobalState("tipoProyecto");
+    const [globalAuxiliar, setGlobalAuxiliar] = useGlobalState("auxiliar");
 
     //const [formData, setFormData] = React.useState({ ...formInicial });
 
     const [formData, setFormData] = useState({ ...globalTipoProyecto } ? { ...globalTipoProyecto } : { ...formInicial })
 
+    async function  getAux(){
+        var docRef = doc(db, `proyectos-investigacion/${correoUsuario}`);
+        //var docRef = collection(db, "proyectos-investigacion", `${correoUsuario}`);
+        const docSnap = await getDoc(docRef);
 
+        if (docSnap.exists()) {
+            console.log("Document data:", docSnap.data().contador);
+            setGlobalAuxiliar(docSnap.data().contador)
+          } else {
+            // doc.data() will be undefined in this case
+            console.log("No such document!");
+          }
+    }
     function handleChange(event) {
         const { name, value, type, checked } = event.target
         setFormData(prevFormData => {
@@ -94,7 +109,7 @@ export default function TipoProyecto() {
 
             const docuRef = doc(db, `proyectos-investigacion/${correoUsuario}`)
             await updateDoc(docuRef, {
-                tipoProyecto: {
+                ["tipoProyecto"+globalAuxiliar]: {
                     ...formData
                 }
             })
@@ -108,7 +123,19 @@ export default function TipoProyecto() {
         
         routeChange()
     }
+    useEffect(() => {
+        getAllNodes();
+    }, []);
 
+    const getAllNodes = () => {
+        getAux().then((response) => {
+            setNodes(response);
+            setLoading(false);
+        });
+    };
+    if (isLoading) {
+        return <div className="App">Cargando...</div>;
+    }
     return (
         <div className="tipo-proyecto">
             <div className="main-body">

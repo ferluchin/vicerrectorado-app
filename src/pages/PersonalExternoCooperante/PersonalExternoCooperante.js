@@ -34,12 +34,14 @@ import { setGlobalState, useGlobalState } from "../../Helper/Context";
 
 
 import { AuthContext } from "../../context/AuthContext";
+const db = getFirestore();
 
 const firestore = getFirestore(app)
 
 export default function PersonalExternoCooperante(props) {
 
-
+    const [nodes, setNodes] = useState({});
+    const [isLoading, setLoading] = useState(true);
     let navigate = useNavigate();
 
     const routeChange = () => {
@@ -77,6 +79,7 @@ export default function PersonalExternoCooperante(props) {
     }
 
     const [globalPersonalExternoCooperante, setGlobalPersonalExternoCooperante] = useGlobalState("personalExternoCooperante");
+    const [globalAuxiliar, setGlobalAuxiliar] = useGlobalState("auxiliar");
 
     const [formData, setFormData] = useState({ ...globalPersonalExternoCooperante } ? { ...globalPersonalExternoCooperante } : { ...formInicial })
     //const [formData, setFormData] = useState({ ...formInicial })
@@ -91,7 +94,19 @@ export default function PersonalExternoCooperante(props) {
             }
         })
     }
+    async function  getAux(){
+        var docRef = doc(db, `proyectos-investigacion/${correoUsuario}`);
+        //var docRef = collection(db, "proyectos-investigacion", `${correoUsuario}`);
+        const docSnap = await getDoc(docRef);
 
+        if (docSnap.exists()) {
+            console.log("Document data:", docSnap.data().contador);
+            setGlobalAuxiliar(docSnap.data().contador)
+          } else {
+            // doc.data() will be undefined in this case
+            console.log("No such document!");
+          }
+    }
     const handleSubmit = async (event) => {
         event.preventDefault();
 
@@ -99,7 +114,7 @@ export default function PersonalExternoCooperante(props) {
             const docuRef = doc(firestore, `proyectos-investigacion/${correoUsuario}`)
             //setDoc(baseDocRef, { informacionGeneral: { status: "Borrador" } }, { merge: true });
             updateDoc(docuRef, {
-                personalExternoCooperante: {
+                ["personalExternoCooperante"+globalAuxiliar]: {
                     ...formData
                 }
             }
@@ -117,7 +132,19 @@ export default function PersonalExternoCooperante(props) {
 
         routeChange()
     }
+    useEffect(() => {
+        getAllNodes();
+    }, []);
 
+    const getAllNodes = () => {
+        getAux().then((response) => {
+            setNodes(response);
+            setLoading(false);
+        });
+    };
+    if (isLoading) {
+        return <div className="App">Cargando...</div>;
+    }
     return (
         <div className="personal-externo-cooperante">
             <div className="main-body">
