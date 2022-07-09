@@ -106,7 +106,7 @@ export default function PersonalInterno() {
         let path = `/personal-externo-cooperante`;
         navigate(path);
     }
-    async function  getAux(){
+    async function getAux() {
         var docRef = doc(db, `proyectos-investigacion/${correoUsuario}`);
         //var docRef = collection(db, "proyectos-investigacion", `${correoUsuario}`);
         const docSnap = await getDoc(docRef);
@@ -114,10 +114,10 @@ export default function PersonalInterno() {
         if (docSnap.exists()) {
             console.log("Document data:", docSnap.data().contador);
             setGlobalAuxiliar(docSnap.data().contador)
-          } else {
+        } else {
             // doc.data() will be undefined in this case
             console.log("No such document!");
-          }
+        }
     }
     const [globalPersonalInterno, setGlobalPersonalInterno] = useGlobalState("personalInterno");
     const [globalAuxiliar, setGlobalAuxiliar] = useGlobalState("auxiliar");
@@ -132,7 +132,7 @@ export default function PersonalInterno() {
     //const [data, setData] = useState(dataPersonalInicial);
     //const [data, setData] = React.useState({ ...[globalPersonalInterno.idPersonalInterno] } ? { ...[globalPersonalInterno.idPersonalInterno] } : { ...dataPersonalInicial })
     //const [data, setData] = useState([{ ...dataFirebase }] ? [{ ...dataFirebase }] : { ...dataPersonalInicial })
-    
+
     const [formData, setFormData] = useState({ ...globalPersonalInterno } ? { ...globalPersonalInterno } : { ...dataPersonalInicial })
 
     //const [data, setData] = useState([...dataFirebase] ? [...dataFirebase] : { ...dataPersonalInicial })
@@ -179,8 +179,8 @@ export default function PersonalInterno() {
 
         try {
             const docuRef = doc(firestore, `proyectos-investigacion/${correoUsuario}`)
-            await updateDoc(docuRef, {
-                ["personalInterno"+globalAuxiliar]: {
+            updateDoc(docuRef, {
+                ["personalInterno" + globalAuxiliar]: {
                     ...formData
                 }
             })
@@ -189,582 +189,582 @@ export default function PersonalInterno() {
         }
         //consolaPersonalInterno();
 
-        setGlobalPersonalInterno(...formData );
+        setGlobalPersonalInterno(...formData);
 
         console.log("globalPersonalInterno", globalPersonalInterno);
 
 
         routeChange()
-}
-useEffect(() => {
-    getAllNodes();
-}, []);
+    }
+    useEffect(() => {
+        getAllNodes();
+    }, []);
 
-const getAllNodes = () => {
-    getAux().then((response) => {
-        setNodes(response);
-        setLoading(false);
-    });
-};
-if (isLoading) {
-    return <div className="App">Cargando...</div>;
-}
-return (
-    <div className="personal-interno">
-        <div className="main-body">
-            <Split
-                sizes={[20, 80]}
-                direction="horizontal"
-                className="split"
-                minSize={100}
-                expandToMin={false}
-                dragInterval={1}
-                cursor="col-resize"
-            >
-                <Sidebar
-                />
-                <section>
-                    <form
-                        className="form"
-                        onSubmit={handleSubmit}
-                    >
-                        <TitleBar />
-                        {/* <NavBar /> */}
-
-                        <div
-                            //className="App"
-                            className="col-12"
-
+    const getAllNodes = () => {
+        getAux().then((response) => {
+            setNodes(response);
+            setLoading(false);
+        });
+    };
+    if (isLoading) {
+        return <div className="App">Cargando...</div>;
+    }
+    return (
+        <div className="personal-interno">
+            <div className="main-body">
+                <Split
+                    sizes={[20, 80]}
+                    direction="horizontal"
+                    className="split"
+                    minSize={100}
+                    expandToMin={false}
+                    dragInterval={1}
+                    cursor="col-resize"
+                >
+                    <Sidebar
+                    />
+                    <section>
+                        <form
+                            className="form"
+                            onSubmit={handleSubmit}
                         >
-                            <h2>
-                                Equipo del Proyecto - Personal Interno
-                            </h2>
-                            <br />
+                            <TitleBar />
+                            {/* <NavBar /> */}
 
-                
-                            <br />
-                        </div>
-                        <div className="container">
-                            <div className="row">
-                                <div className="col-2">
-                                    <label>
-                                        ROL
-                                    </label>
-                                </div>
+                            <div
+                                //className="App"
+                                className="col-12"
 
-                                <div className="col-2">
-                                    <label>
-                                        Tipo
-                                    </label>
-                                </div>
-                                <div className="col-2">
-                                    <label>
-                                        Investigadores Acreditados Senescyt
-                                    </label>
-                                </div>
+                            >
+                                <h2>
+                                    Equipo del Proyecto - Personal Interno
+                                </h2>
+                                <br />
 
-                                <div className="col-2">
-                                    <label>
-                                        Identificación
-                                    </label>
-                                </div>
 
-                                <div className="col-2">
-                                    <label>
-                                        Nombres y Apellidos
-                                    </label>
-                                </div>
-
-                                <div className="col-1">
-                                    <label>
-                                        Horas semanales de Participación
-                                    </label>
-                                </div>
-
-                                <div className="col-1">
-                                    <label>
-                                        Total horas Participación
-                                    </label>
-                                </div>
+                                <br />
                             </div>
-                        </div>
+                            <div className="container">
+                                <div className="row">
+                                    <div className="col-2">
+                                        <label>
+                                            ROL
+                                        </label>
+                                    </div>
 
-                        <hr />
-                        <div className="container">
-                            <div className="row">
-                                <div className="col-2">
-                                    <select
-                                        id="rolPersonalInterno1"
-                                        value={formData.rolPersonalInterno1}
-                                        onChange={handleChange}
-                                        name="rolPersonalInterno1"
-                                        className="form-select"
-                                    >
-                                        <option value="">-- Elija un Elemento --</option>
-                                        <option value="Dirección">Dirección</option>
-                                        <option value="Co-Dirección">Co-Dirección</option>
-                                        <option value="Participación">Participación</option>
-                                    </select>
-                                </div>
+                                    <div className="col-2">
+                                        <label>
+                                            Tipo
+                                        </label>
+                                    </div>
+                                    <div className="col-2">
+                                        <label>
+                                            Investigadores Acreditados Senescyt
+                                        </label>
+                                    </div>
 
-                                <div className="col-2">
-                                    <select
-                                        id="tipoPersonalInterno1"
-                                        value={formData.tipoPersonalInterno1}
-                                        onChange={handleChange}
-                                        name="tipoPersonalInterno1"
-                                        className="form-select"
-                                    >
-                                        <option value="">-- Elija un Elemento --</option>
-                                        <option value="Docente a tiempo completo">Docente a tiempo completo</option>
-                                        <option value="Estudiante">Estudiante</option>
-                                        <option value="Técnico Docente">Técnico Docente</option>
-                                    </select>
-                                </div>
-                                <div className="col-2">
-                                    <select
-                                        id="senescyt1"
-                                        value={formData.senescyt1}
-                                        onChange={handleChange}
-                                        name="senescyt1"
-                                        className="form-select"
-                                    >
-                                        <option value="">-- Elija un Elemento --</option>
-                                        <option value="SI">SI</option>
-                                        <option value="NO">NO</option>
-                                    </select>
-                                </div>
+                                    <div className="col-2">
+                                        <label>
+                                            Identificación
+                                        </label>
+                                    </div>
 
-                                <div className="col-2">
-                                    <input
-                                        type="number"
-                                        placeholder="0000000000"
-                                        className="form-control"
-                                        name="identificacionPersonalInterno1"
-                                        onChange={handleChange}
-                                        value={formData.identificacionPersonalInterno1}
-                                    />
-                                </div>
+                                    <div className="col-2">
+                                        <label>
+                                            Nombres y Apellidos
+                                        </label>
+                                    </div>
 
-                                <div className="col-2">
-                                    <input
-                                        type="text"
-                                        placeholder="Ingresar Texto"
-                                        className="form-control"
-                                        name="nombrePersonalInterno1"
-                                        onChange={handleChange}
-                                        value={formData.nombrePersonalInterno1}
-                                    />
-                                </div>
+                                    <div className="col-1">
+                                        <label>
+                                            Horas semanales de Participación
+                                        </label>
+                                    </div>
 
-                                <div className="col-1">
-                                    <input
-                                        type="number"
-                                        placeholder="00"
-                                        min={0}
-                                        className="form-control"
-                                        name="horasSemanalesPersonalInterno1"
-                                        onChange={handleChange}
-                                        value={formData.horasSemanalesPersonalInterno1}                                    />
-                                </div>
-
-                                <div className="col-1">
-                                    <input
-                                        type="number"
-                                        placeholder="00"
-                                        min={0}
-                                        className="form-control"
-                                        name="horasTotalesPersonalInterno1"
-                                        onChange={handleChange}
-                                        value={formData.horasTotalesPersonalInterno1}
-                                    />
+                                    <div className="col-1">
+                                        <label>
+                                            Total horas Participación
+                                        </label>
+                                    </div>
                                 </div>
                             </div>
 
+                            <hr />
+                            <div className="container">
+                                <div className="row">
+                                    <div className="col-2">
+                                        <select
+                                            id="rolPersonalInterno1"
+                                            value={formData.rolPersonalInterno1}
+                                            onChange={handleChange}
+                                            name="rolPersonalInterno1"
+                                            className="form-select"
+                                        >
+                                            <option value="">-- Elija un Elemento --</option>
+                                            <option value="Dirección">Dirección</option>
+                                            <option value="Co-Dirección">Co-Dirección</option>
+                                            <option value="Participación">Participación</option>
+                                        </select>
+                                    </div>
 
-                            
-                            <br />
+                                    <div className="col-2">
+                                        <select
+                                            id="tipoPersonalInterno1"
+                                            value={formData.tipoPersonalInterno1}
+                                            onChange={handleChange}
+                                            name="tipoPersonalInterno1"
+                                            className="form-select"
+                                        >
+                                            <option value="">-- Elija un Elemento --</option>
+                                            <option value="Docente a tiempo completo">Docente a tiempo completo</option>
+                                            <option value="Estudiante">Estudiante</option>
+                                            <option value="Técnico Docente">Técnico Docente</option>
+                                        </select>
+                                    </div>
+                                    <div className="col-2">
+                                        <select
+                                            id="senescyt1"
+                                            value={formData.senescyt1}
+                                            onChange={handleChange}
+                                            name="senescyt1"
+                                            className="form-select"
+                                        >
+                                            <option value="">-- Elija un Elemento --</option>
+                                            <option value="SI">SI</option>
+                                            <option value="NO">NO</option>
+                                        </select>
+                                    </div>
 
-                            <div className="row">
-                                <div className="col-2">
-                                    <select
-                                        id="rolPersonalInterno2"
-                                        value={formData.rolPersonalInterno2}
-                                        onChange={handleChange}
-                                        name="rolPersonalInterno2"
-                                        className="form-select"
-                                    >
-                                        <option value="">-- Elija un Elemento --</option>
-                                        <option value="Dirección">Dirección</option>
-                                        <option value="Co-Dirección">Co-Dirección</option>
-                                        <option value="Participación">Participación</option>
-                                    </select>
+                                    <div className="col-2">
+                                        <input
+                                            type="number"
+                                            placeholder="0000000000"
+                                            className="form-control"
+                                            name="identificacionPersonalInterno1"
+                                            onChange={handleChange}
+                                            value={formData.identificacionPersonalInterno1}
+                                        />
+                                    </div>
+
+                                    <div className="col-2">
+                                        <input
+                                            type="text"
+                                            placeholder="Ingresar Texto"
+                                            className="form-control"
+                                            name="nombrePersonalInterno1"
+                                            onChange={handleChange}
+                                            value={formData.nombrePersonalInterno1}
+                                        />
+                                    </div>
+
+                                    <div className="col-1">
+                                        <input
+                                            type="number"
+                                            placeholder="00"
+                                            min={0}
+                                            className="form-control"
+                                            name="horasSemanalesPersonalInterno1"
+                                            onChange={handleChange}
+                                            value={formData.horasSemanalesPersonalInterno1} />
+                                    </div>
+
+                                    <div className="col-1">
+                                        <input
+                                            type="number"
+                                            placeholder="00"
+                                            min={0}
+                                            className="form-control"
+                                            name="horasTotalesPersonalInterno1"
+                                            onChange={handleChange}
+                                            value={formData.horasTotalesPersonalInterno1}
+                                        />
+                                    </div>
                                 </div>
 
-                                <div className="col-2">
-                                    <select
-                                        id="tipoPersonalInterno2"
-                                        value={formData.tipoPersonalInterno2}
-                                        onChange={handleChange}
-                                        name="tipoPersonalInterno2"
-                                        className="form-select"
-                                    >
-                                        <option value="">-- Elija un Elemento --</option>
-                                        <option value="Docente a tiempo completo">Docente a tiempo completo</option>
-                                        <option value="Estudiante">Estudiante</option>
-                                        <option value="Técnico Docente">Técnico Docente</option>
-                                    </select>
-                                </div>
-                                <div className="col-2">
-                                    <select
-                                        id="senescyt2"
-                                        value={formData.senescyt2}
-                                        onChange={handleChange}
-                                        name="senescyt2"
-                                        className="form-select"
-                                    >
-                                        <option value="">-- Elija un Elemento --</option>
-                                        <option value="SI">SI</option>
-                                        <option value="NO">NO</option>
-                                    </select>
+
+
+                                <br />
+
+                                <div className="row">
+                                    <div className="col-2">
+                                        <select
+                                            id="rolPersonalInterno2"
+                                            value={formData.rolPersonalInterno2}
+                                            onChange={handleChange}
+                                            name="rolPersonalInterno2"
+                                            className="form-select"
+                                        >
+                                            <option value="">-- Elija un Elemento --</option>
+                                            <option value="Dirección">Dirección</option>
+                                            <option value="Co-Dirección">Co-Dirección</option>
+                                            <option value="Participación">Participación</option>
+                                        </select>
+                                    </div>
+
+                                    <div className="col-2">
+                                        <select
+                                            id="tipoPersonalInterno2"
+                                            value={formData.tipoPersonalInterno2}
+                                            onChange={handleChange}
+                                            name="tipoPersonalInterno2"
+                                            className="form-select"
+                                        >
+                                            <option value="">-- Elija un Elemento --</option>
+                                            <option value="Docente a tiempo completo">Docente a tiempo completo</option>
+                                            <option value="Estudiante">Estudiante</option>
+                                            <option value="Técnico Docente">Técnico Docente</option>
+                                        </select>
+                                    </div>
+                                    <div className="col-2">
+                                        <select
+                                            id="senescyt2"
+                                            value={formData.senescyt2}
+                                            onChange={handleChange}
+                                            name="senescyt2"
+                                            className="form-select"
+                                        >
+                                            <option value="">-- Elija un Elemento --</option>
+                                            <option value="SI">SI</option>
+                                            <option value="NO">NO</option>
+                                        </select>
+                                    </div>
+
+                                    <div className="col-2">
+                                        <input
+                                            type="number"
+                                            placeholder="0000000000"
+                                            className="form-control"
+                                            name="identificacionPersonalInterno2"
+                                            onChange={handleChange}
+                                            value={formData.identificacionPersonalInterno2}
+                                        />
+                                    </div>
+
+                                    <div className="col-2">
+                                        <input
+                                            type="text"
+                                            placeholder="Ingresar Texto"
+                                            className="form-control"
+                                            name="nombrePersonalInterno2"
+                                            onChange={handleChange}
+                                            value={formData.nombrePersonalInterno2}
+                                        />
+                                    </div>
+
+                                    <div className="col-1">
+                                        <input
+                                            type="number"
+                                            placeholder="00"
+                                            min={0}
+                                            className="form-control"
+                                            name="horasSemanalesPersonalInterno2"
+                                            onChange={handleChange}
+                                            value={formData.horasSemanalesPersonalInterno2} />
+                                    </div>
+
+                                    <div className="col-1">
+                                        <input
+                                            type="number"
+                                            placeholder="00"
+                                            min={0}
+                                            className="form-control"
+                                            name="horasTotalesPersonalInterno2"
+                                            onChange={handleChange}
+                                            value={formData.horasTotalesPersonalInterno2}
+                                        />
+                                    </div>
                                 </div>
 
-                                <div className="col-2">
-                                    <input
-                                        type="number"
-                                        placeholder="0000000000"
-                                        className="form-control"
-                                        name="identificacionPersonalInterno2"
-                                        onChange={handleChange}
-                                        value={formData.identificacionPersonalInterno2}
-                                    />
+                                <br />
+
+                                <div className="row">
+                                    <div className="col-2">
+                                        <select
+                                            id="rolPersonalInterno3"
+                                            value={formData.rolPersonalInterno3}
+                                            onChange={handleChange}
+                                            name="rolPersonalInterno3"
+                                            className="form-select"
+                                        >
+                                            <option value="">-- Elija un Elemento --</option>
+                                            <option value="Dirección">Dirección</option>
+                                            <option value="Co-Dirección">Co-Dirección</option>
+                                            <option value="Participación">Participación</option>
+                                        </select>
+                                    </div>
+
+                                    <div className="col-2">
+                                        <select
+                                            id="tipoPersonalInterno3"
+                                            value={formData.tipoPersonalInterno3}
+                                            onChange={handleChange}
+                                            name="tipoPersonalInterno3"
+                                            className="form-select"
+                                        >
+                                            <option value="">-- Elija un Elemento --</option>
+                                            <option value="Docente a tiempo completo">Docente a tiempo completo</option>
+                                            <option value="Estudiante">Estudiante</option>
+                                            <option value="Técnico Docente">Técnico Docente</option>
+                                        </select>
+                                    </div>
+                                    <div className="col-2">
+                                        <select
+                                            id="senescyt3"
+                                            value={formData.senescyt3}
+                                            onChange={handleChange}
+                                            name="senescyt3"
+                                            className="form-select"
+                                        >
+                                            <option value="">-- Elija un Elemento --</option>
+                                            <option value="SI">SI</option>
+                                            <option value="NO">NO</option>
+                                        </select>
+                                    </div>
+
+                                    <div className="col-2">
+                                        <input
+                                            type="number"
+                                            placeholder="0000000000"
+                                            className="form-control"
+                                            name="identificacionPersonalInterno3"
+                                            onChange={handleChange}
+                                            value={formData.identificacionPersonalInterno3}
+                                        />
+                                    </div>
+
+                                    <div className="col-2">
+                                        <input
+                                            type="text"
+                                            placeholder="Ingresar Texto"
+                                            className="form-control"
+                                            name="nombrePersonalInterno3"
+                                            onChange={handleChange}
+                                            value={formData.nombrePersonalInterno3}
+                                        />
+                                    </div>
+
+                                    <div className="col-1">
+                                        <input
+                                            type="number"
+                                            placeholder="00"
+                                            min={0}
+                                            className="form-control"
+                                            name="horasSemanalesPersonalInterno3"
+                                            onChange={handleChange}
+                                            value={formData.horasSemanalesPersonalInterno3} />
+                                    </div>
+
+                                    <div className="col-1">
+                                        <input
+                                            type="number"
+                                            placeholder="00"
+                                            min={0}
+                                            className="form-control"
+                                            name="horasTotalesPersonalInterno3"
+                                            onChange={handleChange}
+                                            value={formData.horasTotalesPersonalInterno3}
+                                        />
+                                    </div>
                                 </div>
 
-                                <div className="col-2">
-                                    <input
-                                        type="text"
-                                        placeholder="Ingresar Texto"
-                                        className="form-control"
-                                        name="nombrePersonalInterno2"
-                                        onChange={handleChange}
-                                        value={formData.nombrePersonalInterno2}
-                                    />
+                                <br />
+
+                                <div className="row">
+                                    <div className="col-2">
+                                        <select
+                                            id="rolPersonalInterno4"
+                                            value={formData.rolPersonalInterno4}
+                                            onChange={handleChange}
+                                            name="rolPersonalInterno4"
+                                            className="form-select"
+                                        >
+                                            <option value="">-- Elija un Elemento --</option>
+                                            <option value="Dirección">Dirección</option>
+                                            <option value="Co-Dirección">Co-Dirección</option>
+                                            <option value="Participación">Participación</option>
+                                        </select>
+                                    </div>
+
+                                    <div className="col-2">
+                                        <select
+                                            id="tipoPersonalInterno4"
+                                            value={formData.tipoPersonalInterno4}
+                                            onChange={handleChange}
+                                            name="tipoPersonalInterno4"
+                                            className="form-select"
+                                        >
+                                            <option value="">-- Elija un Elemento --</option>
+                                            <option value="Docente a tiempo completo">Docente a tiempo completo</option>
+                                            <option value="Estudiante">Estudiante</option>
+                                            <option value="Técnico Docente">Técnico Docente</option>
+                                        </select>
+                                    </div>
+                                    <div className="col-2">
+                                        <select
+                                            id="senescyt4"
+                                            value={formData.senescyt4}
+                                            onChange={handleChange}
+                                            name="senescyt4"
+                                            className="form-select"
+                                        >
+                                            <option value="">-- Elija un Elemento --</option>
+                                            <option value="SI">SI</option>
+                                            <option value="NO">NO</option>
+                                        </select>
+                                    </div>
+
+                                    <div className="col-2">
+                                        <input
+                                            type="number"
+                                            placeholder="0000000000"
+                                            className="form-control"
+                                            name="identificacionPersonalInterno4"
+                                            onChange={handleChange}
+                                            value={formData.identificacionPersonalInterno4}
+                                        />
+                                    </div>
+
+                                    <div className="col-2">
+                                        <input
+                                            type="text"
+                                            placeholder="Ingresar Texto"
+                                            className="form-control"
+                                            name="nombrePersonalInterno4"
+                                            onChange={handleChange}
+                                            value={formData.nombrePersonalInterno4}
+                                        />
+                                    </div>
+
+                                    <div className="col-1">
+                                        <input
+                                            type="number"
+                                            placeholder="00"
+                                            min={0}
+                                            className="form-control"
+                                            name="horasSemanalesPersonalInterno4"
+                                            onChange={handleChange}
+                                            value={formData.horasSemanalesPersonalInterno4} />
+                                    </div>
+
+                                    <div className="col-1">
+                                        <input
+                                            type="number"
+                                            placeholder="00"
+                                            min={0}
+                                            className="form-control"
+                                            name="horasTotalesPersonalInterno4"
+                                            onChange={handleChange}
+                                            value={formData.horasTotalesPersonalInterno4}
+                                        />
+                                    </div>
                                 </div>
 
-                                <div className="col-1">
-                                    <input
-                                        type="number"
-                                        placeholder="00"
-                                        min={0}
-                                        className="form-control"
-                                        name="horasSemanalesPersonalInterno2"
-                                        onChange={handleChange}
-                                        value={formData.horasSemanalesPersonalInterno2} />
+                                <br />
+
+                                <div className="row">
+                                    <div className="col-2">
+                                        <select
+                                            id="rolPersonalInterno5"
+                                            value={formData.rolPersonalInterno5}
+                                            onChange={handleChange}
+                                            name="rolPersonalInterno5"
+                                            className="form-select"
+                                        >
+                                            <option value="">-- Elija un Elemento --</option>
+                                            <option value="Dirección">Dirección</option>
+                                            <option value="Co-Dirección">Co-Dirección</option>
+                                            <option value="Participación">Participación</option>
+                                        </select>
+                                    </div>
+
+                                    <div className="col-2">
+                                        <select
+                                            id="tipoPersonalInterno5"
+                                            value={formData.tipoPersonalInterno5}
+                                            onChange={handleChange}
+                                            name="tipoPersonalInterno5"
+                                            className="form-select"
+                                        >
+                                            <option value="">-- Elija un Elemento --</option>
+                                            <option value="Docente a tiempo completo">Docente a tiempo completo</option>
+                                            <option value="Estudiante">Estudiante</option>
+                                            <option value="Técnico Docente">Técnico Docente</option>
+                                        </select>
+                                    </div>
+                                    <div className="col-2">
+                                        <select
+                                            id="senescyt5"
+                                            value={formData.senescyt5}
+                                            onChange={handleChange}
+                                            name="senescyt5"
+                                            className="form-select"
+                                        >
+                                            <option value="">-- Elija un Elemento --</option>
+                                            <option value="SI">SI</option>
+                                            <option value="NO">NO</option>
+                                        </select>
+                                    </div>
+
+                                    <div className="col-2">
+                                        <input
+                                            type="number"
+                                            placeholder="0000000000"
+                                            className="form-control"
+                                            name="identificacionPersonalInterno5"
+                                            onChange={handleChange}
+                                            value={formData.identificacionPersonalInterno5}
+                                        />
+                                    </div>
+
+                                    <div className="col-2">
+                                        <input
+                                            type="text"
+                                            placeholder="Ingresar Texto"
+                                            className="form-control"
+                                            name="nombrePersonalInterno5"
+                                            onChange={handleChange}
+                                            value={formData.nombrePersonalInterno5}
+                                        />
+                                    </div>
+
+                                    <div className="col-1">
+                                        <input
+                                            type="number"
+                                            placeholder="00"
+                                            min={0}
+                                            className="form-control"
+                                            name="horasSemanalesPersonalInterno5"
+                                            onChange={handleChange}
+                                            value={formData.horasSemanalesPersonalInterno5} />
+                                    </div>
+
+                                    <div className="col-1">
+                                        <input
+                                            type="number"
+                                            placeholder="00"
+                                            min={0}
+                                            className="form-control"
+                                            name="horasTotalesPersonalInterno5"
+                                            onChange={handleChange}
+                                            value={formData.horasTotalesPersonalInterno5}
+                                        />
+                                    </div>
                                 </div>
 
-                                <div className="col-1">
-                                    <input
-                                        type="number"
-                                        placeholder="00"
-                                        min={0}
-                                        className="form-control"
-                                        name="horasTotalesPersonalInterno2"
-                                        onChange={handleChange}
-                                        value={formData.horasTotalesPersonalInterno2}
-                                    />
-                                </div>
                             </div>
 
                             <br />
+                            <button
+                                className="btn btn-primary"
+                            >
+                                Enviar Información
+                            </button>
+                        </form>
+                    </section>
+                </Split>
+            </div>
 
-                            <div className="row">
-                                <div className="col-2">
-                                    <select
-                                        id="rolPersonalInterno3"
-                                        value={formData.rolPersonalInterno3}
-                                        onChange={handleChange}
-                                        name="rolPersonalInterno3"
-                                        className="form-select"
-                                    >
-                                        <option value="">-- Elija un Elemento --</option>
-                                        <option value="Dirección">Dirección</option>
-                                        <option value="Co-Dirección">Co-Dirección</option>
-                                        <option value="Participación">Participación</option>
-                                    </select>
-                                </div>
-
-                                <div className="col-2">
-                                    <select
-                                        id="tipoPersonalInterno3"
-                                        value={formData.tipoPersonalInterno3}
-                                        onChange={handleChange}
-                                        name="tipoPersonalInterno3"
-                                        className="form-select"
-                                    >
-                                        <option value="">-- Elija un Elemento --</option>
-                                        <option value="Docente a tiempo completo">Docente a tiempo completo</option>
-                                        <option value="Estudiante">Estudiante</option>
-                                        <option value="Técnico Docente">Técnico Docente</option>
-                                    </select>
-                                </div>
-                                <div className="col-2">
-                                    <select
-                                        id="senescyt3"
-                                        value={formData.senescyt3}
-                                        onChange={handleChange}
-                                        name="senescyt3"
-                                        className="form-select"
-                                    >
-                                        <option value="">-- Elija un Elemento --</option>
-                                        <option value="SI">SI</option>
-                                        <option value="NO">NO</option>
-                                    </select>
-                                </div>
-
-                                <div className="col-2">
-                                    <input
-                                        type="number"
-                                        placeholder="0000000000"
-                                        className="form-control"
-                                        name="identificacionPersonalInterno3"
-                                        onChange={handleChange}
-                                        value={formData.identificacionPersonalInterno3}
-                                    />
-                                </div>
-
-                                <div className="col-2">
-                                    <input
-                                        type="text"
-                                        placeholder="Ingresar Texto"
-                                        className="form-control"
-                                        name="nombrePersonalInterno3"
-                                        onChange={handleChange}
-                                        value={formData.nombrePersonalInterno3}
-                                    />
-                                </div>
-
-                                <div className="col-1">
-                                    <input
-                                        type="number"
-                                        placeholder="00"
-                                        min={0}
-                                        className="form-control"
-                                        name="horasSemanalesPersonalInterno3"
-                                        onChange={handleChange}
-                                        value={formData.horasSemanalesPersonalInterno3} />
-                                </div>
-
-                                <div className="col-1">
-                                    <input
-                                        type="number"
-                                        placeholder="00"
-                                        min={0}
-                                        className="form-control"
-                                        name="horasTotalesPersonalInterno3"
-                                        onChange={handleChange}
-                                        value={formData.horasTotalesPersonalInterno3}
-                                    />
-                                </div>
-                            </div>
-
-                            <br />
-
-                            <div className="row">
-                                <div className="col-2">
-                                    <select
-                                        id="rolPersonalInterno4"
-                                        value={formData.rolPersonalInterno4}
-                                        onChange={handleChange}
-                                        name="rolPersonalInterno4"
-                                        className="form-select"
-                                    >
-                                        <option value="">-- Elija un Elemento --</option>
-                                        <option value="Dirección">Dirección</option>
-                                        <option value="Co-Dirección">Co-Dirección</option>
-                                        <option value="Participación">Participación</option>
-                                    </select>
-                                </div>
-
-                                <div className="col-2">
-                                    <select
-                                        id="tipoPersonalInterno4"
-                                        value={formData.tipoPersonalInterno4}
-                                        onChange={handleChange}
-                                        name="tipoPersonalInterno4"
-                                        className="form-select"
-                                    >
-                                        <option value="">-- Elija un Elemento --</option>
-                                        <option value="Docente a tiempo completo">Docente a tiempo completo</option>
-                                        <option value="Estudiante">Estudiante</option>
-                                        <option value="Técnico Docente">Técnico Docente</option>
-                                    </select>
-                                </div>
-                                <div className="col-2">
-                                    <select
-                                        id="senescyt4"
-                                        value={formData.senescyt4}
-                                        onChange={handleChange}
-                                        name="senescyt4"
-                                        className="form-select"
-                                    >
-                                        <option value="">-- Elija un Elemento --</option>
-                                        <option value="SI">SI</option>
-                                        <option value="NO">NO</option>
-                                    </select>
-                                </div>
-
-                                <div className="col-2">
-                                    <input
-                                        type="number"
-                                        placeholder="0000000000"
-                                        className="form-control"
-                                        name="identificacionPersonalInterno4"
-                                        onChange={handleChange}
-                                        value={formData.identificacionPersonalInterno4}
-                                    />
-                                </div>
-
-                                <div className="col-2">
-                                    <input
-                                        type="text"
-                                        placeholder="Ingresar Texto"
-                                        className="form-control"
-                                        name="nombrePersonalInterno4"
-                                        onChange={handleChange}
-                                        value={formData.nombrePersonalInterno4}
-                                    />
-                                </div>
-
-                                <div className="col-1">
-                                    <input
-                                        type="number"
-                                        placeholder="00"
-                                        min={0}
-                                        className="form-control"
-                                        name="horasSemanalesPersonalInterno4"
-                                        onChange={handleChange}
-                                        value={formData.horasSemanalesPersonalInterno4} />
-                                </div>
-
-                                <div className="col-1">
-                                    <input
-                                        type="number"
-                                        placeholder="00"
-                                        min={0}
-                                        className="form-control"
-                                        name="horasTotalesPersonalInterno4"
-                                        onChange={handleChange}
-                                        value={formData.horasTotalesPersonalInterno4}
-                                    />
-                                </div>
-                            </div>
-
-                            <br />
-
-                            <div className="row">
-                                <div className="col-2">
-                                    <select
-                                        id="rolPersonalInterno5"
-                                        value={formData.rolPersonalInterno5}
-                                        onChange={handleChange}
-                                        name="rolPersonalInterno5"
-                                        className="form-select"
-                                    >
-                                        <option value="">-- Elija un Elemento --</option>
-                                        <option value="Dirección">Dirección</option>
-                                        <option value="Co-Dirección">Co-Dirección</option>
-                                        <option value="Participación">Participación</option>
-                                    </select>
-                                </div>
-
-                                <div className="col-2">
-                                    <select
-                                        id="tipoPersonalInterno5"
-                                        value={formData.tipoPersonalInterno5}
-                                        onChange={handleChange}
-                                        name="tipoPersonalInterno5"
-                                        className="form-select"
-                                    >
-                                        <option value="">-- Elija un Elemento --</option>
-                                        <option value="Docente a tiempo completo">Docente a tiempo completo</option>
-                                        <option value="Estudiante">Estudiante</option>
-                                        <option value="Técnico Docente">Técnico Docente</option>
-                                    </select>
-                                </div>
-                                <div className="col-2">
-                                    <select
-                                        id="senescyt5"
-                                        value={formData.senescyt5}
-                                        onChange={handleChange}
-                                        name="senescyt5"
-                                        className="form-select"
-                                    >
-                                        <option value="">-- Elija un Elemento --</option>
-                                        <option value="SI">SI</option>
-                                        <option value="NO">NO</option>
-                                    </select>
-                                </div>
-
-                                <div className="col-2">
-                                    <input
-                                        type="number"
-                                        placeholder="0000000000"
-                                        className="form-control"
-                                        name="identificacionPersonalInterno5"
-                                        onChange={handleChange}
-                                        value={formData.identificacionPersonalInterno5}
-                                    />
-                                </div>
-
-                                <div className="col-2">
-                                    <input
-                                        type="text"
-                                        placeholder="Ingresar Texto"
-                                        className="form-control"
-                                        name="nombrePersonalInterno5"
-                                        onChange={handleChange}
-                                        value={formData.nombrePersonalInterno5}
-                                    />
-                                </div>
-
-                                <div className="col-1">
-                                    <input
-                                        type="number"
-                                        placeholder="00"
-                                        min={0}
-                                        className="form-control"
-                                        name="horasSemanalesPersonalInterno5"
-                                        onChange={handleChange}
-                                        value={formData.horasSemanalesPersonalInterno5} />
-                                </div>
-
-                                <div className="col-1">
-                                    <input
-                                        type="number"
-                                        placeholder="00"
-                                        min={0}
-                                        className="form-control"
-                                        name="horasTotalesPersonalInterno5"
-                                        onChange={handleChange}
-                                        value={formData.horasTotalesPersonalInterno5}
-                                    />
-                                </div>
-                            </div>
-
-                        </div>
-
-                        <br />
-                        <button
-                            className="btn btn-primary"
-                        >
-                            Enviar Información
-                        </button>
-                    </form>
-                </section>
-            </Split>
         </div>
 
-    </div>
-
-)
+    )
 }

@@ -83,7 +83,7 @@ const data = [
 ]
 
 export default function Home() {
-    
+
     const [nodes, setNodes] = useState({});
     const [isLoading, setLoading] = useState(true);
     // Codigo autocomplete docentes
@@ -187,20 +187,23 @@ export default function Home() {
         console.log("esta es la variable bandera", globalAuxiliar)
 
     }
-    async function  getAux(){
+    async function getAux() {
         var docRef = doc(db, `proyectos-investigacion/${correoUsuario}`);
         //var docRef = collection(db, "proyectos-investigacion", `${correoUsuario}`);
         const docSnap = await getDoc(docRef);
 
         if (docSnap.exists()) {
-            console.log("Document data:", docSnap.data().contador);
-            setGlobalAuxiliar(docSnap.data().contador)
-          } else {
+            // console.log("Document data:", docSnap.data().contador);
+            // setGlobalAuxiliar(docSnap.data().contador)
+
+            console.log("Document data:", docSnap.data().auxiliar);
+            setGlobalAuxiliar(docSnap.data().auxiliar)
+        } else {
             // doc.data() will be undefined in this case
             console.log("No such document!");
-          }
+        }
     }
-    
+
     //const correoUsuario = "lgrandab@gmail.com"
 
     let navigate = useNavigate();
@@ -254,6 +257,7 @@ export default function Home() {
         event.preventDefault();
 
         try {
+
             formData.nombreDirectorProyecto = docenteSeleccionado.nombre
             formData.identificacionDirectorProyecto = docenteSeleccionado.identificacion
             formData.telefonoDirectorProyecto = docenteSeleccionado.telefono
@@ -277,7 +281,7 @@ export default function Home() {
 
             updateDoc(docuRef, {
                 //["informacionGeneral"+globalAuxiliar]: {
-                    ["informacionGeneral"+globalAuxiliar]: {
+                ["informacionGeneral" + globalAuxiliar]: {
                     ...formData
                 }
             }

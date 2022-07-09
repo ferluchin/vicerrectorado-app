@@ -99,7 +99,7 @@ export default function ResumenPresupuesto() {
             }
         })
     }
-    async function  getAux(){
+    async function getAux() {
         var docRef = doc(db, `proyectos-investigacion/${correoUsuario}`);
         //var docRef = collection(db, "proyectos-investigacion", `${correoUsuario}`);
         const docSnap = await getDoc(docRef);
@@ -107,10 +107,10 @@ export default function ResumenPresupuesto() {
         if (docSnap.exists()) {
             console.log("Document data:", docSnap.data().contador);
             setGlobalAuxiliar(docSnap.data().contador)
-          } else {
+        } else {
             // doc.data() will be undefined in this case
             console.log("No such document!");
-          }
+        }
     }
     const handleSubmit = async (event) => {
         event.preventDefault();
@@ -118,9 +118,9 @@ export default function ResumenPresupuesto() {
 
         try {
 
-            const docuRef = doc(firestore, `proyectos-investigacion/${correoUsuario}` )
+            const docuRef = doc(firestore, `proyectos-investigacion/${correoUsuario}`)
             await updateDoc(docuRef, {
-                ["resumenPresupuesto"+globalAuxiliar]: {
+                ["resumenPresupuesto" + globalAuxiliar]: {
                     ...formData
                 }
             })
@@ -359,7 +359,7 @@ export default function ResumenPresupuesto() {
                             <br />
                             <button
                                 className="btn btn-primary"
-                               // onClick={routeChange}
+                            // onClick={routeChange}
                             //type="button"
                             >
                                 Enviar Información

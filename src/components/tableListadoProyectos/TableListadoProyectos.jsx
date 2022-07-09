@@ -23,6 +23,7 @@ import {
     setDoc,
     getDoc,
     getDocs,
+    updateDoc,
     query,
     where,
     getFirestore
@@ -69,9 +70,11 @@ const List = () => {
     const handleGlobalChange = (row) => {
         //setGlobalState("isLoggedIn", true);
         //() => update(() => true);
+
         const {
             id,
 
+            auxiliar,
             //INFORMACION GENERAL
             titulo,
             facultad,
@@ -306,7 +309,9 @@ const List = () => {
         console.log("🚀 ~ file: TableListadoProyectos.jsx ~ line 135 ~ handleGlobalChange ~ globalInformacionGeneral", globalInformacionGeneral)
         //console.log("🚀 ~ file: TableListadoProyectos.jsx ~ line 100 ~ handleGlobalChange ~ row", row)
         //update(() => !value)
-
+        saveAux();
+        console.log("AUXILIAR ", auxiliar)
+        
 
 
         //setGlobalInformacionGeneral((p) => ({ ...p, newFormData }));
@@ -340,7 +345,29 @@ const List = () => {
             }
         })
 
+        async function saveAux() {
+            try {
 
+                const docuRef5 = doc(db, `proyectos-investigacion/${correoUsuario}`)
+
+                //console.log(globalAuxiliar)
+                //setDoc(baseDocRef, { informacionGeneral: { status: "Borrador" } }, { merge: true });
+
+
+                updateDoc(docuRef5, {
+                    //["informacionGeneral"+globalAuxiliar]: {
+                    auxiliar:
+                        auxiliar
+
+                }
+                    //, { merge: true }
+                )
+
+            } catch (error) {
+                console.log(error)
+            }
+
+        }
         //console.log("🚀 ~ file: TableListadoProyectos.jsx ~ line 51 ~ handleGlobalChange ~ titulo", titulo)
 
         setGlobalAreasConocimiento(prevFormData => {
@@ -601,44 +628,15 @@ const List = () => {
         })
         console.log(row)
 
-        // console.log(
-        //     "🚀 ~ file: TableListadoProyectos.jsx ~ line 249 ~ handleGlobalChange ~ globalInformacionGeneral",
-        //     globalInformacionGeneral)
-
-        // console.log(
-        //     "🚀 ~ file: TableListadoProyectos.jsx ~ line 253 ~ handleGlobalChange ~ globalAreasConocimiento",
-        //     globalAreasConocimiento)
-
-        // console.log(
-        //     "🚀 ~ file: TableListadoProyectos.jsx ~ line 257 ~ handleGlobalChange ~ globalTipoProyecto",
-        //     globalTipoProyecto)
-
-        //Personal Interno
-        // console.log(
-        //     `🚀 ~ file: TableListadoProyectos.jsx ~ line 257 ~ handleGlobalChange ~ globalPersonalInterno",
-        //     ${ JSON.stringify(globalPersonalInterno)}`)
 
         console.log(
             "🚀 ~ file: TableListadoProyectos.jsx ~ line 257 ~ handleGlobalChange ~ globalInformacionTecnicaProyecto",
             (globalInformacionTecnicaProyecto))
-        //Personal Externo Cooperante
-
-        //Personal Externo Contratar
-
-        // console.log(
-        //     "🚀 ~ file: TableListadoProyectos.jsx ~ line 261 ~ handleGlobalChange ~ globalInformacionTecnicaProyecto",
-        //     globalInformacionTecnicaProyecto)
-
-        // console.log(
-        //     "🚀 ~ file: TableListadoProyectos.jsx ~ line 261 ~ handleGlobalChange ~ globalMetodologiaProyecto",
-        //     globalMetodologiaProyecto)
-
-        // console.log(
-        //     "🚀 ~ file: TableListadoProyectos.jsx ~ line 265 ~ handleGlobalChange ~ globalResumenPresupuesto",
-        //     globalResumenPresupuesto)
 
 
         //console.log(value);
+        console.log(auxiliar)
+        console.log(row)
         navigate("/home");
     }
 
@@ -664,6 +662,8 @@ const List = () => {
     }
     //Recuperar el contenido de un solo documento
     async function getData() {
+
+        let aux2 = "informacionGenral7"
         var rows = [];
         var docRef = collection(db, `proyectos-investigacion/`);
         //var docRef = collection(db, "proyectos-investigacion", `${correoUsuario}`);
@@ -675,259 +675,267 @@ const List = () => {
             // doc.data() is never undefined for query doc snapshots
             //console.log(doc.id, " => ", doc.data().proyectos.equipos);
             //console.log(doc.id + " 🚀🚀🚀")
-
+            console.log(doc.data())
             if (doc.id === correoUsuario) {
                 try {
-                    rows.push({
-                        id: doc.id,
+                    var aux3 = "7"
+                    for (var i = 0; i <= 10; i++) {
+                        try {
+                            rows.push({
+                                id: doc.id,
+
+                                auxiliar: [i],
+                                //Información General del Proyecto
+                                titulo: doc.data()["informacionGeneral" + i].titulo,
+                                facultad: doc.data()["informacionGeneral" + i].facultad,
+                                departamento: doc.data()["informacionGeneral" + i].departamento,
+                                grupoInvestigacion: doc.data()["informacionGeneral" + i].grupoInvestigacion,
+
+                                dominioAcademico: doc.data()["informacionGeneral" + i].dominioAcademico,
+                                lineaInvestigacion: doc.data()["informacionGeneral" + i].lineaInvestigacion,
+                                programaInvestigacion: doc.data()["informacionGeneral" + i].programaInvestigacion,
+
+                                fechaInicio: doc.data()["informacionGeneral" + i].fechaInicio,
+                                fechaFin: doc.data()["informacionGeneral" + i].fechaFin,
+                                duracionProyectoSemanas: doc.data()["informacionGeneral" + i].duracionProyectoSemanas,
+
+                                alcanceTerritorial: doc.data()["informacionGeneral" + i].alcanceTerritorial,
+
+                                nombreDirectorProyecto: doc.data()["informacionGeneral" + i].nombreDirectorProyecto,
+                                identificacionDirectorProyecto: doc.data()["informacionGeneral" + i].identificacionDirectorProyecto,
+                                telefonoDirectorProyecto: doc.data()["informacionGeneral" + i].telefonoDirectorProyecto,
+                                correoInstitucional: doc.data()["informacionGeneral" + i].correoInstitucional,
+
+                                status: doc.data()["informacionGeneral" + i].status,
+
+                                // Áreas del Conocimiento 
+                                actividadCientifica: doc.data()["areasConocimiento" + i].actividadCientifica,
+                                objetivoSocioEconomico: doc.data()["areasConocimiento" + i].objetivoSocioEconomico,
+                                areaTematicaID: doc.data()["areasConocimiento" + i].areaTematicaID,
+
+                                objetivosPlanCreacionOportunidades: doc.data()["areasConocimiento" + i].objetivosPlanCreacionOportunidades,
+
+                                campoAmplio: doc.data()["areasConocimiento" + i].campoAmplio,
+                                campoEspecifico: doc.data()["areasConocimiento" + i].campoEspecifico,
+                                campoDetallado: doc.data()["areasConocimiento" + i].campoDetallado,
+
+                                objetivosDesarrolloSostenible: doc.data()["areasConocimiento" + i].objetivosDesarrolloSostenible,
 
 
-                        //Información General del Proyecto
-                        titulo: doc.data().informacionGeneral.titulo,
-                        facultad: doc.data().informacionGeneral.facultad,
-                        departamento: doc.data().informacionGeneral.departamento,
-                        grupoInvestigacion: doc.data().informacionGeneral.grupoInvestigacion,
+                                //Tipo de proyecto
+                                tipoProyecto: doc.data()["tipoProyecto" + i]["tipoProyecto" + i],
+                                tipoInvestigacion: doc.data()["tipoProyecto" + i].tipoInvestigacion,
+                                tipoFinanciamiento: doc.data()["tipoProyecto" + i].tipoFinanciamiento,
 
-                        dominioAcademico: doc.data().informacionGeneral.dominioAcademico,
-                        lineaInvestigacion: doc.data().informacionGeneral.lineaInvestigacion,
-                        programaInvestigacion: doc.data().informacionGeneral.programaInvestigacion,
+                                organismoEntidadFinanciador: doc.data()["tipoProyecto" + i].organismoEntidadFinanciador,
 
-                        fechaInicio: doc.data().informacionGeneral.fechaInicio,
-                        fechaFin: doc.data().informacionGeneral.fechaFin,
-                        duracionProyectoSemanas: doc.data().informacionGeneral.duracionProyectoSemanas,
+                                presupuestoTotal: doc.data()["tipoProyecto" + i].presupuestoTotal,
+                                aporteUTPL: doc.data()["tipoProyecto" + i].aporteUTPL,
+                                aporteContraparte: doc.data()["tipoProyecto" + i].aporteContraparte,
 
-                        alcanceTerritorial: doc.data().informacionGeneral.alcanceTerritorial,
+                                //Equipo del Proyecto - Personal Interno 
+                                //idPersonalInterno: doc.data().personalInterno.id,
+                                //idPersonalInterno: doc.data().personalInterno,
+                                rolPersonalInterno1: doc.data()["personalInterno" + i].rolPersonalInterno1,
+                                rolPersonalInterno2: doc.data()["personalInterno" + i].rolPersonalInterno2,
+                                rolPersonalInterno3: doc.data()["personalInterno" + i].rolPersonalInterno3,
+                                rolPersonalInterno4: doc.data()["personalInterno" + i].rolPersonalInterno4,
+                                rolPersonalInterno5: doc.data()["personalInterno" + i].rolPersonalInterno5,
 
-                        nombreDirectorProyecto: doc.data().informacionGeneral.nombreDirectorProyecto,
-                        identificacionDirectorProyecto: doc.data().informacionGeneral.identificacionDirectorProyecto,
-                        telefonoDirectorProyecto: doc.data().informacionGeneral.telefonoDirectorProyecto,
-                        correoInstitucional: doc.data().informacionGeneral.correoInstitucional,
+                                tipoPersonalInterno1: doc.data()["personalInterno" + i].tipoPersonalInterno1,
+                                tipoPersonalInterno2: doc.data()["personalInterno" + i].tipoPersonalInterno2,
+                                tipoPersonalInterno3: doc.data()["personalInterno" + i].tipoPersonalInterno3,
+                                tipoPersonalInterno4: doc.data()["personalInterno" + i].tipoPersonalInterno4,
+                                tipoPersonalInterno5: doc.data()["personalInterno" + i].tipoPersonalInterno5,
 
-                        status: doc.data().informacionGeneral.status,
+                                senescyt1: doc.data()["personalInterno" + i].senescyt1,
+                                senescyt2: doc.data()["personalInterno" + i].senescyt2,
+                                senescyt3: doc.data()["personalInterno" + i].senescyt3,
+                                senescyt4: doc.data()["personalInterno" + i].senescyt4,
+                                senescyt5: doc.data()["personalInterno" + i].senescyt5,
 
-                        // Áreas del Conocimiento 
-                        actividadCientifica: doc.data().areasConocimiento.actividadCientifica,
-                        objetivoSocioEconomico: doc.data().areasConocimiento.objetivoSocioEconomico,
-                        areaTematicaID: doc.data().areasConocimiento.areaTematicaID,
+                                identificacionPersonalInterno1: doc.data()["personalInterno" + i].identificacionPersonalInterno1,
+                                identificacionPersonalInterno2: doc.data()["personalInterno" + i].identificacionPersonalInterno2,
+                                identificacionPersonalInterno3: doc.data()["personalInterno" + i].identificacionPersonalInterno3,
+                                identificacionPersonalInterno4: doc.data()["personalInterno" + i].identificacionPersonalInterno4,
+                                identificacionPersonalInterno5: doc.data()["personalInterno" + i].identificacionPersonalInterno5,
 
-                        objetivosPlanCreacionOportunidades: doc.data().areasConocimiento.objetivosPlanCreacionOportunidades,
+                                nombrePersonalInterno1: doc.data()["personalInterno" + i].nombrePersonalInterno1,
+                                nombrePersonalInterno2: doc.data()["personalInterno" + i].nombrePersonalInterno2,
+                                nombrePersonalInterno3: doc.data()["personalInterno" + i].nombrePersonalInterno3,
+                                nombrePersonalInterno4: doc.data()["personalInterno" + i].nombrePersonalInterno4,
+                                nombrePersonalInterno5: doc.data()["personalInterno" + i].nombrePersonalInterno5,
 
-                        campoAmplio: doc.data().areasConocimiento.campoAmplio,
-                        campoEspecifico: doc.data().areasConocimiento.campoEspecifico,
-                        campoDetallado: doc.data().areasConocimiento.campoDetallado,
+                                horasSemanalesPersonalInterno1: doc.data()["personalInterno" + i].horasSemanalesPersonalInterno1,
+                                horasSemanalesPersonalInterno2: doc.data()["personalInterno" + i].horasSemanalesPersonalInterno2,
+                                horasSemanalesPersonalInterno3: doc.data()["personalInterno" + i].horasSemanalesPersonalInterno3,
+                                horasSemanalesPersonalInterno4: doc.data()["personalInterno" + i].horasSemanalesPersonalInterno4,
+                                horasSemanalesPersonalInterno5: doc.data()["personalInterno" + i].horasSemanalesPersonalInterno5,
 
-                        objetivosDesarrolloSostenible: doc.data().areasConocimiento.objetivosDesarrolloSostenible,
-
-
-                        //Tipo de proyecto
-                        tipoProyecto: doc.data().tipoProyecto.tipoProyecto,
-                        tipoInvestigacion: doc.data().tipoProyecto.tipoInvestigacion,
-                        tipoFinanciamiento: doc.data().tipoProyecto.tipoFinanciamiento,
-
-                        organismoEntidadFinanciador: doc.data().tipoProyecto.organismoEntidadFinanciador,
-
-                        presupuestoTotal: doc.data().tipoProyecto.presupuestoTotal,
-                        aporteUTPL: doc.data().tipoProyecto.aporteUTPL,
-                        aporteContraparte: doc.data().tipoProyecto.aporteContraparte,
-
-                        //Equipo del Proyecto - Personal Interno 
-                        //idPersonalInterno: doc.data().personalInterno.id,
-                        //idPersonalInterno: doc.data().personalInterno,
-                        rolPersonalInterno1: doc.data().personalInterno.rolPersonalInterno1,
-                        rolPersonalInterno2: doc.data().personalInterno.rolPersonalInterno2,
-                        rolPersonalInterno3: doc.data().personalInterno.rolPersonalInterno3,
-                        rolPersonalInterno4: doc.data().personalInterno.rolPersonalInterno4,
-                        rolPersonalInterno5: doc.data().personalInterno.rolPersonalInterno5,
-
-                        tipoPersonalInterno1: doc.data().personalInterno.tipoPersonalInterno1,
-                        tipoPersonalInterno2: doc.data().personalInterno.tipoPersonalInterno2,
-                        tipoPersonalInterno3: doc.data().personalInterno.tipoPersonalInterno3,
-                        tipoPersonalInterno4: doc.data().personalInterno.tipoPersonalInterno4,
-                        tipoPersonalInterno5: doc.data().personalInterno.tipoPersonalInterno5,
-
-                        senescyt1: doc.data().personalInterno.senescyt1,
-                        senescyt2: doc.data().personalInterno.senescyt2,
-                        senescyt3: doc.data().personalInterno.senescyt3,
-                        senescyt4: doc.data().personalInterno.senescyt4,
-                        senescyt5: doc.data().personalInterno.senescyt5,
-
-                        identificacionPersonalInterno1: doc.data().personalInterno.identificacionPersonalInterno1,
-                        identificacionPersonalInterno2: doc.data().personalInterno.identificacionPersonalInterno2,
-                        identificacionPersonalInterno3: doc.data().personalInterno.identificacionPersonalInterno3,
-                        identificacionPersonalInterno4: doc.data().personalInterno.identificacionPersonalInterno4,
-                        identificacionPersonalInterno5: doc.data().personalInterno.identificacionPersonalInterno5,
-
-                        nombrePersonalInterno1: doc.data().personalInterno.nombrePersonalInterno1,
-                        nombrePersonalInterno2: doc.data().personalInterno.nombrePersonalInterno2,
-                        nombrePersonalInterno3: doc.data().personalInterno.nombrePersonalInterno3,
-                        nombrePersonalInterno4: doc.data().personalInterno.nombrePersonalInterno4,
-                        nombrePersonalInterno5: doc.data().personalInterno.nombrePersonalInterno5,
-
-                        horasSemanalesPersonalInterno1: doc.data().personalInterno.horasSemanalesPersonalInterno1,
-                        horasSemanalesPersonalInterno2: doc.data().personalInterno.horasSemanalesPersonalInterno2,
-                        horasSemanalesPersonalInterno3: doc.data().personalInterno.horasSemanalesPersonalInterno3,
-                        horasSemanalesPersonalInterno4: doc.data().personalInterno.horasSemanalesPersonalInterno4,
-                        horasSemanalesPersonalInterno5: doc.data().personalInterno.horasSemanalesPersonalInterno5,
-
-                        horasTotalesPersonalInterno1: doc.data().personalInterno.horasTotalesPersonalInterno1,
-                        horasTotalesPersonalInterno2: doc.data().personalInterno.horasTotalesPersonalInterno2,
-                        horasTotalesPersonalInterno3: doc.data().personalInterno.horasTotalesPersonalInterno3,
-                        horasTotalesPersonalInterno4: doc.data().personalInterno.horasTotalesPersonalInterno4,
-                        horasTotalesPersonalInterno5: doc.data().personalInterno.horasTotalesPersonalInterno5,
+                                horasTotalesPersonalInterno1: doc.data()["personalInterno" + i].horasTotalesPersonalInterno1,
+                                horasTotalesPersonalInterno2: doc.data()["personalInterno" + i].horasTotalesPersonalInterno2,
+                                horasTotalesPersonalInterno3: doc.data()["personalInterno" + i].horasTotalesPersonalInterno3,
+                                horasTotalesPersonalInterno4: doc.data()["personalInterno" + i].horasTotalesPersonalInterno4,
+                                horasTotalesPersonalInterno5: doc.data()["personalInterno" + i].horasTotalesPersonalInterno5,
 
 
-                        //Personal Externo Cooperante
-                        //idPersonalExternoCooperante: doc.data().personalExternoCooperante,
-                        rolPersonalCooperante1: doc.data().personalExternoCooperante.rolPersonalCooperante1,
-                        rolPersonalCooperante2: doc.data().personalExternoCooperante.rolPersonalCooperante2,
-                        rolPersonalCooperante3: doc.data().personalExternoCooperante.rolPersonalCooperante3,
-                        rolPersonalCooperante4: doc.data().personalExternoCooperante.rolPersonalCooperante4,
-                        rolPersonalCooperante5: doc.data().personalExternoCooperante.rolPersonalCooperante5,
+                                //Personal Externo Cooperante
+                                //idPersonalExternoCooperante: doc.data().personalExternoCooperante,
+                                rolPersonalCooperante1: doc.data()["personalExternoCooperante" + i].rolPersonalCooperante1,
+                                rolPersonalCooperante2: doc.data()["personalExternoCooperante" + i].rolPersonalCooperante2,
+                                rolPersonalCooperante3: doc.data()["personalExternoCooperante" + i].rolPersonalCooperante3,
+                                rolPersonalCooperante4: doc.data()["personalExternoCooperante" + i].rolPersonalCooperante4,
+                                rolPersonalCooperante5: doc.data()["personalExternoCooperante" + i].rolPersonalCooperante5,
 
-                        nombrePersonalCooperante1: doc.data().personalExternoCooperante.nombrePersonalCooperante1,
-                        nombrePersonalCooperante2: doc.data().personalExternoCooperante.nombrePersonalCooperante2,
-                        nombrePersonalCooperante3: doc.data().personalExternoCooperante.nombrePersonalCooperante3,
-                        nombrePersonalCooperante4: doc.data().personalExternoCooperante.nombrePersonalCooperante4,
-                        nombrePersonalCooperante5: doc.data().personalExternoCooperante.nombrePersonalCooperante5,
+                                nombrePersonalCooperante1: doc.data()["personalExternoCooperante" + i].nombrePersonalCooperante1,
+                                nombrePersonalCooperante2: doc.data()["personalExternoCooperante" + i].nombrePersonalCooperante2,
+                                nombrePersonalCooperante3: doc.data()["personalExternoCooperante" + i].nombrePersonalCooperante3,
+                                nombrePersonalCooperante4: doc.data()["personalExternoCooperante" + i].nombrePersonalCooperante4,
+                                nombrePersonalCooperante5: doc.data()["personalExternoCooperante" + i].nombrePersonalCooperante5,
 
-                        entidadPersonalCooperante1: doc.data().personalExternoCooperante.entidadPersonalCooperante1,
-                        entidadPersonalCooperante2: doc.data().personalExternoCooperante.entidadPersonalCooperante2,
-                        entidadPersonalCooperante3: doc.data().personalExternoCooperante.entidadPersonalCooperante3,
-                        entidadPersonalCooperante4: doc.data().personalExternoCooperante.entidadPersonalCooperante4,
-                        entidadPersonalCooperante5: doc.data().personalExternoCooperante.entidadPersonalCooperante5,
-                        
-                        //Personal Externo a Contratar
-                        //idPersonalExternoContratar: doc.data().personalExternoContratar,
+                                entidadPersonalCooperante1: doc.data()["personalExternoCooperante" + i].entidadPersonalCooperante1,
+                                entidadPersonalCooperante2: doc.data()["personalExternoCooperante" + i].entidadPersonalCooperante2,
+                                entidadPersonalCooperante3: doc.data()["personalExternoCooperante" + i].entidadPersonalCooperante3,
+                                entidadPersonalCooperante4: doc.data()["personalExternoCooperante" + i].entidadPersonalCooperante4,
+                                entidadPersonalCooperante5: doc.data()["personalExternoCooperante" + i].entidadPersonalCooperante5,
 
-                        perfilRequerido1: doc.data().personalExternoContratar.perfilRequerido1,
-                        perfilRequerido2: doc.data().personalExternoContratar.perfilRequerido2,
-                        perfilRequerido3: doc.data().personalExternoContratar.perfilRequerido3,
-                        perfilRequerido4: doc.data().personalExternoContratar.perfilRequerido4,
-                        perfilRequerido5: doc.data().personalExternoContratar.perfilRequerido5,
+                                //Personal Externo a Contratar
+                                //idPersonalExternoContratar: doc.data()["personalExternoContratar"+i],
 
-                        funcion1: doc.data().personalExternoContratar.funcion1,
-                        funcion2: doc.data().personalExternoContratar.funcion2,
-                        funcion3: doc.data().personalExternoContratar.funcion3,
-                        funcion4: doc.data().personalExternoContratar.funcion4,
-                        funcion5: doc.data().personalExternoContratar.funcion5,
+                                perfilRequerido1: doc.data()["personalExternoContratar" + i].perfilRequerido1,
+                                perfilRequerido2: doc.data()["personalExternoContratar" + i].perfilRequerido2,
+                                perfilRequerido3: doc.data()["personalExternoContratar" + i].perfilRequerido3,
+                                perfilRequerido4: doc.data()["personalExternoContratar" + i].perfilRequerido4,
+                                perfilRequerido5: doc.data()["personalExternoContratar" + i].perfilRequerido5,
 
-                        actividadesDesarrollar1: doc.data().personalExternoContratar.actividadesDesarrollar1,
-                        actividadesDesarrollar2: doc.data().personalExternoContratar.actividadesDesarrollar2,
-                        actividadesDesarrollar3: doc.data().personalExternoContratar.actividadesDesarrollar3,
-                        actividadesDesarrollar4: doc.data().personalExternoContratar.actividadesDesarrollar4,
-                        actividadesDesarrollar5: doc.data().personalExternoContratar.actividadesDesarrollar5,
+                                funcion1: doc.data()["personalExternoContratar" + i].funcion1,
+                                funcion2: doc.data()["personalExternoContratar" + i].funcion2,
+                                funcion3: doc.data()["personalExternoContratar" + i].funcion3,
+                                funcion4: doc.data()["personalExternoContratar" + i].funcion4,
+                                funcion5: doc.data()["personalExternoContratar" + i].funcion5,
 
-                        tiempoContratacion1: doc.data().personalExternoContratar.tiempoContratacion1,
-                        tiempoContratacion2: doc.data().personalExternoContratar.tiempoContratacion2,
-                        tiempoContratacion3: doc.data().personalExternoContratar.tiempoContratacion3,
-                        tiempoContratacion4: doc.data().personalExternoContratar.tiempoContratacion4,
-                        tiempoContratacion5: doc.data().personalExternoContratar.tiempoContratacion5,
+                                actividadesDesarrollar1: doc.data()["personalExternoContratar" + i].actividadesDesarrollar1,
+                                actividadesDesarrollar2: doc.data()["personalExternoContratar" + i].actividadesDesarrollar2,
+                                actividadesDesarrollar3: doc.data()["personalExternoContratar" + i].actividadesDesarrollar3,
+                                actividadesDesarrollar4: doc.data()["personalExternoContratar" + i].actividadesDesarrollar4,
+                                actividadesDesarrollar5: doc.data()["personalExternoContratar" + i].actividadesDesarrollar5,
 
-                        personasContratar1: doc.data().personalExternoContratar.personasContratar1,
-                        personasContratar2: doc.data().personalExternoContratar.personasContratar2,
-                        personasContratar3: doc.data().personalExternoContratar.personasContratar3,
-                        personasContratar4: doc.data().personalExternoContratar.personasContratar4,
-                        personasContratar5: doc.data().personalExternoContratar.personasContratar5,
+                                tiempoContratacion1: doc.data()["personalExternoContratar" + i].tiempoContratacion1,
+                                tiempoContratacion2: doc.data()["personalExternoContratar" + i].tiempoContratacion2,
+                                tiempoContratacion3: doc.data()["personalExternoContratar" + i].tiempoContratacion3,
+                                tiempoContratacion4: doc.data()["personalExternoContratar" + i].tiempoContratacion4,
+                                tiempoContratacion5: doc.data()["personalExternoContratar" + i].tiempoContratacion5,
+
+                                personasContratar1: doc.data()["personalExternoContratar" + i].personasContratar1,
+                                personasContratar2: doc.data()["personalExternoContratar" + i].personasContratar2,
+                                personasContratar3: doc.data()["personalExternoContratar" + i].personasContratar3,
+                                personasContratar4: doc.data()["personalExternoContratar" + i].personasContratar4,
+                                personasContratar5: doc.data()["personalExternoContratar" + i].personasContratar5,
 
 
-                        //Información Técnica del Proyecto.
-                        introduccionAntecedentes: doc.data().informacionTecnicaProyecto.introduccionAntecedentes,
-                        introduccionJustificacion: doc.data().informacionTecnicaProyecto.introduccionJustificacion,
-                        // PRINCIPALES EQUIPOS
-                        equipoProyecto1: doc.data().informacionTecnicaProyecto.equipoProyecto1,
-                        equipoProyecto2: doc.data().informacionTecnicaProyecto.equipoProyecto2,
-                        equipoProyecto3: doc.data().informacionTecnicaProyecto.equipoProyecto3,
+                                //Información Técnica del Proyecto.
+                                introduccionAntecedentes: doc.data()["informacionTecnicaProyecto" + i].introduccionAntecedentes,
+                                introduccionJustificacion: doc.data()["informacionTecnicaProyecto" + i].introduccionJustificacion,
+                                // PRINCIPALES EQUIPOS
+                                equipoProyecto1: doc.data()["informacionTecnicaProyecto" + i].equipoProyecto1,
+                                equipoProyecto2: doc.data()["informacionTecnicaProyecto" + i].equipoProyecto2,
+                                equipoProyecto3: doc.data()["informacionTecnicaProyecto" + i].equipoProyecto3,
 
-                        ubicacionEquipo1: doc.data().informacionTecnicaProyecto.ubicacionEquipo1,
-                        ubicacionEquipo2: doc.data().informacionTecnicaProyecto.ubicacionEquipo2,
-                        ubicacionEquipo3: doc.data().informacionTecnicaProyecto.ubicacionEquipo3,
+                                ubicacionEquipo1: doc.data()["informacionTecnicaProyecto" + i].ubicacionEquipo1,
+                                ubicacionEquipo2: doc.data()["informacionTecnicaProyecto" + i].ubicacionEquipo2,
+                                ubicacionEquipo3: doc.data()["informacionTecnicaProyecto" + i].ubicacionEquipo3,
 
-                        // objetivoEspecifico1: doc.data().informacionTecnicaProyecto.objetivoEspecifico1,
-                        // objetivoEspecifico2: doc.data().informacionTecnicaProyecto.objetivoEspecifico2,
-                        // objetivoEspecifico3: doc.data().informacionTecnicaProyecto.objetivoEspecifico3,
-                        // objetivoEspecifico4: doc.data().informacionTecnicaProyecto.objetivoEspecifico4,
-                        // objetivoEspecifico5: doc.data().informacionTecnicaProyecto.objetivoEspecifico5,
+                                // objetivoEspecifico1: doc.data()["informacionTecnicaProyecto"+i].objetivoEspecifico1,
+                                // objetivoEspecifico2: doc.data()["informacionTecnicaProyecto"+i].objetivoEspecifico2,
+                                // objetivoEspecifico3: doc.data()["informacionTecnicaProyecto"+i].objetivoEspecifico3,
+                                // objetivoEspecifico4: doc.data()["informacionTecnicaProyecto"+i].objetivoEspecifico4,
+                                // objetivoEspecifico5: doc.data()["informacionTecnicaProyecto"+i].objetivoEspecifico5,
 
-                        objetivoGeneral: doc.data().informacionTecnicaProyecto.objetivoGeneral,
-                        palabraClave1: doc.data().informacionTecnicaProyecto.palabraClave1,
-                        palabraClave2: doc.data().informacionTecnicaProyecto.palabraClave2,
-                        palabraClave3: doc.data().informacionTecnicaProyecto.palabraClave3,
-                        palabraClave4: doc.data().informacionTecnicaProyecto.palabraClave4,
-                        resumenProyecto: doc.data().informacionTecnicaProyecto.resumenProyecto,
+                                objetivoGeneral: doc.data()["informacionTecnicaProyecto" + i].objetivoGeneral,
+                                palabraClave1: doc.data()["informacionTecnicaProyecto" + i].palabraClave1,
+                                palabraClave2: doc.data()["informacionTecnicaProyecto" + i].palabraClave2,
+                                palabraClave3: doc.data()["informacionTecnicaProyecto" + i].palabraClave3,
+                                palabraClave4: doc.data()["informacionTecnicaProyecto" + i].palabraClave4,
+                                resumenProyecto: doc.data()["informacionTecnicaProyecto" + i].resumenProyecto,
 
-                        //Metodología del Proyecto
-                        articuloCientifico: doc.data().metodologiaProyecto.articuloCientifico,
-                        aspectosBioeticos: doc.data().metodologiaProyecto.aspectosBioeticos,
-                        descripcionActividadID: doc.data().metodologiaProyecto.descripcionActividadID,
-                        impactoCientifico: doc.data().metodologiaProyecto.impactoCientifico,
-                        impactoEconomico: doc.data().metodologiaProyecto.impactoEconomico,
-                        impactoPolitico: doc.data().metodologiaProyecto.impactoPolitico,
-                        impactoSocial: doc.data().metodologiaProyecto.impactoSocial,
-                        metodologia: doc.data().metodologiaProyecto.metodologia,
-                        otroImpacto: doc.data().metodologiaProyecto.otroImpacto,
-                        otrosTransferenciaConocimiento: doc.data().metodologiaProyecto.otrosTransferenciaConocimiento,
-                        prototipo: doc.data().metodologiaProyecto.prototipo,
-                        registroPropiedadIndustrial: doc.data().metodologiaProyecto.registroPropiedadIndustrial,
+                                //Metodología del Proyecto
+                                articuloCientifico: doc.data()["metodologiaProyecto" + i].articuloCientifico,
+                                aspectosBioeticos: doc.data()["metodologiaProyecto" + i].aspectosBioeticos,
+                                descripcionActividadID: doc.data()["metodologiaProyecto" + i].descripcionActividadID,
+                                impactoCientifico: doc.data()["metodologiaProyecto" + i].impactoCientifico,
+                                impactoEconomico: doc.data()["metodologiaProyecto" + i].impactoEconomico,
+                                impactoPolitico: doc.data()["metodologiaProyecto" + i].impactoPolitico,
+                                impactoSocial: doc.data()["metodologiaProyecto" + i].impactoSocial,
+                                metodologia: doc.data()["metodologiaProyecto" + i].metodologia,
+                                otroImpacto: doc.data()["metodologiaProyecto" + i].otroImpacto,
+                                otrosTransferenciaConocimiento: doc.data()["metodologiaProyecto" + i].otrosTransferenciaConocimiento,
+                                prototipo: doc.data()["metodologiaProyecto" + i].prototipo,
+                                registroPropiedadIndustrial: doc.data()["metodologiaProyecto" + i].registroPropiedadIndustrial,
 
-                        //Cronograma de Actividades del Proyecto
-                        //Cronograma Actividades A
-                        //CRONOGRAMA DE ACTIVIDADES A - 
-                        actividadEspecifica1: doc.data().cronogramaEspA.actividadEspecifica1,
-                        actividadEspecifica2: doc.data().cronogramaEspA.actividadEspecifica2,
-                        actividadEspecifica3: doc.data().cronogramaEspA.actividadEspecifica3,
-                        actividadEspecifica4: doc.data().cronogramaEspA.actividadEspecifica4,
-                        actividadEspecifica5: doc.data().cronogramaEspA.actividadEspecifica5,
+                                //Cronograma de Actividades del Proyecto
+                                //Cronograma Actividades A
+                                //CRONOGRAMA DE ACTIVIDADES A - 
+                                actividadEspecifica1: doc.data()["cronogramaEspA" + i].actividadEspecifica1,
+                                actividadEspecifica2: doc.data()["cronogramaEspA" + i].actividadEspecifica2,
+                                actividadEspecifica3: doc.data()["cronogramaEspA" + i].actividadEspecifica3,
+                                actividadEspecifica4: doc.data()["cronogramaEspA" + i].actividadEspecifica4,
+                                actividadEspecifica5: doc.data()["cronogramaEspA" + i].actividadEspecifica5,
 
-                        fechaInicio1: doc.data().cronogramaEspA.fechaInicio1,
-                        fechaInicio2: doc.data().cronogramaEspA.fechaInicio2,
-                        fechaInicio3: doc.data().cronogramaEspA.fechaInicio3,
-                        fechaInicio4: doc.data().cronogramaEspA.fechaInicio4,
-                        fechaInicio5: doc.data().cronogramaEspA.fechaInicio5,
+                                fechaInicio1: doc.data()["cronogramaEspA" + i].fechaInicio1,
+                                fechaInicio2: doc.data()["cronogramaEspA" + i].fechaInicio2,
+                                fechaInicio3: doc.data()["cronogramaEspA" + i].fechaInicio3,
+                                fechaInicio4: doc.data()["cronogramaEspA" + i].fechaInicio4,
+                                fechaInicio5: doc.data()["cronogramaEspA" + i].fechaInicio5,
 
-                        fechaFin1: doc.data().cronogramaEspA.fechaFin1,
-                        fechaFin2: doc.data().cronogramaEspA.fechaFin2,
-                        fechaFin3: doc.data().cronogramaEspA.fechaFin3,
-                        fechaFin4: doc.data().cronogramaEspA.fechaFin4,
-                        fechaFin5: doc.data().cronogramaEspA.fechaFin5,
+                                fechaFin1: doc.data()["cronogramaEspA" + i].fechaFin1,
+                                fechaFin2: doc.data()["cronogramaEspA" + i].fechaFin2,
+                                fechaFin3: doc.data()["cronogramaEspA" + i].fechaFin3,
+                                fechaFin4: doc.data()["cronogramaEspA" + i].fechaFin4,
+                                fechaFin5: doc.data()["cronogramaEspA" + i].fechaFin5,
 
-                        itemPresupuesto1: doc.data().cronogramaEspA.itemPresupuesto1,
-                        itemPresupuesto2: doc.data().cronogramaEspA.itemPresupuesto2,
-                        itemPresupuesto3: doc.data().cronogramaEspA.itemPresupuesto3,
-                        itemPresupuesto4: doc.data().cronogramaEspA.itemPresupuesto4,
-                        itemPresupuesto5: doc.data().cronogramaEspA.itemPresupuesto5,
+                                itemPresupuesto1: doc.data()["cronogramaEspA" + i].itemPresupuesto1,
+                                itemPresupuesto2: doc.data()["cronogramaEspA" + i].itemPresupuesto2,
+                                itemPresupuesto3: doc.data()["cronogramaEspA" + i].itemPresupuesto3,
+                                itemPresupuesto4: doc.data()["cronogramaEspA" + i].itemPresupuesto4,
+                                itemPresupuesto5: doc.data()["cronogramaEspA" + i].itemPresupuesto5,
 
-                        nombreEvidencia1: doc.data().cronogramaEspA.nombreEvidencia1,
-                        nombreEvidencia2: doc.data().cronogramaEspA.nombreEvidencia2,
-                        nombreEvidencia3: doc.data().cronogramaEspA.nombreEvidencia3,
-                        nombreEvidencia4: doc.data().cronogramaEspA.nombreEvidencia4,
-                        nombreEvidencia5: doc.data().cronogramaEspA.nombreEvidencia5,
+                                nombreEvidencia1: doc.data()["cronogramaEspA" + i].nombreEvidencia1,
+                                nombreEvidencia2: doc.data()["cronogramaEspA" + i].nombreEvidencia2,
+                                nombreEvidencia3: doc.data()["cronogramaEspA" + i].nombreEvidencia3,
+                                nombreEvidencia4: doc.data()["cronogramaEspA" + i].nombreEvidencia4,
+                                nombreEvidencia5: doc.data()["cronogramaEspA" + i].nombreEvidencia5,
 
-                        nombreResponsableActividad1: doc.data().cronogramaEspA.nombreResponsableActividad1,
-                        nombreResponsableActividad2: doc.data().cronogramaEspA.nombreResponsableActividad2,
-                        nombreResponsableActividad3: doc.data().cronogramaEspA.nombreResponsableActividad3,
-                        nombreResponsableActividad4: doc.data().cronogramaEspA.nombreResponsableActividad4,
-                        nombreResponsableActividad5: doc.data().cronogramaEspA.nombreResponsableActividad5,
+                                nombreResponsableActividad1: doc.data()["cronogramaEspA" + i].nombreResponsableActividad1,
+                                nombreResponsableActividad2: doc.data()["cronogramaEspA" + i].nombreResponsableActividad2,
+                                nombreResponsableActividad3: doc.data()["cronogramaEspA" + i].nombreResponsableActividad3,
+                                nombreResponsableActividad4: doc.data()["cronogramaEspA" + i].nombreResponsableActividad4,
+                                nombreResponsableActividad5: doc.data()["cronogramaEspA" + i].nombreResponsableActividad5,
 
-                        objetivoEspecificoCronograma1: doc.data().cronogramaEspA.objetivoEspecificoCronograma1,
+                                objetivoEspecificoCronograma1: doc.data()["cronogramaEspA" + i].objetivoEspecificoCronograma1,
 
-                        valorPresupuesto1: doc.data().cronogramaEspA.valorPresupuesto1,
-                        valorPresupuesto2: doc.data().cronogramaEspA.valorPresupuesto2,
-                        valorPresupuesto3: doc.data().cronogramaEspA.valorPresupuesto3,
-                        valorPresupuesto4: doc.data().cronogramaEspA.valorPresupuesto4,
-                        valorPresupuesto5: doc.data().cronogramaEspA.valorPresupuesto5,
+                                valorPresupuesto1: doc.data()["cronogramaEspA" + i].valorPresupuesto1,
+                                valorPresupuesto2: doc.data()["cronogramaEspA" + i].valorPresupuesto2,
+                                valorPresupuesto3: doc.data()["cronogramaEspA" + i].valorPresupuesto3,
+                                valorPresupuesto4: doc.data()["cronogramaEspA" + i].valorPresupuesto4,
+                                valorPresupuesto5: doc.data()["cronogramaEspA" + i].valorPresupuesto5,
 
-                        //Resumen del Presupuesto
-                        viaticosSubsistenciasMovilizacion: doc.data().resumenPresupuesto.viaticosSubsistenciasMovilizacion,
-                        honorarios: doc.data().resumenPresupuesto.honorarios,
-                        materialesSuministrosReactivos: doc.data().resumenPresupuesto.materialesSuministrosReactivos,
-                        equipos: doc.data().resumenPresupuesto.equipos,
-                        capacitacion: doc.data().resumenPresupuesto.capacitacion,
-                        totalGastosDirectos: doc.data().resumenPresupuesto.totalGastosDirectos,
-                        bibliografia: doc.data().resumenPresupuesto.bibliografia,
+                                //Resumen del Presupuesto
+                                viaticosSubsistenciasMovilizacion: doc.data()["resumenPresupuesto" + i].viaticosSubsistenciasMovilizacion,
+                                honorarios: doc.data()["resumenPresupuesto" + i].honorarios,
+                                materialesSuministrosReactivos: doc.data()["resumenPresupuesto" + i].materialesSuministrosReactivos,
+                                equipos: doc.data()["resumenPresupuesto" + i].equipos,
+                                capacitacion: doc.data()["resumenPresupuesto" + i].capacitacion,
+                                totalGastosDirectos: doc.data()["resumenPresupuesto" + i].totalGastosDirectos,
+                                bibliografia: doc.data()["resumenPresupuesto" + i].bibliografia,
 
-                        observaciones: doc.data().resumenPresupuesto.observaciones,
+                                observaciones: doc.data()["resumenPresupuesto" + i].observaciones,
 
-                    })
+                            })
+                        } catch (error) {
+
+                        }
+                    }
+
                 }
                 catch (e) {
 
