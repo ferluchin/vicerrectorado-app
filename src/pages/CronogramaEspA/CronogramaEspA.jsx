@@ -116,18 +116,18 @@ export default function CronogramaEspA() {
     const [formData, setFormData] = useState({ ...globalCronogramaEspA } ? { ...globalCronogramaEspA } : { ...formInicial })
     //const [formData, setFormData] = useState({ ...formInicial })
 
-    async function  getAux(){
+    async function getAux() {
         var docRef = doc(db, `proyectos-investigacion/${correoUsuario}`);
         //var docRef = collection(db, "proyectos-investigacion", `${correoUsuario}`);
         const docSnap = await getDoc(docRef);
 
         if (docSnap.exists()) {
-            console.log("Document data:", docSnap.data().contador);
-            setGlobalAuxiliar(docSnap.data().contador)
-          } else {
+            console.log("Document data:", docSnap.data().auxiliar);
+            setGlobalAuxiliar(docSnap.data().auxiliar)
+        } else {
             // doc.data() will be undefined in this case
             console.log("No such document!");
-          }
+        }
     }
     function handleChange(event) {
         const { name, value, type, checked } = event.target
@@ -159,7 +159,7 @@ export default function CronogramaEspA() {
             const docuRef = doc(firestore, `proyectos-investigacion/${correoUsuario}`)
             //setDoc(baseDocRef, { informacionGeneral: { status: "Borrador" } }, { merge: true });
             updateDoc(docuRef, {
-                ["cronogramaEspA"+globalAuxiliar]: {
+                ["cronogramaEspA" + globalAuxiliar]: {
                     ...formData
                 }
             }
@@ -349,8 +349,8 @@ export default function CronogramaEspA() {
                                         </div>
                                         <div className="col-1">
 
-                                            
-                                            
+
+
                                             {/* <DatePicker
                                                 selected={formData.fechaInicio1}
                                                 dateFormat="yyyy/MM/dd"
@@ -382,7 +382,7 @@ export default function CronogramaEspA() {
                                                 onChange={handleChange}
                                                 value={formData.fechaFin1}
                                             />
-                                            
+
                                             {/* <DatePicker
                                                 selected={formData.fechaFin1}
                                                 dateFormat="yyyy/MM/dd"

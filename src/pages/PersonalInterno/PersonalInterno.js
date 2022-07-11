@@ -112,8 +112,8 @@ export default function PersonalInterno() {
         const docSnap = await getDoc(docRef);
 
         if (docSnap.exists()) {
-            console.log("Document data:", docSnap.data().contador);
-            setGlobalAuxiliar(docSnap.data().contador)
+            console.log("Document data:", docSnap.data().auxiliar);
+            setGlobalAuxiliar(docSnap.data().auxiliar)
         } else {
             // doc.data() will be undefined in this case
             console.log("No such document!");
@@ -152,7 +152,7 @@ export default function PersonalInterno() {
         }
         //consolaPersonalInterno();
         console.log("🚀 ~ file: PersonalInterno.js ~ line 193 ~ handleSubmit ~ formData", formData)
-        
+
         setGlobalPersonalInterno(formData);
         routeChange()
     }

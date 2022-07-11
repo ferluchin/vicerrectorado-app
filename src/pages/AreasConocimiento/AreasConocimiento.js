@@ -1,5 +1,5 @@
 
-import React, {useState, useEffect, useRef, useContext} from 'react'
+import React, { useState, useEffect, useRef, useContext } from 'react'
 import Split from "react-split";
 import Sidebar from "../../components/Sidebar";
 import TitleBar from '../../components/TitleBar';
@@ -88,7 +88,7 @@ export default function AreasConocimiento() {
             //setDoc(baseDocRef, { informacionGeneral: { status: "Borrador" } }, { merge: true });
             updateDoc(docuRef, {
                 //["informacionGeneral"+globalAuxiliar]: {
-                    ["areasConocimiento"+globalAuxiliar]: {
+                ["areasConocimiento" + globalAuxiliar]: {
                     ...formData
                 }
             }
@@ -103,21 +103,21 @@ export default function AreasConocimiento() {
         console.log({ ...formData })
         //setFormData({ ...formInicial })
         setGlobalAreasConocimiento({ ...formData })
-        
+
         routeChange()
     }
-    async function  getAux(){
+    async function getAux() {
         var docRef = doc(db, `proyectos-investigacion/${correoUsuario}`);
         //var docRef = collection(db, "proyectos-investigacion", `${correoUsuario}`);
         const docSnap = await getDoc(docRef);
 
         if (docSnap.exists()) {
-            console.log("Document data:", docSnap.data().contador);
-            setGlobalAuxiliar(docSnap.data().contador)
-          } else {
+            console.log("Document data:", docSnap.data().auxiliar);
+            setGlobalAuxiliar(docSnap.data().auxiliar)
+        } else {
             // doc.data() will be undefined in this case
             console.log("No such document!");
-          }
+        }
     }
     useEffect(() => {
         getAllNodes();

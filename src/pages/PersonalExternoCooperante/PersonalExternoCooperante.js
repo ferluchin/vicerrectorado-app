@@ -56,9 +56,9 @@ export default function PersonalExternoCooperante(props) {
     const correoUsuario = currentUser.email
 
     const formInicial = {
-        
+
         //PERSONAL EXTERNO COOPERANTE
-        
+
         rolPersonalCooperante1: "",
         rolPersonalCooperante2: "",
         rolPersonalCooperante3: "",
@@ -94,18 +94,18 @@ export default function PersonalExternoCooperante(props) {
             }
         })
     }
-    async function  getAux(){
+    async function getAux() {
         var docRef = doc(db, `proyectos-investigacion/${correoUsuario}`);
         //var docRef = collection(db, "proyectos-investigacion", `${correoUsuario}`);
         const docSnap = await getDoc(docRef);
 
         if (docSnap.exists()) {
-            console.log("Document data:", docSnap.data().contador);
-            setGlobalAuxiliar(docSnap.data().contador)
-          } else {
+            console.log("Document data:", docSnap.data().auxiliar);
+            setGlobalAuxiliar(docSnap.data().auxiliar)
+        } else {
             // doc.data() will be undefined in this case
             console.log("No such document!");
-          }
+        }
     }
     const handleSubmit = async (event) => {
         event.preventDefault();
@@ -114,7 +114,7 @@ export default function PersonalExternoCooperante(props) {
             const docuRef = doc(firestore, `proyectos-investigacion/${correoUsuario}`)
             //setDoc(baseDocRef, { informacionGeneral: { status: "Borrador" } }, { merge: true });
             updateDoc(docuRef, {
-                ["personalExternoCooperante"+globalAuxiliar]: {
+                ["personalExternoCooperante" + globalAuxiliar]: {
                     ...formData
                 }
             }
@@ -202,8 +202,8 @@ export default function PersonalExternoCooperante(props) {
                                                 Entidad.
                                             </label>
                                         </div>
-                                    </div> 
-                                    
+                                    </div>
+
                                     <hr />
 
                                     <div className="row">
@@ -249,10 +249,10 @@ export default function PersonalExternoCooperante(props) {
                                                 value={formData.entidadPersonalCooperante1}
                                             />
                                         </div>
-                                    </div>    
+                                    </div>
 
                                     <br />
-                                    
+
                                     <div className="row">
                                         <div className="col-1">
                                             <label>
@@ -443,8 +443,8 @@ export default function PersonalExternoCooperante(props) {
                             </div>
 
                             <br />
-                            
-                    
+
+
 
                             <button
                                 className="btn btn-primary"

@@ -59,7 +59,7 @@ export default function ResumenPresupuesto() {
     let navigate = useNavigate();
     const routeChange = () => {
         window.scrollTo(0, 0)
-        let path = `/pruebas`;
+        let path = `/admin`;
         navigate(path);
     }
 
@@ -105,8 +105,8 @@ export default function ResumenPresupuesto() {
         const docSnap = await getDoc(docRef);
 
         if (docSnap.exists()) {
-            console.log("Document data:", docSnap.data().contador);
-            setGlobalAuxiliar(docSnap.data().contador)
+            console.log("Document data:", docSnap.data().auxiliar);
+            setGlobalAuxiliar(docSnap.data().auxiliar)
         } else {
             // doc.data() will be undefined in this case
             console.log("No such document!");

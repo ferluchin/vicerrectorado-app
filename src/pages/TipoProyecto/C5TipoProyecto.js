@@ -27,7 +27,7 @@ import { setGlobalState, useGlobalState } from "../../Helper/Context";
 const db = getFirestore(app);
 
 export default function TipoProyecto() {
-    
+
     const [nodes, setNodes] = useState({});
     const [isLoading, setLoading] = useState(true);
     const { currentUser } = useContext(AuthContext)
@@ -65,18 +65,18 @@ export default function TipoProyecto() {
 
     const [formData, setFormData] = useState({ ...globalTipoProyecto } ? { ...globalTipoProyecto } : { ...formInicial })
 
-    async function  getAux(){
+    async function getAux() {
         var docRef = doc(db, `proyectos-investigacion/${correoUsuario}`);
         //var docRef = collection(db, "proyectos-investigacion", `${correoUsuario}`);
         const docSnap = await getDoc(docRef);
 
         if (docSnap.exists()) {
-            console.log("Document data:", docSnap.data().contador);
-            setGlobalAuxiliar(docSnap.data().contador)
-          } else {
+            console.log("Document data:", docSnap.data().auxiliar);
+            setGlobalAuxiliar(docSnap.data().auxiliar)
+        } else {
             // doc.data() will be undefined in this case
             console.log("No such document!");
-          }
+        }
     }
     function handleChange(event) {
         const { name, value, type, checked } = event.target
@@ -109,7 +109,7 @@ export default function TipoProyecto() {
 
             const docuRef = doc(db, `proyectos-investigacion/${correoUsuario}`)
             await updateDoc(docuRef, {
-                ["tipoProyecto"+globalAuxiliar]: {
+                ["tipoProyecto" + globalAuxiliar]: {
                     ...formData
                 }
             })
@@ -120,7 +120,7 @@ export default function TipoProyecto() {
         console.log({ ...formData })
         //setFormData({ ...formInicial })
         setGlobalTipoProyecto({ ...formData })
-        
+
         routeChange()
     }
     useEffect(() => {

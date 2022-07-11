@@ -104,18 +104,18 @@ function PersonalExternoContratar() {
             }
         })
     }
-    async function  getAux(){
+    async function getAux() {
         var docRef = doc(db, `proyectos-investigacion/${correoUsuario}`);
         //var docRef = collection(db, "proyectos-investigacion", `${correoUsuario}`);
         const docSnap = await getDoc(docRef);
 
         if (docSnap.exists()) {
-            console.log("Document data:", docSnap.data().contador);
-            setGlobalAuxiliar(docSnap.data().contador)
-          } else {
+            console.log("Document data:", docSnap.data().auxiliar);
+            setGlobalAuxiliar(docSnap.data().auxiliar)
+        } else {
             // doc.data() will be undefined in this case
             console.log("No such document!");
-          }
+        }
     }
     const handleSubmit = async (event) => {
         event.preventDefault();
@@ -124,7 +124,7 @@ function PersonalExternoContratar() {
             const docuRef = doc(firestore, `proyectos-investigacion/${correoUsuario}`)
             //setDoc(baseDocRef, { informacionGeneral: { status: "Borrador" } }, { merge: true });
             updateDoc(docuRef, {
-                ["personalExternoContratar"+globalAuxiliar]: {
+                ["personalExternoContratar" + globalAuxiliar]: {
                     ...formData
                 }
             }
@@ -576,7 +576,7 @@ function PersonalExternoContratar() {
                                             />
                                         </div>
                                     </div>
-                                    
+
                                 </div>
 
                             </div>

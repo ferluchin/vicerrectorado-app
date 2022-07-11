@@ -395,11 +395,23 @@ const List = () => {
                 aporteContraparte: aporteContraparte,
                 aporteUTPL: aporteUTPL,
                 organismoEntidadFinanciador: organismoEntidadFinanciador,
+
                 presupuestoTotal: presupuestoTotal,
+                
                 tipoFinanciamiento: tipoFinanciamiento,
                 tipoInvestigacion: tipoInvestigacion,
                 tipoProyecto: tipoProyecto,
 
+
+                tipoProyecto: "",
+                tipoInvestigacion: "",
+                tipoFinanciamiento: "",
+
+                organismoEntidadFinanciador: "",
+
+                presupuestoTotal: "",
+                aporteUTPL: "",
+                aporteContraparte: "",
             }
         })
 
