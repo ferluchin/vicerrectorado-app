@@ -39,6 +39,7 @@ import {
 import { app, auth } from "../../firebase";
 import { setGlobalState, useGlobalState } from "../../Helper/Context";
 import { Button } from "reactstrap";
+const db = getFirestore();
 
 
 const firestore = getFirestore(app);
@@ -83,6 +84,8 @@ const data = [
 
 export default function Home() {
 
+    const [nodes, setNodes] = useState({});
+    const [isLoading, setLoading] = useState(true);
     // Codigo autocomplete docentes
     const [docentes, setDocentes] = useState(data);
     const [value, setValue] = useState("");
@@ -139,6 +142,7 @@ export default function Home() {
         setValue(newValue);
     }
 
+
     const inputProps = {
         placeholder: "Nombre del docente",
         value,
@@ -162,6 +166,7 @@ export default function Home() {
     }
     //end código autocomplete docentes
     const [globalInformacionGeneral, setGlobalInformacionGeneral] = useGlobalState("informacionGeneral");
+    const [globalAuxiliar, setGlobalAuxiliar] = useGlobalState("auxiliar");
 
 
     const { currentUser } = useContext(AuthContext)
@@ -175,8 +180,28 @@ export default function Home() {
 
     function logeoDatos(event) {
         console.log(globalInformacionGeneral)
+        console.log(globalAuxiliar)
 
         console.log("SET FORM DATA", formData)
+        //getAux();
+        console.log("esta es la variable bandera", globalAuxiliar)
+
+    }
+    async function getAux() {
+        var docRef = doc(db, `proyectos-investigacion/${correoUsuario}`);
+        //var docRef = collection(db, "proyectos-investigacion", `${correoUsuario}`);
+        const docSnap = await getDoc(docRef);
+
+        if (docSnap.exists()) {
+            // console.log("Document data:", docSnap.data().contador);
+            // setGlobalAuxiliar(docSnap.data().contador)
+
+            console.log("Document data:", docSnap.data().auxiliar);
+            setGlobalAuxiliar(docSnap.data().auxiliar)
+        } else {
+            // doc.data() will be undefined in this case
+            console.log("No such document!");
+        }
     }
 
     //const correoUsuario = "lgrandab@gmail.com"
@@ -232,6 +257,7 @@ export default function Home() {
         event.preventDefault();
 
         try {
+
             formData.nombreDirectorProyecto = docenteSeleccionado.nombre
             formData.identificacionDirectorProyecto = docenteSeleccionado.identificacion
             formData.telefonoDirectorProyecto = docenteSeleccionado.telefono
@@ -250,10 +276,12 @@ export default function Home() {
 
             const docuRef = doc(firestore, `proyectos-investigacion/${correoUsuario}`)
 
+            console.log(globalAuxiliar)
             //setDoc(baseDocRef, { informacionGeneral: { status: "Borrador" } }, { merge: true });
 
             updateDoc(docuRef, {
-                informacionGeneral: {
+                //["informacionGeneral"+globalAuxiliar]: {
+                ["informacionGeneral" + globalAuxiliar]: {
                     ...formData
                 }
             }
@@ -271,7 +299,19 @@ export default function Home() {
 
         routeChange()
     }
+    useEffect(() => {
+        getAllNodes();
+    }, []);
 
+    const getAllNodes = () => {
+        getAux().then((response) => {
+            setNodes(response);
+            setLoading(false);
+        });
+    };
+    if (isLoading) {
+        return <div className="App">Cargando...</div>;
+    }
     return (
 
         <div className="home">

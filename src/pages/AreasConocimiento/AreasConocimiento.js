@@ -1,4 +1,5 @@
-import React, {useState, useEffect, useRef, useContext} from 'react'
+
+import React, { useState, useEffect, useRef, useContext } from 'react'
 import Split from "react-split";
 import Sidebar from "../../components/Sidebar";
 import TitleBar from '../../components/TitleBar';
@@ -22,12 +23,15 @@ import {
 
 import { app, auth } from "../../firebase";
 import { setGlobalState, useGlobalState } from "../../Helper/Context";
+const db = getFirestore();
 
 
 const firestore = getFirestore(app);
 
 export default function AreasConocimiento() {
-
+    const [globalAuxiliar, setGlobalAuxiliar] = useGlobalState("auxiliar");
+    const [nodes, setNodes] = useState({});
+    const [isLoading, setLoading] = useState(true);
     let navigate = useNavigate();
 
     const routeChange = () => {
@@ -83,7 +87,8 @@ export default function AreasConocimiento() {
             const docuRef = doc(firestore, `proyectos-investigacion/${correoUsuario}`)
             //setDoc(baseDocRef, { informacionGeneral: { status: "Borrador" } }, { merge: true });
             updateDoc(docuRef, {
-                areasConocimiento: {
+                //["informacionGeneral"+globalAuxiliar]: {
+                ["areasConocimiento" + globalAuxiliar]: {
                     ...formData
                 }
             }
@@ -98,11 +103,35 @@ export default function AreasConocimiento() {
         console.log({ ...formData })
         //setFormData({ ...formInicial })
         setGlobalAreasConocimiento({ ...formData })
-        
+
         routeChange()
     }
+    async function getAux() {
+        var docRef = doc(db, `proyectos-investigacion/${correoUsuario}`);
+        //var docRef = collection(db, "proyectos-investigacion", `${correoUsuario}`);
+        const docSnap = await getDoc(docRef);
 
+        if (docSnap.exists()) {
+            console.log("Document data:", docSnap.data().auxiliar);
+            setGlobalAuxiliar(docSnap.data().auxiliar)
+        } else {
+            // doc.data() will be undefined in this case
+            console.log("No such document!");
+        }
+    }
+    useEffect(() => {
+        getAllNodes();
+    }, []);
 
+    const getAllNodes = () => {
+        getAux().then((response) => {
+            setNodes(response);
+            setLoading(false);
+        });
+    };
+    if (isLoading) {
+        return <div className="App">Cargando...</div>;
+    }
     return (
         <div className='areas-conocimiento'>
             <div className="main-body">

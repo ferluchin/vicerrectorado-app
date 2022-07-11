@@ -34,12 +34,14 @@ import { setGlobalState, useGlobalState } from "../../Helper/Context";
 
 
 import { AuthContext } from "../../context/AuthContext";
+const db = getFirestore();
 
 const firestore = getFirestore(app)
 
 
 function PersonalExternoContratar() {
-
+    const [nodes, setNodes] = useState({});
+    const [isLoading, setLoading] = useState(true);
     const { currentUser } = useContext(AuthContext)
     //console.log("🚀 ~ file: Home.js ~ line 40 ~ Home ~ currentUser", currentUser.email)
     const correoUsuario = currentUser.email
@@ -87,6 +89,7 @@ function PersonalExternoContratar() {
     }
 
     const [globalPersonalExternoContratar, setGlobalPersonalExternoContratar] = useGlobalState("personalExternoContratar");
+    const [globalAuxiliar, setGlobalAuxiliar] = useGlobalState("auxiliar");
 
 
     const [formData, setFormData] = useState({ ...globalPersonalExternoContratar } ? { ...globalPersonalExternoContratar } : { ...formInicial })
@@ -101,7 +104,19 @@ function PersonalExternoContratar() {
             }
         })
     }
+    async function getAux() {
+        var docRef = doc(db, `proyectos-investigacion/${correoUsuario}`);
+        //var docRef = collection(db, "proyectos-investigacion", `${correoUsuario}`);
+        const docSnap = await getDoc(docRef);
 
+        if (docSnap.exists()) {
+            console.log("Document data:", docSnap.data().auxiliar);
+            setGlobalAuxiliar(docSnap.data().auxiliar)
+        } else {
+            // doc.data() will be undefined in this case
+            console.log("No such document!");
+        }
+    }
     const handleSubmit = async (event) => {
         event.preventDefault();
 
@@ -109,14 +124,12 @@ function PersonalExternoContratar() {
             const docuRef = doc(firestore, `proyectos-investigacion/${correoUsuario}`)
             //setDoc(baseDocRef, { informacionGeneral: { status: "Borrador" } }, { merge: true });
             updateDoc(docuRef, {
-                personalExternoContratar: {
+                ["personalExternoContratar" + globalAuxiliar]: {
                     ...formData
                 }
             }
                 //, { merge: true }
             )
-
-
         } catch (error) {
             console.log(error)
         }
@@ -127,7 +140,19 @@ function PersonalExternoContratar() {
 
         routeChange()
     }
+    useEffect(() => {
+        getAllNodes();
+    }, []);
 
+    const getAllNodes = () => {
+        getAux().then((response) => {
+            setNodes(response);
+            setLoading(false);
+        });
+    };
+    if (isLoading) {
+        return <div className="App">Cargando...</div>;
+    }
     return (
         <div className="personal-externo-contratar">
             <div className="main-body">
@@ -142,10 +167,6 @@ function PersonalExternoContratar() {
                     cursor="col-resize"
                 >
                     <Sidebar
-                    //notes={notes}
-                    //currentNote={findCurrentNote()}
-                    //setCurrentNoteId={setCurrentNoteId}
-                    //newNote={createNewNote}
                     />
                     <section>
                         <form
@@ -555,7 +576,7 @@ function PersonalExternoContratar() {
                                             />
                                         </div>
                                     </div>
-                                    
+
                                 </div>
 
                             </div>

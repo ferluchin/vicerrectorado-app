@@ -25,11 +25,13 @@ import Sidebar from "../../components/Sidebar";
 import { setGlobalState, useGlobalState } from "../../Helper/Context";
 
 import { AuthContext } from "../../context/AuthContext";
+const db = getFirestore();
 
 const firestore = getFirestore(app)
 
 export default function MetodologiaProyecto() {
-
+    const [nodes, setNodes] = useState({});
+    const [isLoading, setLoading] = useState(true);
     const { currentUser } = useContext(AuthContext)
 
     const correoUsuario = currentUser.email;
@@ -68,6 +70,7 @@ export default function MetodologiaProyecto() {
 
     //const [formData, setFormData] = React.useState({ ...formInicial });
     const [formData, setFormData] = React.useState({ ...globalMetodologiaProyecto } ? { ...globalMetodologiaProyecto } : { ...formInicial })
+    const [globalAuxiliar, setGlobalAuxiliar] = useGlobalState("auxiliar");
 
 
     function handleChange(event) {
@@ -80,7 +83,19 @@ export default function MetodologiaProyecto() {
         })
     }
 
+    async function getAux() {
+        var docRef = doc(db, `proyectos-investigacion/${correoUsuario}`);
+        //var docRef = collection(db, "proyectos-investigacion", `${correoUsuario}`);
+        const docSnap = await getDoc(docRef);
 
+        if (docSnap.exists()) {
+            console.log("Document data:", docSnap.data().auxiliar);
+            setGlobalAuxiliar(docSnap.data().auxiliar)
+        } else {
+            // doc.data() will be undefined in this case
+            console.log("No such document!");
+        }
+    }
     function logeoDatos(event) {
         console.log(globalMetodologiaProyecto)
 
@@ -94,7 +109,7 @@ export default function MetodologiaProyecto() {
         try {
             const docuRef = doc(firestore, `proyectos-investigacion/${correoUsuario}`)
             updateDoc(docuRef, {
-                metodologiaProyecto: {
+                ["metodologiaProyecto" + globalAuxiliar]: {
                     ...formData
                 }
             })
@@ -107,7 +122,19 @@ export default function MetodologiaProyecto() {
         //setFormData({ ...formInicial })
         routeChange()
     }
+    useEffect(() => {
+        getAllNodes();
+    }, []);
 
+    const getAllNodes = () => {
+        getAux().then((response) => {
+            setNodes(response);
+            setLoading(false);
+        });
+    };
+    if (isLoading) {
+        return <div className="App">Cargando...</div>;
+    }
     return (
         <div className="metodologia-proyecto">
             <div className="main-body">

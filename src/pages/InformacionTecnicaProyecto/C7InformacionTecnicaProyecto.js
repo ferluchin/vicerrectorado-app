@@ -23,12 +23,13 @@ import Sidebar from "../../components/Sidebar";
 import { AuthContext } from "../../context/AuthContext";
 import { setGlobalState, useGlobalState } from "../../Helper/Context";
 
-
+const db = getFirestore();
 const firestore = getFirestore(app)
 
 export default function InformacionTecnicaProyecto() {
 
-
+    const [nodes, setNodes] = useState({});
+    const [isLoading, setLoading] = useState(true);
     const { currentUser } = useContext(AuthContext)
 
     const correoUsuario = currentUser.email;
@@ -70,6 +71,7 @@ export default function InformacionTecnicaProyecto() {
 
     //const [formData, setFormData] = React.useState({ ...formInicial });
     const [formData, setFormData] = useState({ ...globalInformacionTecnicaProyecto } ? { ...globalInformacionTecnicaProyecto } : { ...formInicial })
+    const [globalAuxiliar, setGlobalAuxiliar] = useGlobalState("auxiliar");
 
 
 
@@ -82,7 +84,19 @@ export default function InformacionTecnicaProyecto() {
             }
         })
     }
+    async function getAux() {
+        var docRef = doc(db, `proyectos-investigacion/${correoUsuario}`);
+        //var docRef = collection(db, "proyectos-investigacion", `${correoUsuario}`);
+        const docSnap = await getDoc(docRef);
 
+        if (docSnap.exists()) {
+            console.log("Document data:", docSnap.data().auxiliar);
+            setGlobalAuxiliar(docSnap.data().auxiliar)
+        } else {
+            // doc.data() will be undefined in this case
+            console.log("No such document!");
+        }
+    }
     const handleSubmit = async (event) => {
         event.preventDefault()
         // submitToApi(formData)
@@ -100,7 +114,7 @@ export default function InformacionTecnicaProyecto() {
         try {
             const docuRef = doc(firestore, `proyectos-investigacion/${correoUsuario}`)
             updateDoc(docuRef, {
-                informacionTecnicaProyecto: {
+                ["informacionTecnicaProyecto" + globalAuxiliar]: {
                     ...formData
                 }
             })
@@ -115,7 +129,19 @@ export default function InformacionTecnicaProyecto() {
         //setFormData({ ...formInicial })
         routeChange()
     }
+    useEffect(() => {
+        getAllNodes();
+    }, []);
 
+    const getAllNodes = () => {
+        getAux().then((response) => {
+            setNodes(response);
+            setLoading(false);
+        });
+    };
+    if (isLoading) {
+        return <div className="App">Cargando...</div>;
+    }
     return (
         <div className="informacion-tecnica">
             <div className="main-body">

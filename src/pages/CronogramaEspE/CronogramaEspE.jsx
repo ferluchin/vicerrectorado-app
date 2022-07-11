@@ -9,7 +9,7 @@ import Split from "react-split";
 import Sidebar from "../../components/Sidebar";
 import TitleBar from '../../components/TitleBar';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import './cronogramaEspA.scss';
+import './cronogramaEspE.scss';
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from '../../context/AuthContext';
 
@@ -55,65 +55,65 @@ export default function CronogramaEspA() {
     const formInicial = {
         //CRONOGRAMA DE ACTIVIDADES
         //objetivoGeneral: "",
-        objetivoEspecificoCronograma1: "",
-        resultadoObjetivoEspecificoCronograma1: "",
+        objetivoEspecificoCronograma5: "",
+        resultadoObjetivoEspecificoCronograma5: "",
         //Actividades
-        actividadEspecifica1: "",
-        actividadEspecifica2: "",
-        actividadEspecifica3: "",
-        actividadEspecifica4: "",
-        actividadEspecifica5: "",
+        actividadEspecificaE1: "",
+        actividadEspecificaE2: "",
+        actividadEspecificaE3: "",
+        actividadEspecificaE4: "",
+        actividadEspecificaE5: "",
 
         //Fecha Inicio
-        fechaInicio1: "",
-        fechaInicio2: "",
-        fechaInicio3: "",
-        fechaInicio4: "",
-        fechaInicio5: "",
+        fechaInicioE1: "",
+        fechaInicioE2: "",
+        fechaInicioE3: "",
+        fechaInicioE4: "",
+        fechaInicioE5: "",
 
         //Fecha Fin 
-        fechaFin1: "",
-        fechaFin2: "",
-        fechaFin3: "",
-        fechaFin4: "",
-        fechaFin5: "",
+        fechaFinE1: "",
+        fechaFinE2: "",
+        fechaFinE3: "",
+        fechaFinE4: "",
+        fechaFinE5: "",
 
         //Nombrre Evidencia / Medio de Verificación
-        nombreEvidencia1: "",
-        nombreEvidencia2: "",
-        nombreEvidencia3: "",
-        nombreEvidencia4: "",
-        nombreEvidencia5: "",
+        nombreEvidenciaE1: "",
+        nombreEvidenciaE2: "",
+        nombreEvidenciaE3: "",
+        nombreEvidenciaE4: "",
+        nombreEvidenciaE5: "",
 
         //Valor de Presupuesto
-        valorPresupuesto1: "",
-        valorPresupuesto2: "",
-        valorPresupuesto3: "",
-        valorPresupuesto4: "",
-        valorPresupuesto5: "",
+        valorPresupuestoE1: "",
+        valorPresupuestoE2: "",
+        valorPresupuestoE3: "",
+        valorPresupuestoE4: "",
+        valorPresupuestoE5: "",
 
         //Item de Presupuesto
-        itemPresupuesto1: "",
-        itemPresupuesto2: "",
-        itemPresupuesto3: "",
-        itemPresupuesto4: "",
-        itemPresupuesto5: "",
+        itemPresupuestoE1: "",
+        itemPresupuestoE2: "",
+        itemPresupuestoE3: "",
+        itemPresupuestoE4: "",
+        itemPresupuestoE5: "",
 
         //Nombre Responsable Actividad
-        nombreResponsableActividad1: "",
-        nombreResponsableActividad2: "",
-        nombreResponsableActividad3: "",
-        nombreResponsableActividad4: "",
-        nombreResponsableActividad5: "",
+        nombreResponsableActividadE1: "",
+        nombreResponsableActividadE2: "",
+        nombreResponsableActividadE3: "",
+        nombreResponsableActividadE4: "",
+        nombreResponsableActividadE5: "",
 
     }
 
 
-    const [globalCronogramaEspA, setGlobalCronogramaEspA] = useGlobalState("cronogramaEspA");
+    const [globalCronogramaEspE, setGlobalCronogramaEspE] = useGlobalState("cronogramaEspE");
     const [globalAuxiliar, setGlobalAuxiliar] = useGlobalState("auxiliar");
 
 
-    const [formData, setFormData] = useState({ ...globalCronogramaEspA } ? { ...globalCronogramaEspA } : { ...formInicial })
+    const [formData, setFormData] = useState({ ...globalCronogramaEspE } ? { ...globalCronogramaEspE } : { ...formInicial })
     //const [formData, setFormData] = useState({ ...formInicial })
 
     async function getAux() {
@@ -143,37 +143,22 @@ export default function CronogramaEspA() {
         event.preventDefault();
 
         try {
-
-
-            // formData.fechaInicio1 = (formData.fechaInicio1).toISOString().split('T')
-            // formData.fechaFin1 = (formData.fechaFin1).toISOString().split('T')
-            // formData.fechaInicio2 = (formData.fechaInicio2).toISOString().split('T')
-            // formData.fechaFin2 = (formData.fechaFin2).toISOString().split('T')
-            // formData.fechaInicio3 = (formData.fechaInicio3).toISOString().split('T')
-            // formData.fechaFin3 = (formData.fechaFin3).toISOString().split('T')
-            // formData.fechaInicio4 = (formData.fechaInicio4).toISOString().split('T')
-            // formData.fechaFin4 = (formData.fechaFin4).toISOString().split('T')
-            // formData.fechaInicio5 = (formData.fechaInicio5).toISOString().split('T')
-            // formData.fechaFin5 = (formData.fechaFin5).toISOString().split('T')
-
             const docuRef = doc(firestore, `proyectos-investigacion/${correoUsuario}`)
             //setDoc(baseDocRef, { informacionGeneral: { status: "Borrador" } }, { merge: true });
             updateDoc(docuRef, {
-                ["cronogramaEspA" + globalAuxiliar]: {
+                ["cronogramaEspE" + globalAuxiliar]: {
                     ...formData
                 }
             }
                 //, { merge: true }
             )
-
-
         } catch (error) {
             console.log(error)
         }
         //console.log(formData)
         console.log({ ...formData })
         //setFormData({ ...formInicial })
-        setGlobalCronogramaEspA({ ...formData })
+        setGlobalCronogramaEspE({ ...formData })
 
         routeChange()
     }
@@ -192,7 +177,7 @@ export default function CronogramaEspA() {
         return <div className="App">Cargando...</div>;
     }
     return (
-        <div className='cronograma-esp-a'>
+        <div className='cronograma-esp-e'>
             <div className="main-body">
 
                 <Split
@@ -221,38 +206,19 @@ export default function CronogramaEspA() {
 
                                 {<br />}
 
-                                {/* <div className="container">
-                                    <div className="row">
-                                        <div className="col-3">
-                                            <h4>
-                                                Objetivo General
-                                            </h4>
-
-                                        </div>
-                                        <div className="col-9">
-                                            <textarea
-                                                value={formData.objetivoGeneral}
-                                                placeholder="Escribir texto"
-                                                onChange={handleChange}
-                                                name="objetivoGeneral"
-                                            />
-                                        </div>
-                                    </div>
-                                </div> */}
                                 <br />
-
                                 <div className="container">
                                     <div className="row">
                                         <div className="col-3">
-                                            <h4> Objetivo <br />Específico 1 </h4>
+                                            <h4> Objetivo <br />Específico 5 </h4>
 
                                         </div>
                                         <div className="col-9">
                                             <textarea
-                                                value={formData.objetivoEspecificoCronograma1}
+                                                value={formData.objetivoEspecificoCronograma5}
                                                 placeholder="Escribir texto"
                                                 onChange={handleChange}
-                                                name="objetivoEspecificoCronograma1"
+                                                name="objetivoEspecificoCronograma5"
                                             />
                                         </div>
                                     </div>
@@ -262,15 +228,15 @@ export default function CronogramaEspA() {
                                 <div className="container">
                                     <div className="row">
                                         <div className="col-3">
-                                            <h4> Resultado objetivo específico 1</h4>
+                                            <h4> Resultado objetivo específico 5</h4>
 
                                         </div>
                                         <div className="col-9">
                                             <textarea
-                                                value={formData.resultadoObjetivoEspecificoCronograma1}
+                                                value={formData.resultadoObjetivoEspecificoCronograma5}
                                                 placeholder="Escribir texto"
                                                 onChange={handleChange}
-                                                name="resultadoObjetivoEspecificoCronograma1"
+                                                name="resultadoObjetivoEspecificoCronograma5"
                                             />
                                         </div>
                                     </div>
@@ -342,22 +308,19 @@ export default function CronogramaEspA() {
                                                 type="text"
                                                 placeholder="Ingresar Texto"
                                                 className="form-control"
-                                                name="actividadEspecifica1"
+                                                name="actividadEspecificaE1"
                                                 onChange={handleChange}
-                                                value={formData.actividadEspecifica1}
+                                                value={formData.actividadEspecificaE1}
                                             />
                                         </div>
                                         <div className="col-1">
-
-
-
                                             {/* <DatePicker
-                                                selected={formData.fechaInicio1}
+                                                selected={formData.fechaInicioE1}
                                                 dateFormat="yyyy/MM/dd"
                                                 onChange={date => setFormData(
                                                     {
                                                         ...formData,
-                                                        fechaInicio1: date
+                                                        fechaInicioE1: date
                                                     })}
                                                 className="form-control"
                                                 value=''
@@ -368,9 +331,9 @@ export default function CronogramaEspA() {
                                                 type="text"
                                                 placeholder="Ingresar Texto"
                                                 className="form-control"
-                                                name="fechaInicio1"
+                                                name="fechaInicioE1"
                                                 onChange={handleChange}
-                                                value={formData.fechaInicio1}
+                                                value={formData.fechaInicioE1}
                                             />
                                         </div>
                                         <div className="col-1">
@@ -378,18 +341,18 @@ export default function CronogramaEspA() {
                                                 type="text"
                                                 placeholder="Ingresar Texto"
                                                 className="form-control"
-                                                name="fechaFin1"
+                                                name="fechaFinE1"
                                                 onChange={handleChange}
-                                                value={formData.fechaFin1}
+                                                value={formData.fechaFinE1}
                                             />
 
                                             {/* <DatePicker
-                                                selected={formData.fechaFin1}
+                                                selected={formData.fechaFinE1}
                                                 dateFormat="yyyy/MM/dd"
                                                 onChange={date => setFormData(
                                                     {
                                                         ...formData,
-                                                        fechaFin1: date
+                                                        fechaFinE1: date
                                                     })}
                                                 className="form-control"
 
@@ -402,9 +365,9 @@ export default function CronogramaEspA() {
                                                 type="text"
                                                 placeholder="Ingresar Texto"
                                                 className="form-control"
-                                                name="nombreEvidencia1"
+                                                name="nombreEvidenciaE1"
                                                 onChange={handleChange}
-                                                value={formData.nombreEvidencia1}
+                                                value={formData.nombreEvidenciaE1}
                                             />
                                         </div>
                                         <div className="col-2">
@@ -412,17 +375,17 @@ export default function CronogramaEspA() {
                                                 type="text"
                                                 placeholder="Ingresar Texto"
                                                 className="form-control"
-                                                name="valorPresupuesto1"
+                                                name="valorPresupuestoE1"
                                                 onChange={handleChange}
-                                                value={formData.valorPresupuesto1}
+                                                value={formData.valorPresupuestoE1}
                                             />
                                         </div>
                                         <div className="col-2">
                                             <select
-                                                id="itemPresupuesto1"
-                                                value={formData.itemPresupuesto1}
+                                                id="itemPresupuestoE1"
+                                                value={formData.itemPresupuestoE1}
                                                 onChange={handleChange}
-                                                name="itemPresupuesto1"
+                                                name="itemPresupuestoE1"
                                                 className="form-select"
                                             >
                                                 <option value="">-- Elija un Elemento --</option>
@@ -438,14 +401,13 @@ export default function CronogramaEspA() {
                                                 type="text"
                                                 placeholder="Ingresar Texto"
                                                 className="form-control"
-                                                name="nombreResponsableActividad1"
+                                                name="nombreResponsableActividadE1"
                                                 onChange={handleChange}
-                                                value={formData.nombreResponsableActividad1}
+                                                value={formData.nombreResponsableActividadE1}
                                             />
                                         </div>
                                     </div>
                                     <br />
-
 
                                     <div className="row">
                                         <div className="col-2">
@@ -453,9 +415,9 @@ export default function CronogramaEspA() {
                                                 type="text"
                                                 placeholder="Ingresar Texto"
                                                 className="form-control"
-                                                name="actividadEspecifica2"
+                                                name="actividadEspecificaE2"
                                                 onChange={handleChange}
-                                                value={formData.actividadEspecifica2}
+                                                value={formData.actividadEspecificaE2}
                                             />
                                         </div>
                                         <div className="col-1">
@@ -463,18 +425,18 @@ export default function CronogramaEspA() {
                                                 type="text"
                                                 placeholder="Ingresar Texto"
                                                 className="form-control"
-                                                name="fechaInicio2"
+                                                name="fechaInicioE2"
                                                 onChange={handleChange}
-                                                value={formData.fechaInicio2}
+                                                value={formData.fechaInicioE2}
                                             />
 
                                             {/* <DatePicker
-                                                selected={formData.fechaInicio2}
+                                                selected={formData.fechaInicioE2}
                                                 dateFormat="yyyy/MM/dd"
                                                 onChange={date => setFormData(
                                                     {
                                                         ...formData,
-                                                        fechaInicio2: date
+                                                        fechaInicioE2: date
                                                     })}
                                                 className="form-control"
 
@@ -487,18 +449,18 @@ export default function CronogramaEspA() {
                                                 type="text"
                                                 placeholder="Ingresar Texto"
                                                 className="form-control"
-                                                name="fechaFin2"
+                                                name="fechaFinE2"
                                                 onChange={handleChange}
-                                                value={formData.fechaFin2}
+                                                value={formData.fechaFinE2}
                                             />
 
                                             {/* <DatePicker
-                                                selected={formData.fechaFin2}
+                                                selected={formData.fechaFinE2}
                                                 dateFormat="yyyy/MM/dd"
                                                 onChange={date => setFormData(
                                                     {
                                                         ...formData,
-                                                        fechaFin2: date
+                                                        fechaFinE2: date
                                                     })}
                                                 className="form-control"
 
@@ -511,9 +473,9 @@ export default function CronogramaEspA() {
                                                 type="text"
                                                 placeholder="Ingresar Texto"
                                                 className="form-control"
-                                                name="nombreEvidencia2"
+                                                name="nombreEvidenciaE2"
                                                 onChange={handleChange}
-                                                value={formData.nombreEvidencia2}
+                                                value={formData.nombreEvidenciaE2}
                                             />
                                         </div>
                                         <div className="col-2">
@@ -521,17 +483,17 @@ export default function CronogramaEspA() {
                                                 type="text"
                                                 placeholder="Ingresar Texto"
                                                 className="form-control"
-                                                name="valorPresupuesto2"
+                                                name="valorPresupuestoE2"
                                                 onChange={handleChange}
-                                                value={formData.valorPresupuesto2}
+                                                value={formData.valorPresupuestoE2}
                                             />
                                         </div>
                                         <div className="col-2">
                                             <select
-                                                id="itemPresupuesto2"
-                                                value={formData.itemPresupuesto2}
+                                                id="itemPresupuestoE2"
+                                                value={formData.itemPresupuestoE2}
                                                 onChange={handleChange}
-                                                name="itemPresupuesto2"
+                                                name="itemPresupuestoE2"
                                                 className="form-select"
                                             >
                                                 <option value="">-- Elija un Elemento --</option>
@@ -547,121 +509,9 @@ export default function CronogramaEspA() {
                                                 type="text"
                                                 placeholder="Ingresar Texto"
                                                 className="form-control"
-                                                name="nombreResponsableActividad2"
+                                                name="nombreResponsableActividadE2"
                                                 onChange={handleChange}
-                                                value={formData.nombreResponsableActividad2}
-                                            />
-                                        </div>
-                                    </div>
-                                    <br />
-                                    <div className="row">
-                                        <div className="col-2">
-                                            <input
-                                                type="text"
-                                                placeholder="Ingresar Texto"
-                                                className="form-control"
-                                                name="actividadEspecifica3"
-                                                onChange={handleChange}
-                                                value={formData.actividadEspecifica3}
-                                            />
-                                        </div>
-
-                                        <div className="col-1">
-
-
-                                            {/* <DatePicker
-                                                selected={formData.fechaInicio3}
-                                                dateFormat="yyyy/MM/dd"
-                                                onChange={date => setFormData(
-                                                    {
-                                                        ...formData,
-                                                        fechaInicio3: date
-                                                    })}
-                                                className="form-control"
-
-                                                minDate={new Date()}
-                                            //isClearable
-                                            /> */}
-
-                                            <input
-                                                type="text"
-                                                placeholder="Ingresar Texto"
-                                                className="form-control"
-                                                name="fechaInicio3"
-                                                onChange={handleChange}
-                                                value={formData.fechaInicio3}
-                                            />
-
-                                        </div>
-                                        <div className="col-1">
-
-                                            <input
-                                                type="text"
-                                                placeholder="Ingresar Texto"
-                                                className="form-control"
-                                                name="fechaFin3"
-                                                onChange={handleChange}
-                                                value={formData.fechaFin3}
-                                            />
-
-                                            {/* <DatePicker
-                                                selected={formData.fechaFin3}
-                                                dateFormat="yyyy/MM/dd"
-                                                onChange={date => setFormData(
-                                                    {
-                                                        ...formData,
-                                                        fechaFin3: date
-                                                    })}
-                                                className="form-control"
-
-                                                minDate={new Date()}
-                                            //isClearable
-                                            /> */}
-                                        </div>
-                                        <div className="col-2">
-                                            <input
-                                                type="text"
-                                                placeholder="Ingresar Texto"
-                                                className="form-control"
-                                                name="nombreEvidencia3"
-                                                onChange={handleChange}
-                                                value={formData.nombreEvidencia3}
-                                            />
-                                        </div>
-                                        <div className="col-2">
-                                            <input
-                                                type="text"
-                                                placeholder="Ingresar Texto"
-                                                className="form-control"
-                                                name="valorPresupuesto3"
-                                                onChange={handleChange}
-                                                value={formData.valorPresupuesto3}
-                                            />
-                                        </div>
-                                        <div className="col-2">
-                                            <select
-                                                id="itemPresupuesto3"
-                                                value={formData.itemPresupuesto3}
-                                                onChange={handleChange}
-                                                name="itemPresupuesto3"
-                                                className="form-select"
-                                            >
-                                                <option value="">-- Elija un Elemento --</option>
-                                                <option value="VIÁTICOS.">VIÁTICOS.</option>
-                                                <option value="HONORARIOS.">HONORARIOS.</option>
-                                                <option value="MATERIALES, SUMINISTROS Y REACTIVOS.">MATERIALES, SUMINISTROS Y REACTIVOS.</option>
-                                                <option value="EQUIPOS.">EQUIPOS.</option>
-                                                <option value="CAPACITACIÓN.">CAPACITACIÓN.</option>
-                                            </select>
-                                        </div>
-                                        <div className="col-2">
-                                            <input
-                                                type="text"
-                                                placeholder="Ingresar Texto"
-                                                className="form-control"
-                                                name="nombreResponsableActividad3"
-                                                onChange={handleChange}
-                                                value={formData.nombreResponsableActividad3}
+                                                value={formData.nombreResponsableActividadE2}
                                             />
                                         </div>
                                     </div>
@@ -672,34 +522,37 @@ export default function CronogramaEspA() {
                                                 type="text"
                                                 placeholder="Ingresar Texto"
                                                 className="form-control"
-                                                name="actividadEspecifica4"
+                                                name="actividadEspecificaE3"
                                                 onChange={handleChange}
-                                                value={formData.actividadEspecifica4}
+                                                value={formData.actividadEspecificaE3}
                                             />
                                         </div>
+
                                         <div className="col-1">
 
-                                            <input
-                                                type="text"
-                                                placeholder="Ingresar Texto"
-                                                className="form-control"
-                                                name="fechaInicio4"
-                                                onChange={handleChange}
-                                                value={formData.fechaInicio4}
-                                            />
                                             {/* <DatePicker
-                                                selected={formData.fechaInicio4}
+                                                selected={formData.fechaInicioE3}
                                                 dateFormat="yyyy/MM/dd"
                                                 onChange={date => setFormData(
                                                     {
                                                         ...formData,
-                                                        fechaInicio4: date
+                                                        fechaInicioE3: date
                                                     })}
                                                 className="form-control"
 
                                                 minDate={new Date()}
                                             //isClearable
                                             /> */}
+
+                                            <input
+                                                type="text"
+                                                placeholder="Ingresar Texto"
+                                                className="form-control"
+                                                name="fechaInicioE3"
+                                                onChange={handleChange}
+                                                value={formData.fechaInicioE3}
+                                            />
+
                                         </div>
                                         <div className="col-1">
 
@@ -707,18 +560,18 @@ export default function CronogramaEspA() {
                                                 type="text"
                                                 placeholder="Ingresar Texto"
                                                 className="form-control"
-                                                name="fechaFin4"
+                                                name="fechaFinE3"
                                                 onChange={handleChange}
-                                                value={formData.fechaFin4}
+                                                value={formData.fechaFinE3}
                                             />
 
                                             {/* <DatePicker
-                                                selected={formData.fechaFin4}
+                                                selected={formData.fechaFinE3}
                                                 dateFormat="yyyy/MM/dd"
                                                 onChange={date => setFormData(
                                                     {
                                                         ...formData,
-                                                        fechaFin4: date
+                                                        fechaFinE3: date
                                                     })}
                                                 className="form-control"
 
@@ -731,9 +584,9 @@ export default function CronogramaEspA() {
                                                 type="text"
                                                 placeholder="Ingresar Texto"
                                                 className="form-control"
-                                                name="nombreEvidencia4"
+                                                name="nombreEvidenciaE3"
                                                 onChange={handleChange}
-                                                value={formData.nombreEvidencia4}
+                                                value={formData.nombreEvidenciaE3}
                                             />
                                         </div>
                                         <div className="col-2">
@@ -741,17 +594,17 @@ export default function CronogramaEspA() {
                                                 type="text"
                                                 placeholder="Ingresar Texto"
                                                 className="form-control"
-                                                name="valorPresupuesto4"
+                                                name="valorPresupuestoE3"
                                                 onChange={handleChange}
-                                                value={formData.valorPresupuesto4}
+                                                value={formData.valorPresupuestoE3}
                                             />
                                         </div>
                                         <div className="col-2">
                                             <select
-                                                id="itemPresupuesto4"
-                                                value={formData.itemPresupuesto4}
+                                                id="itemPresupuestoE3"
+                                                value={formData.itemPresupuestoE3}
                                                 onChange={handleChange}
-                                                name="itemPresupuesto4"
+                                                name="itemPresupuestoE3"
                                                 className="form-select"
                                             >
                                                 <option value="">-- Elija un Elemento --</option>
@@ -767,9 +620,9 @@ export default function CronogramaEspA() {
                                                 type="text"
                                                 placeholder="Ingresar Texto"
                                                 className="form-control"
-                                                name="nombreResponsableActividad4"
+                                                name="nombreResponsableActividadE3"
                                                 onChange={handleChange}
-                                                value={formData.nombreResponsableActividad4}
+                                                value={formData.nombreResponsableActividadE3}
                                             />
                                         </div>
                                     </div>
@@ -780,28 +633,28 @@ export default function CronogramaEspA() {
                                                 type="text"
                                                 placeholder="Ingresar Texto"
                                                 className="form-control"
-                                                name="actividadEspecifica5"
+                                                name="actividadEspecificaE4"
                                                 onChange={handleChange}
-                                                value={formData.actividadEspecifica5}
+                                                value={formData.actividadEspecificaE4}
                                             />
                                         </div>
                                         <div className="col-1">
+
                                             <input
                                                 type="text"
                                                 placeholder="Ingresar Texto"
                                                 className="form-control"
-                                                name="fechaInicio5"
+                                                name="fechaInicioE4"
                                                 onChange={handleChange}
-                                                value={formData.fechaInicio5}
+                                                value={formData.fechaInicioE4}
                                             />
-
                                             {/* <DatePicker
-                                                selected={formData.fechaInicio5}
+                                                selected={formData.fechaInicioE4}
                                                 dateFormat="yyyy/MM/dd"
                                                 onChange={date => setFormData(
                                                     {
                                                         ...formData,
-                                                        fechaInicio5: date
+                                                        fechaInicioE4: date
                                                     })}
                                                 className="form-control"
 
@@ -815,17 +668,18 @@ export default function CronogramaEspA() {
                                                 type="text"
                                                 placeholder="Ingresar Texto"
                                                 className="form-control"
-                                                name="fechaFin5"
+                                                name="fechaFinE4"
                                                 onChange={handleChange}
-                                                value={formData.fechaFin5}
+                                                value={formData.fechaFinE4}
                                             />
+
                                             {/* <DatePicker
-                                                selected={formData.fechaFin5}
+                                                selected={formData.fechaFinE4}
                                                 dateFormat="yyyy/MM/dd"
                                                 onChange={date => setFormData(
                                                     {
                                                         ...formData,
-                                                        fechaFin5: date
+                                                        fechaFinE4: date
                                                     })}
                                                 className="form-control"
 
@@ -838,9 +692,9 @@ export default function CronogramaEspA() {
                                                 type="text"
                                                 placeholder="Ingresar Texto"
                                                 className="form-control"
-                                                name="nombreEvidencia5"
+                                                name="nombreEvidenciaE4"
                                                 onChange={handleChange}
-                                                value={formData.nombreEvidencia5}
+                                                value={formData.nombreEvidenciaE4}
                                             />
                                         </div>
                                         <div className="col-2">
@@ -848,17 +702,17 @@ export default function CronogramaEspA() {
                                                 type="text"
                                                 placeholder="Ingresar Texto"
                                                 className="form-control"
-                                                name="valorPresupuesto5"
+                                                name="valorPresupuestoE4"
                                                 onChange={handleChange}
-                                                value={formData.valorPresupuesto5}
+                                                value={formData.valorPresupuestoE4}
                                             />
                                         </div>
                                         <div className="col-2">
                                             <select
-                                                id="itemPresupuesto5"
-                                                value={formData.itemPresupuesto5}
+                                                id="itemPresupuestoE4"
+                                                value={formData.itemPresupuestoE4}
                                                 onChange={handleChange}
-                                                name="itemPresupuesto5"
+                                                name="itemPresupuestoE4"
                                                 className="form-select"
                                             >
                                                 <option value="">-- Elija un Elemento --</option>
@@ -874,9 +728,116 @@ export default function CronogramaEspA() {
                                                 type="text"
                                                 placeholder="Ingresar Texto"
                                                 className="form-control"
-                                                name="nombreResponsableActividad5"
+                                                name="nombreResponsableActividadE4"
                                                 onChange={handleChange}
-                                                value={formData.nombreResponsableActividad5}
+                                                value={formData.nombreResponsableActividadE4}
+                                            />
+                                        </div>
+                                    </div>
+                                    <br />
+                                    <div className="row">
+                                        <div className="col-2">
+                                            <input
+                                                type="text"
+                                                placeholder="Ingresar Texto"
+                                                className="form-control"
+                                                name="actividadEspecificaE5"
+                                                onChange={handleChange}
+                                                value={formData.actividadEspecificaE5}
+                                            />
+                                        </div>
+                                        <div className="col-1">
+                                            <input
+                                                type="text"
+                                                placeholder="Ingresar Texto"
+                                                className="form-control"
+                                                name="fechaInicioE5"
+                                                onChange={handleChange}
+                                                value={formData.fechaInicioE5}
+                                            />
+
+                                            {/* <DatePicker
+                                                selected={formData.fechaInicioE5}
+                                                dateFormat="yyyy/MM/dd"
+                                                onChange={date => setFormData(
+                                                    {
+                                                        ...formData,
+                                                        fechaInicioE5: date
+                                                    })}
+                                                className="form-control"
+
+                                                minDate={new Date()}
+                                            //isClearable
+                                            /> */}
+                                        </div>
+                                        <div className="col-1">
+
+                                            <input
+                                                type="text"
+                                                placeholder="Ingresar Texto"
+                                                className="form-control"
+                                                name="fechaFinE5"
+                                                onChange={handleChange}
+                                                value={formData.fechaFinE5}
+                                            />
+                                            {/* <DatePicker
+                                                selected={formData.fechaFinE5}
+                                                dateFormat="yyyy/MM/dd"
+                                                onChange={date => setFormData(
+                                                    {
+                                                        ...formData,
+                                                        fechaFinE5: date
+                                                    })}
+                                                className="form-control"
+
+                                                minDate={new Date()}
+                                            //isClearable
+                                            /> */}
+                                        </div>
+                                        <div className="col-2">
+                                            <input
+                                                type="text"
+                                                placeholder="Ingresar Texto"
+                                                className="form-control"
+                                                name="nombreEvidenciaE5"
+                                                onChange={handleChange}
+                                                value={formData.nombreEvidenciaE5}
+                                            />
+                                        </div>
+                                        <div className="col-2">
+                                            <input
+                                                type="text"
+                                                placeholder="Ingresar Texto"
+                                                className="form-control"
+                                                name="valorPresupuestoE5"
+                                                onChange={handleChange}
+                                                value={formData.valorPresupuestoE5}
+                                            />
+                                        </div>
+                                        <div className="col-2">
+                                            <select
+                                                id="itemPresupuestoE5"
+                                                value={formData.itemPresupuestoE5}
+                                                onChange={handleChange}
+                                                name="itemPresupuestoE5"
+                                                className="form-select"
+                                            >
+                                                <option value="">-- Elija un Elemento --</option>
+                                                <option value="VIÁTICOS.">VIÁTICOS.</option>
+                                                <option value="HONORARIOS.">HONORARIOS.</option>
+                                                <option value="MATERIALES, SUMINISTROS Y REACTIVOS.">MATERIALES, SUMINISTROS Y REACTIVOS.</option>
+                                                <option value="EQUIPOS.">EQUIPOS.</option>
+                                                <option value="CAPACITACIÓN.">CAPACITACIÓN.</option>
+                                            </select>
+                                        </div>
+                                        <div className="col-2">
+                                            <input
+                                                type="text"
+                                                placeholder="Ingresar Texto"
+                                                className="form-control"
+                                                name="nombreResponsableActividadE5"
+                                                onChange={handleChange}
+                                                value={formData.nombreResponsableActividadE5}
                                             />
                                         </div>
                                     </div>
