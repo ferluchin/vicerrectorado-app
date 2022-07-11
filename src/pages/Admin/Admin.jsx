@@ -261,6 +261,7 @@ const Admin = () => {
                 telefonoDirectorProyecto: "",
                 correoInstitucional: "",
 
+                status: "Borrador",
             }
         })
 

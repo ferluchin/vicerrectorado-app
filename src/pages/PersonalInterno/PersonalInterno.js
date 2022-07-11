@@ -122,42 +122,9 @@ export default function PersonalInterno() {
     const [globalPersonalInterno, setGlobalPersonalInterno] = useGlobalState("personalInterno");
     const [globalAuxiliar, setGlobalAuxiliar] = useGlobalState("auxiliar");
 
-
     console.log("globalPersonalInterno", globalPersonalInterno);
 
-    //let dataFirebase = Object.values(globalPersonalInterno.idPersonalInterno)
-
-
-    //const [data, setData] = useState(dataPersonalInicial);
-    //const [data, setData] = React.useState({ ...[globalPersonalInterno.idPersonalInterno] } ? { ...[globalPersonalInterno.idPersonalInterno] } : { ...dataPersonalInicial })
-    //const [data, setData] = useState([{ ...dataFirebase }] ? [{ ...dataFirebase }] : { ...dataPersonalInicial })
-
     const [formData, setFormData] = useState({ ...globalPersonalInterno } ? { ...globalPersonalInterno } : { ...dataPersonalInicial })
-
-    //const [data, setData] = useState([...dataFirebase] ? [...dataFirebase] : { ...dataPersonalInicial })
-
-
-
-
-
-
-
-
-
-    function logeoDatos(event) {
-        console.log(globalPersonalInterno);
-
-
-        let result = Object.values(globalPersonalInterno.idPersonalInterno)
-        //result = result.horasSemanales
-        console.log("RESULT", result)
-
-        //console.log("🚀 ~ file: PersonalInterno.js ~ line 87 ~ PersonalInterno ~ dataFirebase", dataFirebase)
-        //console.log("SET FORM DATA", ...data)
-
-        console.log("🚀 ~ file: PersonalInterno.js ~ line 78 ~ PersonalInterno ~ dataPersonalInicial", dataPersonalInicial)
-
-    }
 
     function handleChange(event) {
         const { name, value, type, checked } = event.target
@@ -185,7 +152,8 @@ export default function PersonalInterno() {
         }
         //consolaPersonalInterno();
         console.log("🚀 ~ file: PersonalInterno.js ~ line 193 ~ handleSubmit ~ formData", formData)
-        setGlobalPersonalInterno(...formData);
+        
+        setGlobalPersonalInterno(formData);
         routeChange()
     }
 
