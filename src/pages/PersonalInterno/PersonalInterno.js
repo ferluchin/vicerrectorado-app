@@ -122,11 +122,10 @@ export default function PersonalInterno() {
     const [globalPersonalInterno, setGlobalPersonalInterno] = useGlobalState("personalInterno");
     const [globalAuxiliar, setGlobalAuxiliar] = useGlobalState("auxiliar");
 
-    //const [globalPersonalInterno, setGlobalPersonalInterno] = useGlobalState("personalInterno");
 
     console.log("globalPersonalInterno", globalPersonalInterno);
 
-    let dataFirebase = Object.values(globalPersonalInterno.idPersonalInterno)
+    //let dataFirebase = Object.values(globalPersonalInterno.idPersonalInterno)
 
 
     //const [data, setData] = useState(dataPersonalInicial);
@@ -153,12 +152,7 @@ export default function PersonalInterno() {
         //result = result.horasSemanales
         console.log("RESULT", result)
 
-        console.log("🚀 ~ file: PersonalInterno.js ~ line 87 ~ PersonalInterno ~ dataFirebase", dataFirebase)
-
-
-
-
-
+        //console.log("🚀 ~ file: PersonalInterno.js ~ line 87 ~ PersonalInterno ~ dataFirebase", dataFirebase)
         //console.log("SET FORM DATA", ...data)
 
         console.log("🚀 ~ file: PersonalInterno.js ~ line 78 ~ PersonalInterno ~ dataPersonalInicial", dataPersonalInicial)
@@ -179,23 +173,23 @@ export default function PersonalInterno() {
 
         try {
             const docuRef = doc(firestore, `proyectos-investigacion/${correoUsuario}`)
+
             updateDoc(docuRef, {
                 ["personalInterno" + globalAuxiliar]: {
                     ...formData
                 }
-            })
+            }
+            )
         } catch (error) {
             console.log(error)
         }
         //consolaPersonalInterno();
-
+        console.log("🚀 ~ file: PersonalInterno.js ~ line 193 ~ handleSubmit ~ formData", formData)
         setGlobalPersonalInterno(...formData);
-
-        console.log("globalPersonalInterno", globalPersonalInterno);
-
-
         routeChange()
     }
+
+
     useEffect(() => {
         getAllNodes();
     }, []);
@@ -212,6 +206,7 @@ export default function PersonalInterno() {
     return (
         <div className="personal-interno">
             <div className="main-body">
+
                 <Split
                     sizes={[20, 80]}
                     direction="horizontal"
@@ -229,18 +224,15 @@ export default function PersonalInterno() {
                             onSubmit={handleSubmit}
                         >
                             <TitleBar />
-                            {/* <NavBar /> */}
 
                             <div
-                                //className="App"
-                                className="col-12"
 
+                                className="col-12"
                             >
                                 <h2>
                                     Equipo del Proyecto - Personal Interno
                                 </h2>
                                 <br />
-
 
                                 <br />
                             </div>

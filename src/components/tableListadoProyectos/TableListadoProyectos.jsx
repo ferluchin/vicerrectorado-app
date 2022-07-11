@@ -679,7 +679,7 @@ const List = () => {
             if (doc.id === correoUsuario) {
                 try {
                     var aux3 = "7"
-                    for (var i = 0; i <= 10; i++) {
+                    for (var i = 0; i <= 100; i++) {
                         try {
                             rows.push({
                                 id: doc.id,

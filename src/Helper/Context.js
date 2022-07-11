@@ -40,37 +40,137 @@ const { setGlobalState, useGlobalState } = createGlobalState({
         aporteContraparte: "",
     },
 
+    // personalInterno: {
+    //     idPersonalInterno: {
+    //         horasSemanales: "",
+    //         horasTotales: "",
+    //         id: "",
+    //         identificacion: "",
+    //         nombres: "",
+    //         rol: "",
+    //         senescyt: "",
+    //         tipo: "",
+    //     }
+    // },
+
     personalInterno: {
-        idPersonalInterno: {
-            horasSemanales: "",
-            horasTotales: "",
-            id: "",
-            identificacion: "",
-            nombres: "",
-            rol: "",
-            senescyt: "",
-            tipo: "",
-        }
+        //PERSONAL INTERNO
+        rolPersonalInterno1: "",
+        rolPersonalInterno2: "",
+        rolPersonalInterno3: "",
+        rolPersonalInterno4: "",
+        rolPersonalInterno5: "",
+
+        tipoPersonalInterno1: "",
+        tipoPersonalInterno2: "",
+        tipoPersonalInterno3: "",
+        tipoPersonalInterno4: "",
+        tipoPersonalInterno5: "",
+
+        senescyt1: "",
+        senescyt2: "",
+        senescyt3: "",
+        senescyt4: "",
+        senescyt5: "",
+
+        identificacionPersonalInterno1: "",
+        identificacionPersonalInterno2: "",
+        identificacionPersonalInterno3: "",
+        identificacionPersonalInterno4: "",
+        identificacionPersonalInterno5: "",
+
+        nombrePersonalInterno1: "",
+        nombrePersonalInterno2: "",
+        nombrePersonalInterno3: "",
+        nombrePersonalInterno4: "",
+        nombrePersonalInterno5: "",
+
+        horasSemanalesPersonalInterno1: "",
+        horasSemanalesPersonalInterno2: "",
+        horasSemanalesPersonalInterno3: "",
+        horasSemanalesPersonalInterno4: "",
+        horasSemanalesPersonalInterno5: "",
+
+        horasTotalesPersonalInterno1: "",
+        horasTotalesPersonalInterno2: "",
+        horasTotalesPersonalInterno3: "",
+        horasTotalesPersonalInterno4: "",
+        horasTotalesPersonalInterno5: "",
     },
 
+
+    // personalExternoContratar: {
+    //     idPersonalExternoContratar: {
+    //         funcion: "",
+    //         id: "",
+    //         numeroPersonas: "",
+    //         perfilRequerido: "",
+    //         principalesActividades: "",
+    //         tiempoContratacionMeses: "",
+    //     }
+
+    // },
     personalExternoContratar: {
-        idPersonalExternoContratar: {
-            funcion: "",
-            id: "",
-            numeroPersonas: "",
-            perfilRequerido: "",
-            principalesActividades: "",
-            tiempoContratacionMeses: "",
-        }
+        //PERSONAL EXTERNO CONTRATAR
+        perfilRequerido1: "",
+        perfilRequerido2: "",
+        perfilRequerido3: "",
+        perfilRequerido4: "",
+        perfilRequerido5: "",
 
+        funcion1: "",
+        funcion2: "",
+        funcion3: "",
+        funcion4: "",
+        funcion5: "",
+
+        actividadesDesarrollar1: "",
+        actividadesDesarrollar2: "",
+        actividadesDesarrollar3: "",
+        actividadesDesarrollar4: "",
+        actividadesDesarrollar5: "",
+
+        tiempoContratacion1: "",
+        tiempoContratacion2: "",
+        tiempoContratacion3: "",
+        tiempoContratacion4: "",
+        tiempoContratacion5: "",
+
+        personasContratar1: "",
+        personasContratar2: "",
+        personasContratar3: "",
+        personasContratar4: "",
+        personasContratar5: "",
     },
+
+    // personalExternoCooperante: {
+    //     idPersonalExternoCooperante: {
+    //         entidad: "",
+    //         id: "",
+    //         nombres: "",
+    //         rol: "",
+    //     }
+    // },
+
+    //PERSONAL EXTERNO COOPERANTE
     personalExternoCooperante: {
-        idPersonalExternoCooperante: {
-            entidad: "",
-            id: "",
-            nombres: "",
-            rol: "",
-        }
+        rolPersonalCooperante1: "",
+        rolPersonalCooperante2: "",
+        rolPersonalCooperante3: "",
+        rolPersonalCooperante4: "",
+        rolPersonalCooperante5: "",
+
+        nombrePersonalCooperante1: "",
+        nombrePersonalCooperante2: "",
+        nombrePersonalCooperante3: "",
+        nombrePersonalCooperante4: "",
+        nombrePersonalCooperante5: "",
+
+        entidadPersonalCooperante1: "",
+        entidadPersonalCooperante2: "",
+        entidadPersonalCooperante3: "",
+        entidadPersonalCooperante4: "",
+        entidadPersonalCooperante5: "",
     },
 
     informacionTecnicaProyecto: {

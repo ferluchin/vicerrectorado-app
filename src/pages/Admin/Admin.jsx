@@ -56,6 +56,9 @@ const db = getFirestore();
 
 const Admin = () => {
 
+    const [nodes, setNodes] = useState({});
+    const [isLoading, setLoading] = useState(true);
+
     const { currentUser } = useContext(AuthContext)
     //console.log("🚀 ~ file: Home.js ~ line 40 ~ Home ~ currentUser", currentUser.email)
     const correoUsuario = currentUser.email
@@ -75,6 +78,22 @@ const Admin = () => {
         navigate("/home")
     }
 
+    async function getContador() {
+        var docRef = doc(db, `proyectos-investigacion/${correoUsuario}`);
+        //var docRef = collection(db, "proyectos-investigacion", `${correoUsuario}`);
+        const docSnap = await getDoc(docRef);
+
+        if (docSnap.exists()) {
+            // console.log("Document data:", docSnap.data().contador);
+            // setGlobalAuxiliar(docSnap.data().contador)
+
+            console.log("Document data:", docSnap.data().contador);
+            setGlobalAuxiliar(docSnap.data().contador)
+        } else {
+            // doc.data() will be undefined in this case
+            console.log("No such document!");
+        }
+    }
 
     async function getData() {
         try {
@@ -83,66 +102,98 @@ const Admin = () => {
             //setDoc(baseDocRef, { informacionGeneral: { status: "Borrador" } }, { merge: true });
 
             //const increment = firestore.FieldValue.increment(1);
-            let aux
-            return aux = updateDoc(docuRef, {
+            updateDoc(docuRef, {
                 //contador: 500,
                 ["contador"]: increment(1),
-                //["auxiliar"]: ["contador"],
-                
+                ["auxiliar"]: globalAuxiliar + 1,
+
+
+
                 //auxiliar: doc.data().contador,
-                
+
                 //grupoInvestigacion: doc.data().informacionGeneral.grupoInvestigacion,
-            }, 
+            },
                 //, { merge: true }
-            ) 
+            )
             //console.log("🚀 ~ file: Admin.js ~ line 64 ~ Admin ~ getData ~ docuRef")
-            console.log(aux)
+            //console.log(aux)
         } catch (error) {
             console.log("error", error)
         }
-        
+
 
         setGlobalAuxiliar()
         const docuRef = doc(firestore, `proyectos-investigacion/${correoUsuario}`)
         //
-        
+
         const contadorQuery = query(collection(db, "proyectos-investigacion"), where("contador", ">=", 0));
-        
+
         //const contador = doc(firestore, `proyectos-investigacion/${correoUsuario}`)
 
-     
-        
+
+
         const querySnapshot = await getDocs(contadorQuery);
         //let auxiliar
         let valueContador
 
-        querySnapshot.forEach((doc) => {
-            // doc.data() is never undefined for query doc snapshots
+        // querySnapshot.forEach((doc) => {
+        //     // doc.data() is never undefined for query doc snapshots
 
-            if (correoUsuario === doc.id) {
-                //try {
-                //console.log(doc.id, " => ", doc.data().contador);
-                try {
-                    
-                    //auxiliar: doc.data().contador
+        //     if (correoUsuario === doc.id) {
+        //         //try {
+        //         //console.log(doc.id, " => ", doc.data().contador);
+        //         try {
 
-                    updateDoc(docuRef, {
-                        //contador: 500,
-                        auxiliar: [globalAuxiliar]
-                        //auxiliar: doc.data().contador,
-                        
+        //             //auxiliar: doc.data().contador
 
-                        //grupoInvestigacion: doc.data().informacionGeneral.grupoInvestigacion,
-                    })
-                }
-                catch (e) {
+        //             updateDoc(docuRef, {
 
-                    console.log(e);
-                }
-            }
-            });
-        console.log(globalAuxiliar)
+        //                 auxiliar: [globalAuxiliar]
+
+        //             })
+        //         }
+        //         catch (e) {
+
+        //             console.log(e);
+        //         }
+        //     }
+        // });
+        // console.log(globalAuxiliar)
         //console.log(querySnapshot)
+    }
+
+
+    async function prepararFormulario() {
+        try {
+
+            const docuRef = doc(firestore, `proyectos-investigacion/${correoUsuario}`)
+
+            updateDoc(docuRef, {
+
+                ["informacionGeneral" + (globalAuxiliar + 1)]: globalInformacionGeneral,
+                ["areasConocimiento" + (globalAuxiliar + 1)]: globalAreasConocimiento,
+                ["tipoProyecto" + (globalAuxiliar + 1)]: globalTipoProyecto,
+                ["personalInterno" + (globalAuxiliar + 1)]: globalPersonalInterno,
+                ["personalExternoContratar" + (globalAuxiliar + 1)]: globalPersonalExternoContratar,
+                ["personalExternoCooperante" + (globalAuxiliar + 1)]: globalPersonalExternoCooperante,
+                ["informacionTecnicaProyecto" + (globalAuxiliar + 1)]: globalInformacionTecnicaProyecto,
+                ["metodologiaProyecto" + (globalAuxiliar + 1)]: globalMetodologiaProyecto,
+                ["cronogramaEspA" + (globalAuxiliar + 1)]: globalCronogramaEspA,
+                // ["cronogramaEspB" + (globalAuxiliar+1)]: globalCronogramaEspB,
+                // ["cronogramaEspC" + (globalAuxiliar+1)]: globalCronogramaEspC,
+                // ["cronogramaEspD" + (globalAuxiliar+1)]: globalCronogramaEspD,
+                // ["cronogramaEspE" + (globalAuxiliar+1)]: globalCronogramaEspE,
+
+                ["resumenPresupuesto" + (globalAuxiliar + 1)]: globalResumenPresupuesto,
+            },
+                //, { merge: true }
+            )
+            //console.log("🚀 ~ file: Admin.js ~ line 64 ~ Admin ~ getData ~ docuRef")
+            //console.log(aux)
+        } catch (error) {
+            console.log("error", error)
+        }
+
     }
 
     const consolaDatosContador = () => {
@@ -511,10 +562,24 @@ const Admin = () => {
 
         getData()
         handleGlobalChange()
-        
+
+        prepararFormulario()
         navigate("/home")
     }
 
+    useEffect(() => {
+        getAllNodes();
+    }, []);
+
+    const getAllNodes = () => {
+        getContador().then((response) => {
+            setNodes(response);
+            setLoading(false);
+        });
+    };
+    if (isLoading) {
+        return <div className="App">Cargando...</div>;
+    }
     return (
         <div className="admin">
             <AdminSidebar />
@@ -588,16 +653,16 @@ const Admin = () => {
                                 <div className="col-md-10">
                                     Listado de Proyectos de Investigación
                                 </div>
-                                <div className="col-md-1">
+                                {/* <div className="col-md-1">
                                     <button
                                         className="btn btn-warning"
                                         onClick={() => consolaDatosContador()}
                                     >
                                         Consola
                                     </button>
-                                </div>
+                                </div> */}
 
-                                <div className="col-md-1">
+                                <div className="col-md-2">
                                     <button
                                         className="btn btn-success"
                                         onClick={() => crearNuevoProyecto()}
@@ -620,98 +685,6 @@ const Admin = () => {
 
 
                 </div>
-                {/*                 
-                
-                <div className="listContainer">
-                    <div className="listTitle">
-                        Personal Interno
-                    </div>
-                    <TablePersonalInterno />
-                    <button className="btn btn-primary">Editar Sección</button>
-
-                </div>
-
-                */}
-
-
-
-                {/* 
-                <div className="listContainer">
-                    <div className="listTitle">
-                        Personal Externo Cooperante
-                    </div>
-                    <TableTipoProyecto />
-                    <button className="btn btn-primary">Editar Sección</button>
-
-                </div>
-
-                <div className="listContainer">
-                    <div className="listTitle">
-                        Personal Externo a Contratar
-                    </div>
-                    <TableTipoProyecto />
-                    <button className="btn btn-primary">Editar Sección</button>
-
-                </div>
-            */}
-
-                {/* 
-                <div className="listContainer">
-                    <div className="listTitle">
-                        Información Técnica del Proyecto
-                    </div>
-                    <TableInformacionTecnicaProyecto />
-                    <button className="btn btn-primary">Editar Sección</button>
-
-
-                </div> 
-                */}
-                {/* 
-                <div className="listContainer">
-                    <div className="listTitle">
-                        Metodología del Proyecto
-                    </div>
-                    <TableMetodologiaProyecto />
-                    <button className="btn btn-primary">Editar Sección</button>
-
-                </div> 
-                */}
-
-
-                {/* 
-                <div className="listContainer">
-                    <div className="listTitle">
-                        Resumen del Presupuesto
-                    </div>
-                    <TableResumenPresupuesto />
-                    <button className="btn btn-primary">Editar Sección</button>
-
-                </div> 
-                */}
-
-
-                {/*
-
-
-                <div className="listContainer">
-                    <div className="listTitle">
-                        Cronograma de Actividades
-                    </div>
-                    <TableTipoProyecto />
-                    <button className="btn btn-primary">Editar Sección</button>
-
-                </div>
-
-                <div className="listContainer">
-                    <div className="listTitle">
-                        Resumen del Presupuesto
-                    </div>
-                    <TableTipoProyecto />
-                    <button className="btn btn-primary">Editar Sección</button>
-
-                </div>
-                
-                */}
                 {/*                 
                 <div className="listContainer">
                     <div className="listTitle">

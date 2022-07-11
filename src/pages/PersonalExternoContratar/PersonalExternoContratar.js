@@ -130,8 +130,6 @@ function PersonalExternoContratar() {
             }
                 //, { merge: true }
             )
-
-
         } catch (error) {
             console.log(error)
         }
@@ -169,10 +167,6 @@ function PersonalExternoContratar() {
                     cursor="col-resize"
                 >
                     <Sidebar
-                    //notes={notes}
-                    //currentNote={findCurrentNote()}
-                    //setCurrentNoteId={setCurrentNoteId}
-                    //newNote={createNewNote}
                     />
                     <section>
                         <form
